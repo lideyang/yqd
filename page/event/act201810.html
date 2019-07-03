@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>十月活动-亿钱贷</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.5, maximum-scale=0.5, user-scalable=0">
+    <meta content="telephone=no" name="format-detection">
+    <script>
+        //设置rem
+        (function (doc, win) {
+            var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize';
+            var dpr = window.devicePixelRatio || 1;
+            // adjust body font size
+            function setBodyFontSize() {
+                if (document.body) {
+                    document.body.style.fontSize = '24px'
+                }
+                else {
+                    document.addEventListener('DOMContentLoaded', setBodyFontSize)
+                }
+            }
+
+            setBodyFontSize();
+            function setRemUnit() {
+                var clientWidth = docEl.clientWidth;
+                if (!clientWidth) return;
+                if (clientWidth >= 1200) {
+                    docEl.style.fontSize = '100px';
+                } else {
+                    docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+                }
+            }
+
+            setRemUnit()
+            if (!doc.addEventListener) return;
+            win.addEventListener(resizeEvt, setRemUnit);
+            window.addEventListener('pageshow', function (e) {
+                if (e.persisted) {
+                    setRemUnit()
+                }
+            })
+        })(document, window);
+        var basePath = "${(tzp.getContextPath())!''}";
+    </script>
+    <link href="${tzp.getContextPath()}/dist/css/global.css?v=63e48b6" rel="stylesheet">
+    <link rel="stylesheet" href="/dist/css/pages/activity/act201810.css?v2=&v=978d155" />
+</head>
+<body>
+<div class="md-act">
+    <div class="maindesc1">金秋十月 一起赚钱</div>
+    <div class="maindesc2">iPhone XS 话费 红包 现金</div>
+    <div class="game-content">
+        <div class="mainpic"><img src="${tzp.getContextPath()}/public/images/active/act201810/luckdraw2.png?v=0f4830b" alt=""></div>
+        <div class="game-goods-list">
+            <div class="game-goods goods1"  id="game1">
+                <ul class="game-goods-ul">
+                </ul>
+            </div>
+            <div class="game-goods goods2" id="game2">
+                <ul class="game-goods-ul">
+                </ul>
+            </div>
+            <div class="game-goods goods3" id="game3">
+                <ul class="game-goods-ul">
+                </ul>
+            </div>
+        </div>
+        <div class="game-btn" id="startbtn"></div>
+        <div class="game-desc">您已抽奖<span id="totalCount">${signCount!'0'}</span>次，剩余<span id="surplusCount">${awarcout!'0'}</span>次机会</div>
+    </div>
+    <div class="md-bonus">
+        <div class="hd">抽到指定次数还可获得相应返现</div>
+        <div class="bd">
+            <div class="bonus1 disabled" id="bonus1"></div>
+            <div class="bonus2 disabled" id="bonus2"></div>
+            <div class="bonus3 disabled" id="bonus3"></div>
+            <div class="bonus4 disabled" id="bonus4"></div>
+            <div class="desc desc1">第10次抽奖</div>
+            <div class="desc desc2">第40次抽奖</div>
+            <div class="desc desc3">第100次抽奖</div>
+            <div class="desc desc4">第200次抽奖</div>
+            <div class="step" id="bonusStep"><div class="tip">再抽<em id="bonusNum1">X</em>次就可以返现<em id="bonusNum2">X</em>元啦!</div></div>
+        </div>
+        <a class="btn-sel" href="javascript:;" id="recordBtn">查看奖品记录</a>
+    </div>
+    <div class="md-rule">
+        <h2>活动规则</h2>
+        <p class="mt0">1、本次活动中：<br>
+			①、红包在满足出借条件后可叠加使用；<br>
+			②、返现奖励将于中奖后实时发放到用户账户中；<br>
+			③、话费及实物奖励将于活动结束后的7个工作日内进行统计并联系客户进行发放，iPhone Xs为64G，支持9折折现，折现金额发放至平台账户；<br>
+			④、受让债权转让标不参与活动；	</p>
+		<p class="mt0">2、抽奖规则：<br>
+			①、用户单笔出借每满2000元则可获得一次抽奖机会，例如客户单笔出借20000元则可获得10次抽奖机会，单笔出借15000元则可获得7次抽奖机会；<br>
+			②、当用户抽到3个相同图案的时候，即视为中奖；<br>
+		 	③、用户抽到第10、40、100、200次时，将会有相对应的返现金额；</p>
+		<p class="mt0">3、活动期间，如规则有所调整，以本平台公布的新公告或公告刷新的内容为准，恕不再另外单独向用户进行提醒；</p>
+<p class="mt0">4、若有疑问可咨询微信在线客服或拨打客服电话：400-090-9968（工作日9:00-18:00）；</p>
+<p class="mt0">5、活动时间:2018年10月1日-2018年10月31日。</p>
+    </div>
+    <div class="copy-right">
+        <p>亿钱贷 | © 2018 All rights reserved </p>
+        <p>深圳市亿钱贷电子商务有限公司 <a href="http://www.miit.gov.cn/" rel="noopener noreferrer" target="_blank">粤ICP备14041671号-1</a></p>
+        <p>市场有风险，出借需谨慎</p>
+    </div>
+</div>
+<div class="m-layer md-bonustip" id="bonusTip">
+    <div class="bd">
+        <div class="bonusdesc" id="bonusDesc">您暂无抽奖机会哦</div>
+        <div class="bonusdiv" id="bonusResult"></div>
+        <div class="bonusremark" id="bonusRemark"></div>
+        <div class="bonusbtn" id="bonusBtn"></div>
+    </div>
+</div>
+<div class="m-layer md-bonustip" id="recordTip">
+    <div class="bd">
+        <div class="bonusdesc getbonus">中奖记录</div>
+        <div class="norecord" id="norecord" style="display:none;">暂无奖品</div>
+        <table class="table recordtable mt0" style="display:none;" id="recordTable">
+            <thead><tr><th>奖品</th><th>中奖时间</th></tr></thead>
+            <tbody id="recordlist">
+            </tbody>
+        </table>
+        <input name="pageNo" type="hidden" id="pageNo" value="1" />
+        <input name="pageSize" type="hidden" id="pageSize" value="5" />
+        <div id="laypage" class="morediv">
+            <a href="javascript:;" class="prev">&lt;上一页</a>
+            <a href="javascript:;" class="next">下一页&gt;</a>
+        </div>
+    </div>
+</div>
+<input type="hidden" id="loginUser" value="${_p2p_member_user!''}">
+<#include "/includes/script.html" />
+<!--页面js-->
+<script src="${tzp.getContextPath()}/dist/js/pages/activity/act201810.js?v=1ddc47d"></script>
+<#include "/includes/count.html" /> 
+</body>
+</html>

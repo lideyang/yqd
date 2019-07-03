@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>砸蛋活动-亿钱贷</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.5, maximum-scale=0.5, user-scalable=0">
+    <meta content="telephone=no" name="format-detection">
+    <script>
+        //设置rem
+        (function (doc, win) {
+            var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize';
+            var dpr = window.devicePixelRatio || 1;
+            // adjust body font size
+            function setBodyFontSize() {
+                if (document.body) {
+                    document.body.style.fontSize = '24px'
+                }
+                else {
+                    document.addEventListener('DOMContentLoaded', setBodyFontSize)
+                }
+            }
+
+            setBodyFontSize();
+            function setRemUnit() {
+                var clientWidth = docEl.clientWidth;
+                if (!clientWidth) return;
+                docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+            }
+
+            setRemUnit()
+            if (!doc.addEventListener) return;
+            win.addEventListener(resizeEvt, setRemUnit);
+            window.addEventListener('pageshow', function (e) {
+                if (e.persisted) {
+                    setRemUnit()
+                }
+            })
+        })(document, window);
+        var basePath = "${(tzp.getContextPath())!''}";
+    </script>
+    <!-- 公共样式 -->
+    <link href="${tzp.getContextPath()}/dist/css/global.css?v=6feeeb4" rel="stylesheet">
+    <link rel="stylesheet" href="/dist/css/pages/activity/dec2.css?v=feb678d" />
+    <link rel="stylesheet" href="/public/css/active/dec2/icons.css?v=feb678d" />
+</head>
+<body style="font-size:24px;">
+    <div class="main-content">
+        <div class="gl-tips">游戏攻略</div>
+        <div class="total-info">
+            累计获得现金<span class="primary-text">￥123.1</span><a id="receiveBtn" class="re-award-btn primary-text" href="javascript:;;">领取奖励</a>
+        </div>
+        <div class="re-count-tips">还有<span class="primary-text">3</span>次出现彩蛋</div>
+        <div class="wn-icon wn-icon-egg animated" id="eggBtn"></div>
+        <div class="wn-icon wn-icon-cz animated" id="czBtn"></div>
+        <div class="wn-icon wn-icon-pop3 animated">帮XXX消蛋</div>
+        <div class="re-egg-tips">您还有<span class="primary-text">5</span>枚金蛋，<span id="eggNum" class="primary-text">3</span>枚彩蛋</div>
+        <div class="recommend-link"><i class="icon-font icon-share"></i>邀请好友助力，获得更多金蛋</div>
+        <!--记录-->
+        <ul id="tabBtn" class="tab am-cf">
+            <li class="active">好友助力</li>
+            <li>消蛋记录</li>
+        </ul>
+        <div class="tab-content" id="tabContent">
+            <div class="opt-1">
+                <div class="total">
+                    合计共获得<span>￥133.21</span>
+                    <div class="am-fr"><div class="wn-icon wn-icon-egg-s"></div>X18</div>
+                </div>
+                <ul>
+                    <li>
+                        好友甲<span class="am-fr">+￥100.00+<div class="wn-icon wn-icon-egg-s"></div><div class="wn-icon wn-icon-egg-s"></div><div class="wn-icon wn-icon-egg-s"></div><div class="wn-icon wn-icon-egg-s"></div></span>
+                    </li>
+                    <li>
+                        好友甲<span class="am-fr">+￥100.00+<div class="wn-icon wn-icon-egg-s"></div><div class="wn-icon wn-icon-egg-s"></div><div class="wn-icon wn-icon-egg-s"></div></span>
+                    </li>
+                    <li>
+                        好友甲<span class="am-fr">+￥10.00+<div class="wn-icon wn-icon-egg-s"></div><div class="wn-icon wn-icon-egg-s"></div><div class="wn-icon wn-icon-egg-s"></div></span>
+                    </li>
+                    <li>
+                        好友甲<span class="am-fr">+￥10.00+<div class="wn-icon wn-icon-egg-s"></div></span>
+                    </li>
+                </ul>
+            </div>
+            <div class="opt-2" style="display: none">
+                <div class="total">
+                    合计共获得<span>￥133.21</span>
+                    <div class="am-fr"><div class="wn-icon wn-icon-egg-s"></div>X18</div>
+                </div>
+                <table>
+                    <tbody>
+                    <tr>
+                        <td><div class="wn-icon wn-icon-egg-s"></div>#99</td>
+                        <td>2018-12-12 12:00</td>
+                        <td>谢谢参与</td>
+                    </tr>
+                    <tr>
+                        <td><div class="wn-icon wn-icon-egg-s"></div>#99</td>
+                        <td>2018-12-12 12:00</td>
+                        <td>￥20.00</td>
+                    </tr>
+                    <tr>
+                        <td><div class="wn-icon wn-icon-egg-s"></div>#99</td>
+                        <td>2018-12-12 12:00</td>
+                        <td>￥20.00</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!--奖励灯箱-->
+    <div class="reward-layer" style="display: none" id="rewardLayer">
+        <h2>消蛋获得</h2>
+        <p><span class="primary-text" id="acountTxt">5</span>元话费</p>
+        <a class="btn" href="javascript:;;">继续消蛋</a>
+    </div>
+    <!--领取奖励类型-->
+    <div class="" style="display: none" id="receiveLayer">
+        <h3>请选择您的奖励领取方式</h3>
+        <form id="receiveForm">
+            <ul class="chose-check" id="checkList">
+                <li>
+                    <div class="wn-icon wn-icon-qb"></div>
+                    <p>
+                        <label class="am-radio">
+                            <input type="radio" name="radio1" value="" data-am-ucheck checked>
+                            选择现金奖励
+                        </label>
+                    </p>
+                    <p class="am-text-muted">活动结束后次日发放至平台账户</p>
+                </li>
+                <li>
+                    <div class="wn-icon wn-icon-mobile"></div>
+                    <p>
+                        <label class="am-radio">
+                            <input type="radio" name="radio1" value="" data-am-ucheck>
+                            选择话费奖励
+                        </label>
+                    </p>
+                    <p class="am-text-muted">活动结束后7个工作日内发放至注册手机号</p>
+                </li>
+            </ul>
+            <a class="btn">确定领取</a>
+        </form>
+    </div>
+
+    <div style="display: none" id="codeLayer">
+        <h3>验证码已发送至您的手机</h3>
+        <form id="codeForm">
+            <div class="phone">
+                <input id="code" name="code" placeholder="请输入短信验证码" maxlength="6" type="tel" />
+            </div>
+            <a class="btn">确定</a>
+        </form>
+        <div class="am-g tips-layer">
+            <div class="am-u-sm-6">
+                <a id="codePrevBtn" class="prev-link" href="javascript:;">返回上一页</a>
+            </div>
+            <div class="am-u-sm-6 am-text-right">
+                <a id="codeCountBtn" class="am-text-primary" href="javascript:;">重新发送验证码</a>
+            </div>
+        </div>
+    </div>
+
+    <!--注册成功-->
+    <div class="reg-layer" style="display: none" id="regSuccessLayer">
+        <i class="icon-font icon-right1 am-text-success"></i>
+        <h2 id="successMsg">您已成功注册亿钱贷！</h2>
+        <div class="wn-icon wn-icon-reg-success"></div>
+        <form id="regSuccessForm">
+            <a class="btn">立即砸蛋</a>
+        </form>
+    </div>
+<#include "/includes/script.html" />
+<!--页面js-->
+<script src="${tzp.getContextPath()}/dist/js/pages/activity/dec2.js?v=ea094ed"></script>
+</body>
+<#include "/includes/count.html" />
+</html>

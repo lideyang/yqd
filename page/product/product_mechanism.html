@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>派派乐-亿钱贷</title>
+    <#include "/includes/style.html" />
+    <!--页面样式-->
+    <link href="${tzp.getContextPath()}/dist/css/pages/product/detailInfo.css?v=3fcceb6" rel="stylesheet">
+    <link href="${tzp.getContextPath()}/dist/css/pages/product/mechanism.css?v=421734e" rel="stylesheet">
+</head>
+<body>
+<!-- 头部开始 -->
+<#include "/includes/header.html" />
+<!--内容开始-->
+<div class="am-container">
+    <!--合作机构-->
+    <div class="product-info-content about-content am-text-center">
+        <#if logo??> <img style="max-width:1.6rem;margin:.1rem 0 0" src="${logo}" title="${info.organizeName!''}" ></#if>
+          <h2>${info.organizeName!''}</h2>
+        <p>
+            <#if info.companyWebsite??>
+            <a  class="am-text-info" href="${info.companyWebsite!''}">${info.companyWebsite!''}</a>
+            </#if>
+        </p>
+        <p class="am-text-left">
+         ${info.remark!''}
+        </p>
+<!--         <div class="safe-list am-text-left"> -->
+<!--             <div class="am-g"> -->
+<!--                 <div class="am-u-sm-2"> -->
+<!--                     <i class="icon-font icon-gov2"></i> -->
+<!--                 </div> -->
+<!--                 <div class="am-u-sm-10"> -->
+<!--                     <h3>政府特许牌照</h3> -->
+<!--                     <p>政府多方监管 主管部门、监管机构的专业管理与指导 独特政策支持</p> -->
+<!--                 </div> -->
+<!--             </div> -->
+<!--             <div class="am-g"> -->
+<!--                 <div class="am-u-sm-2"> -->
+<!--                     <i class="icon-font icon-good1"></i> -->
+<!--                 </div> -->
+<!--                 <div class="am-u-sm-10"> -->
+<!--                     <h3>优质资产来源</h3> -->
+<!--                     <p>优质金融资产 金融资源丰富 行业协会合作支持</p> -->
+<!--                 </div> -->
+<!--             </div> -->
+<!--             <div class="am-g"> -->
+<!--                 <div class="am-u-sm-2"> -->
+<!--                     <i class="icon-font icon-safe1"></i> -->
+<!--                 </div> -->
+<!--                 <div class="am-u-sm-10"> -->
+<!--                     <h3>多重安全保障</h3> -->
+<!--                     <p>预期收益率优势突出 风控体系完善 多重安全保障</p> -->
+<!--                 </div> -->
+<!--             </div> -->
+<!--         </div> -->
+    </div>
+</div>
+<p class="am-text-center am-text-muted">市场有风险 出借需谨慎</p>
+
+<#include "/includes/script.html" />
+<!--页面js-->
+<script src="${tzp.getContextPath()}/dist/js/pages/product/mechanism.js?v=7b502ba"></script>
+</body>
+<#include "/includes/count.html" /> 
+</html>

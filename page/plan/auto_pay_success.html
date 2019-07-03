@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>出借成功-亿钱贷</title>
+    <#include "/includes/style.html" />
+    <!--页面样式-->
+    <link href="${tzp.getContextPath()}/dist/css/pages/product/success.css?v=95c526f" rel="stylesheet">
+</head>
+<body class="main-bg">
+<!-- 头部开始 -->
+<#include "/includes/header.html" />
+<!--出借成功面板-->
+<div class="am-panel am-panel-default success-panel">
+    <div class="am-panel-bd am-text-center">
+        <i class="icon-font icon-right1 info-icon am-text-success"></i>
+        <h3 class="am-text-center am-text-default" style="font-weight: bold;margin:.2rem 0 .05rem">您的委托出借已成功</h3>
+        <p class="am-text-default">${(result.amount!0)?string(',##0')}元 ${(result.prdName!'')}</p>
+        <hr/>
+        <div class="list am-text-left">
+            <div class="bg am-fl">
+                <img src="${tzp.getContextPath()}/public/images/icon/product_success_list.png?v=cb5e756" />
+            </div>
+            <ul>
+                <li>
+                    <h3 class="am-text-secondary">成功出借${(result.amount!0)?string(',##0')}元		
+                    <#if result.useCoupon??&&result.useCoupon gt 0>，使用红包${result.useCoupon?string(',##0')}</#if>
+					<#if result.ticketRate??&&result.ticketRate gt 0>，使用奖励券${result.ticketRate?string(',##0.00')}%</#if><h3>
+                    <p class="am-text-muted">${(investTime?string('yyyy-MM-dd HH:mm:ss'))!''}</p>
+                </li>
+                <li>
+                    <h3 class="am-text-default">开始计息</h3>
+                    <p class="am-text-muted">1-3工作日</p>
+                </li>
+                <li>
+                    <h3 class="am-text-default">委托期满</h3>
+                    <p class="am-text-muted">起息日${result.prdPeriodStr!''}后到期，<#if result.expectIncome gt 1>
+						预期收益${(result.expectIncome!0)?string(',##0.00')}元
+					<#else>
+						预期收益${(result.expectIncome!0)}元
+                    </#if></p>
+                </li>
+            </ul>
+        </div>
+        <a href="${tzp.getContextPath()}/spa/product/auto" class="am-btn am-btn-secondary am-round am-btn-block am-btn-xl success-btn">继续出借</a>
+    </div>
+</div>
+<#include "/includes/script.html" />
+</body>
+<!--页面js-->
+<script src="${tzp.getContextPath()}/dist/js/pages/product/success.js?v=4ea123e"></script>
+<#include "/includes/count.html" /> 
+</html>

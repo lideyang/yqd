@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>绑定银行卡成功-亿钱贷</title>
+    <#include "/includes/style.html" />
+    <!--页面样式-->
+    <link href="${tzp.getContextPath()}/dist/css/pages/account/settingTradePwdSuccess.css?v=4520955" rel="stylesheet">
+</head>
+<body class="main-bg">
+<!-- 头部开始 -->
+<#include "/includes/header.html" />
+<!--注册面板-->
+<div class="am-panel am-panel-default band-card-success-panel setting-pwd-success-panel">
+    <div class="am-panel-bd am-text-center">
+        <i class="icon-font icon-right1 info-icon am-text-secondary"></i>
+        <h3 class="am-text-center am-text-secondary">交易密码设置成功！</h3>
+        <p>您已经完成准备工作，可以开始出借赚钱了</p>
+        <div class="am-g setting-list card-list">
+        	<#if auth.authCheckBank == '1' >
+            <div class="right-icon">
+                <i class="icon-font icon-duigou"></i>
+            </div>
+            </#if>
+            <div class="am-u-sm-3">
+                <i class="icon-font icon-card"></i>
+            </div>
+            <div class="am-u-sm-9">
+                <h3>绑定银行卡</h3>
+                <p>充值、提现会使用您已绑定的银行卡</p>
+            </div>
+        </div>
+        <div class="am-g setting-list card-list">
+            <div class="right-icon">
+                <i class="icon-font icon-duigou"></i>
+            </div>
+            <div class="am-u-sm-3">
+                <i class="icon-font icon-pwd"></i>
+            </div>
+            <div class="am-u-sm-9">
+                <h3>设置交易密码</h3>
+                <p>保障资金安全，进行资金操作时使用</p>
+            </div>
+        </div>
+        <#if auth.authCheckBank == '1' >
+        <a class="am-btn am-btn-secondary am-round am-btn-block am-btn-xl bank-card-btn" href="${tzp.getContextPath()}/spa/product/auto">去出借</a>
+        <#else>
+        <a class="am-btn am-btn-secondary am-round am-btn-block am-btn-xl bank-card-btn" href="${tzp.getContextPath()}/member/auth/bankCard">去绑卡</a>
+        </#if>
+<!--         <div class="am-g new-hard"> -->
+<!--             <div class="am-u-sm-4 am-text-right"> -->
+<!--                 <img src="${tzp.getContextPath()}/public/images/icon/red_box.png?v=f46e332" /> -->
+<!--             </div> -->
+<!--             <div class="am-u-sm-8 am-text-left info"> -->
+<!--                 <h3>新人见面礼</h3> -->
+<!--                 <p>首次充值奖励多多</p> -->
+<!--                 <p>888元红包就在眼前</p> -->
+<!--             </div> -->
+<!--         </div> -->
+    </div>
+</div>
+<#include "/includes/script.html" />
+</body>
+<!--页面js-->
+<script src="${tzp.getContextPath()}/dist/js/pages/account/settingTradePwdSuccess.js?v=e7c277f"></script>
+<#include "/includes/count.html" /> 
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>奖励明细-亿钱贷</title>
+    <#include "/includes/style.html" />
+    <!--页面样式-->
+    <link href="${tzp.getContextPath()}/dist/css/pages/user/reward.css?v=b0d95ed" rel="stylesheet">
+</head>
+<body>
+<!-- 头部开始 -->
+<#include "/includes/header.html" />
+<!--奖励信息-->
+<div class="am-g reward-title am-text-center">
+    <div class="am-u-sm-12">
+        <p>累计奖励(元)</p>
+        <h2>${(allAmt!0)?string(',##0.00')}</h2>
+    </div>
+</div>
+<div class="reward-content">
+    <div data-am-widget="titlebar" class="am-titlebar am-titlebar-default">
+        <h2 class="am-titlebar-title">
+            未提取奖励<i data-am-popover="{content:'为避免资金流水过于繁复，您每天的推荐奖励会自动结算成&quot;待提取的奖励&quot;,您可以随时一次性全额提取到账户余额。'}" class="icon-font icon-wenhao am-text-sm am-text-muted"></i>
+        </h2>
+    </div>
+    <div class="am-g info">
+        <div class="am-u-sm-6">
+            <h3 class="am-text-default amount" id="amount">${(dueInAmt!0)?string(',##0.00')} 元</h3>
+        </div>
+        <div class="am-u-sm-6 am-text-right">
+            <a class="am-btn am-btn-secondary am-radius" id="extractBtn" href="javascript:;;">提取</a>
+            <a class="am-btn btn-secondary am-radius" href="${tzp.getContextPath()}/member/recom/extractInfo">明细</a>
+        </div>
+    </div>
+</div>
+<div class="reward-content mescroll" id="wrapper">
+    <div data-am-widget="titlebar" class="am-titlebar am-titlebar-default">
+        <h2 class="am-titlebar-title">
+            奖励记录
+        </h2>
+    </div>
+    <ul id="content">
+    </ul>
+</div>
+<#include "/includes/script.html" />
+<script type="text/x-handlebars-template" id="tpi-list-item">
+    {{#each this}}
+
+		 <li>
+            <div class="am-g">
+                <div class="am-u-sm-8">
+                    <p>好友总待收金额 {{formatCurrency repayInterest true}}元</p>
+                    <p class="am-text-muted">{{dayFormater awardDate}}</p>
+                </div>
+                <div class="am-u-sm-4 am-text-right">
+                    <span class="am-text-danger">+{{formatCurrency awardMoney true}}</span>元
+                </div>
+            </div>
+        </li>
+    {{/each}}
+</script>
+<!--页面js-->
+<script src="${tzp.getContextPath()}/dist/js/pages/user/reward.js?v=7f95204"></script>
+</body>
+<#include "/includes/count.html" /> 
+</html>

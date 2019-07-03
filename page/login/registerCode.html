@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>注册验证码-亿钱贷</title>
+    <#include "/includes/style.html" />
+    <!--页面样式-->
+    <link href="${tzp.getContextPath()}/dist/css/pages/account/regCode.css?v=e33f992" rel="stylesheet">
+</head>
+<body class="main-bg">
+<!-- 头部开始 -->
+<#include "/includes/header.html" />
+<!--注册面板-->
+<div class="am-panel am-panel-default reg-panel code-panel">
+    <div class="am-panel-bd">
+    	<div id="successSmsDiv" >
+	        <h3 class="title am-text-center">我们已经发送了<span class="am-text-primary">验证码</span>到您的手机</h3>
+	        <div class="am-form-group am-text-center re-send">
+	              	没有收到验证码？<a id="countDownTxt" class="am-text-primary" href="javascript:;;">点击获取</a>
+	        </div>
+    	</div>
+        <form class="am-form am-form-horizontal" id="registerForm">
+            <div class="am-form-group code" style="display: none;" id="retrySmsDiv">
+                <div class="am-u-sm-12 am-text-center">
+                    	请输入<label class="am-text-danger">图形验证码</label>,重新获取短信 <br>
+                    	<img id="codePicBtn" src="${tzp.getContextPath()}/txjcaptcha.svl"/>
+                </div>           
+                <div class="am-u-sm-12">
+                    <input class="am-form-field" maxlength="5" id="captcha" name="captcha" placeholder="请输入图形验证码">
+                    <a class="am-btn am-btn-secondary re-send-btn am-radius" id="countDownBtn">重新发送</a>
+                </div>
+            </div>
+            <div class="am-form-group">
+                <div class="am-u-sm-12">
+                    <input class="am-form-field" maxlength="6" type="tel" pattern="[0-9]*" id="phoneCode" name="phoneCode"
+                           placeholder="请输入6位数字验证码">
+                </div>
+            </div>
+            <div class="am-form-group">
+                <div class="am-u-sm-12">
+                    <input class="am-form-field" maxlength="20" type="password" autocomplete="new-password" id="userPassword" name="userPassword" placeholder="请输入您的登录密码">
+                </div>
+            </div>
+            <div class="am-form-group">
+                <div class="am-u-sm-12">
+                    <input class="am-form-field" maxlength="11" id="recommendCode" name ="recommendCode" placeholder="推荐码/推荐人手机号码(选填)">
+                </div>
+            </div>
+            <div class="am-form-group agreement">
+                <label class="am-checkbox-inline">
+                    <input class="vertical-middle" id="agreeCheckbox" type="checkbox" name="agreeCheckbox">
+                    <span class="vertical-middle">我已阅读并同意</span><a class="am-text-primary vertical-middle" href="${tzp.getContextPath()}/contract/zhuce">《亿钱贷注册协议》</a>
+                    <a class="am-text-primary vertical-middle" href="${tzp.getContextPath()}/contract/debt-risk">《风险及禁止性行为提示书》</a>
+                </label>
+            </div>
+            <#if openId ??>
+            <div class="am-form-group agreement">
+                <label class="am-checkbox-inline">
+                    <input id="wxCheckbox" type="checkbox" name="bindWx" checked="checked"/>
+                    微信免登陆
+                </label>
+            </div>
+            </#if>
+            <div class="am-form-group">
+                <button id="submitBtn" data-am-loading="{spinner: 'loading', loadingText: '加载中...'}" type="submit" class="am-btn am-btn-secondary am-round am-btn-block am-btn-xl">注册</button>
+            </div>
+        </form>
+    </div>
+</div>
+<#include "/includes/script.html" />
+</body>
+<!--页面js-->
+<script src="${tzp.getContextPath()}/dist/js/pages/account/regCode.js?v=4cb344b"></script>
+<#include "/includes/count.html" /> 
+</html>

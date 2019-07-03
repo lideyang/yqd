@@ -1,0 +1,30 @@
+{
+  "code": "0000",
+  "msg": "操作成功",
+  "success": true,
+  "currentTime": 1559642524202,
+  "data": {
+    "record": [
+      {
+        "fuzzyUsername": "423",
+        "myAwardNo": "3223"
+      },
+      {
+        "fuzzyUsername": "4fsd",
+        "myAwardNo": "9534"
+      },
+      {
+        "fuzzyUsername": "ds3",
+        "myAwardNo": "3251"
+      }
+    ],
+    "page": {
+      "prePage": 1,
+      "pageNo": 1,
+      "nextPage": 1,
+      "totalPages": 1,
+      "pageSize": 15,
+      "totalCount": 2
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "status": true,
+  "msg":"",
+  "data": {
+    "bankId": "18052310100682490393900858841300",
+    "bankCode": "CMB",
+    "limit":50000,
+    "bankName":"招商银行",
+    "bankNo":"3988",
+    "account": "32132.32",
+    "isBindCard":true,
+    "channelStatus": true,
+    "singleAmount": "50000",
+    "remainderDayAmount": "200000",
+    "signleDayAmount": "200000",
+    "isInvest": false
+  }
+}

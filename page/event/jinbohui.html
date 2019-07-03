@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>金博会</title>
+    <meta content="telephone=no" name="format-detection">
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <script>
+    	var basePath = "${tzp.getContextPath()}";
+        //设置rem
+        (function (doc, win) {
+            var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize';
+            var dpr = window.devicePixelRatio || 1;
+            // adjust body font size
+            function setBodyFontSize() {
+                if (document.body) {
+                    document.body.style.fontSize = '14px'
+                }
+                else {
+                    document.addEventListener('DOMContentLoaded', setBodyFontSize)
+                }
+            }
+
+            setBodyFontSize();
+            function setRemUnit() {
+                var clientWidth = docEl.clientWidth;
+                if (!clientWidth) return;
+                if (clientWidth >= 750) {
+                    docEl.style.fontSize = '100px';
+                } else {
+                    docEl.style.fontSize = 200 * (clientWidth / 750) + 'px';
+                }
+            }
+
+            setRemUnit()
+            if (!doc.addEventListener) return;
+            win.addEventListener(resizeEvt, setRemUnit);
+            window.addEventListener('pageshow', function (e) {
+                if (e.persisted) {
+                    setRemUnit()
+                }
+            })
+        })(document, window);
+    </script>
+    <link rel="stylesheet" href="/public/css/common.v3.css?v=e32bb00">
+    <link rel="stylesheet" href="/public/css/style.v3.css?v=8fd09e6">
+    <link rel="stylesheet" href="/public/js/plugins/layer/theme/default/layer.css?v=baf51a9">
+    <link href="${tzp.getContextPath()}/dist/css/pages/activity/jinbohui.css?v=a0812aa" rel="stylesheet">
+</head>
+
+<body>
+<div class="risk-ass">
+    <div id="startBoxer" class="overview">
+        <div class="banner">
+            <img src="/public/images/active/jinbohui/banner.jpg?v=e2859dc">
+            <a class="reg" href="${tzp.getContextPath()}/event/land?sp=jinbohui">立即注册</a>
+        </div>
+        <div class="content">
+            <img class="title" src="/public/images/active/jinbohui/title.png?v=30740df">
+            <p>现场注册并完成实名即送2018手绘摄影台历一份，再任意认购一款产品（≥1000元且投资1个月以上标的），还将获得30元现金券一张</p>
+            <img src="/public/images/active/jinbohui/icon1.png?v=4cc8297"/>
+            <h2>2018手绘摄影台历</h2>
+            <p>现场注册红岭创投/亿钱贷平台并进行实名认证，可获得2018手绘摄影台历一份。</p>
+            <img src="/public/images/active/jinbohui/icon2.png?v=d203bd4"/>
+            <h2>投资再送30元现金券</h2>
+            <p>现场实名认证后，并任意认购一款产品（≥1000元且投资1个月以上标的）即送30元现金券一张。</p>
+        </div>
+        <div class="answer">
+            <p class="title">共 5 道题目，答对即可获得相应奖品</p>
+            <table>
+                <thead>
+                    <tr>
+                        <td>答对题数</td>
+                        <td>获得奖品</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>5</td>
+                        <td>2%奖励券</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>1.5%奖励券</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>1%奖励券</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>30元红包</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>10元红包</td>
+                    </tr>
+                </tbody>
+            </table>
+            <a class="reg answer-btn" id="answerBtn">开始答题</a>
+            <div class="copy-right">
+                <p>© 2018 亿钱贷 | All rights reserved</p>
+                <p>深圳市亿钱贷电子商务有限公司</p>
+                <p>粤ICP备14041671号-1</p>
+            </div>
+        </div>
+    </div>
+    <div id="answerListBoxer" style="display: none" class="qa-area answer">
+        <div class="progress">
+            <p><span class="n"></span>/<span class="total"></span></p>
+            <p class="progress-bar"><span class="bar"></span></p>
+        </div>
+        <dl id="questions" class="questions">
+        </dl>
+        <!--<div class="btn-action">-->
+            <!--<div class="sle prev reg answer-btn">确认提交</div>-->
+        <!--</div>-->
+        <div class="copy-right">
+            <p>© 2018 亿钱贷 | All rights reserved</p>
+            <p>深圳市亿钱贷电子商务有限公司</p>
+            <p>粤ICP备14041671号-1</p>
+        </div>
+    </div>
+    <div id="completeBoxer"  style="display: none" class="qa-area answer">
+        <div class="act act-1">
+            <p>您共答对了</p>
+            <h3>0题</h3>
+            <div class="btn-action">
+                <div class="sle prev reg answer-btn">再次挑战答题</div>
+            </div>
+        </div>
+        <div class="act act-2">
+            <p>您共答对了</p>
+            <h3></h3>
+            <input type="tel" id="mobile" maxlength="11" class="mobile" placeholder="请输入手机号码领取奖品" />
+            <div class="coupon">
+
+            </div>
+            <div class="btn-action">
+                <div class="sle prev reg answer-btn" id="getBtn">领取奖品</div>
+            </div>
+        </div>
+        <div class="act act-3">
+            <div class="coupon" id="giftResult">
+                <span>2%</span>奖励券
+            </div>
+            <p>已发送至</p>
+            <h2>您的亿钱贷账户</h2>
+            <p class="info">感谢您参与活动，5秒后将自动返回...</p>
+        </div>
+        <div class="act act-4">
+            <h2>您已经参与过答题活动了</h2>
+            <h2>不可以太贪心哟~</h2>
+            <p class="info">感谢您参与活动，5秒后将自动返回...</p>
+        </div>
+        <div class="act act-5">
+            <form id="registerForm" action="jinbohui/submit">
+                <p>验证码短信已发送至<span id="mobileTxt"></span></p>
+                <p><a id="countDownTxt" class="count-down-btn gray" href="javascript:;;">重新获取(59)</a></p>
+                <p><input type="hidden" id="captcha" name="captcha"></p>
+                <input id="phoneCode" type="tel" maxlength="6" class="mobile" placeholder="请输入验证码" />
+                <input type="password" id="userPassword" class="mobile" placeholder="请设置登录密码" />
+                <p>
+                    <label><input id="agreeCheckbox" type="checkbox" checked name="agree">我已阅读并同意
+                        <a href="${tzp.getContextPath()}/agreement/zhuce">《亿钱贷注册协议》</a>
+                    </label>
+                </p>
+                <button type="submit" class="sle prev reg answer-btn" id="regSubmit">领取奖品</button>
+            </form>
+        </div>
+        <div class="copy-right">
+            <p>© 2018 亿钱贷 | All rights reserved</p>
+            <p>深圳市亿钱贷电子商务有限公司</p>
+            <p>粤ICP备14041671号-1</p>
+        </div>
+    </div>
+</div>
+<!--底部菜单-->
+<#include "/includes/script.html" />
+<script src="/dist/js/pages/activity/jinbohui.js?v=fb92877"></script>
+</body>
+
+<#include "/includes/count.html" /> 
+</html>

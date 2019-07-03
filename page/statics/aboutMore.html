@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>更多信息-信息披露-亿钱贷</title>
+    <#include "/includes/style.html" />
+    <!--页面样式-->
+    <link href="${tzp.getContextPath()}/dist/css/pages/static/about.css?v=76409ef" rel="stylesheet">
+    <style>
+        html{
+            height: 100%;
+        }
+    </style>
+</head>
+<body class="about-home">
+<!-- 头部开始 -->
+<#include "/includes/header.html" />
+<div class="home-layer">
+    <p class="logo am-text-center">
+        <img src="/public/images/about/logo.png?v=70f63d8"/>
+    </p>
+    <div class="more-list">
+        <ul class="am-cf">
+            <li class="am-text-center">
+                <a href="${tzp.getContextPath()}/static/companyList">
+                    <i class="icon-font icon-company"></i>
+                </a>
+                <p>公司信息</p>
+            </li>
+            <li class="am-text-center">
+                <a href="${tzp.getContextPath()}/static/government">
+                    <i class="icon-font icon-operation"></i>
+                </a>
+                <p>公司治理</p>
+            </li>
+            <li class="am-text-center">
+                <a href="${tzp.getContextPath()}/static/operationList">
+                    <i class="icon-font icon-info_"></i>
+                </a>
+                <p>平台运营</p>
+            </li>
+            <li class="am-text-center">
+                <a href="${tzp.getContextPath()}/static/newsList">
+                    <i class="icon-font icon-company"></i>
+                </a>
+                <p>平台公告</p>
+            </li>
+            <li class="am-text-center">
+                <a href="${tzp.getContextPath()}/article/news">
+                    <i class="icon-font icon-operation"></i>
+                </a>
+                <p>新闻报道</p>
+            </li>
+            <li class="am-text-center">
+                <a href="${tzp.getContextPath()}/article/law">
+                    <i class="icon-font icon-info_"></i>
+                </a>
+                <p>出借人教育</p>
+            </li>
+            <li class="am-text-center">
+                <a href="${tzp.getContextPath()}/static/risk">
+                    <i class="icon-font icon-company"></i>
+                </a>
+                <p>风险提示</p>
+            </li>
+
+        </ul>
+    </div>
+    <div class="footer am-text-center">
+        <p>© 2019 亿钱贷 | All rights reserved</p>
+        <p>深圳市亿钱贷电子商务有限公司 <a href="http://www.miit.gov.cn/" rel="noopener noreferrer" target="_blank">粤ICP备14041671号-1</a></p>
+        <p>市场有风险，出借需谨慎</p>
+    </div>
+</div>
+<#include "/includes/script.html" />
+<!--页面js-->
+<script src="${tzp.getContextPath()}/dist/js/pages/static/about.js?v=1443982"></script>
+</body>
+<#include "/includes/count.html" />
+</html>

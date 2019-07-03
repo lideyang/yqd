@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>充值-亿钱贷</title>
+    <#include "/includes/style.html" />
+    <!--页面样式-->
+    <link href="${tzp.getContextPath()}/dist/css/pages/user/rechargeSuccess.css?v=790d6d8" rel="stylesheet">
+</head>
+<body class="main-bg">
+<!-- 头部开始 -->
+<header data-am-widget="header" class="am-header am-header-default am-no-layout" id="topHeader">
+  <div class="am-header-left am-header-nav">
+    <a id="nextBtn" href="${tzp.getContextPath()}/spa/user/recharge" class="">
+      <i class="am-header-icon icon-font icon-prev"></i>
+      返回
+    </a>
+  </div>
+
+  <h1 class="am-header-title">
+    <a id="headerTitle" href="#title-link" class="">充值</a>
+  </h1>
+  <div class="am-header-right am-header-nav">
+    <a href="#right-link" class="">
+      <i class="am-header-icon am-icon-bars"></i>
+    </a>
+  </div>
+</header>
+<!--充值成功面板-->
+<div class="am-panel am-panel-default reg-panel success-panel">
+
+<#if failMessage?? >
+		<div class="am-panel-bd am-text-center">
+	        <i class="icon-font icon-error info-icon am-text-danger"></i>
+	        <h3 class="am-text-center">充值失败</h3>
+			<p style="margin:0 0 .3rem">本次充值${(rechargeAmt?string(',###.##'))!'0.00'}元</p>
+			<p class="am-text-center"><i style="font-size:20px;" class="icon-font icon-holdx"></i></p>
+	        <p>${failMessage}</p>
+	        <p>&nbsp;</p>
+	        <p>&nbsp;</p>
+	        <a href="${tzp.getContextPath()}/spa/user/center" class="am-btn am-btn-secondary am-round am-btn-block am-btn-xl">返回我的账户</a>
+	    </div>
+<#else>
+	<#if retry??&&retry>
+	    <div class="am-panel-bd am-text-center">
+	        <i class="icon-font icon-right1 info-icon am-text-success"></i>
+	        <h3 class="am-text-center">您的充值订单已提交</h3>
+			<p style="margin:0 0 .3rem">本次充值${(rechargeAmt?string(',###.##'))!'0.00'}元</p>
+			<p class="am-text-center"><i style="font-size:20px;" class="icon-font icon-holdx"></i></p>
+	        <p>银行系统仍在处理当中</p>
+	        <p>如5分钟后仍未到账，请电话咨询客服</p>
+	        <p>&nbsp;</p>
+	        <a href="${tzp.getContextPath()}/spa/user/center" class="am-btn am-btn-secondary am-round am-btn-block am-btn-xl">返回我的账户</a>
+	    </div>
+	<#else>
+	    <div class="am-panel-bd am-text-center">
+	        <i class="icon-font icon-right1 info-icon am-text-success"></i>
+	        <h3 class="am-text-center">您的充值已成功</h3>
+	        <p style="margin:0 0 .3rem">本次充值${(rechargeAmt?string(',###.##'))!'0.00'}元</p>
+	        <#if availableAmt?? && availableAmt gt 0 >
+ 	        <p>充值后账户可用余额</p>
+ 	        <p style="margin:0 0 0.3rem">${(availableAmt?string(',###.##'))!'0.00'}元</p>
+ 	        </#if>
+	        <a href="${tzp.getContextPath()}/spa/product/auto" class="am-btn am-btn-secondary am-round am-btn-block am-btn-xl">游览出借项目</a>
+	        <a href="${tzp.getContextPath()}/spa/user/center" class="am-btn btn-secondary am-round am-btn-block am-btn-xl">查看我的账户</a>
+          <a class="am-text-primary" href="${tzp.getContextPath()}/spa/user/recharge">继续充值></a>
+    </div>
+	</#if>
+</#if>
+
+    
+    <#if banner??>
+    	<a href="${(banner.linkUrl)!''}"><img class="banner" src="${(banner.imgUrl)!''}"  /></a>
+    </#if>
+</div>
+<!--底部菜单-->
+<#include "/includes/script.html" />
+<!--页面js-->
+<script src="${tzp.getContextPath()}/dist/js/pages/user/rechargeSuccess.js?v=c1367b8"></script>
+</body>
+
+<#include "/includes/count.html" /> 
+</html>

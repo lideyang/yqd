@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>业务模式-信息披露-亿钱贷</title>
+    <#include "/includes/style.html" />
+    <!--页面样式-->
+    <link href="${tzp.getContextPath()}/dist/css/pages/static/about.css?v=76409ef" rel="stylesheet">
+    <style>
+        html,body{
+            height: 100%;
+        }
+        .home-layer .about-list.government-list li:first-child {
+            background-image: url(/public/images/about/home_list15.jpg?v=6274153);
+        }
+
+        .home-layer .about-list.government-list li:nth-child(2) {
+            height: 1.5rem;
+            width: 100%;
+            background: url(/public/images/about/home_list16.jpg?v=d3b6a27) no-repeat top;
+            background-size: contain;
+            margin: 0 0 .07rem;
+            border: none;
+        }
+    </style>
+</head>
+<body class="about-home">
+<!-- 头部开始 -->
+<#include "/includes/header.html" />
+<div class="home-layer" style="margin-bottom: .8rem;">
+    <ul class="am-list about-list government-list" style="padding: 0 0 .001rem;">
+        <li><a href="${tzp.getContextPath()}/static/process"><span class="am-fr">详情<i class="icon-font icon-next"></i></span></a></li>
+        <li><a href="${tzp.getContextPath()}/static/partner"><span class="am-fr">详情<i class="icon-font icon-next"></i></span></a></li>
+    </ul>
+</div>
+<!--底部菜单-->
+
+<#include "/includes/script.html" />
+<!--页面js-->
+<script src="${tzp.getContextPath()}/dist/js/pages/static/about.js?v=1443982"></script>
+</body>
+<#include "/includes/count.html" />
+</html>

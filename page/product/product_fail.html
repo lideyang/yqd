@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>认购失败了-亿钱贷</title> <#include "/includes/style.html" />
+<!--页面样式-->
+<link href="${tzp.getContextPath()}/dist/css/pages/product/fail.css?v=692c7b5" rel="stylesheet">
+</head>
+<body class="main-bg">
+	<!-- 头部开始 -->
+	<#include "/includes/header.html" />
+	<!--认购成功面板-->
+	<div class="am-panel am-panel-default fail-panel">
+		<div class="am-panel-bd am-text-center">
+			<i class="icon-font icon-close info-icon am-text-secondary"></i>
+			<h3 class="am-text-center am-text-default">投资失败</h3>
+			<p class="am-text-default">${(msg!'项目剩余可投金额不足')}</p>
+			<hr />
+			<a href="${tzp.getContextPath()}/spa/product/auto" class="am-btn am-btn-secondary am-round am-btn-block am-btn-xl success-btn">查看其他项目</a>
+		</div>
+	</div>
+	<div class="am-g product-list">
+		<ul>
+			<#list pagelist.result as plist>
+			<li>
+				<a href="${tzp.getContextPath()}/product/detail/${plist.loanId!''}">
+				<#if plist.awardType=='2'>
+				<div class="jiaxi-icon new-hard-icon">
+					<span></span>
+				</div> </#if> <#if plist.awardType!='2' && (plist.awardRate>0) >
+				<div class="jiaxi-icon">
+					<span></span>
+				</div> </#if>
+				<div class="am-g title">
+					<a href="${tzp.getContextPath()}/product/detail/${plist.loanId!''}">
+						<span class="name">
+					   <#if (plist.prdType=='0')>
+							<span class="am-badge am-radius label-qn">企</span>
+						</#if>
+						<#if plist.prdType=='1'>
+							<span class="am-badge am-radius label-sn">农</span>
+						</#if>
+						<#if plist.prdType=='2'>
+							<span class="am-badge am-radius label-wh">微</span>
+						</#if>
+						<#if plist.prdType=='3'>
+							<span class="am-badge am-radius label-lb">保</span>
+						</#if>
+						<#if plist.prdType=='4'>
+							<span class="am-badge am-radius label-cb">车</span>
+						</#if>${plist.loanTitle!''}
+						<#if plist.prdType=='5'>
+						<span class="am-badge am-radius label-wq">商</span>
+						</#if>${plist.loanTitle!''}
+						</span>
+					</a>
+				</div>
+				<div class="am-g invest">
+					<div class="am-u-sm-4">
+						<p class="rate am-text-primary">
+							${plist.platRate}% <#if (plist.awardRate>0) > <span>+${plist.awardRate}%</span>
+							</#if>
+						</p>
+						<p class="am-text-secondary">协议约定年化利率</p>
+					</div>
+					<div class="am-u-sm-5">
+						<p class="info">
+							<span class="day">${plist.loanPeriod}${plist	.periodStr!''}</span> <span class="split">|</span>
+							<span class="start-money">起投金额${(plist.minAmt?string(',##0'))!''}元</span>
+						</p>
+						<p class="am-text-secondary">剩余${(plist.remainAmount?string(',##0'))!''}元</p>
+					</div>
+					<div class="am-u-sm-3 am-text-center">
+					
+					<#if plist.loanStatus=='2'>
+						<div class="circle">
+							<div class="pie_left">
+								<div class="left"></div>
+							</div>
+							<div class="pie_right">
+								<div class="right"></div>
+							</div>
+							<div class="mask">
+								<span>${plist.percent}</span>%
+							</div>
+						</div>
+					<#else>
+						 <#if (plist.loanStatus == '5')>
+						 	放款中
+						 <#elseif plist.loanStatus == '6'>
+						 	还款中
+						 <#elseif (plist.loanStatus == '7' || plist.loanStatus == '8' || plist.loanStatus == '9')>	
+						 	已还清
+						 </#if>
+					</#if>
+					</div>
+				</div>
+				</a>
+			</li>
+		</#list>
+		</ul>
+	</div>
+	<#include "/includes/script.html" />
+</body>
+<!--页面js-->
+<script src="${tzp.getContextPath()}/dist/js/pages/product/fail.js?v=1f6b56c"></script>
+<#include "/includes/count.html" /> 
+</html>

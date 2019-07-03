@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html class="androidFix">
+<head>
+    <title>申请债权转让-亿钱贷</title>
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-control" content="no-cache,no-store,must-revalidate">
+    <meta http-equiv="Expires" content="0">
+    <#include "/includes/style.html" />
+    <!--页面样式-->
+    <link href="${tzp.getContextPath()}/dist/css/pages/user/transferApply.css?v=95f8d06" rel="stylesheet">
+</head>
+<body class="androidFix">
+<!-- 头部开始 -->
+<header data-am-widget="header" class="am-header am-header-default" id="topHeader">
+    <div class="am-header-left am-header-nav">
+        <a id="nextBtn" href="javascript:;;" class="">
+            <i class="am-header-icon icon-font icon-prev"></i>
+            返回
+        </a>
+    </div>
+
+    <h1 class="am-header-title">
+        <a id="headerTitle" href="#title-link" class="">
+            亿钱贷
+        </a>
+    </h1>
+    <div class="am-header-right am-header-nav">
+        <a href="${tzp.getContextPath()}/member/transfer/explain">
+            <i class="icon-font icon-wenhao1"></i>
+        </a>
+    </div>
+</header>
+<#if !weixin>
+<script>
+    var isWeiXin = false;
+</script>
+<#else>
+<script>
+    var isWeiXin = true;
+</script>
+</#if>
+<!--内容开始-->
+<div class="product-confirm-layer">
+    <div class="am-container product-confirm" id="productConfirm">
+        <div class="am-g item title">
+            <div class="am-u-sm-12 repay-invest" id="detailBtn">
+               ${loanTitle!''}
+                <i class="icon-font icon-bottom am-fr"></i>
+            </div>
+            <ul class="detail am-cf" id="applyDetailLayer">
+                <li>
+                    <p>出借本金</p>
+                   ${debtDetailVo.buyPrice?string(',##0.00')}
+                </li>
+                <li>
+                    <p>协议约定年化利率</p>
+                     ${(platRate!0)?string(',##0.00')}%<#if awardRate?? && awardRate gt 0>+${(awardRate!0)?string(',##0.00')}%</#if>
+                </li>
+                <li>
+                    <p>剩余期限</p>
+                   ${endPlanDate!0}天
+                </li>
+                <li>
+                    <p>待收本金</p>
+                    ${(planPrincipal!0)?string(',##0.00')}
+                </li>
+                <li>
+                    <p>本期未结利息<i class="icon-font icon-wenhao" id="transferTips" data-am-popover="{trigger:'click',content: '上期还款日至今日的期限内，未结算的利息'}"></i></p>
+                    ${todayWorth?string(',##0.00')}
+                </li>
+            </ul>
+            <div class="am-g form">
+                <div class="am-u-sm-12 am-text-xs">
+                    因“本期未结利息”每天动态结算，所以以下债权金额、
+                    手续费仅供参考，以转让成交当天结算为准。
+                </div>
+            </div>
+            <div class="info-layer">
+                <div class="product-confirm-money">
+                    <div class="am-g item">
+                        <div class="am-u-sm-9">
+                            债权金额
+                            <p class="am-text-muted am-text-xs">债权金额 = 待收本金+本期未结利息</p>
+                        </div>
+                        <div class="am-u-sm-3 am-text-right">
+                           ${transferAmt?string(',##0.00')}元
+                        </div>
+                    </div>
+                    <div class="am-g item">
+                        <div class="am-u-sm-9">
+                            转让价格
+                            <p class="am-text-muted am-text-xs">转让金额 = 债权金额 x (1-折价比例)</p>
+                        </div>
+                        <div class="am-u-sm-3 am-text-right">
+                            ${(transPrice!0)?string(',##0.00')}元
+                        </div>
+                    </div>
+                    <div class="am-g item">
+                        <div class="am-u-sm-9">
+                            手续费
+                            <p class="am-text-muted am-text-xs">债权金额的0.5%，转让成功后收取；如债权持有大于等于90天，则免手续费</p>
+                        </div>
+                        <div class="am-u-sm-3 am-text-right">
+                            <span class="am-text-danger">${transferFee?string(',##0.00')}</span>元
+                        </div>
+                    </div>
+                </div>
+                <div class="product-confirm-btn">
+                    <div class="am-g">
+                        <div class="am-u-sm-12">
+                            <label>
+                                <label class="am-checkbox-inline vertical-middle">
+                                    <input id="agreementStatus" type="checkbox"  value="" data-am-ucheck>我已阅读并同意
+                                </label>
+                                <input type="hidden" id="debtId" name="debtId" value="${debtDetailVo.debtId!''}">
+                                <a class="am-text-primary vertical-middle" href="${tzp.getContextPath()}/contract/debt?assetsId=${debtDetailVo.debtId!''}">《债权转让协议》</a>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div data-am-widget="navbar" class="am-navbar subscription-btn" id="confirmChooseTicketBtn">
+    <button id="submitBtn" data-am-loading="{spinner: 'loading', loadingText: '加载中...'}" class="am-btn am-btn-secondary am-btn-block am-btn-xl" href="javascript:;;">确认</button>
+</div>
+<#include "/includes/script.html" />
+<!--页面js-->
+<script type="text/javascript">
+	var loanId=" ${debtId!''}";
+	var productName=" ${loanTitle!''}";
+	var isAssessStatus=true;
+</script>
+<script src="${tzp.getContextPath()}/dist/js/pages/user/transferApply.js?v=e817889"></script>
+</body>
+<#include "/includes/count.html" />
+</html>

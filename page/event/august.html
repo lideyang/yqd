@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>满标有礼，多投再送-亿钱贷</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.5, maximum-scale=0.5, user-scalable=0">
+    <meta content="telephone=no" name="format-detection">
+    <script>
+        //设置rem
+        (function (doc, win) {
+            var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize';
+            var dpr = window.devicePixelRatio || 1;
+            // adjust body font size
+            function setBodyFontSize() {
+                if (document.body) {
+                    document.body.style.fontSize = '24px'
+                }
+                else {
+                    document.addEventListener('DOMContentLoaded', setBodyFontSize)
+                }
+            }
+
+            setBodyFontSize();
+            function setRemUnit() {
+                var clientWidth = docEl.clientWidth;
+                if (!clientWidth) return;
+                if (clientWidth >= 1200) {
+                    docEl.style.fontSize = '100px';
+                } else {
+                    docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+                }
+            }
+
+            setRemUnit()
+            if (!doc.addEventListener) return;
+            win.addEventListener(resizeEvt, setRemUnit);
+            window.addEventListener('pageshow', function (e) {
+                if (e.persisted) {
+                    setRemUnit()
+                }
+            })
+        })(document, window);
+    </script>
+    <link href="${tzp.getContextPath()}/dist/css/global.css?v=63e48b6" rel="stylesheet">
+    <link rel="stylesheet" href="/dist/css/pages/activity/august.css?v=6e763b6" />
+</head>
+<body style="font-size:12px;">
+<div class="main-content">
+    <div class="container">
+        <div class="red-info row">
+            <p>红岭用户成功注册成为亿钱贷平台新用户，</p>
+            <p>不仅可获得新人888元红包，且同时能享受到首笔出借金额返现4‰的奖励</p>
+            <p>（首投返现活动只针对出借≥180天或6个月的产品）</p>
+            <p>参与方式：红岭用户可通过红岭创投跳转页面、账户授权方式或直接在亿钱贷官网、微站、APP注册成为亿钱贷新用户。</p>
+            <table>
+                <thead>
+                <tr>
+                    <th>红包金额</th>
+                    <th>最低出借金额</th>
+                    <th>使用产品期限</th>
+                    <th>红包有效期</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>
+                        <div class="red-icon">
+                            10<span>元</span>
+                        </div>
+                    </td>
+                    <td>1,000</td>
+                    <td>≥30天</td>
+                    <td>7天</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="red-icon">
+                            30<span>元</span>
+                        </div>
+                    </td>
+                    <td>10,000</td>
+                    <td>≥30天</td>
+                    <td>7天</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="red-icon">
+                            50<span>元</span>
+                        </div>
+                    </td>
+                    <td>10,000</td>
+                    <td>≥90天</td>
+                    <td>30天</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="red-icon">
+                            110<span>元</span>
+                        </div>
+                    </td>
+                    <td>20,000</td>
+                    <td>≥90天</td>
+                    <td>30天</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="red-icon">
+                            170<span>元</span>
+                        </div>
+                    </td>
+                    <td>40,000</td>
+                    <td>≥90天</td>
+                    <td>30天</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="red-icon">
+                            218<span>元</span>
+                        </div>
+                    </td>
+                    <td>50,000</td>
+                    <td>≥180天</td>
+                    <td>60天</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="red-icon">
+                            300<span>元</span>
+                        </div>
+                    </td>
+                    <td>80,000</td>
+                    <td>≥180天</td>
+                    <td>60天</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="year-rate-layer">
+            <p class="am-text-center info">活动期内，所有用户均可在活动页面领取1张0.5%的奖励券，<br/>出借即可使用，使用条件如下：</p>
+            <div class="table-boxer">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>奖励券适用产品</th>
+                        <th>奖励券出借金额</th>
+                        <th>奖励券有效期</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>三个月及以上</td>
+                        <td><img src="/public/images/active/august/money_icon.png?v=6737b62" /><strong>≥5000</strong><span>元</span></td>
+                        <td>15天</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="am-text-center" style="margin:0 0 .6rem;">
+            	<#if _p2p_member_user??>			 			
+            			<#if isHandle?? && isHandle==true>
+			 					<a href="javascript:;" class="am-btn am-btn-xl" id="jiaxiBtn">立即领取</a>
+			 			<#else>
+			 					<a href="javascript:;" class="am-btn am-btn-xl btn-disabled">已经领取</a>
+	 					</#if>
+		
+	 			<#else>
+	 					<a href="${tzp.getContextPath()}/spa/account/login?callback=/event/august" class="am-btn am-btn-xl" >立即领取</a>
+
+ 				</#if>
+ 			</p>
+            <p class="am-text-center title">活动期内，用户出借满足活动规定条件， <br/>即可再获赠奖励券1张。</p>
+            <div class="table-boxer">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>出借产品</th>
+                            <th>出借金额</th>
+                            <th>赠送奖励券</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>3个月</td>
+                            <td>≥5000元</td>
+                            <td>0.5%</td>
+                        </tr>
+                        <tr>
+                            <td>3个月及以上</td>
+                            <td>≥10000元</td>
+                            <td>1%</td>
+                        </tr>
+                    </tbody>
+                    <thead>
+                    <tr>
+                        <th>奖励券适用产品</th>
+                        <th>奖励券出借金额</th>
+                        <th>奖励券有效期</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>≥6个月</td>
+                        <td><img src="/public/images/active/august/money_icon.png?v=6737b62" /><strong>≥10000</strong><span>元</span></td>
+                        <td>15天</td>
+                    </tr>
+                    <tr>
+                        <td>≥6个月</td>
+                        <td><img src="/public/images/active/august/money_icon.png?v=6737b62" /><strong>≥10000</strong><span>元</span></td>
+                        <td>15天</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <ul class="rule">
+            <li>
+                1、“红岭有礼”中的红包使用：
+                <ul>
+                    <li>①出借时，可自行选择符合使用条件的红包，出借成功后红包将以现金形式直接发放至账户余额；</li>
+                    <li>②满足使用条件，红包可叠加使用；</li>
+                    <li>③红包需在有效期内进行使用，超过使用期限，红包自动失效；</li>
+                </ul>
+            </li>
+            <li>2、“红岭有礼”活动中首投返现活动只适用于180天或6个月以上期限的产品；</li>
+            <li>3、“出借有礼“活动中：
+                <ul>
+                    <li>①领取的奖励券可在“账户-我的红包”中查看</li>
+                    <li>②赠送的奖励券将在出借完成后发放到“账户-我的红包”中；</li>
+                    <li>③奖励券使用：出借时手动勾选；</li>
+                    <li>④奖励券可与红包叠加使用；</li>
+                </ul>
+            </li>
+            <li>4、活动期间，如规则有所调整，以本平台公布的新公告或公告刷新的内容为准，恕不再另外单独向用户进行提醒；</li>
+            <li>5、若有疑问可咨询微信在线客服或拨打客服电话：400-090-9968（工作日9:00-18:00）。</li>
+        </ul>
+    </div>
+</div>
+<div class="copy-right">
+    <p>© 2018 亿钱贷 | All rights reserved </p>
+    <p>深圳市亿钱贷电子商务有限公司</p>
+    <p><a href="http://www.miit.gov.cn/" rel="noopener noreferrer" target="_blank">粤ICP备14041671号-1</a></p>
+</div>
+<#include "/includes/script.html" />
+<!--页面js-->
+<script src="${tzp.getContextPath()}/dist/js/pages/activity/august.js?v=f6d6930"></script>
+</body>
+<#include "/includes/count.html" /> 
+</html>

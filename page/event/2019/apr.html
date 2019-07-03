@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>春暖花开，肆益绽放-A股上市公司深南股份携手红岭创投联袂打造的P2P平台</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.5, maximum-scale=0.5, user-scalable=0">
+    <meta content="telephone=no" name="format-detection">
+    <script>
+        //设置rem
+        (function (doc, win) {
+            var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize';
+            var dpr = window.devicePixelRatio || 1;
+            // adjust body font size
+            function setBodyFontSize() {
+                if (document.body) {
+                    document.body.style.fontSize = '24px'
+                }
+                else {
+                    document.addEventListener('DOMContentLoaded', setBodyFontSize)
+                }
+            }
+
+            setBodyFontSize();
+            function setRemUnit() {
+                var clientWidth = docEl.clientWidth;
+                if (!clientWidth) return;
+                docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+            }
+
+            setRemUnit()
+            if (!doc.addEventListener) return;
+            win.addEventListener(resizeEvt, setRemUnit);
+            window.addEventListener('pageshow', function (e) {
+                if (e.persisted) {
+                    setRemUnit()
+                }
+            })
+        })(document, window);
+    </script>
+    <!-- 公共样式 -->
+    <link href="${tzp.getContextPath()}/dist/css/global.css?v=63e48b6" rel="stylesheet">
+    <link rel="stylesheet" href="/dist/css/pages/activity/april.css?v=cd00215" />
+</head>
+<body style="font-size:20px;">
+<div class="main-content">
+    <h3 class="tips opt1 am-text-center">待收本金满1000元可领，今日剩余可领数量为<span id="klqzs"><#if (_p2p_member_user)??>${(5-count!0)?round}<#else>5</#if></span>个</h3>
+    <div class="red-layer am-text-center">
+        <ul id="redList">
+        
+             <#if rules??>
+             <#list rules as rule>
+                <li>
+                    
+                        <i class="icon spinner">
+                <h4>${(rule.awardAmount)}<span>%</span></h4>
+                </i>
+                     <#if (_p2p_member_user)??>
+                    		<#if (count)?? && count gte 5>
+								<a class="btn btn-disabled"  href="javascript:;">明日再来</a>
+							<#else>
+								<a class="btn btn-link"  href="javascript:;" data-id="${(rule.ruleId)!''}">立即领取</a>
+							</#if>
+                    <#else>
+                    	<a class="btn btn-link"  href="/spa/account/login?callbackUrl=/event/2019/mar">立即登录</a>
+                    </#if>
+                <p>${(rule.limitPeriodsStr)!''}</p>
+                </li>
+              </#list>
+             </#if>
+           
+        </ul>
+    </div>
+    <div class="content">
+        <div class="pro-layer info-layer">
+            <div class="am-text-center boxer">
+                <div class="am-g">
+                    <div class="am-u-sm-3 am-text-center">
+                        <h4>我的当前排名</h4>
+                        <strong style="display:block;padding:0 0 0 .3rem;font-size:18px">${rank!'--'}</strong>
+                    </div>
+                    <div class="am-u-sm-9">
+                        <h3>新增待收本金:${(amt!0)?string(',##0.00')}</h3>
+                        <h3 class="am-text-nowrap">2019年4月1日凌晨待收本金:${(firstAmt!0)?string(',##0.00')}</h3>
+                        <h3>当前待收本金:${(planAmt!0)?string(',##0.00')}</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="pro-layer list-layer">
+            <ul>
+                <li>
+                    <span>名次</span>
+                    <span>奖励金额</span>
+                    <span>新增待收本金</span>
+                </li>
+                <li   <#if rank?? && rank==1> class="active" </#if>>
+                    <span><i class="icon icon-1"></i></span>
+                    <span>4888.00</span>
+                    <span class="am-text-nowrap"><#if rankList[0] gt 0>≥<#else>></#if>${rankList[0]?string(',##0.00')}</span>
+                    <#if rank?? && rank==1>  <i class="tips">您在这里</i> </#if>
+                </li>
+                <li <#if rank?? && rank==2>class="active" </#if>>
+                <span><i class="icon icon-2"></i></span>
+                <span>2888.00</span>
+                <span><#if rankList[1] gt 0>≥<#else>></#if>${rankList[1]?string(',##0.00')}</span>
+                <#if rank?? && rank==2>  <i class="tips">您在这里</i> </#if>
+                </li>
+                <li <#if rank?? && rank==3>class="active" </#if>>
+                <span><i class="icon icon-3"></i></span>
+                <span>1888.00</span>
+                <span><#if rankList[2] gt 0>≥<#else>></#if>${rankList[2]?string(',##0.00')}</span>
+                <#if rank?? && rank==3>  <i class="tips">您在这里</i> </#if>
+                </li>
+                <li <#if rank?? && rank gte 4 && rank lte 20 >class="active" </#if> >
+
+                <span><span>4-20<span class="brow">st</span></span></span>
+                <span>888.00</span>
+                <span><#if rankList[3] gt 0>≥<#else>></#if>${rankList[3]?string(',##0.00')}</span>
+                <#if rank?? && rank gte 4 && rank lte 20 > <i class="tips">您在这里</i> </#if>
+                </li>
+                <li <#if rank?? && rank gte 21 && rank lte 50 >class="active" </#if>>
+                <span><span>21-50<span class="brow">st</span></span></span>
+                <span>588.00</span>
+                <span><#if rankList[4] gt 0>≥<#else>></#if>${rankList[4]?string(',##0.00')}</span>
+                <#if rank?? && rank gte 21 && rank lte 50 >  <i class="tips">您在这里</i></#if>
+                </li>
+                <li <#if rank?? && rank gte 51 && rank lte 100 >class="active" </#if>>
+                <span><span>51-100<span class="brow">st</span></span></span>
+                <span>288.00</span>
+                <span><#if rankList[5] gt 0>≥<#else>></#if>${rankList[5]?string(',##0.00')}</span>
+                <#if rank?? && rank gte 51 && rank lte 100 > <i class="tips">您在这里</i> </#if>
+                </li>
+                <li <#if rank?? && rank gte 101 && rank lte 200 >class="active" </#if>>
+                <span><span>101-200<span class="brow">st</span></span></span>
+                <span>188.00</span>
+                <span><#if rankList[6] gt 0>≥<#else>></#if>${rankList[6]?string(',##0.00')}</span>
+                <#if rank?? && rank gte 101 && rank lte 200 > <i class="tips">您在这里</i></#if>
+                </li>
+                <li <#if rank?? && rank gte 201 && rank lte 500 >class="active" </#if>>
+                <span><span>201-500<span class="brow">st</span></span></span>
+                <span>88.00</span>
+                <span><#if rankList[7] gt 0>≥<#else>></#if>${rankList[7]?string(',##0.00')}</span>
+                <#if rank?? && rank gte 201 && rank lte 500 > <i class="tips">您在这里</i> </#if>
+                </li>
+            </ul>
+        </div>
+        <p class="tips">
+            注：1、排名会根据您本月的新增待收本金进行排名，最终排名以2019年4月30日24点的新增待收本金排名为准，若新增待收本金相同则先达到新增金额排名靠前。<br/>
+          2、4月30日委托的易智投以及4月30日起息的散标均计入活动统计
+        </p>
+    </div>
+    <!--<h3 class="tips opt3 am-text-center"><a href="/invest/list">立即出借</a></h3>-->
+    <div class="baoji">
+        <ul id="baojiList">
+            <#if vouchers??>
+            <#list vouchers as item >
+            <li>
+                <p class="title">满${item.limitAmount?string(',###.##')}元使用</p>
+                <h4>${(item.awardAmount)!''}</h4>
+                <p class="tips">${(item.limitPeriodsStr)!''}</p>
+                <#if (_p2p_member_user)??>
+                <#if !(showTips?? && showTips)>
+                <a class="btn-disabled" href="javascript:;;">暂未开启</a>
+                <#else>
+                <#if item.hasReceive>
+                  <a class="btn-disabled" href="javascript:;;">已领取</a>
+                <#else>
+                 <a class="btn-award" href="javascript:;;" data-show-tips="${item.canReceive?string('true', 'false')}" data-id="${(item.ruleId)!''}">点击领取</a>
+                </#if>
+               
+            </#if>
+            <#else>
+            <a href="/spa/account/login?callbackUrl=/event/2019/apr">立即登录</a>
+            </#if>
+            </li>
+            </#list>
+            </#if>
+        </ul>
+        <#if !(showTips?? && showTips)>
+            <div class="modal">
+           		<p>奖励暂未开启</p>
+				<p>开启条件：2019年4月30日24时的待收本金＞0，且不低于4月1日0时的待收本金。</p>
+				<p>开启时间：2019年5月1日-2019年5月7日符合条件可领取。</p>
+            </div>
+        </#if>
+    </div>
+
+    <div class="opt">
+        <h4>奖励规则</h4>
+        <ul>
+        <li>1、待收本金≥1000元可领奖励券，每天可领取的总数为5张</li>
+		<li>2、本月新增待收本金≥1000元，且排名前500名可分别获得相应的返现奖励，返现奖励在活动结束后7个工作日内发放。</li>
+		<li>3、新增待收本金=月末待收本金-月初待收本金，月末指4月30日24时，月初指4月1日0时。</li>
+		<li>4、未进入前500名，且待收本金在本月没有下降，活动结束后7天内在活动页面可领取88元出借红包。领取红包需满足如下条件：</li>
+		<li style="padding:0 .15rem;">1）未进入排行榜前500名</li>
+		<li style="padding:0 .15rem;">2）4月30日24时待收本金大于0</li>
+		<li style="padding:0 .15rem;">3）4月30日24时待收本金较4月1日0时待收本金未降即可领取</li>
+	 	<li>5、活动任务时间：2019年04月01日-2019年04月30日；</li>
+        </ul>
+    </div>
+</div>
+<div class="reward-layer" style="display: none" id="rewardLayer">
+    <p>成功领取<span class="am-text-secondary" id="amountTxt">0</span>张</p>
+    <p>还可以领取<span class="am-text-secondary" id="reTxt">0</span>张</p>
+    <a id="modalBtn" class="btn" href="javascript:;;">知道了</a>
+</div>
+<#include "/includes/script.html" />
+<!--页面js-->
+<script src="/dist/js/pages/activity/april.js?v=98ff151"></script>
+</body>
+
+<#include "/includes/count.html" />
+</html>

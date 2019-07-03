@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>新手注册-亿钱贷</title>
+    <meta content="telephone=no" name="format-detection">
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <link rel="stylesheet" href="${tzp.getContextPath()}/css/common.v2.css?v=8651402">
+    <link rel="stylesheet" href="${tzp.getContextPath()}/css/style.v2.css?v=39ae130">
+    <link rel="stylesheet" href="${tzp.getContextPath()}/js/layer/need/layer.css?v=3c0a191">
+</head>
+<body class="page-register">
+    <div class="page-rules">
+        <img src="${tzp.getContextPath()}/images/register_01.jpg?v=65d2204">
+        <img src="${tzp.getContextPath()}/images/register_02.jpg?v=f7c8eea">
+        <div class="reg-box">
+            <div class="tel-num"><input name='mobile' id ="phone" placeholder="请输入手机号" type="tel" maxlength="11" pattern="\d*" oninput="value=value.replace(/\b(0+)/gi,'');value=value.replace(/[^\d]/gi,'');">
+            </div>
+        </div>
+        <button class="regist-now">立即注册</button>
+        <div class="rules-detail"><p class="detail">活动规则&gt;</p></div>
+        <!--注册弹窗-->
+        <div style="display:none;" id="layer-mbox" class="layermbox" ><div onclick="$('#layer-mbox').hide();" class="laymshade"></div><div class="layermmain"><div class="section"><div class="layermchild layermanim" style="width: 100%;background-color: transparent;"><div class="layermcont"><div class="regbox-tmp">
+            <img src="${tzp.getContextPath()}/images/regbox.png?v=e6c5c66" alt="">
+            <div class="form-box">
+                <div class="btitle">注册并领取大礼包</div>
+                <div class="trips" style="display: none"><div class="wrap">已向您的手机<span class="phone_span"></span>发送验证码</div></div>
+                <div class="set-pwd"><input placeholder="设置账户密码" autocomplete="new-password" type="password" id="password"></div>
+                <!--图形验证码-->
+                <div class="rand-code">
+                    <input placeholder="请输入图形验证码" type="text" name="" id="captcha">
+                    <img class="codepic"  id="captcha_img" src="${tzp.getContextPath()}/txjcaptcha.svl?+Math.random()" onclick="this.src='${tzp.getContextPath()}/txjcaptcha.svl?'+Math.random()">
+                </div>
+                <div class="verify-box">
+                    <div>
+                        <input placeholder="请输入短信验证码" id="regCode" placeholder="短信验证码" type="tel" maxlength="6" pattern="\d*">
+                    </div>
+                    <div class="get-code" onclick="sendRegCode()">获取验证码</div>
+                </div>
+                <!--错误提示-->
+                <div class="error-tips" style="display: none"></div>
+                <button class="btn-reg" onclick="doSubmit()">提交</button>
+                <div class="agr-box">
+                    <label>
+                        <input checked="" type="checkbox" class="agreetit" id="agreetit">
+                        <div class="agr">同意<a href="${tzp.getContextPath()}/agreement/zhuce" class="agr-link">《注册协议》</a></div>
+                    </label>
+                </div>
+            </div>
+            <div onclick="$('#layer-mbox').hide();" class="closex"></div>
+        </div></div></div></div></div></div>
+        <!--活动详情-->
+        <div style="display:none;" class="rules-tmp">
+            <i onclick="layer.closeAll();" class="icon-close">关闭</i>
+            <div class="r-title">活动规则</div>
+            <div class="more-detail">
+                1、新用户完成注册立即领取888元大礼包；<br/>2、赠送的大礼包，将以红包的形式发放至用户个人中心【我的】-【我的优惠券】-【红包】中；<br/>3、红包使用：①在投资时，红包可根据投资金额自动抵用,单笔投资金额越多，可用红包越大；②红包需在有效期内进行使用，超过使用期限，则红包自动失效；③红包可依据投资金额叠加使用；<br/>4、本活动红包不与其他活动奖励券同时使用；<br/>5、若有疑问可咨询在线客服或拨打客服电话：<a href="tel:400-090-9968">400-090-9968</a>（工作日9:00-18:00）；<br/>6、活动最终解释权归亿钱贷平台所有。
+            </div>
+        </div>
+    </div>
+       <p class="footer-notice">-&nbsp;市场有风险，出借需谨慎&nbsp;-</p>
+        <p class="footer-notice">深圳市亿钱贷电子商务有限公司版权所有</p>
+       <script src="${tzp.getContextPath()}/js/jquery-1.9.1.min.js?v=a985778"></script>
+    <script src="${tzp.getContextPath()}/js/layer/layer.m.js?v=c42fc5d"></script>
+    <script src="${tzp.getContextPath()}/js/public.js?v=7b32182"></script>
+    <script type="text/javascript">
+    var chkMobile = false;
+    var first = false;
+    var mobileReg = /^(13|14|15|18|17)[0-9]{9}$/;
+    var isNullReg = /^[\s]{0,}$/;
+    $(function () {
+        // 查看活动规则
+        $(".detail").click(function () {
+            var tmp = $(".rules-tmp").html(),
+                styles = 'width: 81.5%;border-radius: 15px;background-color: #fec385;padding:.75em';
+            layer.open({
+                content: '<div class="rules-tmp">' + tmp + '</div>',
+                style: styles
+            });
+        })
+        // 立即注册
+        $(".regist-now").click(function () {
+        	checkMobile();
+        	if(chkMobile){
+        		first = true;
+        		$("#layer-mbox").show();
+        	}
+        });
+        // 必须勾选协议
+        $('.agreetit').click(function() {
+    		var isChk = $(this).prop('checked') === true;
+    		if (!isChk) {
+    			$('.btn-reg').addClass('disabled')
+    		} else {
+    			$('.btn-reg').removeClass('disabled')
+    		}
+    	})
+    })
+    
+     function checkMobile() {
+        chkMobile = false;
+        var phone = $.trim($("#phone").val());
+        if (phone.length == 11) {
+            if (!mobileReg.test(phone)) {
+            	Jmsg("请填写正确的手机号！");
+                return false;
+            }
+            $.ajax({
+                type: "post",
+                dataType: "html",
+                url: '${tzp.getContextPath()}/secure/register/check-account',
+                data: {
+                    "account": phone
+                },
+                async: false,
+                success: function(data) {
+                    if (data == "1") {
+                    	Jconfirm("该手机号已存在，是否去登录？");
+                        return false;
+                    } else {
+                    	$("#captcha_img").click();
+                        chkMobile = true;
+                        return true;
+                    }
+                }
+            });
+        } else {
+        	Jmsg("请填写正确的手机号！");
+            return false;
+        }
+
+    }
+    function Jconfirm(txt){
+    	
+    	layer.open({
+    	    content: txt,
+            shadeClose:false,
+            style: 'padding-top:20px;font-size:14px;width:65%',
+    	    btn: ['确定','取消'],
+    	    yes: function() {
+    	    	window.location.href="${tzp.getContextPath()}/spa/account/login";
+    		}
+    	});
+    }
+    var submit = false;
+    function doSubmit() {
+        if (submit) {
+            return false;
+        }
+        submit = true;
+        var password = $("#password").val();
+        $(".error-tips").html('').hide()
+        if (password==null ||　password=="") {
+            $(".error-tips").html('密码不能为空').show();
+            submit= false;
+            return false;
+        } else if (password.length < 6 || password.length > 20) {
+            $(".error-tips").html('密码为6~20个字符，区分大小写').show();
+            submit= false;
+            return false;
+        }
+        var phoneCode = $("#regCode").val();
+        if (phoneCode==null ||　phoneCode=="") {
+            $(".error-tips").html('短信验证码不能为空').show();
+            submit= false;
+            return false;
+        } else if (phoneCode.length!=6 ) {
+            $(".error-tips").html('请输入6位短信验证码').show();
+            submit= false;
+            return false;
+        }
+        var isChk = $("#agreetit").prop('checked') === true;
+        if(!isChk){
+        	  $(".error-tips").html('同意并勾选注册协议!').show();
+        	 submit= false;
+             return false;
+        }
+        var postData = {
+            "userPhone": $("#phone").val(),
+            "phoneCode": phoneCode,
+            "userPassword": password,
+            "recommendCode":"${code!''}",
+        };
+        $.ajax({
+            type: "post",
+            dataType: "json",
+            url: '${tzp.getContextPath()}/secure/register/ajax',
+            data: postData,
+            success: function(data) {
+            	submit =false;
+            	 var result = $.parseJSON(data);
+                if (result.success != undefined && result.success) {
+                    //跳转到登录页面,msg返回渠道信息
+                    layer.open({
+					    content: '注册成功',
+				        shadeClose:false,
+				        style: 'padding-top:20px;font-size:14px;width:65%',
+					    btn: ['确定'],
+						end : function() {
+							
+							<#if sourceType?? && sourceType=='app'>
+							 window.location.href = "${tzp.getContextPath()}/spa/account/login";
+							 <#else>
+							if(result.msg!=null &&result.msg!=""){
+								 window.location.href = result.msg;
+								
+							}
+							</#if>
+						}
+					});
+                } else {
+                	 $(".error-tips").html(result.msg).show();
+                }
+            }
+        });
+    }
+
+    var send = false;
+    function sendRegCode() {
+    	if (send) {
+            return false;
+        }
+    	var disabled = $(".get-code").attr("disabled");
+    	if(disabled){
+    		return false;
+    	}
+        var val = $("#phone").val();
+        var captcha = $("#captcha").val();
+        var today = getISODate(new Date());
+        var sendTimes = getCookie(val + today);
+        if (!chkMobile) {
+            return false;
+        }
+        if(captcha==null || captcha==""){
+        	Jmsg("请输入图形验证码！");
+            return false;
+        }
+        
+        send = true;
+        $(".error-tips").html("").hide();
+        $.ajax({
+            type: "post",
+            url: '${tzp.getContextPath()}/secure/register/verify-code',
+            data: {
+                phone: val,
+                captcha:captcha
+            },
+            async: false,
+            success: function(data) {
+                if (data.success == 1) {
+                    //设置cookies
+                    var sendTimes = getCookie(val + today);
+                    if (sendTimes == null || sendTimes == "") {
+                        setCookie(val + today, 1);
+                    } else {
+                        setCookie(val + today, parseInt(sendTimes) + 1);
+                    }
+
+                    $("#span_phone").html(val);
+                    $(".trips").show();
+                    setCookie('clickTime', new Date().getTime());
+                    disableButtonByClock(60);
+                } else {
+                		$(".error-tips").html(data.msg).show();
+                		$("#captcha_img").click();
+                        disableButtonByClock(60);
+                }
+                send = false;
+            }
+        });
+    }
+
+    function disableButtonByClock(seconds) {
+        $(".get-code").addClass("disabled").attr("disabled", true).html(seconds + "s重发");
+        var time = parseInt(seconds); //将传入的参数转为整型数字
+        if (time === 0) {
+            $(".get-code").removeClass("disabled").attr("disabled", false).html("获取验证码");
+        } else {
+            setTimeout("disableButtonByClock(" + (time - 1) + ")", 1000); //1秒以后 再次调用本身这个方法
+        }
+    }
+    //写入cookies（时间为1天）
+    function setCookie(name, value) {
+        var Days = 1;
+        var exp = new Date();
+        exp.setTime(exp.getTime() + Days * 24 * 60 * 60 * 1000);
+        document.cookie = name + "=" + escape(value) + ";expires=" + exp.toGMTString();
+    }
+
+    //读取cookies
+    function getCookie(name) {
+        var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
+        if (arr = document.cookie.match(reg)) {
+            return unescape(arr[2]);
+        } else {
+            return null;
+        }
+    }
+    function getISODate(d) {
+        var s = function(a, b) {
+            return (1e15 + a + "").slice( - b);
+        };
+
+        if (typeof d === 'undefined') {
+            d = new Date();
+        };
+        return d.getFullYear() + s(d.getMonth() + 1, 2) + s(d.getDate(), 2);
+    }
+    </script>
+           <#include "/includes/tongji.html" />
+</body>
+<#include "/includes/count.html" /> 
+</html>

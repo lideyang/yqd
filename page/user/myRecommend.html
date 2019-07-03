@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>推荐奖励-亿钱贷</title>
+    <#include "/includes/style.html" />
+    <!--页面样式-->
+    <link href="${tzp.getContextPath()}/dist/css/pages/user/recommend.css?v=2b750b7" rel="stylesheet">
+    <link href="${tzp.getContextPath()}/public/js/plugins/share/icon/style.css?v=45a751f" rel="stylesheet">
+    <style>
+        .recommend-title {
+            padding-top: .68rem;
+        }
+    </style>
+</head>
+<body>
+<!-- 头部开始 -->
+<#include "/includes/header.html" />
+<!--推荐信息-->
+<input id="recomCount" type="hidden" value="${(recomCount!0)}">
+<input id="investCount" type="hidden" value="${(investCount!0)}">
+<div class="am-g recommend-title am-text-center">
+    <div class="am-u-sm-6">
+        <canvas id="recommendAmount"></canvas>
+    </div>
+    <div class="am-u-sm-6">
+        <#if userType?? && userType=='1'> <div class="employee-btn"><img src="/public/images/user/heart.svg" />内部员工推荐活动</div></#if>
+        <p class="name">累计奖励(元)</p>
+        <p class="num">${(allAmt!0)?string(',##0.00')}</p>
+    </div>
+</div>
+<div class="am-g my-recommend">
+    <div class="am-u-sm-4">
+        <p>我的推荐码</p>
+    </div>
+    <div class="am-u-sm-8 am-text-right">
+        <span>${recomCode!''}</span>或<span>${_p2p_member_user.userMobile}</span>
+    </div>
+</div>
+
+<div class="am-tabs my-recommend-tabs" data-am-tabs id="myRecommendTabs">
+    <ul class="am-tabs-nav am-nav am-nav-tabs" id="firstTabs">
+        <li class="am-active"><a data-id="1" href="#tab1" class="am-text-center">推荐明细</a></li>
+        <li id="award_list"><a href="#tab2" data-id="2" class="am-text-center">推荐奖励</a></li>
+        <li><a href="#tab3" data-id="1" class="am-text-center">奖励规则</a></li>
+    </ul>
+    <div class="am-tabs-bd" id="tabsLayer">
+        <div class="am-tab-panel am-fade am-in am-active" id="tab1">
+            <div class="am-container product-choose-ticket" id="clearEmptylayer1">
+                <div class="my-recommend-list mescroll" id="wrapper1">
+                    <table class="am-table am-table-bordered am-text-center">
+                        <thead>
+                        <tr>
+                            <th>被推荐人帐号</th>
+                            <th>姓名</th>
+                            <th>注册日期</th>
+                        </tr>
+                        </thead>
+                        <tbody id="productTableList1">
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="am-tab-panel am-fade" id="tab2">
+            <div class="am-container product-choose-ticket">
+                <div class="my-recommend-list mescroll" id="wrapper2">
+                    <div class="page-arrow am-text-center" id="pageArrow" data-date="${.now?string('yyyy-M')}">
+                        <i class="icon-font icon-arrow-l vertical-middle"></i>
+                        <span class="date vertical-middle"><span id="yearTxt">${.now?string('yyyy')}</span>年<span id="monthTxt">${.now?string('M')}</span>月</span>
+                        <i id="recommendNextBtn" class="icon-font icon-arrow-r vertical-middle last"></i>
+                    </div>
+                    <p style="margin:.1rem 0 0.05rem">本月合计奖励金额：<span id="monthTotal" class="am-text-secondary am-text-xl">0.00</span>元<i id="moneyTips" style="font-size: 14px;margin:0 0 0 .04rem" data-am-popover="{trigger:'click',content: '推荐奖励系统每日结算，每月1号将统一发放上个月的全部奖励金额，可在交易流水中查看实际发放记录。'}" class="icon-font icon-wenhao am-text-muted"></i></p>
+                    <div id="clearEmptylayer2">
+                       <table class="am-table am-table-bordered am-text-center">
+	                        <thead>
+	                        <tr>
+	                            <th>奖励金额(元)</th>
+	                            <th id="planAmt_th">奖励时间</th>
+	                            <th>类型</th>
+	                        </tr>
+	                        </thead>
+	                        <tbody id="productTableList2">
+	
+	                        </tbody>
+                    	</table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="am-tab-panel am-fade opt" id="tab3">
+            <h2>一重好礼 · 最高200元现金</h2>
+            <ul>
+                <li>
+                    1、推荐的单个好友注册后30个自然日内，累计出借达到相应的金额（出借期限≥3个月或90天），可获得相应的现金奖励，具体如下：
+                    <table class="am-table am-table-bordered am-text-center">
+                        <tr>
+                            <td>级别1</td>
+                            <td>10,000元≤累计出借额＜30,000元</td>
+                            <td>50元</td>
+                        </tr>
+                        <tr>
+                            <td>级别2</td>
+                            <td>30,000元≤累计出借额＜50,000元</td>
+                            <td>50+50元</td>
+                        </tr>
+                        <tr>
+                            <td>级别3</td>
+                            <td>累计出借额≥50,000元</td>
+                            <td>50+50+100元</td>
+                        </tr>
+                    </table>
+                </li>
+                <li>2、奖励发放：满足条件以出借时间为准，奖励在满足各级别的最后一个项目放款后次个自然日发放。推荐好友注册人数不限，符合条件即可获得奖励。举例：A推荐B，B在注册后30天内累计出借5万，则可获得50+50+100元现金奖励；
+                </li>
+                <li>3、适用项目：散标、易智投；</li>
+                <li>4、活动时间节点说明：2018年10月1日起推荐注册的会员享受此项奖励。</li>
+            </ul>
+            <h2>二重好礼 · 最高 0.8% 佣金</h2>
+            <ul>
+                <li>
+                    1、推荐用户出借，可获得被推荐人待收本金年化x%的现金奖励，奖励比例如下：
+                    <table class="am-table am-table-bordered am-text-center">
+                        <tr>
+                            <td>被推荐人待收之和＜50,000元</td>
+                            <td>0.4%</td>
+                        </tr>
+                        <tr>
+                            <td>50,000元≤被推荐人待收之和＜200,000元</td>
+                            <td>0.6%</td>
+                        </tr>
+                        <tr>
+                            <td>被推荐人待收之和≥200,000元</td>
+                            <td>0.8%</td>
+                        </tr>
+                    </table>
+                </li>
+                <li>2、奖励发放时间：出借项目放款后（易智投起息后）计入待收本金，每日奖励金额=待收本金*x%/360天，次日发放；</li>
+                <li>3、适用项目：散标、易智投、债权转让;</li>
+                <li>4、活动时间节点说明：自2018年10月1日起，待收本金的奖励比例按照以上规则计算。因2018年8月1日0点之前起息的债权推荐奖励一次性发放，则该时间前的债权不计算此部分奖励。</li>
+            </ul>
+            <h2>三重好礼 · 好友注册即送10元红包</h2>
+            <ul>
+                <li>
+                    1、好友注册后，系统给推荐人自动发放10元红包，出借90天及以上项目金额满1000元可用。
+                </li>
+            </ul>
+            <h2>推荐奖励补充细则</h2>
+            <ul>
+                <li>1、被推荐人出借时，推荐人账户待收本金需≥5000元才可享受奖励一与奖励二</li>
+
+                <li>2、被推荐人通过推荐人分享的页面注册，或在注册时填写推荐人的推荐码或手机号码，注册成功即建立推荐关系。</li>
+
+                <li>3、自2018年10月1日起，建立的推荐关系，推荐奖励有效期为180天，2018年10月1日之前建立的推荐关系，推荐奖励有效期保留原有规则的一年期。  </li>
+
+                <li>4、推荐活动时间：2018年10月1日-2018年12月31日。  </li>
+
+                <li>5、本活动最终解释权归亿钱贷所有，如有调整，将以公告形式通知。  </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<input type="hidden" value="${recomCode!''}" id="code">
+
+<div data-am-widget="navbar" class="am-navbar subscription-btn" id="">
+    <a data-clipboard-text="${wapUrl!''}/secure/land?code=${recomCode!''}" id="confirmChooseTicketBtn" class="am-btn am-btn-secondary am-btn-block am-btn-xl" href="javascript:;;">立即邀请好友注册</a>
+</div>
+<input type="hidden" value="您的好友${realName!''}喊你一起赚收益啦，平台上市背景+专业合规，快快上车~" id="shareDesc">
+<input type="hidden" value="送您888元新手专属奖励金" id="shareTitle">
+<input type="hidden" value="${wapUrl!''}/secure/land?code=${recomCode!''}" id="shareLink">
+<input type="hidden" value="${wapUrl!''}/public/images/logo-w.png" id="shareImg">
+<div id="shareit">
+    <img class="arrow" src="/public/images/icon/share.png?v=39c644d">
+    <span class="text">点击菜单分享邀请注册</span>
+</div>
+
+<#include "/includes/script.html" />
+<!--页面js-->
+<script type="text/x-handlebars-template" id="tpi-list-item1">
+    {{#each this}}
+        <tr>
+            <td>{{phone}}</td>
+            <td>
+	{{#if realName}}
+		{{realName}}
+	{{else}}
+		未实名
+    {{/if}}
+		</td>
+            <td>{{dateFormater createTime}}</td>
+        </tr>
+    {{/each}}
+</script>
+<script type="text/x-handlebars-template" id="tpi-list-item2">
+       {{#each this}}
+    <tr>
+ 		<td>{{formatCurrency awardMoney true}}</td>
+        <td>
+            {{dayFormater awardDate}}
+        </td>
+
+        {{#if new}}
+		{{#expression awardType '==' 2}}
+        <td >好友累计出借{{formatCurrency planAmt true}}元</td>
+ 		{{/expression}}
+ 		{{#expression awardType '==' 1}}
+  		<td >好友待收本金{{formatCurrency planAmt true}}元</td>
+  		{{/expression}}
+        {{else}}
+        <td >推荐奖励</td>
+        {{/if}}
+
+       
+    </tr>
+    {{/each}}
+</script>
+
+<script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script> 
+<script src="${tzp.getContextPath()}/dist/js/pages/user/recommend.js?v=4455883"></script>
+
+</body>
+<#include "/includes/count.html" /> 
+</html>

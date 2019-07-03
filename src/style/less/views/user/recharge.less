@@ -1,0 +1,117 @@
+@import "../../header";
+
+.recharge-layer{
+  .am-header-default {
+    .header-account(#fff,#2969ca);
+  }
+
+  .bind-card-layer {
+    padding: .1rem .25rem;
+    background-color: #eee;
+    border-radius: 8px;
+    width: 3.3rem;
+    margin: .1rem auto;
+
+    img {
+      width: .75rem;
+    }
+
+    .bind-card-link {
+      line-height: .48rem;
+
+      a {
+        span {
+          margin: 0 .05rem 0 0;
+        }
+      }
+    }
+
+  }
+
+  .bank-card-layer {
+    padding: .2rem;
+    margin:0 0 .1rem;
+    background-color: #fff;
+    box-shadow: 0 0 8px rgba(50,50,50,.05);
+    .bank-logo {
+      line-height: 1;
+      padding-top: .03rem;
+      img{
+        height:.4rem;
+      }
+    }
+    .split{
+      margin:0 .1rem;
+    }
+    h2 {
+      margin: 0;
+      font-size: 16px;
+    }
+
+    p {
+      margin: 0;
+    }
+  }
+
+  .recharge-form {
+    border-radius: 8px;
+
+    height: 5rem;
+    .input{
+      padding:.15rem 0;
+      background-color: #fff;
+      box-shadow: 0 0 8px rgba(50,50,50,.05);
+      .am-form-group {
+        margin: 0;
+        padding:0 .2rem;
+        &.money-group {
+          position: relative;
+          padding: 0 0.2rem;
+          color:#333;
+          .am-form-field {
+            width: 1rem;
+          }
+          .form-control-feedback {
+            right: 1.4rem;
+            top: .3rem;
+          }
+          label{
+            position: absolute;
+            left:.2rem;
+            top:.05rem;
+            font-size: 20px;
+          }
+          .money-txt {
+            font-size: 18px;
+            width:100%;
+            padding-left: 1.5em;
+            border-bottom:none;
+          }
+        }
+      }
+
+      .form-control-feedback {
+        right: 1.1rem;
+        top: 0.37rem;
+      }
+    }
+    .amount-info{
+      padding: 0 0 0 .2rem;
+      margin:.1rem 0;
+    }
+  }
+
+  .submit-btn {
+    width: 90%;
+    margin: 1rem auto .1rem;
+  }
+  .bottom{
+    position: absolute;
+    bottom:.2rem;
+    left:0;
+    width:100%;
+    img{
+      width:2rem;
+    }
+  }
+}

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>注册成功-亿钱贷</title>
+    <#include "/includes/style.html" />
+    <!--页面样式-->
+    <link href="${tzp.getContextPath()}/dist/css/pages/account/regSuccess.css?v=ac72ff3" rel="stylesheet">
+</head>
+<body class="main-bg">
+<!-- 头部开始 -->
+<#include "/includes/header.html" />
+<!--注册面板-->
+<div class="am-panel am-panel-default reg-panel success-panel reg-success-panel">
+    <div class="am-panel-bd am-text-center">
+        <h3 class="am-text-center">恭喜您注册成功</h3>
+        <p class="am-text-muted info">亿钱贷给您发放了<strong class="am-text-danger am-text-xl">888</strong>元新手专享红包</p>
+        <a href="${tzp.getContextPath()}/spa/product/auto" class="am-btn am-btn-secondary am-round am-btn-block am-btn-xl bank-card-btn">马上去出借</a>
+        <p class="am-text-center">
+            出借10,000元，即可使用<span class="am-text-danger">100</span>元红包
+        </p>
+    </div>
+</div>
+<#include "/includes/script.html" />
+</body>
+<!--页面js-->
+<script src="${tzp.getContextPath()}/dist/js/pages/account/regSuccess.js?v=835f629"></script>
+<#include "/includes/count.html" />
+</html>

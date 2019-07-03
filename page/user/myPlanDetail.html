@@ -1,0 +1,142 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>易智投详情-亿钱贷</title>
+    <#include "/includes/style.html" />
+    <!--页面样式-->
+    <link href="${tzp.getContextPath()}/dist/css/pages/user/myPlanDetail.css?v=bb4155a" rel="stylesheet">
+</head>
+<body>
+<!-- 头部开始 -->
+<#include "/includes/header.html" />
+    <!--我的投资详情-->
+    <div class="am-container">
+        <!--项目名称-->
+        <div class="am-g product-info-content title">
+            <div class="am-u-sm-8">
+                <h2 class="am-text-truncate">${(title)!''}</h2>
+                <p class="am-text-muted">${(vo.investTime?string('yyyy-MM-dd HH:mm'))!'--'}</p>
+            </div>
+            <div class="am-u-sm-2 status">
+                ${(vo.investStatusCn)!''}
+            </div>
+        </div>
+        <!--项目详情-->
+        <div class="product-info-content">
+            <div class="am-g am-text-center primary-info">
+                <div class="am-u-sm-4 rate">
+                    <p class="am-text-secondary">${(vo.prdRate!0)?string(',##0.##')}%<#if vo.awardRate?? && vo.awardRate gt 0>+${(vo.awardRate!0)?string(',##0.##')}%</#if></p>
+                    <p class="am-text-muted">协议约定年化利率</p>
+                </div>
+                <div class="am-u-sm-4">
+                    <p class="am-text-default">${(vo.investAmount?string(',##0.00'))!0}</p>
+                    <p class="am-text-muted">出借本金(元)</p>
+                </div>
+                <div class="am-u-sm-4">
+                    <p class="am-text-default">${(vo.prdPeriod)!''}${(vo.getPeriodUnitStr2())!''}</p>
+                    <p class="am-text-muted">委托期限</p>
+                </div>
+                 <#if vo.investStatus!='1'>
+                <div class="am-u-sm-4">
+                    <p class="am-text-default time">${(vo.interestDate?string('yyyy-MM-dd'))!'--'}</p>
+                    <p class="am-text-muted">起息日</p>
+                </div>
+                <div class="am-u-sm-4 am-u-end">
+                    <p class="am-text-default time">${(vo.settleDate?string('yyyy-MM-dd'))!'--'}</p>
+                    <p class="am-text-muted">到期日</p>
+                </div>
+                </#if>
+            </div>
+            <ul>
+            <#if redPacket?? && redPacket gt 0>
+                <li>
+                    <span class=" name">使用红包</span>
+                    <span class="txt am-text-right am-text-secondary am-fr">${(redPacket?string(',##0.00'))!0.00}元</span>
+                </li>
+                </#if>
+                <#if award?? && award.awardAmount gt 0 >
+                <li>
+                    <span class="name">使用奖励券</span>
+                    <span class="txt am-text-right am-text-secondary am-fr">+${(award.awardAmount?string(',##0.00'))!0.00}%</span>
+                </li>
+                 </#if>
+                  <#if vo.investStatus !='4'>
+                <li>
+                    <span class="name">预期项目利息</span>
+                    <span class="txt am-text-right am-text-secondary am-fr">${(planIncome?string(',##0.00'))!0.00} </span>
+                </li>
+                <li>
+                    <span class="name">预期平台奖励</span>
+                    <span class="txt am-text-right am-text-secondary am-fr">${(planAllAward?string(',##0.00'))!0.00} </span>
+                </li>
+                <li>
+                    <span id="investIcon" class="name">预期收益<i class="icon-font icon-wenhao"></i></span>
+                    <span class="txt am-text-right am-text-secondary am-fr">${(income)?string(',##0.00')}</span>
+                </li></#if>
+            </ul>
+        </div>
+        
+        <!--回款信息-->
+        <#if redeem??>
+        <div class="product-info-content">
+            <div data-am-widget="titlebar" class="am-titlebar am-titlebar-default" style="margin-top:0;">
+                <h2 class="am-titlebar-title">
+                     回款信息
+                </h2>
+            </div>
+            <ul>
+                <li>
+                    <span class="name">已收本金</span>
+                    <span class="txt am-text-right am-fr">${(redeem.hasRedeemPrincipal?string(',##0.00'))!0.00}元</span>
+                </li>
+                <li>
+                    <span class="name">已收收益</span>
+                    <span class="txt am-text-right am-fr">${(income)?string(',##0.00')}元</span>
+                </li>
+            </ul>
+        </div>
+        <#elseif expect??>
+        <#if vo.investStatus ='6'>
+        <div class="product-info-content">
+        
+            <ul>
+                <li>
+                    <span class="name">已赎回本息</span>
+                    <span class="txt am-text-right am-fr">${(hasPrincipalAndInvest?string(',##0.00'))!'0.00'}元 </span>
+                </li>
+                <li>
+              
+                    <span class="name">持有中债权价值</span>
+                    <span class="txt am-text-right am-fr">${(holdPrincipal?string(',##0.00'))!'0.00'}元</span>
+                </li>
+            </ul>
+        </div>
+        </#if>
+        </#if>
+        
+        <#if vo.investStatus!='1'>
+       <div class="product-info-content">
+           <a class="link" href="${tzp.getContextPath()}/member/plan/invest-project?type=1&investId=${vo.investId!''}">
+               持有项目<span class="am-fr"><span class="vertical-middle">${holdCount!'0'}个</span><i class="icon-font icon-next am-text-primary vertical-middle"></i></span>
+           </a>
+        </div>
+       <div class="product-info-content">
+           <a class="link" href="${tzp.getContextPath()}/member/plan/invest-project?type=2&investId=${vo.investId!''}">
+               已结清项目<span class="am-fr"><span class="vertical-middle">${settleCount!'0'}个</span><i class="icon-font icon-next am-text-primary vertical-middle"></i></span>
+           </a>
+       </div>
+       </#if>
+        <div class="product-info-content">
+            <a class="link" href="${tzp.getContextPath()}/member/plan/agreementInvPage/${vo.investId!''}">
+                相关协议<span class="am-fr"><i class="icon-font icon-next am-text-primary vertical-middle"></i></span>
+            </a>
+        </div>
+    </div>
+<p class="am-text-center am-text-muted">市场有风险 出借需谨慎</p>
+<#include "/includes/script.html" />
+<!--页面js-->
+<script src="${tzp.getContextPath()}/dist/js/pages/user/myPlanDetail.js?v=45247e0"></script>
+</body>
+<#include "/includes/count.html" /> 
+</html>

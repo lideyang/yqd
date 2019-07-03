@@ -1,0 +1,94 @@
+.xw-bind-help-layer {
+  height: 25.38rem;
+  background: url(../../../../assets/wx/help/bg.png) no-repeat;
+  background-size: cover;
+  padding: 2.7rem 0 0;
+
+  .layer-tips, .layer-pro {
+    background-color: #fff;
+    margin: 0 .25rem;
+    border-radius: 16px;
+  }
+
+  .layer-tips {
+    position: relative;
+    height: 6.5rem;
+    padding: 2.35rem 0 0;
+    text-align: center;
+    margin-bottom: .3rem;
+
+    .bg {
+      position: absolute;
+      margin: 0 .5rem;
+      top: .4rem;
+      left: 0;
+
+      img {
+        width: 100%;
+      }
+    }
+
+    .step-1, .step-2 {
+      position: relative;
+      font-weight: bold;
+      color: #666;
+
+      > div {
+        margin: 0 0 .75rem;
+        line-height: .22rem;
+        &:nth-child(2n) {
+          padding-right: .1rem;
+        }
+      }
+    }
+
+    .step-1 {
+      margin: 0 0 .85rem;
+    }
+  }
+
+  .layer-pro {
+    position: relative;
+    padding: 3.4rem 0 0;
+    height: 15rem;
+    .bg{
+      position: absolute;
+      top:.4rem;
+      left:0;
+      padding: 0 .58rem;
+      height: 100%;
+      img{
+        width:100%;
+      }
+    }
+    p{
+      position: relative;
+      font-weight: bold;
+      text-align: center;
+      font-size: 18px;
+      color:#666;
+      line-height: .25rem;
+      margin:0;
+      &:nth-child(1){
+        margin:0 0 2.2rem;
+      }
+      &:nth-child(2){
+        margin:0 0 1.3rem;
+      }
+      &:nth-child(3){
+        margin:0 0 2.9rem;
+      }
+      &:nth-child(4){
+        margin:0 0 2.2rem;
+      }
+      &:nth-child(5){
+        margin:0 0 1.2rem;
+      }
+    }
+    @media (max-width: 360px) {
+      p {
+        font-size: 16px;
+      }
+    }
+  }
+}

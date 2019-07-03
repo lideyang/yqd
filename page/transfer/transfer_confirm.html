@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html class="androidFix">
+<head>
+    <title>债权转让-亿钱贷</title>
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-control" content="no-cache,no-store,must-revalidate">
+    <meta http-equiv="Expires" content="0">
+    <#include "/includes/style.html" />
+    <!--页面样式-->
+    <link href="${tzp.getContextPath()}/dist/css/pages/transfer/confirm.css?v=67d882c" rel="stylesheet">
+    <style>
+        .product-confirm-layer .product-confirm .am-g.item.title{
+            padding-top:.58rem;
+            height: 2.26rem;
+        }
+    </style>
+</head>
+<body class="androidFix">
+<!-- 头部开始 -->
+<#include "/includes/header.html" />
+<!--内容开始-->
+<div class="product-confirm-layer">
+    <div class="am-container product-confirm" id="productConfirm">
+        <div class="am-g item title">
+            <div class="am-u-sm-12 repay-invest">
+                债权金额：${(view.fairPrice!0)?string(',##0.00')}元
+            </div>
+            <div class="am-g form">
+                <div class="am-g" style="padding:0 .1rem;">
+                    <#if accountVo??>
+                    <div class="am-u-sm-10">
+                        <span>可用余额:</span>
+                        <span>￥${(accountVo.availableAmt!0)?string(',##0.00')}元</span>
+                    </div>
+                    <#else>
+                    <div class="am-u-sm-10">
+                        <span>可用余额:</span>
+                        <span>0.00元</span>
+                    </div>
+                    </#if>
+                    <div class="am-u-sm-2 am-text-right">
+                        <a class="am-text-secondary" href="${tzp.getContextPath()}/member/account/recharge">去充值</a>
+                    </div>
+                </div>
+                <input type="hidden" id="pre_subscriptionTxt" value="${(view.transferPrice!0)}" />
+                <div class="am-u-sm-12 product-confirm-money">
+                    <div class="am-g item am-text-default">
+                        <div class="am-u-sm-12">
+                            ￥${(view.fairPrice!0)?string(',##0.00')}元
+                        </div>
+                    </div>
+                    <hr data-am-widget="divider" class="am-divider am-divider-default" />
+                    <div class="am-g item">
+                        <div class="am-u-sm-12 am-text-muted">
+                            预期收益<span class="am-text-danger" id="interestAmtTd">${(view.expectIncome!0)?string(',##0.00')}</span>元
+                        </div>
+                    </div>
+                </div>
+                <div class="am-g am-text-default">
+                    <div class="am-u-sm-12">
+                        <label>
+                            <input type="checkbox" id="agreementStatus"/>
+                            阅读并同意
+                            <a class="am-text-primary" href="${tzp.getContextPath()}/contract/debt?assetsId=${view.debtId!''}">《${subscribeName!''}》</a>
+                            <a class="am-text-primary" href="${tzp.getContextPath()}/contract/debt-risk">《风险及禁止性行为提示书》</a>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div data-am-widget="navbar" class="am-navbar subscription-btn">
+    <p class="am-text-center am-text-muted">市场有风险，出借需谨慎</p>
+    <a id="submitBtn" data-am-loading="{spinner: 'loading', loadingText: '加载中...'}" class="am-btn am-btn-secondary am-btn-block am-btn-xl" >确认受让</a>
+</div>
+<div style="display: none;">
+    <form class="mt-10 clearfix" action="${tzp.getContextPath()}/product/invest/rechage-back-assi"  method="post" id="submit_form">
+    </form>
+</div>
+<!--实名绑卡提示-->
+<div style="display: none" id="bankCardModal">
+    <div class="bank-card-modal">
+        <p class="am-text-center">
+            <img src="${tzp.getContextPath()}/public/images/product/confirm_fxpc_icon.png?v=8754745" />
+        </p>
+        <h2 class="am-text-center"><#if riskTip??&&riskTip=='0'>您风险评估已过期<#else>您尚未完成风险评估</#if></h2>
+        <p>风险评估旨在了解您对风险的承受能力，帮助您降低风险。</p>
+        <p class="am-text-center pc-link"><a class="text-one-primary am-text-lg" href="${tzp.getContextPath()}/member/auth/risk-ass?loanId=">开始评估</a></p>
+    </div>
+</div>
+<!--风险提示-->
+<div id="riskModal" style="display: none;padding:15px;">
+    <p>您的风险承受能力为<span class="text-danger" >${riskType!''}</span>，相对应的出借金额上限为<span class="text-danger">${userAssessLimit!0}万元</span></p>
+    <p>当前累计已出借<span class="text-danger" id="totalDueStr">${(totalDue!0)?string(',##0.00')}元</span>,请修改出借金额或重新进行<a class="text-primary" href="${tzp.getContextPath()}/member/auth/risk-ass">风险评测</a></p>
+    <p style="margin:30px 0 0" class="am-text-center"><button class="am-btn am-btn-primary" onclick="javascript:layer.closeAll()">我知道了</button></p>
+</div>
+<!--余额不足提示-->
+<div style="display: none" id="rechargeModal">
+    <div class="recharge-modal">
+        <div class="info-layer">
+            <h3>支付金额：<span id="rechargeAmountTxt" class="am-text-danger"></span>元</h3>
+            <p class="am-text-default tips">
+                请选择支付方式
+            </p>
+        </div>
+        <div class="list">
+            <div class="am-g">
+                <div class="am-u-sm-6 am-text-muted">
+                    <i class="icon-font icon-balance vertical-middle"></i><span class="vertical-middle">可用余额</span>
+                </div>
+                <div class="am-u-sm-6 am-text-muted am-text-right">1000元</div>
+            </div>
+            <div class="am-g">
+                <div class="am-u-sm-6">
+                    <i class="icon-font icon-card2 am-text-primary vertical-middle"></i><span class="vertical-middle">银行卡充值</span>
+                </div>
+                <div class="am-u-sm-6 am-text-right"><span id="bankRechargeTxt"></span>元</div>
+            </div>
+        </div>
+        <p class="am-text-center"><a class="text-one-primary am-text-lg" href="javascript:;;" id="goRechargeBtn">去充值</a></p>
+    </div>
+</div>
+<#include "/includes/script.html" />
+<!--页面js-->
+<script type="text/javascript">
+    var loanId="${loan.loanId!''}";
+    var productName="债权转让-${loan.loanTitle!''}";
+    var isAssessStatus=<#if assessType??> true<#else> false </#if>;
+    var transferApplyId="${transferApplyId!''}";
+    var totalDue = ${totalDue!0};
+    var userAssessLimit = ${userAssessLimit!0};
+</script>
+<script src="${tzp.getContextPath()}/dist/js/pages/transfer/confirm.js?v=c3fbe4b"></script>
+</body>
+<#include "/includes/count.html" />
+</html>

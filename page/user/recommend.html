@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>推荐活动-亿钱贷</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.5, maximum-scale=0.5, user-scalable=0">
+    <meta content="telephone=no" name="format-detection">
+    <script>
+        //设置rem
+        (function (doc, win) {
+            var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize';
+            var dpr = window.devicePixelRatio || 1;
+            // adjust body font size
+            function setBodyFontSize() {
+                if (document.body) {
+                    document.body.style.fontSize = '20px'
+                }
+                else {
+                    document.addEventListener('DOMContentLoaded', setBodyFontSize)
+                }
+            }
+
+            setBodyFontSize();
+            function setRemUnit() {
+                var clientWidth = docEl.clientWidth;
+                if (!clientWidth) return;
+                if (clientWidth >= 1200) {
+                    docEl.style.fontSize = '100px';
+                } else {
+                    docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+                }
+            }
+
+            setRemUnit()
+            if (!doc.addEventListener) return;
+            win.addEventListener(resizeEvt, setRemUnit);
+            window.addEventListener('pageshow', function (e) {
+                if (e.persisted) {
+                    setRemUnit()
+                }
+            })
+        })(document, window);
+    </script>
+    <link href="${tzp.getContextPath()}/dist/css/global.css?v=63e48b6" rel="stylesheet">
+    <!--页面样式-->
+    <link href="${tzp.getContextPath()}/dist/css/pages/activity/myRecommend.css?v=e84b4af" rel="stylesheet">
+</head>
+<body>
+<!--推荐活动-->
+<div class="content">
+    <div class="my-recommend-layer am-text-center">
+        <h3>${(allAmt!0)?string(',##0.00')}</h3>
+        <p>累计奖励(元)</p>
+        <#if userType?? && userType=='1'>
+        <div class="employee-btn"><img src="/public/images/user/heart.svg" />内部员工推荐活动</div>
+        </#if>
+        <div class="am-g info">
+            <div class="am-u-sm-6">
+                <h4>${(todayAmt!0)?string(',##0.00')}</h4>
+                <p>昨日奖励(元)</p>
+            </div>
+            <div class="am-u-sm-6">
+                <h4>${(investCount!0)}/${(recomCount!0)}</h4>
+                <p>已出借/已注册（人）</p>
+            </div>
+        </div>
+    </div>
+    
+    			<#if isMax??>
+					<#if isMax=='0'>
+<p class="am-text-center iphone-tips">当前被推荐人待收本金之和为<span class="text-warning"><b>${(planAmt!0)?string(',##0.00')}</b></span>元，<br/>
+						还差<span class="text-warning">${(diff!0)?string(',##0.00')}</span>元即可享受年化<span class="text-warning">${awardRate!0}%</span>现金奖励   </p>
+					<#else>
+						 <p class="am-text-center iphone-tips">
+                             您当前已享受年化<span class="text-warning"><b>${awardRate!0}%</b></span>现金奖励，<br/>达到最高等级
+						 </p>
+	                </#if>
+	             <#else>
+	             <#if  noaward??>
+	             	 <p class="am-text-center iphone-tips">
+						您当前账户待收不足<span class="text-warning">5,000.00</span>元，<br/>暂时无法领取推荐奖励，请速速充值~
+						  </p>
+	             </#if>
+                </#if>
+    <!--推荐详情-->
+    <div class="am-tabs" data-am-tabs="{noSwipe: 1}" id="myRecommendTabs">
+
+        <ul class="am-tabs-nav am-nav am-nav-tabs">
+            <li class="am-active"><a href="javascript: void(0)">我的邀请奖励</a></li>
+            <li><a href="javascript: void(0)">我的邀请好友</a></li>
+        </ul>
+
+        <div class="am-tabs-bd">
+         <div class="am-tab-panel  am-active">
+                <table class="am-table am-table-bordered am-text-center">
+                    <thead>
+                    <tr>
+                        <th>奖励金额(元)</th>
+                        <th>日期</th>
+                        <th>奖励类型</th>
+                    </tr>
+                    </thead>
+                    <tbody id="awardRecordTable">
+                    </tbody>
+                </table>
+                <div class="row" id="paginationList2" style="display: none">
+                    <div class="am-u-sm-10 am-u-sm-centered">
+                        <ul data-am-widget="pagination" class="am-pagination am-pagination-select">
+                            <li class="am-pagination-prev">
+                                <a disabled href="javascript:;;" class="am-btn am-btn-default" id="paginationPrevBtn2">上一页</a>
+                            </li>
+                            <li class="am-pagination-select">
+                                <select id="paginationSelect2">
+                                </select>
+                            </li>
+                            <li class="am-pagination-next">
+                                <a href="javascript:;;" class="am-btn am-btn-default" id="paginationNextBtn2">下一页</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="am-tab-panel">
+                <table class="am-table am-table-bordered am-text-center">
+                    <thead>
+                        <tr>
+                         <th>姓名</th>
+                            <th>被推荐人账号</th>
+                            <th>注册时间</th>
+                        </tr>
+                    </thead>
+                    <tbody id="recommendRecordTable">
+                    </tbody>
+                </table>
+                <div class="row" id="paginationList" style="display: none">
+                    <div class="am-u-sm-10 am-u-sm-centered">
+                        <ul data-am-widget="pagination" class="am-pagination am-pagination-select">
+                            <li class="am-pagination-prev">
+                                <a disabled href="javascript:;;" class="am-btn am-btn-default" id="paginationPrevBtn">上一页</a>
+                            </li>
+                            <li class="am-pagination-select">
+                                <select id="paginationSelect">
+                                </select>
+                            </li>
+                            <li class="am-pagination-next">
+                                <a href="javascript:;;" class="am-btn am-btn-default" id="paginationNextBtn">下一页</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div data-am-widget="navbar" class="am-navbar am-cf am-navbar-default" id="shareBtn">
+    立即邀请<img class="fr" src="/public/images/active/recommend/code.png?v=da758ee" id="codePicBtn" />
+</div>
+<!--分享url-->
+<input type="hidden" id="shareUrl" value="${wapUrl!''}/secure/land?code=${recomCode!''}" />
+<input type="hidden" value="您的好友${realName!''}喊你一起赚收益啦，平台上市背景+专业合规，快快上车~" id="shareDesc">
+<input type="hidden" value="送您888元新手专属奖励金" id="shareTitle">
+<input type="hidden" value="${wapUrl!''}/secure/land?code=${recomCode!''}" id="shareLink">
+<input type="hidden" value="${wapUrl!''}/public/images/logo-w.png" id="shareImg">
+<script type="text/x-handlebars-template" id="tpi-list-item">
+
+    {{#each this}}
+    <tr>
+        
+        <td>
+            {{#if realName}}
+            {{realName}}
+            {{else}}
+            未实名
+            {{/if}}
+        </td>
+		<td>{{phone}}</td>
+        <td>{{dateFormater createTime}}</td>
+    </tr>
+    {{/each}}
+</script>
+<script type="text/x-handlebars-template" id="tpi-list-item2">
+    {{#each this}}
+    <tr>
+ 		<td>{{formatCurrency awardMoney true}}</td>
+        <td>
+            {{dayFormater awardDate}}
+        </td>
+
+        {{#if new}}
+	{{#expression awardType '=='3}}
+        <td >推荐奖励</td>
+ 		{{/expression}}
+		{{#expression awardType '==' 2}}
+        <td >好友累计出借{{formatCurrency planAmt true}}元</td>
+ 		{{/expression}}
+ 		{{#expression awardType '==' 1}}
+  		<td > 好友待收本金之和的{{awardRate}}%</td>
+  		{{/expression}}
+        {{else}}
+        <td >推荐奖励</td>
+        {{/if}}
+
+       
+    </tr>
+    {{/each}}
+</script>
+<#include "/includes/script.html" />
+<!--页面js-->
+<script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script> 
+<script src="${tzp.getContextPath()}/dist/js/pages/activity/myRecommend.js?v=4df1254"></script>
+</body>
+<#include "/includes/count.html" /> 
+</html>

@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>风险测评</title>
+    <meta content="telephone=no" name="format-detection">
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <link rel="stylesheet" href="${tzp.getContextPath()}/public/css/common.v3.css?v=e32bb00">
+    <link rel="stylesheet" href="${tzp.getContextPath()}/public/css/style.v3.css?v=8fd09e6">
+</head>
+
+<body>
+    <div class="risk-ass">
+        <div class="overview">
+            <div class="view">
+                <p class="tit" id="t_1"><#if !assessType?? >风险承受能力评估<#else>您当前的风险承受能力</#if></p>
+                <!--R1:保守型，R2:稳健型,R3:积极型  -->
+                <div class="r-level <#if assessType?? && assessType=='1'>R1<#elseif assessType?? && assessType=='2'>R2<#elseif assessType?? && assessType=='3'>R3<#elseif assessType?? && assessType=='4'>R0<#else>R4</#if>" id="le_1">
+                    <div class="level ">
+                        <!--一下R1\R2\R3元素不要移除  -->
+                        <p class="R0">您是平衡型出借人</p>
+                        <p class="R1">您是保守型出借人</p>
+                        <p class="R2">您是稳健型出借人</p>
+                        <p class="R3">您是积极型出借人</p>
+                        <p class="R4"></p>
+                    </div>
+                    <p class="level-desc"></p>
+                </div>
+            </div>
+            <div class="u-risk-desc"><span id="spandiv">
+   			 <#if assessType?? && assessType=="1">
+	    	 	 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;以降低风险承受度为前提，希望出借收益极度稳定的项目。
+             <#elseif assessType?? && assessType=="2">
+	    	 	 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;谨慎考量出借中面临的风险，追求较低的风险，对出借回报的要求不高。
+             <#elseif assessType?? && assessType=="3">
+	    	 	 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;具有较强的主观风险承受意愿。并试图尝试较高收益的出借，乐意承担一定的风险，希望获得更高的收益
+ 			<#elseif assessType?? && assessType=="4">
+	    	 	 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在风险较小的情况下获得一定收益，会仔细地对将要面临的风险进行认真的分析。
+             <#else>
+	    	 	 尊敬的用户:<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	    	 	您还未进行过风险评估，为保障您的合法权益，准确了解您的风险偏好，请于出借前务必进行自我风险评估。
+        	 </#if>
+            </span>
+                <#if !assessType?? >
+                	<div class="start-qa">开始测评</div>
+                	<div class="start-qa1" style="left: 11em;    text-align: center; display: none" onclick="gotoinvest()">去出借</div>
+                <#else>
+                	<div  id="stq_div_1" class="start-qa retest" <#if !isValid??>style="right: 11em;"</#if>>重新评估</div>
+                	<div id="stq_div_2" class="start-qa1" style="left: 11em;    <#if isValid??>display: none;</#if>  text-align: center;" onclick="gotoinvest()">去出借</div>
+                </#if>
+<!--                 <p class="agreement" id="agreement_o" >我接受亿钱贷<span><a href="${tzp.getContextPath()}/member/auth/book/risk-disclosure">《风险及禁止性行为提示书》</a></span></p> -->
+<!--             	<p class="agreement" id="agreement_t" style="display: none">我已阅读并确认<span><a href="${tzp.getContextPath()}/member/auth/book/risk-qa-agreement">《亿钱贷风险评测问卷》</a></span></p> -->
+            </div>
+        </div>
+        <div style="display:none;" class="qa-area">
+            <div class="title">风险承受能力评估</div>
+            <div class="progress">
+                <p><span class="n"></span>/<span class="total"></span></p>
+                <p class="progress-bar"><span class="bar"></span></p>
+            </div>
+            <dl class="questions">
+            <#assign number = ((Quelist?size)!0) />
+            <#if (Quelist)?? && Quelist?size gt 0>
+            	<#list Quelist?sort_by("questionOrder") as que>
+	                <dd>
+	                 <p class="ques">${que_index+1}、${que.questionContent}</p>
+	                	<#if (que.userAssessAnslist)?? && (que.userAssessAnslist)?size gt 0>
+	                        <#list que.userAssessAnslist?sort_by("ansOrder") as ans>
+			                    <p class="aws" ansval="${ans.assessAnsId}" userflag="">${ans.ansContent}</p>
+	                     	</#list>
+                        </#if>
+	                </dd>
+                </#list>
+            <#else>
+            	<dd>
+            	 <p class="ques">暂无问题</p>
+            	</dd>
+            </#if>
+            </dl>
+            <div class="btn-action">
+                <div class="sle prev">上一题</div>
+<!--                 <div class="smb skip" onclick="skip()">跳过评估</div> -->
+            </div>
+            <div class="notice">风险评估旨在了解您对风险的承受能力，帮助您降低风险。为了能给您提供更好的资产选择，请认真作答，感谢您的配合。
+            </div>
+        </div>
+    </div>
+     <script type="text/javascript" src="${tzp.getContextPath()}/public/js/risk/jquery.min.js?v=fab12e7"></script>
+    <script type="text/javascript" src="${tzp.getContextPath()}/public/js/risk/public.js?v=f60b024"></script>
+  	<script src="${tzp.getContextPath()}/public/js/risk/layer_mobile/layer.js?v=933cecb"></script>
+  	<!--页面js-->
+    <script type="text/javascript">
+    	var statsuStr = "";
+    	//if(assessStatus=='1'){
+   			// Jalert("尊敬的用户：根据您最近风险测评的结果，您不符合我平台部分产品的投资条件，建议您选择与自己风险承受能力相匹配的产品，或重新进行风险测评，感谢您对亿钱贷的支持与信赖。");
+    	//}
+	  	var url ='${tzp.getContextPath()}/member/auth/save-assess'
+        $(function() {
+        	 $(".r-level").removeClass("R2");//移除之前的评级
+             $(".r-level").removeClass("R3");//移除之前的评级
+             $(".r-level").removeClass("R0");//移除之前的评级
+        	 <#if assessType?? && assessType=="1">
+	        	 $(".level-desc").text("");
+	        	 var riskStr ="WR1(保守型)";
+	    	 	 $("#spandiv").html("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;您的风险承受能力为保守型。可出借风险等级为"+riskStr+"的项目");
+	             $(".r-level").removeClass("R1").addClass("R1");//移除之前的评级，重新评级,R3为服务器返回的评级
+             <#elseif assessType?? && assessType=="2">
+	             $(".level-desc").text("");
+	             var riskStr ="WR1(保守型)、";
+ 				 riskStr+="WR2(稳健型)"
+	             $("#spandiv").html("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;您的风险承受能力为稳健型。可出借风险等级为"+riskStr+"的项目");
+	             $(".r-level").removeClass("R1").addClass("R2");//移除之前的评级，重新评级,R3为服务器返回的评级
+             <#elseif assessType?? && assessType=="3">
+	             $(".level-desc").text("");
+	             var riskStr ="WR1(保守型)、";
+  				 riskStr+="WR2(稳健型)、";
+  				 riskStr+="WR3(平衡型)、";
+  				 riskStr+="WR4(积极型)";
+	    	 	 $("#spandiv").html("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;您的风险承受能力为积极型。可出借风险等级为"+riskStr+"的项目");
+	             $(".r-level").removeClass("R1").addClass("R3");//移除之前的评级，重新评级,R3为服务器返回的评级
+	        <#elseif assessType?? && assessType=="4">
+	             var riskStr ="WR1(保守型)、";
+ 				 riskStr+="WR2(稳健型)、";
+ 				 riskStr+="WR3(平衡型)";
+	             $(".level-desc").text("");
+	    	 	 $("#spandiv").html("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;您的风险承受能力为平衡型。可出借风险等级为"+riskStr+"的项目");
+	             $(".r-level").removeClass("R1").addClass("R0");//移除之前的评级，重新评级,R3为服务器返回的评级
+             <#else>
+	        	 $(".level-desc").text("");
+	    	 	 $("#spandiv").html("尊敬的用户:<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;风险评估旨在了解您对风险的承受能力，帮助您降低风险。为了能给您提供更好的资产选择，请认真作答，感谢您的配合");
+	             $(".r-level").removeClass("R1").addClass("R4");//移除之前的评级，重新评级,R3为服务器返回的评级
+	             $("#t_1").text("风险承受能力评估");
+        	 </#if>
+            var nowQues = 0,
+                totalQues = $(".questions dd").length,
+                awsY = ["", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J"];//转换为对应答案;
+            // 开始答题
+            $(".start-qa").click(function() {
+                nowQues = 0
+                $(".sle").text('上一题').removeClass("over");
+                $(".overview").hide();
+                $(".qa-area").show();
+                $(".questions dd").hide();//
+                $(".questions dd").first().show();
+                $(".total").text(totalQues);
+                $(".n").text(nowQues);
+                $(".sle").css("color","#999");
+                $(".sle").css("border-color","#ccc");
+                $(".aws").removeClass("on");
+
+            });
+         	<#if isValid??>
+        	 $(".start-qa").click();
+        	</#if>
+            // 勾选答题
+            $(".aws").click(function () {
+                var _this = $(this);
+                //console.info(_this.attr("ansval"));
+                _this.parent("dd").data("answer", awsY[_this.index()]);//转换ABCD类型答案
+                $(this).addClass("on").siblings(".aws").removeClass('on');
+                $(this).attr("userflag","1").siblings(".aws").attr("userflag","0");
+                nowQues = $(this).parent().index();
+                var firstDd = $(this).parent().index() === 0;
+                if (!firstDd) {
+                    $(".sle").text("上一题");
+                }
+                $(".sle").css("border","1px solid #ff8c2f");
+                $(".sle").css("color","#ff8c2f");
+                console.info("答完第" + (nowQues + 1) + "题，您选择了" + awsY[_this.index()] + "，开始答第" + (nowQues + 2) + "题");
+                // 答至最后一题
+                if (nowQues == (totalQues - 1)) {
+                    $(".n").text(nowQues + 1);
+                    $(".bar").css("width", '100%');
+                    $(".sle").text("确定提交").addClass("over");
+                    return;
+                }
+                setTimeout(function () {
+                    _this.parent("dd").hide(300).next().show();
+                    $(".bar").css("width", ((nowQues + 1) / totalQues * 100) + '%');
+                    if (!(_this.hasClass('.on'))) {
+                        $(".n").text(nowQues + 1);
+                    }
+                }, 300);
+            })
+            // 上一题及提交问卷
+            $(".sle").click(function () {
+                var totalAnswer = [];
+                if ($(this).hasClass("over")) {
+                    // 提交按钮
+                    $(".questions dd").each(function () {
+                        totalAnswer.push($(this).data("answer"));
+                    })
+                    console.warn(totalAnswer);
+                   	if(ansArray!=null&&ansArray.length<=0){
+                   	 Jmsg("系统繁忙，请稍后再试");
+                   	 return;
+                   	}
+                 	var ansArray = new Array();
+                   	$(".aws").each(
+                   			function(){
+	                   			if($(this).attr("ansval")!=""&&$(this).attr("ansval")!=undefined&&$(this).attr("userflag")=='1'){
+	                   				ansArray.push($(this).attr("ansval"));
+	                   			}
+                   			}
+                   	)
+                   	var myparam = ansArray.join(",");
+            		$.ajax({
+            			cache: false,
+            	       	type: "POST",
+            	       	url:url,
+            	       	data:{"ansArray":myparam,"isSkipAssess":0},
+            	       	async: false,
+            	       	success: function(data) {
+            				var dateresult = eval("("+data+")");
+            	        	 if (dateresult.status!=undefined && dateresult.status=="YES") {
+            	        		 var rllea = "";
+            	        		 $("#t_1").text("您当前的风险承受能力");
+            	        		 if(dateresult.msg=="1"){
+            	        			 var riskStr ="WR1(保守型)";
+            	        			 $("#spandiv").html("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;您的风险承受能力为保守型。可出借风险等级为"+riskStr+"的项目");
+            	        			 rllea = "R1";
+            	        		 }else if(dateresult.msg=="2"){
+            	        			 	var riskStr ="WR1(保守型)、";
+            	        				riskStr+="WR2(稳健型)"
+            	        				$("#spandiv").html("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;您的风险承受能力为稳健型。可出借风险等级为"+riskStr+"的项目");
+            	        			 rllea = "R2";
+            	        		 }else if(dateresult.msg=="3"){
+            	        			 var riskStr ="WR1(保守型)、";
+	         	        				riskStr+="WR2(稳健型)、";
+	         	        				riskStr+="WR3(平衡型)";
+	         	        				riskStr+="WR4(积极型)";
+         	        					$("#spandiv").html("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;您的风险承受能力为积极型。可出借风险等级为"+riskStr+"的项目");
+            	        			 rllea = "R3";
+            	        		 }else{
+            	        			 var riskStr ="WR1(保守型)、";
+            	        				riskStr+="WR2(稳健型)、";
+            	        				riskStr+="WR3(平衡型)";
+                                     $("#spandiv").html("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;您的风险承受能力为平衡型。可出借风险等级为"+riskStr+"的项目");
+                                     rllea = "R0";
+                                 }
+                                 $(".level-desc").text("");
+            	        		 //if(dateresult.assessStatus=='1'){
+            	        			// Jalert("尊敬的用户：根据您本次风险测评的结果，您不符合我平台部分产品的投资条件，建议您选择与自己风险承受能力相匹配的产品，或重新进行风险测评，感谢您对亿钱贷的支持与信赖。");
+            	        	    // }
+                           localStorage.setItem('assessStatus','true')
+            	        		 $(".overview").show();
+            	        		 $(".r-level").removeClass("R0 R1 R2 R3");//移除之前的评级
+                                 var cName= $("#le_1").attr("class");
+                                 if(cName=='r-level R4'){
+                                 	$(".r-level").removeClass("R4").addClass(rllea);//移除之前的评级，重新评级,R3为服务器返回的评级
+                                 }else{
+                                	$(".r-level").removeClass("R1").addClass(rllea);//移除之前的评级，重新评级,R3为服务器返回的评级
+                                 }
+                                 $(".start-qa").text("重新评测").addClass("retest").css("right","11em");
+                                 $(".start-qa1").show();
+                                 $(".qa-area").hide();
+                                 $("#agreement_o").hide();
+                                 $("#agreement_t").show();
+                                 $("#stq_div_1").attr("style","right: 11em;");
+                                 $("#stq_div_2").show();
+            	        	}else{
+				        		 Jmsg(dateresult.msg);
+				        	}
+            	       	}
+            	   	});
+                } else {
+                	if((nowQues==-1) || (nowQues==0)){
+                        $(".sle").css("color","#999");
+                        $(".sle").css("border-color","#ccc");
+                	}
+                    // 上一题
+                    console.info("当前在答第" + (nowQues) + "题，开始答第" + (nowQues + 1) + "题");
+                    if (nowQues === -1) {
+                        return;
+                    }
+                    $(".questions dd").hide().eq(nowQues).show();
+                    nowQues--;
+                }
+            })
+        })
+
+        function skip(){
+        	Jconfirm('您的风险评估结果将默认为“保守型”。确定跳过？',function(){
+                // ajax，提交保守型
+                //答案Id
+				var ansArray = new Array();
+				var myparam = ansArray.join(",");
+				$.ajax({
+					cache: false,
+			       	type: "POST",
+			       	url:url,
+			       	data:{"ansArray":myparam,"isSkipAssess":1},
+			       	async: false,
+			       	success: function(data) {
+						var dateresult = eval("("+data+")");
+						 $("#t_1").text("您当前的风险承受能力");
+			        	 if (dateresult.status!=undefined && dateresult.status=="YES") {
+			        		 $(".level-desc").text("");
+    	    	    	 	 $("#spandiv").html("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;您的风险承受能力为保守型。可出借风险等级为WR1(保守型)的项目");
+			        		 $(".overview").show();
+        	        		 $(".r-level").removeClass("R2");//移除之前的评级
+                             $(".r-level").removeClass("R3");//移除之前的评级
+                             var cName= $("#le_1").attr("class");
+                             if(cName=='r-level R4'){
+                              	$(".r-level").removeClass("R4").addClass("R1");//移除之前的评级，重新评级,R3为服务器返回的评级
+                              }else{
+                             	$(".r-level").removeClass("R1").addClass("R1");//移除之前的评级，重新评级,R3为服务器返回的评级
+                              }
+                             $(".start-qa").text("重新评测").addClass("retest").css("right","11em");
+                             $(".start-qa1").show().addClass("retest");
+                             $(".qa-area").hide();
+                             $("#agreement_o").hide();
+                             $("#agreement_t");
+                             layer.closeAll();
+                             //if(dateresult.assessStatus=='1'){
+			        			// Jalert("尊敬的用户：根据您本次风险测评的结果，您不符合我平台部分产品的投资条件，建议您选择与自己风险承受能力相匹配的产品，或重新进行风险测评，感谢您对亿钱贷的支持与信赖。");
+	     	        	     //}
+                             $("#stq_div_1").attr("style","right: 11em;");
+                             $("#stq_div_2").show();
+			        	}else{
+			        		 layer.closeAll();
+			        		 Jmsg(dateresult.msg);
+			        	}
+			       	}
+			   	});
+               // $("#result").html("保守型——低风险级别产品");
+                //$("#result_desc").html("您的风险承担能力比较低，您关注资产的安全性远超于资产的收益性，所以低风险 、高流动性的投资品种比较适合您，这类投资的收益相对偏低。");
+             })
+        }
+
+        function gotoinvest(){
+        	<#if loanId??>
+        	location.href='${tzp.getContextPath()}/product/detail-confirm/${loanId}'
+        	<#else>
+	        	<#if prdId??>
+	        		location.href='${tzp.getContextPath()}/plan/hplan-comfirm';
+	        	<#else>
+	        		location.href='${tzp.getContextPath()}/spa/product/auto';
+	        	</#if>
+        	</#if>
+
+
+        }
+
+    </script>
+</body>
+
+<#include "/includes/count.html" />
+</html>

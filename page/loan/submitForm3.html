@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>${remark!''}-亿钱贷-A股上市公司深南股份携手红岭创投联袂打造的P2P平台</title>
+	<!-- 页面样式 -->
+	<style>
+		.subscription-success{
+			position: absolute;
+			top:50%;
+			left:50%;
+			margin:-100px 0 0 -150px;
+			width:300px;
+			height: 100px;
+			
+		}
+		.subscription-success .icon-cup{
+			font-size:56px;
+			color:#f29118;
+		}
+	</style>
+</head>
+<body>
+<!--出借成功信息-->
+<!--<div class="subscription-success">
+	<div class="content text-center">
+		<div class="clearfix">
+			<p><i class="icon-font icon-cup text-success">&lt;!&ndash;图标&ndash;&gt;</i></p>
+			<p class="text-default" style="margin:0 0 30px"><span id="timeStr">2</span>秒后自动跳转${remark!''}到新网银行绑卡注册...</p>
+		</div>
+	</div>
+</div>-->
+
+<!-- 充值表单框 -->
+<div>
+    <form class="mt-10 clearfix" action="/api/loan/push-user-test"  method="post" id="form66">
+		用户类型 <input name="userType" value='4' readonly><br/>
+		机构类型 <input name="organizeType" value='7' readonly><br/>
+		机构名称 <input name="organizeName" value='机构名称'><br/>
+		控制额度 <input name="creditTotalQuota" value='10000'><br/>
+		联系人电话 <input name="contactsTelphone" value='15852456255'><br/>
+		法人代表 <input name="legalPerson" value='法人姓名'><br/>
+		法人身份证号 <input name="legalPersonIdno" value='425136521954123456'><br/>
+		营业执照号 <input name="businessLicense" value='514525LAX856954EEE'><br/>
+		收款银行 <input name="bankCode" value='BOC'><br/>
+		开户行省份 <input name="bankProvince" value='广东省'><br/>
+		开户行城市 <input name="bankCity" value='深圳市'><br/>
+		开户行地址 <input name="bankAddress" value='开户行地址'><br/>
+		合作额度 <input name="totalQuota" value='10000'><br/>
+		机构简称 <input name="abbreviation" value='机构简称'><br/>
+		联系人 <input name="contactsPerson" value='联系人'><br/>
+		法人联系方式 <input name="legalPersonPhone" value='18652451254'><br/>
+		开户银行许可证核准号 <input name="bankApprovalNumber" value='123456'><br/>
+		注册资本 <input name="registerCapital" value='100000'><br/>
+		放款银行卡号 <input name="bankNo" value='6515445123545412'><br/>
+		逾期计算方式 <input name="overdueType" value='0'><br/>
+		基本概况描述 <input name="remark" value='基本概况描述'><br/>
+        <button type="button" id="tijiao">提交</button>
+	</form>
+</div>
+<script src="${tzp.getContextPath()}/public/js/risk/jquery.min.js?v=fab12e7"></script>
+<script type="text/javascript">
+
+    $('#tijiao').click(function(){
+        $("#form66").submit();
+    });
+
+</script>
+</body>
+</html>

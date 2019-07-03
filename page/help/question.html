@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>${faqType!'帮助中心'}-亿钱贷</title>
+    <#include "/includes/style.html" />
+    <!--页面样式-->
+    <link href="${tzp.getContextPath()}/dist/css/pages/user/helpCenter.css?v=13caf90" rel="stylesheet">
+</head>
+<body>
+<!-- 头部开始 -->
+<header data-am-widget="header" class="am-header am-header-default question-header" id="topHeader">
+	<div class="am-header-left am-header-nav">
+		<a id="nextBtn" href="javascript:;;" class="">
+			<i class="am-header-icon icon-font icon-prev"></i>
+			返回
+		</a>
+	</div>
+
+	<h1 class="am-header-title">
+		<a id="headerTitle" href="#title-link" class="">
+			亿钱贷
+		</a>
+	</h1>
+	<div class="am-header-right am-header-nav">
+		<a href="#right-link" class="">
+			<i class="am-header-icon am-icon-bars"></i>
+		</a>
+	</div>
+</header>
+<!-- 热点问题-->
+<div class="am-panel-group my-repayment-list" id="helpList">
+
+	<#list page.result as item>
+	<div class="am-panel am-panel-default">
+		<div class="am-panel-hd">
+			<h4 class="am-panel-title" data-am-collapse="{parent: '#myRepaymentList', target: '#do-not-say-1'}">
+				<div class="am-panel-hd am-g">
+					<div class="am-u-sm-11 am-text-default am-text-lg">
+						${item_index+1}、${item.faqQuestion}
+					</div>
+					<div class="am-u-sm-1 am-text-right am-text-default">
+						<i class="icon-font icon-bottom am-text-primary arrow"></i>
+					</div>
+				</div>
+			</h4>
+		</div>
+		<div id="do-not-say-1" class="am-panel-collapse am-collapse">
+			<div class="am-panel-bd am-g">
+				<div class="am-u-sm-12">
+					<div class="content" style="display:block;">
+					${item.faqAnswer}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</#list>
+</div>
+<#include "/includes/script.html" />
+<!--页面js-->
+<script src="${tzp.getContextPath()}/dist/js/pages/user/helpCenter.js?v=11bf21b"></script>
+</body>
+<#include "/includes/count.html" /> 
+</html>

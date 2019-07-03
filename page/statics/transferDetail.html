@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>转让详情-亿钱贷</title>
+    <#include "/includes/style.html" />
+    <!--页面样式-->
+    <link href="${tzp.getContextPath()}/dist/css/pages/user/transferDetail.css?v=423b9c0" rel="stylesheet">
+</head>
+<body>
+<!-- 头部开始 -->
+<#include "/includes/header.html" />
+<!--转让详情-->
+<div class="am-container">
+    <!--项目名称-->
+    <div class="am-g product-info-content title">
+        <div class="am-u-sm-8 name">
+            <div class="cell">
+                <h2 class="am-text-truncate">
+                    <span class="am-badge am-radius label-qn vertical-middle">微</span>
+                    <span class="vertical-middle">微花贷_20181017_0578</span>
+                </h2>
+            </div>
+        </div>
+        <div class="am-u-sm-4 am-text-right status">
+            <p class="am-text-right">
+                已转让
+            </p>
+        </div>
+    </div>
+    <!--项目详情-->
+    <!--正常项目不可转让  -->
+    <div class="product-info-content">
+        <div class="repay-title">
+            <i class="icon-font icon-zzxx"></i>
+            <span class="title-info">债转信息</span>
+        </div>
+        <div class="am-g primary-info">
+            <div class="am-u-sm-4 rate">
+                <p class="am-text-default">22.12</p>
+                <p id="repayIcon" class="am-text-muted">垫付利息(元)<i class="icon-font icon-wenhao1"></i></p>
+            </div>
+            <div class="am-u-sm-4 am-text-center">
+                <p class="am-text-default">2,016.00</p>
+                <p class="am-text-muted">债权本金(元)</p>
+            </div>
+            <div class="am-u-sm-4 am-text-right">
+                <p class="am-text-default">1</p>
+                <p class="am-text-muted">手续费(元)</p>
+            </div>
+        </div>
+        <ul>
+            <li>
+                <span class="am-text-default name">转让日期</span>
+                <span class="txt am-text-right am-fr">2018-11-23 14:23</span>
+            </li>
+        </ul>
+    </div>
+    <!-- 可转让及已转让的项目详情 -->
+    <div class="product-info-content">
+        <a class="link" href="/member/invest/agreement/2d9873b27665435c8825be2d96ad2666?type=2">
+            《债权转让协议》<span class="am-fr"><i class="icon-font icon-next am-text-primary vertical-middle"></i></span>
+        </a>
+    </div>
+    <p class="am-text-center"><a class="am-text-primary" href="" style="font-weight: bold">原项目资产详情<i class="icon-font icon-next am-text-primary vertical-middle"></i></a></p>
+</div>
+<#include "/includes/script.html" />
+<script>
+    var isShowOpenModal=<#if  !(_p2p_member_user??)|| _p2p_member_user.isDepositary=='1' >false<#else>true</#if>;
+</script>
+<!--页面js-->
+<script src="${tzp.getContextPath()}/dist/js/pages/user/transferDetail.js?v=585bded"></script>
+</body>
+<#include "/includes/count.html" /> 
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta name="x5-page-mode" content="no-title">
+    <title>跨年大派送，史无前利</title>
+    <style>
+                html,body{overflow-x:hidden; margin:0;padding:0;-webkit-tap-highlight-color:rgba(0,0,0,0);font:16px "Microsoft YaHei",Arial,Helvetica,sans-serif,tahoma,"宋体";-webkit-overflow-scrolling: touch;}
+        ul,li dl, dt{list-style:none;padding: 0;margin: 0;}
+        img{max-width:100%;border:none;display: block;}
+        i,em{font-style:inherit;}
+        input,button,textarea{outline: none;resize: none;border: 0;-webkit-appearance: none;opacity: 100;-webkit-opacity:100;}
+        #all-750{max-width:750px;min-width:320px;margin:0 auto;position: relative;box-sizing:border-box;}
+        h1,h2,h3,h4,h5,h6{font-weight: normal; margin: 0;padding: 0;}
+        p{ margin: 0;padding: 0;}
+        a{text-decoration: none;}
+        section{width:100%;height:100%;margin:0 auto;position: relative;}
+        section > div{width: 100%;height:100%;position: absolute;}
+
+        .activity-a > a{width: 4.69333rem;  height: 1.3866rem;  top: 2.4533rem;  position: absolute;  left: 6.5066rem;}
+        .popup{width: 100%;height: 100%;position: fixed;top:0;bottom: 0;left: 0;background-color: #000;opacity:0.8; filter:alpha(opacity=80); z-index: 9;display: none;}
+        .details-box{ width: 13.9093rem;height: 16.8667rem; position: fixed; left: 50%; margin-left: -6.8693rem;top: 50%; margin-top: -8.4693rem;font-size: 0.512rem; background-color: #fff;
+            color: #333;  border-radius: 0.1067rem;  overflow: hidden; z-index: 10; display: none;}
+        .details-box > div{height: 100%; overflow-x: hidden; -webkit-overflow-scrolling: touch; position: absolute; top: 0;  margin: 0.5333rem 0 0.5333rem 0.5333rem; padding-right: 0.5333rem;}
+        .details-box h1{font-size: 0.4267rem;}
+        .details-box p{font-size: 0.3413rem;margin-top: 0.2267rem;}
+        .details-box > div > div{width: 5.5467rem;height: 1.28rem;line-height: 1.28rem;text-align: center;font-size: 0.4267rem;margin: 1.0667rem auto;cursor: pointer;border-radius: 0.2133rem;color: #fff;background-color: #FF6F4C;}
+        .activity-p{font-size: 0.64rem; text-align: center; color: #000; text-decoration: underline;}
+    </style>
+    <script>
+        (function(doc, win){
+            var docEl = doc.documentElement,
+                resizeEvt ='orientationchange'in window ?'orientationchange':'resize',
+                recalc =function(){
+                    var clientWidth = docEl.clientWidth;
+                    if(clientWidth>750)
+                        clientWidth=750;
+                    docEl.style.fontSize =20*(clientWidth /320)+'px';
+                };
+            if(!doc.addEventListener)return;
+            win.addEventListener(resizeEvt, recalc,false);
+            doc.addEventListener('DOMContentLoaded', recalc,false);
+        })(document, window);
+    </script>
+</head>
+<body>
+<div id="all-750">
+    <img src="${tzp.getContextPath()}/public/images/newyear/1.jpg?v=0d1b2e5">
+    <img src="${tzp.getContextPath()}/public/images/newyear/2.jpg?v=ab7c519">
+    <img src="${tzp.getContextPath()}/public/images/newyear/3.jpg?v=c877215">
+    <img src="${tzp.getContextPath()}/public/images/newyear/4.jpg?v=811e42e">
+    <section>
+   	<#if !_p2p_member_user??>
+    	<div class="activity-a">
+            <a href="${tzp.getContextPath()}/spa/account/login?callbackUrl=${tzp.getContextPath()}/event/newyear"  data-rule='${minRuleId!''}'></a>
+        </div>
+        <img src="${tzp.getContextPath()}/public/images/newyear/5.jpg?v=aa01c06">
+    <#else>
+    	<div class="activity-a">
+            <a  href="javascript:;;"  class="award"   data-rule='${minRuleId!''}'></a>
+        </div>
+        <img src="${tzp.getContextPath()}/public/images/newyear/5.jpg?v=aa01c06">
+    </#if>
+       
+    </section>
+    <section>
+     <#if !_p2p_member_user??>
+    	<div class="activity-a">
+            <a href="${tzp.getContextPath()}/spa/account/login?callbackUrl=${tzp.getContextPath()}/event/newyear"  data-rule='maxRuleId''}'></a>
+        </div>
+        <img src="${tzp.getContextPath()}/public/images/newyear/6.jpg?v=ed2268c">
+    <#else>
+    	<div class="activity-a">
+            <a  href="javascript:;;"  class="award"  data-rule='${maxRuleId!''}'></a>
+        </div>
+        <img src="${tzp.getContextPath()}/public/images/newyear/6.jpg?v=ed2268c">
+    </#if>
+    
+    </section>
+    <img src="${tzp.getContextPath()}/public/images/newyear/7.jpg?v=265003c">
+    <img src="${tzp.getContextPath()}/public/images/newyear/8.jpg?v=23f00ff">
+    <img src="${tzp.getContextPath()}/public/images/newyear/9.jpg?v=db44ef4">
+    <img src="${tzp.getContextPath()}/public/images/newyear/10.jpg?v=343d0f4">
+    <img src="${tzp.getContextPath()}/public/images/newyear/11.jpg?v=8ed30f8">
+    <img src="${tzp.getContextPath()}/public/images/newyear/12.jpg?v=e6ddc4d">
+    <img src="${tzp.getContextPath()}/public/images/newyear/13.jpg?v=4a04810">
+    <#if _p2p_member_user??>
+   	<p style="position: relative;top:-.4rem;left:2rem;font-size:12px;color:red;height:0;">您目前累计的投资额：${(amt!0)?string(',##0.00')}元</p>
+   	</#if>
+    <img src="${tzp.getContextPath()}/public/images/newyear/14.jpg?v=9c63bb1">
+    <img src="${tzp.getContextPath()}/public/images/newyear/15.jpg?v=cc492e7">
+    <img src="${tzp.getContextPath()}/public/images/newyear/16.jpg?v=914ae2a">
+    <section>
+        <div>
+            <p class="activity-p">活动细则</p>
+        </div>
+        <img src="${tzp.getContextPath()}/public/images/newyear/19.jpg?v=2007aba">
+    </section>
+    <img src="${tzp.getContextPath()}/public/images/newyear/20.jpg?v=7f1d6d2">
+</div>
+<div class="popup"></div>
+<div class="details-box">
+    <div>
+        <h1>活动规则：</h1>
+         <p>1、活动一奖励券，每人限领五张，单笔认购只能同时使用一张奖励券；</p>
+ <p>2、奖励券奖励与所投产品一同起息、一同派息（起息标准、派息标准以产品说明书为准）；</p>
+ <p>3、活动二收官奖：活动期内，助力任意产品认购完成的最后一名客户均可获得10元现金奖励；</p>
+ <p>4、活动二最高金额奖：任意一个产品下累计认购金额最高的投资人获得奖励30元现金，在产品认购完成后的3个工作日内完成发放；</p>
+ <p>5、以上活动新手产品均不参与，投就送活动现金奖励将于活动结束后的7个工作日内完成发放；</p>
+ <p>6、活动期间，如规则有所调整，以本平台公布的新公告或公告刷新的内容为准，恕不再另外单独向用户进行提醒；</p>
+ <p>7、若有疑问可咨询微信在线客服或拨打客服电话：400-090-9968（工作日9:00-18:00）；</p>
+ <p>8、本活动最终解释权归亿钱贷平台所有。</p>
+        <div>我已了解</div>
+    </div>
+</div>
+<script src="${tzp.getContextPath()}/public/js/risk/jquery.min.js?v=fab12e7"></script>
+<script src="${tzp.getContextPath()}/public/js/layer/layer.m.js?v=c42fc5d"></script>
+<script type="text/javascript">
+var isSubmit = false;
+$(function(){
+	if(isSubmit){
+		return;
+	}
+	isSubmit = true;
+	$(".award").click(function(){
+		var rule = $(this).data("rule");
+		$.post("${tzp.getContextPath()}/event/newyear/award",{ruleId:rule},function(data){
+			if(data.success){
+				Jmsg("投资券已发放到您的账户");
+				isSubmit = false;
+				return;
+			}
+			if(data.code=='-1'){
+				window.location.href='${tzp.getContextPath()}/spa/account/login?callbackUrl=${tzp.getContextPath()}/event/newyear'
+				isSubmit = false;
+				return;
+			}else{
+				Jmsg(data.msg);
+				isSubmit = false;
+			}
+		})
+	})
+	
+    $(".activity-p").click(function () {
+        $(".popup,.details-box").show();
+    });
+    $(".details-box > div > div").click(function () {
+        $(".popup,.details-box").hide();
+    });
+})
+function toDownload(){
+	Jmsg('请下载亿钱贷APP参与活动',function(){
+		window.location.href='${download!''}'
+	})
+}
+/**
+ * 消息提示框
+ */
+function Jmsg(txt,_callBack){
+	var argNum = arguments.length;
+	layer.open({
+	    content: txt,
+	    time: 2,
+	    shade: false,
+	    style: 'padding:20px;font-size:14px;background-color: #494949; color:#fff;',
+	    end : argNum>=2?_callBack:function() {
+		}
+	});
+}
+</script>
+</body>
+<#include "/includes/count.html" /> 
+</html>

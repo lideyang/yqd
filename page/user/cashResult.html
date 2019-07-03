@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>提现成功-亿钱贷</title>
+    <#include "/includes/style.html" />
+    <!--页面样式-->
+    <link href="${tzp.getContextPath()}/dist/css/pages/user/withdrawSuccess.css?v=eca8e3a" rel="stylesheet">
+</head>
+<body class="main-bg">
+<!-- 头部开始 -->
+<#include "/includes/header.html" />
+<!--提现成功面板-->
+<div class="am-panel am-panel-default success-panel">
+
+<#if failMessage?? >
+		<div class="am-panel-bd am-text-center">
+	        <i class="icon-font icon-error info-icon am-text-danger"></i>
+	        <h3 class="am-text-center">提现失败</h3>
+	        <p>${failMessage}</p>
+	        <p>&nbsp;</p>
+	        <p>&nbsp;</p>
+	        <a href="${tzp.getContextPath()}/spa/user/center" class="am-btn am-btn-secondary am-round am-btn-block am-btn-xl">返回我的账户</a>
+	    </div>
+<#else>
+    <div class="am-panel-bd am-text-center">
+        <i class="icon-font icon-right1 info-icon am-text-success"></i>
+        <h3 class="am-text-center am-text-default">${(result)!'您的提现申请已提交，请等待系统审核!'}</h3>
+        <hr/>
+        <div class="list am-text-left">
+            <div class="bg am-fl">
+                <img src="${tzp.getContextPath()}/public/images/icon/transfer_success_list.png?v=ae04004" />
+            </div>
+            <ul>
+                <li>
+                    <h3 class="am-text-secondary">提交提现申请</h3>
+                    <p class="am-text-muted">${(applyDate?string('yyyy-MM-dd HH:mm'))!''}</p>
+                </li>
+                <li>
+
+                    <h3 class="am-text-default">银行处理中</h3>
+                    <p class="am-text-muted">${(applyDate?string('yyyy-MM-dd HH:mm'))!''}</p>
+                </li>
+                <!--<li>-->
+                    <!--<h3 class="am-text-default">预计到账实际时间</h3>-->
+                    <!--<p class="am-text-muted">${timeStr!''}</p>-->
+                <!--</li>-->
+            </ul>
+        </div>
+        <a href="${tzp.getContextPath()}/spa/user/center" class="am-btn am-btn-secondary am-round am-btn-block am-btn-xl success-btn">返回我的账户</a>
+    </div>
+</#if>
+</div>
+<#include "/includes/script.html" />
+</body>
+<!--页面js-->
+<script src="${tzp.getContextPath()}/dist/js/pages/user/withdrawSuccess.js?v=ba25cb9"></script>
+<#include "/includes/count.html" />
+</html>

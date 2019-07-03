@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>项目详情-亿钱贷</title>
+    <#include "/includes/style.html" />
+    <!--页面样式-->
+    <link href="${tzp.getContextPath()}/dist/css/pages/user/autoPayDetailList.css?v=7a67fa1" rel="stylesheet">
+    <#if !weixin>
+    <script>
+        var isWeiXin = false;
+    </script>
+    <#else>
+    <script>
+        var isWeiXin = true;
+    </script>
+</#if>
+</head>
+<body>
+<!-- 头部开始 -->
+<#include "/includes/header.html" />
+<!--内容开始-->
+<div class="am-container">
+    <!--项目名称-->
+    <!--<div class="am-g product-info-content title">-->
+         <!--<div class="am-u-sm-6 am-u-sm-offset-6 am-text-right">-->
+             <!--待投金额：<span class="am-text-secondary">${(amt?string(',##0.00'))!0}</span>元-->
+         <!--</div>-->
+    <!--</div>-->
+    <input type="hidden" value="${investId!''}" id="investId"/>
+    <input type="hidden" value="${type!''}" id="type"/>
+      <#if investStatus?? && investStatus=='6'>
+	    <div class="total-pro am-text-center">
+	      <span class="vertical-align">当前排队进度为${sortPer!''}%</span>
+	      <div class="am-progress vertical-align product-progress" id="productProgress">
+	        <div class="am-progress-bar-secondary" style="width:${sortPer!''}%">
+	          <span class="am-progress-bar-rate am-text-center"></span>
+	        </div>
+	      </div>
+	      <i class="icon-font icon-wenhao am-text-muted" id="progressIcon"></i>
+	    </div>
+     </#if> 
+    <!--项目详情-->
+    <div class="product-info-content product-info-detail">
+        <table>
+            <thead>
+                <tr>
+                    <th>项目名称</th>
+                    <th><#if type?? && type=='1'>剩余本金<#else>出借总额</#if>(元)</th>
+                    <th>期限</th>
+                </tr>
+            </thead>
+            <tbody id="investDetailTable">
+            </tbody>
+        </table>
+        <div class="row" id="paginationList" style="display: none">
+            <div class="am-u-sm-10 am-u-sm-centered">
+                <ul data-am-widget="pagination" class="am-pagination am-pagination-select">
+                    <li class="am-pagination-prev">
+                        <a disabled href="javascript:;;" class="am-btn am-btn-default" id="paginationPrevBtn">上一页</a>
+                    </li>
+                    <li class="am-pagination-select">
+                        <select id="paginationSelect">
+                        </select>
+                    </li>
+                    <li class="am-pagination-next">
+                        <a href="javascript:;;" class="am-btn am-btn-default" id="paginationNextBtn">下一页</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>
+<p class="am-text-center am-text-muted">市场有风险 出借需谨慎</p>
+<script type="text/x-handlebars-template" id="tpi-list-item">
+    {{#each this}}
+    <tr data-debt="{{debtId}}" data-loan="{{loanId}}">
+        <td>{{loanTitle}}</td>
+		<#if type?? && type=='1'>
+        <td>{{formatCurrency currentValue}}</td>
+		<#else>
+		<td>{{formatCurrency buyPrice}}</td>
+		</#if>
+        <td>{{loanPeriodtStr}}</td>
+    </tr>
+    {{/each}}
+</script>
+<script type="text/javascript">
+</script>
+<#include "/includes/script.html" />
+<!--页面js-->
+<script src="${tzp.getContextPath()}/dist/js/pages/user/autoPayDetailList.js?v=e309c54"></script>
+</body>
+<#include "/includes/count.html" />
+</html>

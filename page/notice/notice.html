@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>公告列表-亿钱贷</title>
+    <#include "/includes/style.html" />
+    <!--页面样式-->
+    <link href="${tzp.getContextPath()}/dist/css/pages/static/notice.css?v=876d8ce" rel="stylesheet">
+</head>
+<body>
+<!-- 头部开始 -->
+<#include "/includes/header.html" />
+<div class="mescroll" id="wrapper">
+    <ul class="notice" id="content">
+        <li>
+            内容加载中...
+        </li>
+    </ul>
+</div>
+<!--底部菜单-->
+<#include "/includes/script.html" />
+<script type="text/x-handlebars-template" id="tpi-list-item">
+    {{#each this}}
+    <li>
+        <p class="time am-text-center am-text-default">{{dayFormater createTime}}</p>
+        <div class="am-panel">
+            <h2 class="am-text-truncate am-text-default">{{title}}</h2>
+            <p class="am-text-right">
+                <a href="/article/notice/{{uuid}}" class="am-btn am-round am-text-default">详情 ></a>
+            </p>
+        </div>
+    </li>
+    {{/each}}
+</script>
+<!--底部菜单-->
+
+<!--页面js-->
+<script src="${tzp.getContextPath()}/dist/js/pages/static/notice.js?v=2a114d5"></script>
+</body>
+<#include "/includes/count.html" /> 
+</html>

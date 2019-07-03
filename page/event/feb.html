@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>领完年终奖励，再享年终分红-亿钱贷</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.5, maximum-scale=0.5, user-scalable=0">
+    <meta content="telephone=no" name="format-detection">
+    <script>
+        //设置rem
+        (function (doc, win) {
+            var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize';
+            var dpr = window.devicePixelRatio || 1;
+            // adjust body font size
+            function setBodyFontSize() {
+                if (document.body) {
+                    document.body.style.fontSize = '24px'
+                }
+                else {
+                    document.addEventListener('DOMContentLoaded', setBodyFontSize)
+                }
+            }
+
+            setBodyFontSize();
+            function setRemUnit() {
+                var clientWidth = docEl.clientWidth;
+                if (!clientWidth) return;
+                docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+            }
+
+            setRemUnit()
+            if (!doc.addEventListener) return;
+            win.addEventListener(resizeEvt, setRemUnit);
+            window.addEventListener('pageshow', function (e) {
+                if (e.persisted) {
+                    setRemUnit()
+                }
+            })
+        })(document, window);
+    </script>
+    <!-- 公共样式 -->
+    <link href="${tzp.getContextPath()}/dist/css/global.css?v=63e48b6" rel="stylesheet">
+    <link rel="stylesheet" href="/dist/css/pages/activity/feb2.css?v=67ebf3c" />
+</head>
+<body style="font-size:20px;">
+<div class="main-content">
+    <div class="red-layer am-text-center">
+        <p class="am-text-center">今日剩余可领数量为<span id="klqzs"><#if (_p2p_member_user)??>${(5-count!0)?round}<#else>5</#if></span>个</p>
+        <ul id="redList">
+      <#if rules??>
+             <#list rules as rule>
+                <li>
+                    <i class="icon wiggle">${(rule.awardAmount)}<span>%</span></i>
+                    <!--<h4>奖励券${(rule.awardAmount)}%</h4>-->
+                    <#if (_p2p_member_user)??>
+                    		<#if (count)?? && count gte 5>
+								<a class="btn btn-disabled"  href="javascript:;">明日再来</a>
+							<#else>
+								<a class="btn btn-link"  href="javascript:;" data-id="${(rule.ruleId)!''}">立即领取</a>
+							</#if>
+                    <#else>
+                    	<a class="btn"  href="/spa/account/login?callbackUrl=/event/feb">立即登录</a>
+                    </#if>
+                    <p>${(rule.limitPeriodsStr)!''}</p>
+                </li>
+              </#list>
+             </#if>
+        </ul>
+    </div>
+</div>
+<div class="opt">
+    <h4 class="">活动规则</h4>
+    <ul>
+        <li>1、待收本金≥1000元可领奖励券，每天可领取的总数为5张。</li>
+        <li>2、奖励券领取后在我的红包中查看使用规则，现金红包与奖励券不能同时使用</li>
+        <li>3、活动最终解释权归平台所有，如因监管要求对活动进行规则调整或下线处理，以页面刷新或公告内容为准。</li>
+    </ul>
+</div>
+<div class="copy-right">
+    <p>© 2019 亿钱贷 | All rights reserved </p>
+    <p>深圳市亿钱贷电子商务有限公司 <a href="http://www.miit.gov.cn/" rel="noopener noreferrer" target="_blank">粤ICP备14041671号-1</a></p>
+    <p>市场有风险，出借需谨慎</p>
+</div>
+<div class="reward-layer" style="display: none" id="rewardLayer">
+    <h2>恭喜您领取成功</h2>
+    <p class="am-text-center"><img class="pig" src="/public/images/active/feb2/pig2.png?v=642d9e4" /></p>
+    <p>您今日已经领取了<span class="am-text-secondary" id="amountTxt">0</span>张</p>
+    <p>还可以领取<span class="am-text-secondary" id="reTxt">0</span>张</p>
+    <a id="modalBtn" class="btn" href="javascript:;;">知道了</a>
+</div>
+<#include "/includes/script.html" />
+<!--页面js-->
+<script src="${tzp.getContextPath()}/dist/js/pages/activity/feb2.js?v=e274148"></script>
+</body>
+<#include "/includes/count.html" />
+</html>

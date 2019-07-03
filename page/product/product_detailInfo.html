@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>项目详情-亿钱贷</title>
+    <#include "/includes/style.html" />
+    <!--页面样式-->
+    <link href="${tzp.getContextPath()}/dist/css/pages/product/detailInfo.css?v=3fcceb6" rel="stylesheet">
+</head>
+<body>
+<!-- 头部开始 -->
+<#include "/includes/header.html" />
+<!--内容开始-->
+<div class="am-container">
+    <!--项目详情-->
+    <div class="product-info-content">
+        <div data-am-widget="titlebar" class="am-titlebar am-titlebar-default">
+            <h2 class="am-titlebar-title">
+                ${loan.loanTitle!''}
+            </h2>
+        </div>
+        <ul>
+            <li>
+                <span class="am-text-default name">募集总额</span>
+                <span class="txt am-text-right am-fr">${(loan.loanAmt!0)?string(',##0')}元</span>
+            </li>
+            <li>
+                <span class="am-text-default name">
+                    借款期限
+                </span>
+                <span class="txt am-text-right am-fr">${loan.loanPeriod}
+                		<#if loan.periodStr=='月'>
+                            	个月
+                        <#else>
+                            	${loan.periodStr!'-'}
+                        </#if>
+                </span>
+            </li>
+            <li>
+                <span class="am-text-default name">还款方式</span>
+                <span class="txt am-text-right am-fr">${loan.repayModeStr!''}</span>
+            </li>
+            <li>
+                <span class="am-text-default name">协议约定年化利率</span>
+                <span class="txt am-text-right am-fr">${loan.platRate!'-'}%</span>
+            </li>
+            <li>
+                <span class="am-text-default name">平台奖励</span>
+                <span class="txt am-text-right am-fr">${loan.awardRate!'0'}%</span>
+            </li>
+            <li>
+                <span class="am-text-default name">起息日</span>
+                <span class="txt am-text-right am-fr">交易所放款后起息</span>
+            </li>
+            <li>
+                <span class="am-text-default name">收款日</span>
+                <span class="txt am-text-right am-fr">到期日后三个工作日内</span>
+            </li>
+            <li>
+                <span class="am-text-default name">认购开始</span>
+                <span class="txt am-text-right am-fr">${(loan.releaseTime?string('yyyy-MM-dd HH:mm:ss'))!''}</span>
+            </li>
+            <li>
+                <span class="am-text-default name">认购截止</span>
+                <span class="txt am-text-right am-fr">${(loan.assetsDeadline?string('yyyy-MM-dd HH:mm:ss'))!''}</span>
+            </li>
+        </ul>
+    </div>
+    <div class="product-info-content">
+        <div data-am-widget="titlebar" class="am-titlebar am-titlebar-default">
+            <h2 class="am-titlebar-title">
+                相关说明
+            </h2>
+        </div>
+        <ul>
+        <#if (filepro?? && filepro!='') || (file?? && file!='')>
+	        <#if _p2p_member_user??>
+	        	 <li>
+	                <a href="${filepro!''}" class="am-text-info">《产品说明书》</a>
+	            </li>
+	            <li>
+	                <a href="${file!''}" class="am-text-info">《风险及禁止性行为提示书》</a>
+	            </li>
+	        <#else>
+	        	 <li>
+	                <a href="${tzp.getContextPath()}/spa/account/login" class="am-text-info">《产品说明书》</a>
+	            </li>
+	            <li>
+	                <a href="${tzp.getContextPath()}/spa/account/login" class="am-text-info">《风险及禁止性行为提示书》</a>
+	            </li>
+	        </#if>
+         </#if>   
+        </ul>
+    </div>
+    <div class="product-info-content paipaile-content">
+        <div data-am-widget="titlebar" class="am-titlebar am-titlebar-default">
+            <h2 class="am-titlebar-title">
+                <a href="${tzp.getContextPath()}/product/detail-about/${loan.loanId!''}" class="am-text-default am-fr">详细说明 ></a>
+            </h2>
+        </div>
+        <ul>
+            <li>收益权转让产品</li>
+            <li>金融资产交易所挂牌发行</li>
+            <li>资产发行方承担产品本息兑付</li>
+            <li>亿钱贷平台提供信息技术服务</li>
+        </ul>
+    </div>
+    <div class="product-info-content mechanism-content">
+        <div data-am-widget="titlebar" class="am-titlebar am-titlebar-default">
+            <h2 class="am-titlebar-title">
+                合作机构
+                <a href="${tzp.getContextPath()}/product/detail-mechanism/${loan.loanId!''}" class="am-text-default am-fr">详细说明 ></a>
+            </h2>
+        </div>
+      <div class="am-g info">
+            <div class="am-u-sm-3">
+             <#if logo??> <img src="${logo}" title="${info.organizeName!''}" ></#if>
+            </div>
+            <div class="am-u-sm-9">
+                <h3>${info.organizeName!''}</h3>
+                <p class="am-text-muted">${info.shortRemark!''}</p>
+            </div>
+        </div>
+        <p class="am-text-right am-text-default"><#if info.regulatoryBankCn??>资金监管：${info.regulatoryBankCn!''}</#if></p>
+    </div>
+    <div class="product-info-content">
+        <div data-am-widget="titlebar" class="am-titlebar am-titlebar-default">
+            <h2 class="am-titlebar-title">
+                产品优势
+            </h2>
+        </div>
+        <div class="safe-list">
+            <div class="am-g">
+                <div class="am-u-sm-2">
+                    <i class="icon-font icon-gov"></i>
+                </div>
+                <div class="am-u-sm-10">
+                    <h3>上市背景</h3>
+                    <p>A股上市全资控股，信息更透明</p>
+                </div>
+            </div>
+            <div class="am-g">
+                <div class="am-u-sm-2">
+                    <i class="icon-font icon-safe"></i>
+                </div>
+                <div class="am-u-sm-10">
+                    <h3>风控体系</h3>
+                    <p>双重风控，四大体系为您守护</p>
+                </div>
+            </div>
+            <div class="am-g">
+                <div class="am-u-sm-2">
+                    <i class="icon-font icon-protect"></i>
+                </div>
+                <div class="am-u-sm-10">
+                    <h3>优质资产</h3>
+                    <p>合作机构严格甄选优质资产</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<p class="am-text-center am-text-muted">市场有风险 出借需谨慎</p>
+
+<#include "/includes/script.html" />
+<!--页面js-->
+<script src="${tzp.getContextPath()}/dist/js/pages/product/detailInfo.js?v=8c166ce"></script>
+</body>
+<#include "/includes/count.html" /> 
+</html>

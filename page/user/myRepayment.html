@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>我的回款-亿钱贷</title>
+    <#include "/includes/style.html" />
+    <!--页面样式-->
+    <link href="${tzp.getContextPath()}/dist/css/pages/user/myRepayment.css?v=8b4cf04" rel="stylesheet">
+</head>
+<body>
+<!-- 头部开始 -->
+<#include "/includes/header.html" />
+<!--我的回款-->
+<div class="am-panel-group my-repayment-list" id="myRepaymentList">
+	<#if (repayData?? && repayData?size gt 0) > 
+		<#list repayData as repay>
+		<div class="am-panel am-panel-default">
+        <div class="am-panel-hd">
+            <h4 class="am-panel-title <#if repay_index==0>am-text-primary</#if>" data-am-collapse="{parent: '#myRepaymentList', target: '#do-not-say-${repay_index+1}'}">
+                <div class="am-panel-hd am-g">
+                    <div class="am-u-sm-5">
+                        <h2>
+                            <i class="icon-font icon-date"></i>${repay.yearMonth}
+                        </h2>
+                    </div>
+                    <div class="am-u-sm-7 am-text-right am-text-default">
+                    	<#assign investStr ='已收'/>
+                    		<#if (repay.repayList?? && repay.repayList?size gt 0) >
+                    		<#list repay.repayList as repayBean>
+                    			<#if repayBean.investStatus!='4'>
+                    				<#assign investStr ='待收'/>
+                    				  <#break>
+                    			</#if>
+                    		</#list>
+                    		 </#if>
+                        <span>当月${investStr}<span class="am-text-secondary">${(repay.totalAmt?string(',##0.##'))!0}</span>元</span><i class="icon-font <#if repay_index==0>icon-arrow-down-new<#else>icon-bottom</#if> am-text-info"></i>
+                    </div>
+                </div>
+            </h4>
+        </div>
+        <div id="do-not-say-${repay_index+1}" class="am-panel-collapse am-collapse <#if repay_index==0>am-in</#if>">
+           	<#if (repay.repayList?? && repay.repayList?size gt 0) >
+           		<#list repay.repayList as repayBean>
+		            <div class="am-panel-bd am-g">
+		                <div class="am-u-sm-6">
+		                    <h2 class="am-text-default">
+		                       ${repayBean.prdName }
+		                    </h2>
+		                    <p class="am-text-muted">
+								<span class="am-text-secondary">${((repayBean.allIncome+repayBean.principal)?string(',##0.##'))!0}</span>元
+		                    </p>
+		                </div>
+		                <div class="am-u-sm-4 status am-text-muted am-text-right">
+							${(repayBean.settleDate?string('yyyy-MM-dd'))!'-'}
+		                </div>
+		                <div class="am-u-sm-2 status">
+		                    <h2 class="am-text-right am-text-default"><#if repayBean.investStatus!='4'>待收<#else>已收</#if></h2>
+		                </div>
+		            </div>	
+	            </#list>
+            </#if>
+        </div>
+    </div>
+	</#list>
+	<#else>
+		<div class="mescroll-empty">
+			<i class="icon-font icon-empty empty-icon"></i>
+			<p class="empty-tip">暂无回款计划~</p>
+			<a href="/spa/product/auto" class="am-btn am-btn-primary am-radius">去出借</a>
+		</div>
+	</#if>
+</div>
+<#include "/includes/script.html" />
+<!--页面js-->
+<script src="${tzp.getContextPath()}/dist/js/pages/user/myRepayment.js?v=a0737cd"></script>
+</body>
+<#include "/includes/count.html" /> 
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>绑定银行卡成功-亿钱贷</title>
+    <#include "/includes/style.html" />
+    <!--页面样式-->
+    <link href="${tzp.getContextPath()}/dist/css/pages/account/bankCardSuccess.css?v=4520955" rel="stylesheet">
+</head>
+<body class="main-bg">
+<!-- 头部开始 -->
+<#include "/includes/header.html" />
+<!--注册面板-->
+<div class="am-panel am-panel-default band-card-success-panel">
+    <div class="am-panel-bd am-text-center">
+        <i class="icon-font icon-right1 info-icon am-text-success"></i>
+        <p class="am-text-center am-text-default">银行卡绑定成功！</p>
+        <a href="${tzp.getContextPath()}/member/account/recharge" class="am-btn am-btn-secondary am-round am-btn-block am-btn-xl bank-card-btn">去充值</a>
+    </div>
+</div>
+<#include "/includes/script.html" />
+</body>
+<!--页面js-->
+<script src="${tzp.getContextPath()}/dist/js/pages/account/bankCardSuccess.js?v=75e3386"></script>
+<#include "/includes/count.html" /> 
+</html>

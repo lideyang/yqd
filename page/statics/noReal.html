@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>开通存管账户-亿钱贷</title>
+    <#include "/includes/style.html" />
+    <!--页面样式-->
+    <link href="${tzp.getContextPath()}/dist/css/pages/depository/noReal.css?v=381e3e6" rel="stylesheet">
+</head>
+<body class="main-bg">
+<!-- 头部开始 -->
+<#include "/includes/header.html" />
+<div class="am-panel am-panel-default open-panel">
+    <div class="am-panel-bd">
+        <p class="am-text-muted" style="font-size: 12px">新网银行为亿钱贷平台提供资金存管服务，在亿钱贷平台申请出借前请开通新网银行存管账户。</p>
+        <form class="am-form info-form" id="registerForm">
+            <div class="am-form-group form-icon reg-mobile">
+                <i class="icon-left icon-font icon-account"></i>
+                <input autocomplete="new-password" class="am-form-field" value="<#if errorMsg??>${(userMobile!'')}</#if>" maxlength="5" type="text" id="realName" placeholder="请输入真实姓名">
+            </div>
+            <div class="am-form-group form-icon reg-mobile">
+                <i class="icon-left icon-font icon-psw"></i>
+                <input id="userPwd" name="userPassword" type="hidden" />
+                <input class="am-form-field" maxlength="18" autocomplete="password" type="text" id="idNo" placeholder="请输入身份证号码">
+            </div>
+            <div class="am-form-group">
+                <p class="msg am-text-right"><span class="am-text-danger" id="errorMsg"></span></p>
+            </div>
+        </form>
+        <p class="am-text-muted am-text-center tips">港澳台用户请<a class="text-one-primary" href="tel:400-090-9968">联系客服</a></p>
+        <div class="am-g">
+            <div class="am-u-sm-offset-1 am-u-sm-10">
+                <a id="submitBtn" href="javascript:;;" class="am-btn am-btn-secondary am-round am-btn-block am-btn-xl">前往存管银行页面</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!--底部菜单-->
+
+<#include "/includes/script.html" />
+<!--页面js-->
+<script src="${tzp.getContextPath()}/dist/js/pages/depository/noReal.js?v=7846b30"></script>
+</body>
+<#include "/includes/count.html" />
+</html>

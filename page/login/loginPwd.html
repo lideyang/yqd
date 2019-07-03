@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>登录密码-亿钱贷</title>
+    <#include "/includes/style.html" />
+    <!--页面样式-->
+    <link href="${tzp.getContextPath()}/dist/css/pages/account/loginPwd.css?v=5184d35" rel="stylesheet">
+</head>
+<body class="main-bg">
+<!-- 头部开始 -->
+<#include "/includes/header.html" />
+<!--登录密码面板-->
+<div class="am-panel am-panel-default reg-panel pwd-panel">
+    <div class="am-panel-bd">
+        <div class="tips am-text-primary am-text-center">
+            您已注册亿钱贷，请输入登录密码
+        </div>
+        <form class="am-form am-form-horizontal" id="loginPwdForm" method="post" action="${tzp.getContextPath()}/secure/dologin${((!callbackUrl??)!false)?string("","?callbackUrl=${(callbackUrl)!''}")}">
+            <div class="am-form-group">
+                <div class="am-u-sm-12">
+                    <input class="am-form-field" maxlength="20" type="password" autocomplete="new-password" id="password" name="userPassword" placeholder="请输入您的登录密码">
+                </div>
+            </div>
+	       	<#if publicKeyMap??>
+				<input type="hidden" id="modulus" value="${publicKeyMap.modulus}" />
+				<input type="hidden" id="exponent" value="${publicKeyMap.exponent}" />
+	            <input type="hidden" name="userType" value="2" />
+	            <input type="hidden" name="userMobile" value="${userMobile!''}" />
+	            <input type="hidden" name="_callbackUrl" value="${callbackUrl!''}">
+			</#if>            
+            <!--三次密码错误后-->
+            <#if captchaneed ?? >
+            <div class="am-form-group code">
+                <div class="am-u-sm-8">
+                    <input class="am-form-field" maxlength="5" id="captcha" name="captcha" placeholder="请输入图形验证码">
+                </div>
+                <div class="am-u-sm-4 am-text-right" >
+                    <img id="codePicBtn" src="${tzp.getContextPath()}/txjcaptcha.svl"/>
+                </div>
+            </div>
+            </#if>
+            <div class="am-form-group msg" <#if errorInfo??>style="display: block;"</#if> id="errorMsg">
+                <div class="am-text-danger">${errorInfo!''}</div>
+            </div>
+            
+           
+            <#if openId ??>
+                <div class="am-form-group agreement">
+                    <div class="am-u-sm-6">
+                        <label class="am-checkbox">
+                            <input id="wxBtn" type="checkbox" data-am-ucheck name="bindWx" checked="checked">
+                            微信免登陆
+                        </label>
+                    </div>
+                </div>
+            </#if>         
+
+            <div class="am-form-group">
+                <button id="submitBtn" data-am-loading="{spinner: 'loading', loadingText: '加载中...'}" type="submit" class="am-btn am-btn-secondary am-round am-btn-block am-btn-xl">登录</button>
+                <div class="am-u-sm-12 am-text-center">
+                    <a class="am-text-primary" href="${tzp.getContextPath()}/spa/account/forget/pwd">忘记密码?</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<#include "/includes/script.html" />
+</body>
+<!--页面js-->
+<script src="${tzp.getContextPath()}/public/js/security/BigInt.js?v=5d5cb7e"></script>
+<script src="${tzp.getContextPath()}/public/js/security/Barrett.js?v=8076bc6"></script>
+<script src="${tzp.getContextPath()}/public/js/security/RSA.js?v=8143dee"></script>
+<script src="${tzp.getContextPath()}/dist/js/pages/account/loginPwd.js?v=574ac84"></script>
+<#include "/includes/count.html" /> 
+</html>

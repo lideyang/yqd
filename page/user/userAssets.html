@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>总资产-亿钱贷</title>
+    <#include "/includes/style.html" />
+    <!--页面样式-->
+    <link href="${tzp.getContextPath()}/dist/css/pages/user/userAssets.css?v=1cfb5c3" rel="stylesheet">
+</head>
+<body>
+<!-- 头部开始 -->
+<#include "/includes/header.html" />
+<!--内容开始-->
+<div class="user-asset-panel">
+    <img class="split" src="/public/images/user/asset.png" >
+    <p id="myInvestIcon" class="tips am-text-center">累计收益(元)</p>
+    <h2 class="leiji-amount am-text-center">${(obtainIncome!0)?string(',##0.00')}</h2>
+    <p id="myAmountIcon" class="tips am-text-center">总资产(元)<i class="icon-font icon-wenhao"></i></p>
+    <h2 class="total-amount am-text-center">${(totalAmt!0)?string(',##0.00')}</h2>
+    <ul class="am-list admin-sidebar-list asset-sidebar-list" id="myAccountList">
+        <li class="am-panel">
+            <a href="${tzp.getContextPath()}/member/plan/autobid" class="title" data-am-collapse="{target: '#user-nav'}">
+                <i class="icon-font icon-Loan"></i><span class="">易智投</span><span class="am-fr"><span class="">${((hplanPrin+hplanInter)!0)?string(',##0.00')}</span><i class="icon-font icon-next"></i></span>
+            </a>
+            <ul class="am-list am-collapse admin-sidebar-sub" id="user-nav">
+                <li>待收本金<span class="am-fr num">${(hplanPrin!0)?string(',##0.00')}</span></li>
+                <li>预期收益<span class="am-fr num">${(hplanInter!0)?string(',##0.00')}</span></li>
+            </ul>
+        </li>
+
+        <li class="am-panel">
+            <a href="${tzp.getContextPath()}/member/invest/hold-list" class="title" data-am-collapse="{target: '#company-nav'}">
+                <i class="icon-font icon-Exchange"></i><span class="">散标&债权</span><span class="am-fr"><span class="">${((duePrincipal+dueInterest)!0)?string(',##0.00')}</span><i class="icon-font icon-next"></i></span>
+            </a>
+            <ul class="am-list am-collapse admin-sidebar-sub" id="company-nav">
+                <li>待收本金<span class="am-fr num">${(duePrincipal!0)?string(',##0.00')}</span></li>
+                <li>预期收益<span class="am-fr num">${(dueInterest!0)?string(',##0.00')}</span></li>
+            </ul>
+        </li>
+
+        <li class="am-panel">
+            <a class="title" data-am-collapse="{target: '#role-nav'}">
+                <i class="icon-font icon-djzj"></i><span class="">冻结资金</span><span class="am-fr"><span class="">${(frozeAmt!0)?string(',##0.00')}</span></span>
+            </a>
+            <ul class="am-list am-collapse admin-sidebar-sub" id="role-nav">
+                <li>易智投申请中<span class="am-fr num">${(hplanInvesting!0)?string(',##0.00')}</span></li>
+                <li>出借待满标<span class="am-fr num">${(bidAmtIng!0)?string(',##0.00')}</span></li>
+                <li>提现在途<span class="am-fr num">${(withDrawProing!0)?string(',##0.00')}</span></li>
+            </ul>
+        </li>
+        <li class="am-panel">
+            <a class="title" data-am-collapse="{target: '#role-nav2'}">
+                <i class="icon-font icon-balance"></i><span class="">可用余额</span><span class="am-fr"><span>${(availableAmt!0)?string(',##0.00')}</span></span>
+            </a>
+        </li>
+    </ul>
+</div>
+<div class="re-pay-layer am-g">
+    <div class="am-g">
+        <div class="am-u-sm-12 am-text-center title">
+            <h2 id="myInvestIcon2" class="tips am-text-center">已赚取的累计收益(元)<i class="icon-font icon-wenhao1"></i></h2>
+        </div>
+    </div>
+    <div class="am-g xianmu">
+        <div class="am-u-sm-12 am-text-center">
+            <h3 class="am-text-muted"><span class="badge"></span>项目收益</h3>
+            <p class="am-text-lg">${(loanIncome!0)?string(',##0.00')}</p>
+        </div>
+    </div>
+    <div class="am-g boxer">
+        <div class="am-u-sm-6">
+            <h4 class="am-text-muted">易智投</h4>
+            <p class="am-text-lg">${(receiveIncome!0)?string(',##0.00')}元</p>
+        </div>
+        <div class="am-u-sm-6 am-text-right">
+            <h4 class="am-text-muted">散标&债权</h4>
+            <p class="am-text-lg">${(investInCome!0)?string(',##0.00')}元</p>
+        </div>
+    </div>
+    <div class="am-g">
+        <div class="am-u-sm-12 am-text-center pingtai">
+            <h3 class="am-text-muted"><span class="badge"></span>平台奖励</h3>
+            <p class="am-text-lg">${(otherIncome!0)?string(',##0.00')}元</p>
+        </div>
+    </div>
+    <div class="am-g boxer">
+        <div class="am-u-sm-4">
+            <h4 class="am-text-muted">红包</h4>
+            <p class="am-text-lg">${(voucherInCome!0)?string(',##0.00')}元</p>
+        </div>
+        <div class="am-u-sm-4 am-text-center">
+            <h4 class="am-text-muted">奖励券</h4>
+            <p class="am-text-lg">${(subsidyAward!0)?string(',##0.00')}元</p>
+        </div>
+        <div class="am-u-sm-4 am-text-right">
+            <h4 class="am-text-muted">出借奖励</h4>
+            <p class="am-text-lg">${(penaltyAward!0)?string(',##0.00')}元</p>
+        </div>
+        <div class="am-u-sm-4">
+            <h4 class="am-text-muted">推荐奖励</h4>
+            <p class="am-text-lg">${(promotionAward!0)?string(',##0.00')}元</p>
+        </div>
+        <div class="am-u-sm-4 am-u-end am-text-center">
+            <h4 class="am-text-muted">活动奖励</h4>
+            <p class="am-text-lg">${(actAward!0)?string(',##0.00')}元</p>
+        </div>
+    </div>
+</div>
+<div class="count-list">
+    <div class="am-g am-text-center">
+        <div class="am-u-sm-4">
+            <h4>${(totalRechargeAmt!0)?string(',##0.00')}</h4>
+            <p class="am-text-muted">累计充值</p>
+        </div>
+        <div class="am-u-sm-4">
+            <h4>${(totalCashAmt!0)?string(',##0.00')}</h4>
+            <p class="am-text-muted">累计提现</p>
+        </div>
+        <div class="am-u-sm-4">
+            <h4>${(totalInvestAmt!0)?string(',##0.00')}</h4>
+            <p class="am-text-muted">累计出借</p>
+        </div>
+    </div>
+</div>
+<p class="reg-tips am-text-center">
+    ${regTime!''}注册，您加入亿钱贷已有<span class="am-text-primary">${totalJoinTime!0}</span>天
+</p>
+<!--底部菜单-->
+<#include "/includes/script.html" />
+</body>
+<!--页面js-->
+<script type="text/javascript">
+    var totalAsset=${(totalAmt!0)};
+    var totalAssetText=['总金额',"${(totalAmt!0)?string(',##0.00')}元"];
+    var totalArr=[100,0, 0, 0, 0];//如果没有钱的话，默认显示可用余额
+    var dueInterestPercent=0;
+    var availableAmtPercent=0;
+    var duePrincipalPercent=0;
+    var frozeAmtPercent=0;
+    if(totalAsset>0){
+        dueInterestPercent=${(accountVo.allIncome!0)}/totalAsset*100;
+        availableAmtPercent=${(accountVo.availableAmt!0)}/totalAsset*100;
+        duePrincipalPercent=${(accountVo.prinInter!0)}/totalAsset*100;
+        frozeAmtPercent=${(accountVo.frozeAmt!0)}/totalAsset*100;
+        totalArr=[0,dueInterestPercent,duePrincipalPercent, availableAmtPercent,frozeAmtPercent]
+    }
+</script>
+<script src="${tzp.getContextPath()}/dist/js/pages/user/userAssets.js?v=abb3711"></script>
+<#include "/includes/count.html" />
+</html>

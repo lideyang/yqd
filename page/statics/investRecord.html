@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>出借记录-亿钱贷</title>
+    <#include "/includes/style.html" />
+    <!--页面样式-->
+    <link href="${tzp.getContextPath()}/dist/css/pages/user/investRecord.css?v=fe265a5" rel="stylesheet">
+</head>
+<body>
+<!-- 头部开始 -->
+<#include "/includes/header.html" />
+<div class="am-g title">
+    <div class="am-u-sm-8">
+        <span class="am-badge am-radius label-wh">企</span>${loanTitle!''}
+    </div>
+    <div class="am-u-sm-4 am-text-muted am-text-right">
+       	${debtStatus!''}
+    </div>
+</div>
+<#if inRecord??> 
+	<ul class="record-list">
+		<#list inRecord as page>
+		    <li>
+		        <div class="am-g">
+		            <div class="am-u-sm-1 split">
+		                <span class="am-badge am-round am-badge-primary">${page_index+1}</span>
+		                <div class="line"></div>
+		            </div>
+		            <div class="am-u-sm-11 info">
+		                <h3>出借时间${(page.investTime?string('yyyy-MM-dd HH:mm'))!'-'}</h3>
+		                <p><span class="am-text-muted">出借本金(元)：</span><span class="am-text-danger">${(page.investAmt!0)?string(',##0.00')}</span></p>
+						<#if page.couponAmt?? && page.couponAmt gt 0> <p><span class="am-text-muted">使用红包(元)：</span><span class="am-text-danger">${(page.couponAmt!0)?string(',##0.00')}</span></p></#if>
+						<#if page.interestTicket?? && page.interestTicket gt 0> <p><span class="am-text-muted">使用奖励券：</span><span class="am-text-danger">${(page.interestTicket!0)?string(',##0.##')}%</span></p></#if>
+		            </div>
+		        </div>
+		    </li>
+    	</#list> 
+	</ul>
+</#if>
+<#include "/includes/script.html" />
+</body>
+<!--页面js-->
+<script src="${tzp.getContextPath()}/dist/js/pages/user/withdrawSuccess.js?v=ba25cb9"></script>
+<#include "/includes/count.html" />
+</html>

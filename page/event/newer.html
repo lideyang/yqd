@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>注册即送888-亿钱贷</title>
+    <#include "/includes/style.html" />
+    <!--页面样式-->
+    <link href="${tzp.getContextPath()}/dist/css/pages/static/newhard.css?v=44483b7" rel="stylesheet">
+</head>
+<body>
+<!-- 头部开始 -->
+<#include "/includes/header.html" />
+<!--内容开始-->
+<div class="content">
+    <a href="${download!''}" class="download-btn">下载亿钱贷APP</a>
+    <div class="info am-text-center">
+        <p><a class="am-text-info" id="optBtn" href="javascript:;;">活动规则</a></p>
+        <p>市场有风险 出借需谨慎</p>
+    </div>
+</div>
+<div id="modal" style="display: none">
+    <h3>活动规则：</h3>
+    <ul>
+        <li>1、活动时间为${(start?string('yyyy年MM月dd日'))!'无'}-${(end?string('yyyy年MM月dd日'))!'无'}；</li>
+        <li>2、红包有效期为7-90天，pc可前往“我的账户- 我的投资券 - 红包”查看，app可前往“我的账户- 我的投资券”查看；
+        </li>
+        <li>3、认购时用户可自行选择符合使用条件的红包，抵用相应的金额，每笔投资最多可使用一个红包；
+        </li>
+        <li>4、新手专享标不适用此活动；
+        </li>
+        <li>5、活动期间，如规则有所调整，以平台公告或公告刷新的内容为准，恕不再单独向用户进行提醒；
+        </li>
+        <li>6、如有疑问可咨询微信在线客服或拨打客服电话：400-090-9968（工作日9:00-18:00）；
+        </li>
+        <li>7、本活动最终解释权归亿钱贷所有。
+        </li>
+    </ul>
+</div>
+<#include "/includes/script.html" />
+<!--页面js-->
+<script src="${tzp.getContextPath()}/dist/js/pages/static/newhard.js?v=9ff3628"></script>
+</body>
+<#include "/includes/count.html" /> 
+</html>

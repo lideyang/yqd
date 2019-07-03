@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>首页-亿钱贷</title>
+    <#include "/includes/style.html" />
+    <!--页面样式-->
+    <link href="${tzp.getContextPath()}/dist/css/pages/home/home.css?v=9657b09" rel="stylesheet">
+</head>
+<body>
+<!--内容开始-->
+<div class="am-container">
+    <!--banner-->
+    <div class="am-g am-slider am-slider-default" data-am-flexslider="{playAfterPaused:3000}" id="bannerSlider">
+        <ul class="am-slides">
+            <#if banners?? && banners?size gt 0>
+            <#list banners as banner >
+            <li>
+                <a href="${(banner.linkUrl)!'javascript:;'}" >
+                    <img src="${(banner.imgUrl)!''}" />
+                </a>
+            </li>
+        </#list>
+        <#else>
+        <li>
+            <a href="javascript:;">
+                <img src="${tzp.getContextPath()}/public/images/banner/home_banner.png?v=38bca0b" />
+            </a>
+        </li>
+    </#if>
+    </ul>
+</div>
+<!--公告-->
+<div class="notice">
+    <a class="more" href="${tzp.getContextPath()}/article/notice/"><i class="icon-font icon-more am-text-default"></i></a>
+    <div class="am-g">
+        <div class="am-u-sm-1">
+            <i class="icon-font icon-laba1 am-text-primary"></i>
+        </div>
+        <div class="am-u-sm-11 list">
+            <ul id="noticeList">
+                <#if notices??  && notices?size gt 0>
+                <#list notices as notice>
+                <li>
+                    <span class="am-text-truncate am-text-middle"><a href="${tzp.getContextPath()}/article/notice/${(notice.uuid)!''}">${(notice.title)!''}</a></span>
+                    <i class="am-text-middle">${(notice.createTime?string('yyyy-MM-dd'))!''}</i>
+                </li>
+            </#list>
+        </#if>
+        </ul>
+    </div>
+</div>
+</div>
+<!--menu-->
+<div class="am-g header-menu am-text-center">
+    <div class="am-u-sm-10 am-u-sm-centered">
+        <#if _p2p_member_user??>
+        <div class="am-u-sm-4">
+            <a href="${tzp.getContextPath()}/event/recommend">
+                <i class="ball"><!--图标--></i>
+                <p>推荐奖励</p>
+            </a>
+        </div>
+        <#else>
+        <div class="am-u-sm-4 my-coupons">
+            <a href="${tzp.getContextPath()}/event/novice">
+                <i class="ball"></i>
+                <p>新手红包</p>
+            </a>
+        </div>
+    </#if>
+    <div class="am-u-sm-4">
+        <a href="${tzp.getContextPath()}/static/depositoryInfo">
+            <i class="ball"><!--图标--></i>
+            <p>银行存管</p>
+        </a>
+    </div>
+    <div class="am-u-sm-4">
+        <a href="${tzp.getContextPath()}/spa/publish/companyProfile">
+            <i class="ball"><!--图标--></i>
+            <p>上市背景</p>
+        </a>
+    </div>
+</div>
+</div>
+<!--首页标的-->
+<!--易智投  -->
+<#if bean??>
+	<div id="recommendProductLayer" class="home-product-info">
+			<#if isNovice>
+		      <h4 class="target-prdname am-text-primary">新手专享<span class="target-prdno">限首次出借，限额3万</span></h4>
+			<#else>
+			    <h4 class="target-prdname am-text-primary">易智投<span class="target-prdno">${bean.fontStr!''}</span></h4>
+			</#if>
+		    <p class="am-text-muted am-text-sm">协议约定年化利率<i data-am-popover="{trigger:'click',content: '此利率不构成亿钱贷对出借人的任何承诺，最终收益以实际为准'}" class="icon-font icon-wenhao pop-show"></i></p>
+		    <p class="rate am-text-secondary"><span class="target-rate span-rate">${(bean.prdRate!0)?string(',##0.##')}%<#if bean.awardRate?? && bean.awardRate gt 0>+${(bean.awardRate!0)?string(',##0.##')}%</#if></span>
+		        <span class="target-award-rate-div span-rate"></span>
+		    </p>
+		    <div class="detail am-text-center am-g">
+		        <div class="am-u-sm-6">
+		            <strong class="target-month">${(bean.prdPeriodStr)!''}</strong>
+		            <p class="am-text-muted">委托期限</p>
+		        </div>
+		        <div class="am-u-sm-6">
+		            <strong><span class="target-min">${(bean.minAmount?string(',##0.00'))!0.00}</span>元</strong>
+		            <p class="am-text-muted">最低委托金额</p>
+		        </div>
+		    </div>
+		    <#if bean.prdStatus == "3">
+		    	<a class="am-btn am-btn-secondary am-btn-block am-round am-btn-xl invest-btn link-btn" href="${tzp.getContextPath()}/spa/product/auto?defineId=${bean.defineId!''}">委托出借</a>
+            <#elseif bean.prdStatus =='2'>		    	
+				<div class="am-btn btn-disabled am-round invest-btn">
+		                	${(bean.publishTime?string('HH:mm'))!'-'}开启
+		    	</div>
+			<#else>
+				<div class="am-btn btn-disabled am-round invest-btn">
+		                	已满额
+		               <p>每日17:00后发布</p>
+		    	</div>
+			</#if>
+		</div>
+<#else>
+<!-- 散标出借 -->
+		<div id="recommendProductLayer" class="home-product-info">
+		    <h4 class="target-prdname am-text-primary">优质项目<span class="target-prdno">${loan.loanTitle!''}</span></h4>
+		    <p class="am-text-muted am-text-sm">协议约定年化利率<i data-am-popover="{trigger:'click',content: '此利率不构成亿钱贷对出借人的任何承诺，最终收益以实际为准'}" class="icon-font icon-wenhao pop-show"></i></p>
+		    <p class="rate am-text-secondary"><span class="target-rate span-rate">${(loan.platRate!0)?string(',##0.##')}%<#if loan.awardRate?? && loan.awardRate gt 0>+${(loan.awardRate!0)?string(',##0.##')}%</#if></span>
+		        <span class="target-award-rate-div span-rate"></span>
+		    </p>
+		    <div class="detail am-text-center am-g">
+		        <div class="am-u-sm-6">
+		            <strong class="target-month">${(loan.loanPeriodStr)!''}</strong>
+		            <p class="am-text-muted">项目期限</p>
+		        </div>
+		        <div class="am-u-sm-6">
+		            <strong><span class="target-min">${(loan.minAmt?string(',##0.00'))!0.00}</span>元</strong>
+		            <p class="am-text-muted">最低委托金额</p>
+		        </div>
+		    </div>
+		    <a class="am-btn am-btn-secondary am-btn-block am-round am-btn-xl invest-btn link-btn" href="${tzp.getContextPath()}/product/detail/${loan.loanId!''}">立即出借</a>
+		</div>
+</#if>
+
+
+<!--信披-->
+<div class="am-g xinpi-layer am-text-center">
+    <div class="am-u-sm-6">
+        <a class="boxer" href="${tzp.getContextPath()}/static/data">
+            <i class="icon-font icon-ptyy am-text-primary"></i>
+            <p class="am-text-muted">运营数据</p>
+        </a>
+    </div>
+    <div class="am-u-sm-6">
+        <a class="boxer" href="${tzp.getContextPath()}/static/hegui">
+            <i class="icon-font icon-hgjc am-text-primary"></i>
+            <p class="am-text-muted">合规进程</p>
+        </a>
+    </div>
+</div>
+<p class="am-text-center am-text-muted">
+    <i class="icon-font icon-aqhg- vertical-middle"></i>
+    <span class="vertical-middle">资金已由新网银行存管，安全更合规</span>
+</p>
+<!--客服热线-->
+<div class="am-g kefu am-text-center">
+    <p class="am-text-primary">
+        客服热线 <a class="am-text-primary" href="tel:${serviceTelephone!''}">${serviceTelephone!''}</a>
+    </p>
+    <p class="am-text-muted time">
+        服务时间 ${serviceTime!''}
+    </p>
+</div>
+<!--app下载-->
+<div class="bottom-download-app am-text-center">
+    <p class="title">了解更多精选产品</p>
+    <p>
+        <a href="http://a.app.qq.com/o/simple.jsp?pkgname=com.yiqiandai.p2p" class="am-btn btn-download am-round">下载亿钱贷 APP</a>
+    </p>
+</div>
+</div>
+<!--底部菜单-->
+<#include "/includes/footer.html" />
+<#include "/includes/script.html" />
+<!--页面js-->
+<script src="${tzp.getContextPath()}/dist/js/pages/home/home.js?v=f1c4f2c"></script>
+</body>
+<#include "/includes/count.html" />
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>回款计划-亿钱贷</title>
+    <#include "/includes/style.html" />
+    <!--页面样式-->
+    <link href="${tzp.getContextPath()}/dist/css/pages/user/repaymentPlan.css?v=d0c78da" rel="stylesheet">
+</head>
+<body>
+<!-- 头部开始 -->
+<#include "/includes/header.html" />
+<#if (repaylist)??>
+<ul class="am-list admin-sidebar-list re-pay-list" id="myRePayList">
+    <#list repaylist as page>
+    <li class="am-panel">
+        <div class="am-g title" data-am-collapse="{target: '#repayment${page.repayPeriod!''}'}">
+            <div class="am-u-sm-6 am-text-muted am-text-left">
+                <h3>第${page.repayPeriod!''}期</h3>
+                <p class="am-text-muted">${(page.planDate?string('yyyy-MM-dd'))!'-'}</p>
+            </div>
+            <div class="am-u-sm-6 am-text-right status">
+                <span class="vertical-middle">${page.repayStatusStrNew!''}</span><i class="icon-font icon-bottom vertical-middle am-text-primary arrow"></i>
+            </div>
+        </div>
+        <ul class="am-list am-collapse admin-sidebar-sub" id="repayment${page.repayPeriod!''}">
+            <li>本金(元)<span class="am-fr num">${(page.planPrincipal!0)?string(',##0.00')}</span></li>
+            <li>收益(元)<span class="am-fr num">${((page.planInterest + page.ticketAward+ page.planPlatReward + page.planSubsidyAmt)!0)?string(',##0.00')}</span></li>
+        </ul>
+    </li>
+</#list>
+</ul>
+</#if>
+
+<#include "/includes/script.html" />
+<!--页面js-->
+<script src="${tzp.getContextPath()}/dist/js/pages/user/repaymentPlan.js?v=dfbe3fa"></script>
+</body>
+<#include "/includes/count.html" />
+</html>

@@ -1,0 +1,168 @@
+@import "../../../amaze/variables";
+.my-repayment-list-layer {
+  .am-header{
+    .icon-date{
+      font-size: 22px;
+    }
+  }
+  .total-info {
+    padding: .15rem .1rem;
+    box-shadow: 0 0 12px 0 rgba(25, 25, 25, .05);
+    background-color: #fff;
+    margin: .15rem 0;
+
+    > div {
+      line-height: 25px;
+
+      &:first-child {
+        border-right: 1px solid #ccc;
+      }
+    }
+  }
+
+  .list-layer {
+    .btn-group-layer {
+      background-color: #fff;
+      padding: .15rem;
+      .btn-group {
+        width: 2.6rem;
+        margin: 0 auto;
+        position: relative;
+        a {
+          display: block;
+          float: left;
+          width: 1.3rem;
+          border:1px solid #eaeaea;
+          color:#666;
+          &.active {
+            border:1px solid @global-primary;
+            background-color: @global-primary;
+            color:#fff
+          }
+          &:nth-child(1) {
+            border-radius: 8px 0 0 8px;
+          }
+          &:nth-child(2) {
+            border-radius: 0 8px 8px 0;
+          }
+        }
+
+        .icon {
+          position: absolute;
+          right: -0.25rem;
+          top: .06rem;
+        }
+      }
+    }
+    .mescroll {
+      max-height: 5rem;
+      .data-list {
+        li {
+          margin: 0 0 .15rem;
+          padding: .15rem .15rem 0;
+          color: #666;
+          background-color: #fff;
+          .title {
+            margin: 0 0 .1rem;
+
+            strong {
+              color: #666;
+            }
+          }
+
+          strong {
+            color: #333;
+          }
+
+          .item {
+            border-top: 1px solid #eaeaea;
+            padding: .1rem 0;
+
+            p {
+              margin: 0;
+
+              &.name {
+                margin: 0 0 .1rem;
+              }
+            }
+
+            .income {
+              strong {
+                margin: 0 0 0 .05rem;
+              }
+            }
+
+            .icon-next {
+              margin: .12rem 0 0 .03rem;
+            }
+            .pro{
+              margin:.13rem 0 0;
+              font-weight: bold;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .tips {
+    margin: .1rem 0;
+  }
+
+  .total-layer {
+    background-color: #fff;
+    padding: .15rem .1rem;
+    box-shadow: 0 0 4px rgba(0, 0, 0, .1);
+
+    > div {
+      border-right: 1px solid #ccc;
+
+      &:last-child {
+        border-right: none;
+      }
+    }
+
+    p {
+      margin: 0;
+    }
+  }
+
+  .re-pay-list-layer {
+    padding: .1rem .2rem;
+    background-color: #fff;
+    margin: .2rem 0 0;
+
+    .time {
+      margin: 0 0 .1rem;
+    }
+
+    .pay-list {
+      .list {
+        border-top: 1px solid #ccc;
+        padding: .15rem 0;
+
+        p {
+          margin: 0;
+
+          &.name {
+            margin: 0 0 .1rem;
+          }
+        }
+
+        .income {
+          strong {
+            margin: 0 0 0 .05rem;
+          }
+        }
+
+        .status {
+          padding: .15rem 0 0;
+
+          .status-btn {
+
+          }
+        }
+      }
+    }
+  }
+}

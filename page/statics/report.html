@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>运营报告-信息披露-亿钱贷</title>
+    <#include "/includes/style.html" />
+    <!--页面样式-->
+    <link href="${tzp.getContextPath()}/dist/css/pages/static/about.css?v=76409ef" rel="stylesheet">
+</head>
+<body>
+<!-- 头部开始 -->
+<#include "/includes/header.html" />
+<div class="home-layer " id="wrapper">
+    <div class="intro">
+        <h2 class="title">年度报告</h2>
+        <div class="panel company-info opt-report-layer ">
+            <ul  class="am-cf"  id="content">
+            <#if list??>
+            	<#list list as item>
+            	<li style="background: url(${item.bannerUrl!''}) no-repeat;"><a href="${item.contentFileLink!''}"></a></li>
+            	</#list>
+            
+            </#if>
+            
+              </ul>
+        </div>
+    </div>
+</div>
+<#include "/includes/sign.html" />
+<!--底部菜单-->
+
+<#include "/includes/script.html" />
+<!--页面js-->
+<script src="${tzp.getContextPath()}/dist/js/pages/static/about.js?v=1443982"></script>
+</body>
+<#include "/includes/count.html" />
+</html>

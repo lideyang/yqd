@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>暂停注册公告-亿钱贷</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover"/>
+    <script>
+        //设置rem
+        (function (doc, win) {
+            var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize';
+            var dpr = window.devicePixelRatio || 1;
+            // adjust body font size
+            function setBodyFontSize() {
+                if (document.body) {
+                    document.body.style.fontSize = '14px'
+                }
+                else {
+                    document.addEventListener('DOMContentLoaded', setBodyFontSize)
+                }
+            }
+
+            setBodyFontSize();
+            function setRemUnit() {
+                var clientWidth = docEl.clientWidth;
+                if (!clientWidth) return;
+                if (clientWidth >= 750) {
+                    docEl.style.fontSize = '100px';
+                } else {
+                    docEl.style.fontSize = 200 * (clientWidth / 750) + 'px';
+                }
+            }
+
+            setRemUnit()
+            if (!doc.addEventListener) return;
+            win.addEventListener(resizeEvt, setRemUnit);
+            window.addEventListener('pageshow', function (e) {
+                if (e.persisted) {
+                    setRemUnit()
+                }
+            })
+        })(document, window);
+    </script>
+    <style>
+        body{
+            background-color: #efefef;
+            margin:0;
+            padding: 0;
+        }
+        .banner{
+            padding:.2rem;
+            background-color: #fff;
+        }
+        .banner img{
+            width:2rem;
+        }
+        .content{
+            margin:.2rem .15rem;
+            padding:.2rem;
+            background-color: #fff;
+            box-shadow: 0 0 6px 0 rgba(25,25,25,.15);
+            line-height: 1.8;
+            color:#666;
+            font-size: 14px;
+        }
+        .content h3{
+            margin:0 0 .15rem;
+            padding:0 0 .15rem;
+            border-bottom:1px dashed #999;
+            color:#333;
+            text-align: center;
+            font-size: 18px;
+        }
+        .content p.bottom,.content p.date{
+            text-align: right;
+            margin:0;
+        }
+        .content p.bottom{
+            margin:.6rem 0 0;
+        }
+        .copy-right {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            padding: .1rem;
+            width: 100%;
+            color: #fff;
+            text-align: center;
+            font-size: 12px;
+            background: #45332c;
+        }
+        .copy-right p {
+            margin: 0 0 .05rem;
+        }
+        .copy-right a {
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="banner">
+        <img src="/public/images/logo_home.png?v=a8c5fbc" />
+    </div>
+    <div class="content">
+        <h3>关于亿钱贷暂时关闭注册的公告</h3>
+        <p>
+            尊敬的亿家人：<br/><br/>
+            2018年12月6日，深圳市互金协会发布《关于进一步规范网络借贷信息中介行业专项整治期间有关行为的通知》，暂时控制待偿余额不增长，保持出借人总数动态减少。<br/>
+            为严格执行该通知，亿钱贷将暂时关闭注册入口。在存量出借人总量有减少的情况下，不定时重新开启注册入口。合规运营是亿钱贷一直以来的坚持，感谢大家的理解与支持。
+        </p>
+        <p class="bottom">
+            亿钱贷运营管理部
+        </p>
+        <p class="date">
+            2018年12月8日
+        </p>
+    </div>
+    <div class="copy-right">
+        <p>© 2018 亿钱贷 | All rights reserved </p>
+        <p>深圳市亿钱贷电子商务有限公司 <a href="http://www.miit.gov.cn/" rel="noopener noreferrer" target="_blank">粤ICP备14041671号-1</a></p>
+        <p>市场有风险，出借需谨慎</p>
+    </div>
+</body>
+</html>

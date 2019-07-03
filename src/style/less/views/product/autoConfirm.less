@@ -1,0 +1,298 @@
+@import "../../../less/amaze/variables";
+
+.product-auto-confirm-layer {
+  position: relative;
+  overflow-x: hidden;
+  height: 100%;
+  .product-confirm {
+    .repay-invest {
+      background-color: rgba(255, 255, 255, .3);
+      line-height: 28px;
+    }
+
+    &.current {
+      opacity: 1;
+      transform: rotateY(0deg);
+    }
+
+    &.active {
+      opacity: 0.2;
+      transform: rotateY(90deg);
+    }
+
+    .am-g.item {
+      .title {
+        padding: .15rem .25rem .05rem;
+        margin: 0 0 .15rem;
+        color: #fff;
+        background: linear-gradient(to right, #0087FA 0%, #331E82 100%);
+
+        ul {
+          li {
+            margin: 0 0 .1rem;
+            font-size: 13px;
+
+            &.tips {
+              font-size: 12px;
+
+              h3 {
+                margin: 0 0 .05rem;
+                font-weight: normal;
+              }
+
+              p {
+                margin: 0;
+                color: #ccc;
+              }
+            }
+          }
+        }
+
+      }
+    }
+
+    .product-confirm-money {
+      padding: 0 .25rem;
+      margin: 0 0 .15rem;
+      width: 100%;
+
+      .item {
+        margin: 0 0 .03rem;
+        .recharge-btn{
+          margin:0 0 0 .05rem;
+          font-weight: bold;
+        }
+      }
+    }
+
+    .invest-money {
+      padding: .05rem .1rem .07rem .25rem;
+      margin: .15rem 0;
+      background-color: #fff;
+
+      .money-li {
+        position: relative;
+
+        label {
+          position: absolute;
+          left: 0;
+          top: .05rem;
+          font-size: 20px;
+        }
+
+        .money {
+          border: none;
+          width: 100%;
+          height: .4rem;
+          padding: 0 0 0 .3rem;
+          line-height: .4rem;
+          font-size: 22px;
+          color: #000;
+
+          &::placeholder {
+            font-size: 14px;
+          }
+        }
+      }
+      .max-invest{
+        margin-top: .05rem;
+        line-height: .32rem;
+        border-left:1px solid #eaeaea;
+        font-weight: bold;
+      }
+    }
+
+    .red {
+      padding: .15rem .25rem;
+      margin: .15rem 0;
+      background-color: #fff;
+      .reward-text{
+        background-color: red;
+        padding: .02rem .05rem;
+        color: #fff;
+      }
+      h3 {
+        margin: 0;
+        display: inline-block;
+      }
+    }
+
+    .product-confirm-btn {
+      padding: .15rem;
+      font-size: 12px;
+      color: #666;
+
+      .submit-btn {
+        margin: .4rem 0 0;
+      }
+    }
+  }
+
+  .product-choose-ticket {
+    position: absolute;
+    top: 0;
+    left: 0;
+    visibility: hidden;
+    transform: translateX(100%);
+    transition: all .8s;
+    padding-bottom: .6rem;
+
+    &.current {
+      visibility: visible;
+      transform: translateX(0);
+    }
+
+    > p.title {
+      padding: 0 0 0 .2rem;
+      margin: .1rem 0;
+    }
+
+    .am-titlebar-title {
+      font-size: 16px;
+      margin: .1rem;
+      border-bottom: 1px solid #d1c0a5;
+      padding: 0 0 .1rem;
+    }
+
+    .no-use-layer {
+      margin: .1rem;
+      padding: .1rem .12rem .1rem .25rem;
+      background-color: #e3e3e3;
+      border-radius: .1rem;
+      box-shadow: 0 0px 6px rgba(50, 50, 50, .1);
+      color: #666;
+      line-height: 1;
+
+      &.active {
+        .choose {
+          .icon-font {
+            color: red;
+          }
+        }
+      }
+
+      .info {
+        line-height: 16px;
+      }
+    }
+
+    .product-choose-list {
+      margin: 0 0 .1rem;
+
+      li {
+        position: relative;
+        padding: .12rem;
+        margin: .1rem 0 0;
+        background-color: #fff;
+        box-shadow: 0 0px 6px rgba(50, 50, 50, .1);
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+
+        &.gray {
+          div.invest {
+            div.icon {
+              background-image: url(/public/images/icon/red_grey.png);
+
+              span {
+                color: #eee;
+              }
+            }
+
+            div.info {
+              p.require {
+                color: red;
+              }
+
+              p.title {
+                color: #999;
+              }
+            }
+          }
+
+          background-color: #eee;
+        }
+
+        &.active {
+          div.invest {
+            .choose {
+              .icon-font {
+                color: #c49644;
+              }
+            }
+          }
+        }
+
+        div.invest {
+          div.icon {
+            background: url(/public/images/icon/red_icon.png) no-repeat 0 0;
+            background-size: contain;
+            height: .8rem;
+            line-height: .8rem;
+
+            img {
+              max-width: 0.62rem;
+            }
+
+            span {
+              color: #ffee78;
+              font-weight: bold;
+            }
+          }
+
+          div.info {
+            padding: 0 0 0 .15rem;
+
+            p {
+              margin: 0 0 5px;
+              line-height: 1;
+
+              &.title {
+                color: #333;
+                margin: 0 0 .1rem;
+                padding: 0 0 .05rem;
+                border-bottom: 1px solid #c6d6dd;
+              }
+
+              &.day {
+                margin: .1rem 0 0;
+              }
+            }
+          }
+
+          .choose {
+            padding: .28rem 0;
+          }
+        }
+      }
+    }
+
+    .choose-jiaxi-list {
+      li {
+        div.invest {
+          div.icon {
+            background: url(/public/images/icon/icon_coupon.png) no-repeat center;
+            background-size: contain;
+
+            span {
+              color: #d02219;
+            }
+          }
+        }
+
+        &.gray {
+          div.invest {
+            div.icon {
+              background-image: url(/public/images/icon/coupon_grey.png);
+
+              span {
+                color: #fff;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

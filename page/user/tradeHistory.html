@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>交易流水-亿钱贷</title>
+    <#include "/includes/style.html" />
+    <!--页面样式-->
+    <link href="${tzp.getContextPath()}/dist/css/pages/user/tradeHistory.css?v=b2174ab" rel="stylesheet">
+</head>
+<body>
+<!-- 头部开始 -->
+<#include "/includes/header.html" />
+<!--内容开始-->
+<div class="am-container">
+    <div id="wrapper" class="mescroll">
+        <!--交易流水详情-->
+        <div class="product-info-content record-content">
+            <ul id="events-list">
+                <li>
+                  	  正在加载内容...
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<#include "/includes/script.html" />
+<script type="text/javascript">
+	var subjectType = "${subjectType!''}";
+</script>
+<!--页面js-->
+<script type="text/x-handlebars-template" id="tpi-list-item">
+    {{#each this}}
+    <li>
+        <div class="am-g">
+            <div class="am-u-sm-6">
+                <h3 class="am-text-secondary">{{subjectName}}</h3>
+                <span class="tel am-text-muted">{{remark}}</span>
+            </div>
+            <div class="am-u-sm-6 am-text-right">
+                {{#expression occurAmt '<' 0}}
+                <p class="am-text-success">{{formatCurrency occurAmt}}元</p>
+                {{/expression}}
+                {{#expression occurAmt '>' 0}}
+                <p class="am-text-danger">+{{formatCurrency occurAmt}}元</p>
+                {{/expression}}
+  				{{#expression occurAmt '==' 0}}
+                <p class="am-text-danger">{{formatCurrency occurAmt}}元</p>
+                {{/expression}}
+                <p class="am-text-muted">{{dateFormater createTime}}</p>
+            </div>
+        </div>
+    </li>
+    {{/each}}
+</script>
+<script src="${tzp.getContextPath()}/dist/js/pages/user/tradeHistory.js?v=0864ea9"></script>
+</body>
+<#include "/includes/count.html" /> 
+</html>

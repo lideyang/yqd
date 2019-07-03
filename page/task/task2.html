@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>任务中心-亿钱贷</title>
+    <#include "/includes/style.html" />
+    <!--页面样式-->
+    <link href="${tzp.getContextPath()}/dist/css/pages/user/task.css?v=3717228" rel="stylesheet">
+</head>
+<body class="main-bg">
+<!-- 头部开始 -->
+<#include "/includes/header.html" />
+<#if vo??>
+<img class="banner" src="${vo.imgUrl}" />
+<#else>
+<img class="banner" src="/public/images/task/banner7.jpg?v=2e2dd09" />
+</#if>
+<div class="list-layer">
+    <div class="am-g task-list">
+        <div class="am-u-sm-2">
+            <img class="icon" src="/public/images/task/icon2.png?v=8aa7589" />
+        </div>
+        <div class="am-u-sm-7 info">
+            <h3>0.4%-1.0%奖励券</h3>
+            <p class="am-text-muted">待收本金满1000元，领奖励券</p>
+        </div>
+        <div class="am-u-sm-3 btn am-text-center">
+        
+        						<#if isSign=='0'>
+									   <button class="am-btn am-btn-danger am-round   btn-disabled">未开启</button>
+								<#elseif isSign=='1'>
+										<a class="am-btn am-btn-secondary am-round <#if !(isSign?? && isSign=='1')>btn-disabled</#if>" href="${tzp.getContextPath()}/spa/activity/june">立即领奖</a>
+								<#elseif isSign=='2'>
+									   <button class="am-btn am-btn-danger am-round  btn-disabled" href="javascript:;">已领取</button>
+								<#elseif isSign=='3'>
+											<a class="am-btn am-btn-danger am-round"  href="${tzp.getContextPath()}/spa/activity/june" class="btn btn-prize"  >去领取</a>
+									
+								</#if>
+								<p class="am-text-danger">每天限领5个</p>
+        </div>
+    </div>
+    
+    	<div class="am-g task-list top">
+	        <div class="am-u-sm-2">
+	            <img class="icon" src="/public/images/task/icon5.svg" />
+	        </div>
+	        <div class="am-u-sm-7 info">
+	            <h3>财来运转，抽奖得现金</h3>
+	            <p class="am-text-muted">单笔出借满2000元获得一次抽奖机会</p>
+	        </div>
+	        <div class="am-u-sm-3 btn am-text-center">
+	            <a class="am-btn am-btn-secondary am-round" href="${tzp.getContextPath()}/spa/activity/june">立即参与</a>
+	        </div>
+	    </div>
+		
+
+        <div class="am-g task-list withdraw-layer">
+            <div class="am-u-sm-2">
+                <img class="icon" src="/public/images/task/icon4.svg?v=8aa7589">
+            </div>
+            <div class="am-u-sm-7 info">
+                <h3>免费快速提现次数</h3>
+                <p class="am-text-muted">本月内可抵扣1次快速提现手续费，月底自动失效</p>
+            </div>
+            <div class="am-u-sm-3 btn am-text-center">
+                <#if t0ReceiveCount gt 0 >
+                <a class="am-btn am-btn-secondary am-round" id="withdrawBtn" href="javascript:;;">立即领取</a>
+                <#else>
+                <a class="am-btn am-btn-secondary am-round btn-disabled" id="withdrawBtn" href="javascript:;;">已领取</a>
+                </#if>
+                <p class="am-text-danger">每月限领1次</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="opt">
+    <h3>温馨提示:</h3>
+            <ul>
+    	<li>1、活动任务时间：2019年06月01日-2019年06月30日；</li>
+	 	<li>2、奖励券领取后在优惠券中查看使用规则，现金红包与奖励券不能同时使用；</li>
+    </ul>
+</div>
+<!--底部菜单-->
+<#include "/includes/script.html" />
+<!--页面js-->
+<script src="${tzp.getContextPath()}/dist/js/pages/user/task.js?v=2600bf6"></script>
+</body>
+<#include "/includes/count.html" />
+</html>

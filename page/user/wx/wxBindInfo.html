@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>绑定微信-亿钱贷</title>
+    <#include "/includes/style.html" />
+    <!--页面样式-->
+    <link href="${tzp.getContextPath()}/dist/css/pages/static/wxBindInfo.css?v=76409ef" rel="stylesheet">
+</head>
+<body>
+
+<!-- 头部开始 -->
+<#include "/includes/header.html" />
+<div class="wx-bind-info">
+  <ul>
+    <li>
+      <h3>姿势一</h3>
+      <ul>
+        <li>
+          <p>
+            1.点击下方“保存图片”按钮，保存二维码至您的手机
+          </p>
+          <p class="am-text-center">
+            <img src="/public/images/fwcode.png" />
+          </p>
+        </li>
+        <li>
+          2.打开微信客户端，点击“扫一扫”
+        </li>
+        <li>
+          3.从相册选取该二维码进行“扫一扫”，即可成功绑定
+        </li>
+      </ul>
+    </li>
+    <li>
+      <h3>姿势二</h3>
+      <ul>
+        <li>1.关注并进入“深南服务”服务号</li>
+        <li>2.点击底部菜单栏，选择“绑定账号”</li>
+        <li>3.登录平台账号后，即可成功绑定</li>
+      </ul>
+    </li>
+  </ul>
+  <p class="am-text-muted am-text-xs tips">成功绑定后可用于接收项目回款、提现到账等资金动态信息</p>
+</div>
+<!--底部菜单-->
+
+<#include "/includes/script.html" />
+<!--页面js-->
+<script src="${tzp.getContextPath()}/dist/js/pages/static/wxBindInfo.js?v=1443982"></script>
+</body>
+<#include "/includes/count.html" />
+</html>

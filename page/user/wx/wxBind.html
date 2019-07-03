@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>微信绑定-亿钱贷</title>
+    <#include "/includes/style.html" />
+    <!--页面样式-->
+    <link href="${tzp.getContextPath()}/dist/css/pages/static/wxBind.css?v=76409ef" rel="stylesheet">
+</head>
+<body>
+
+<!-- 头部开始 -->
+<#include "/includes/header.html" />
+<div class="wx-bind-boxer am-text-center">
+  <div class="logo-pic am-text-center">
+    <img src="/src/assets/wx/bind_title.png" />
+  </div>
+  <div class="info">
+    <p>您的亿钱贷账号  <span class="am-text-secondary">${(lgoinname)!''}</span></p>
+    <p>将与微信号 <span class="am-text-secondary">${(wx.nickname)!''}</span> 进行绑定</p>
+  </div>
+  <p class="bind-btn">
+    <a class="am-btn am-btn-success am-btn-xl am-block am-radius" href="javascript:;;" id="btn-bind">立即绑定</a>
+  </p>
+  <p class="am-text-muted">
+    绑定后可通过服务号接收账户资金动态信息
+  </p>
+</div>
+<!--底部菜单-->
+
+<#include "/includes/script.html" />
+<!--页面js-->
+<script src="${tzp.getContextPath()}/dist/js/pages/static/wxBind.js?v=1443982"></script>
+</body>
+<#include "/includes/count.html" />
+</html>

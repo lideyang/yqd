@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>相关协议-亿钱贷</title>
+    <#include "/includes/style.html" />
+    <!--页面样式-->
+    <style>
+        body{
+            background-color: #f8f8f8;
+        }
+        ul{
+            padding:0;
+            margin:0;
+        }
+        ul li{
+            background-color: #fff;
+            padding:.15rem .2rem;
+            margin:0 0 .1rem;
+        }
+		ul li a{
+			display: block;
+		}
+    </style>
+</head>
+<body>
+<!-- 头部开始 -->
+<#include "/includes/header.html" />
+
+<ul>
+<#if agreements??>
+	<#list agreements as item>
+		  <li>
+	        <a href="${tzp.getContextPath()}${item.url}" class="am-text-default">《${item.name}》<i class="icon-font icon-next am-fr am-text-primary"></i></a>
+	    </li>
+	</#list>
+</#if>
+  
+<!--     <li> -->
+<!--         <a  href="${tzp.getContextPath()}/member/invest/view/${investId!''}?contractType=16" class="am-text-default">《风险及禁止性行为提示书》</a><i class="icon-font icon-next am-fr am-text-primary"></i> -->
+<!--     </li> -->
+<!--     <li> -->
+<!--         <a href="${tzp.getContextPath()}/contract/show/liquidity" class="am-text-default">《流动性风险提示书》</a><i class="icon-font icon-next am-fr am-text-primary"></i> -->
+<!--     </li> -->
+</ul>
+<!--底部菜单-->
+
+<#include "/includes/script.html" />
+<!--页面js-->
+<script src="${tzp.getContextPath()}/dist/js/pages/product/relatedAgreements.js?v=a003736"></script>
+</body>
+<#include "/includes/count.html" />
+</html>

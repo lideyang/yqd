@@ -1,0 +1,30 @@
+{
+  "status": true,
+  "msg":"",
+  "data": {
+    "totalAmount": 3213.32,
+    "list": [{
+      "status": 1,
+      "time": 1550419200000,
+      "money": 1213.32,
+      "reAmount": 3233.32,
+      "bankName": "建设银行",
+      "bankNo": 3233
+    },{
+      "status": 2,
+      "time": 1547740800000,
+      "money": 2313.32,
+      "reAmount": 733.32,
+      "bankName": "工商银行",
+      "bankNo": 3257
+    },{
+      "status": 3,
+      "time": 1555516800000,
+      "money": 313.32,
+      "reAmount": 2763.32,
+      "bankName": "招商银行",
+      "bankNo": 7937
+    }
+    ]
+  }
+}

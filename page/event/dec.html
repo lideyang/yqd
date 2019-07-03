@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>十二月活动-亿钱贷</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.5, maximum-scale=0.5, user-scalable=0">
+    <meta content="telephone=no" name="format-detection">
+    <script>
+        //设置rem
+        (function (doc, win) {
+            var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize';
+            var dpr = window.devicePixelRatio || 1;
+            // adjust body font size
+            function setBodyFontSize() {
+                if (document.body) {
+                    document.body.style.fontSize = '24px'
+                }
+                else {
+                    document.addEventListener('DOMContentLoaded', setBodyFontSize)
+                }
+            }
+
+            setBodyFontSize();
+            function setRemUnit() {
+                var clientWidth = docEl.clientWidth;
+                if (!clientWidth) return;
+                docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+            }
+
+            setRemUnit()
+            if (!doc.addEventListener) return;
+            win.addEventListener(resizeEvt, setRemUnit);
+            window.addEventListener('pageshow', function (e) {
+                if (e.persisted) {
+                    setRemUnit()
+                }
+            })
+        })(document, window);
+    </script>
+    <!-- 公共样式 -->
+    <link href="${tzp.getContextPath()}/dist/css/global.css?v=63e48b6" rel="stylesheet">
+    <link rel="stylesheet" href="/dist/css/pages/activity/dec.css?v=8f09921" />
+</head>
+<body style="font-size:20px;">
+    <div class="main-content">
+        <h3 class="tips opt1 am-text-center">待收≥1000，天天领奖励，每天限领5个</h3>
+        <div class="red-layer am-text-center">
+            <p class="am-text-center">今日剩余可领数量为<span id="klqzs"><#if (_p2p_member_user)??>${(5-count)?round}<#else>5</#if></span>个</p>
+            <ul id="redList">
+            <#if rules??>
+             <#list rules as rule>
+                <li>
+                    <i class="icon">${(rule.awardAmount)}<span>%</span></i>
+                    <!--<h4>奖励券${(rule.awardAmount)}%</h4>-->
+                    <p>${(rule.limitPeriodsStr)!''}</p>
+                    <#if (_p2p_member_user)??>
+                    		<#if (count)?? && count gte 5>
+								<a class="btn btn-disabled"  href="javascript:;">明日再来</a>
+							<#else>
+								<a class="btn btn-link"  href="javascript:;" data-id="${(rule.ruleId)!''}">立即领取</a>
+							</#if>
+                    <#else>
+                    	<a class="btn"  href="/spa/account/login">立即登录</a>
+                    </#if>
+                </li>
+              </#list>
+             </#if>
+            </ul>
+        </div>
+        <h3 class="tips opt2 am-text-center">活动期间年化出借排名得现金奖励</h3>
+        <div class="content">
+            <div class="pro-layer info-layer">
+                <div class="am-text-center boxer">
+                    <div class="am-g">
+                        <div class="am-u-sm-6">
+                            <h4><#if (myRank)?? && (myRank) == 1>5888.00
+										<#elseif (myRank)?? && (myRank) == 2>3888.00
+										<#elseif (myRank)?? && (myRank) == 3>2888.00
+										<#elseif (myRank)?? && (myRank) gte 4 && (myRank) lte 12>1888.00
+										<#elseif (myRank)?? && (myRank) gte 13 && (myRank) lte 50>888.00
+										<#elseif (myRank)?? && (myRank) gte 51 && (myRank) lte 100>388.00
+										<#elseif (myRank)?? && (myRank) gte 101 && (myRank) lte 200>188.00
+										<#elseif (myRank)?? && (myRank) gte 201 && (myRank) lte 500>88.00
+										<#elseif (myRank)?? && (myRank) gte 501 && (myRank) lte 1000>18.00<#else>0.00</#if></h4>
+                            <p>可获奖励</p>
+                        </div>
+                        <div class="am-u-sm-6">
+                            <h4>${myRank!'--'}</h4>
+                            <p>我的排名</p>
+                        </div>
+                    </div>
+                    <div class="split"></div>
+                    <p class="am-text-center tips">我的累计年化出借${(investAmt!0)?string(',##0.00')}元，可获奖励以最终奖励为准</p>
+                </div>
+            </div>
+            <div class="pro-layer list-layer">
+                <ul>
+                    <li>
+                        <span>名次</span>
+                        <span>可获奖励</span>
+                        <span>年化出借金额</span>
+                    </li>
+                    <li <#if (myRank)?? && (myRank) == 1> class="active" </#if>>
+                        <span><i class="icon icon-1"></i></span>
+                        <span>5888.00</span>
+                        <span><#list rankList as rl><#if rl_index ==0>${(rl!0)?string(',##0.00')}</#if></#list></span>
+                    </li>
+                    <li <#if (myRank)?? && (myRank) == 2> class="active" </#if>>
+                        <span><i class="icon icon-2"></i></span>
+                        <span>3888.00</span>
+                        <span><#list rankList as rl><#if rl_index ==1>${(rl!0)?string(',##0.00')}</#if></#list></span>
+                    </li>
+                    <li <#if (myRank)?? && (myRank) == 3> class="active" </#if>>
+                        <span><i class="icon icon-3"></i></span>
+                        <span>2888.00</span>
+                        <span><#list rankList as rl><#if rl_index ==2>${(rl!0)?string(',##0.00')}</#if></#list></span>
+                    </li>
+                    <li <#if (myRank)?? && (myRank) gte 4 && (myRank) lte 12> class="active" </#if>>
+                        <span><span>4-12<span class="brow">st</span></span></span>
+                        <span>1888.00</span>
+                        <span>≥<#list rankList as rl><#if rl_index ==3>${(rl!0)?string(',##0.00')}</#if></#list></span>
+                    </li>
+                    <li <#if (myRank)?? && (myRank) gte 13 && (myRank) lte 50> class="active" </#if>>
+                        <span><span>13-50<span class="brow">st</span></span></span>
+                        <span>888.00</span>
+                        <span>≥<#list rankList as rl><#if rl_index ==4>${(rl!0)?string(',##0.00')}</#if></#list></span>
+                    </li>
+                    <li <#if (myRank)?? && (myRank) gte 51 && (myRank) lte 100> class="active" </#if>>
+                        <span><span>51-100<span class="brow">st</span></span></span>
+                        <span>388.00</span>
+                        <span>≥<#list rankList as rl><#if rl_index ==5>${(rl!0)?string(',##0.00')}</#if></#list></span>
+                    </li>
+                    <li <#if (myRank)?? && (myRank) gte 101 && (myRank) lte 200> class="active" </#if>>
+                        <span><span>101-200<span class="brow">st</span></span></span>
+                        <span>188.00</span>
+                        <span>≥<#list rankList as rl><#if rl_index ==6>${(rl!0)?string(',##0.00')}</#if></#list></span>
+                    </li>
+                    <li <#if (myRank)?? && (myRank) gte 201 && (myRank) lte 500> class="active" </#if>>
+                        <span><span>201-500<span class="brow">st</span></span></span>
+                        <span>88.00</span>
+                        <span>≥<#list rankList as rl><#if rl_index ==7>${(rl!0)?string(',##0.00')}</#if></#list></span>
+                    </li>
+                    <li <#if (myRank)?? && (myRank) gte 501 && (myRank) lte 1000> class="active" </#if>>
+                        <span><span>501-1000<span class="brow">st</span></span></span>
+                        <span>18.00</span>
+                        <span>≥<#list rankList as rl><#if rl_index ==8>${(rl!0)?string(',##0.00')}</#if></#list></span>
+                    </li>
+                </ul>
+            </div>
+            <p class="tips">注：易智投委托成功后计入累计年化出借，散标在出借起息后计入累计年化出
+                借，受散标起息时间的影响，排行榜最终排名以1月1日中午12点的排名为准，
+                若累计年化出借金额相同，则先完成出借的用户排名在前。活动期间内，累计年化出借金额满1000元才能参与排名。</p>
+        </div>
+        <h3 class="tips opt3 am-text-center"><a href="${tzp.getContextPath()}/invest/list">立即出借</a></h3>
+        <div class="opt">
+            <h4 class="am-text-center">活动规则</h4>
+            <ul>
+                <li>1、奖励券每天可领取的总数为5张，奖励券现金红包不能同时使用；</li>
+                <li>2、债权转让不参与以上年化出借金额的累计;</li>
+                <li>3、年化出借计算方式：
+                    <p>1）易智投/每月付息到期还本/一次性还本付息：年化=出借金额*(期限/12)</p>
+                    <p>
+                        2）等额本息项目<br/>
+                        期限≤3个月：年化=出借金额*(期限/12)*0.7<br/>
+                        3个月＜期限≤6个月：年化=出借金额*(期限/12)*0.6<br/>
+                        期限＞6个月：年化=出借金额*(期限/12)*0.55<br/>
+                        说明：若是天标，则换算成月，月=项目天数/30<br/>
+                        每笔出借换算的年化金额保留两位小数，两位小数后面位舍去。
+                    </p>
+                </li>
+                <li>4、排名奖励在活动结束后7个工作日内发放至平台账户。</li>
+                <li>5、活动最终解释权归平台所有，如因监管要求对活动进行规则调整或下线处理，以页面刷新或公告内容为准。</li>
+            </ul>
+        </div>
+        <div class="copy-right">
+            <p>© 2018 亿钱贷 | All rights reserved </p>
+            <p>深圳市亿钱贷电子商务有限公司 <a href="http://www.miit.gov.cn/"  rel="noopener noreferrer" target="_blank">粤ICP备14041671号-1</a></p>
+            <p>市场有风险，出借需谨慎</p>
+        </div>
+    </div>
+<div class="reward-layer" style="display: none" id="rewardLayer">
+    <h2>恭喜您领取成功</h2>
+    <p>您今日已经领取了<span class="am-text-secondary" id="amountTxt">0</span>张</p>
+    <p>还可以领取<span class="am-text-secondary" id="reTxt">0</span>张</p>
+    <a id="modalBtn" class="btn" href="javascript:;;">知道了</a>
+</div>
+<#include "/includes/script.html" />
+<!--页面js-->
+<script src="${tzp.getContextPath()}/dist/js/pages/activity/dec.js?v=98ff151"></script>
+</body>
+<#include "/includes/count.html" />
+</html>

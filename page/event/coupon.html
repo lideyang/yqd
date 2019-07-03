@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>好友喊你来加薪-亿钱贷</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,minimal-ui">
+    <script>
+        //设置rem
+        (function (doc, win) {
+            var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                recalc = function () {
+                    var clientWidth = docEl.clientWidth;
+                    if (!clientWidth) return;
+                    if (clientWidth >= 750) {
+                        docEl.style.fontSize = '100px';
+                    } else {
+                        docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+                    }
+                };
+
+            if (!doc.addEventListener) return;
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+        })(document, window);
+        var basePath='${tzp.getContextPath()!''}';
+    </script>
+         <link rel="stylesheet" href="${tzp.getContextPath()}/public/css/event/bonus.css?v=13a83ed"/>
+</head>
+<body>
+<div class="top">
+    <div class="container clearfix">
+        <img class="logo pull-left" src="${tzp.getContextPath()}/public/images/event/logo.png?v=4cfa8f6"/>
+        <div class="title pull-left">
+            <p>A股上市公司全资控股</p>
+            <p>证券代码002417</p>
+        </div>
+    </div>
+</div>
+<div class="content mobile-reg">
+    <div class="banner">
+        <p class="" id="sendSuccess" style="display: none">短信验证码已发送至 ${userMobile!''}</p>
+        <p class="" id="getCodetext">请点击获取短信验证码</p>
+        <form action="success.html">
+            <input id="phone" type="hidden" value="${userMobile!''}" />
+            <input id="recommendCode" type="hidden" value="${code!''}" />
+            <div class="mobile-form">
+             	<div class="form-group code">
+                    <input id="code" maxlength="5"  placeholder="请输入5位图形验证码" />
+                    <img id="randImg" class="codepic" src="${tzp.getContextPath()}/txjcaptcha.svl?+Math.random()" onclick="this.src='${tzp.getContextPath()}/txjcaptcha.svl?'+Math.random()">
+                </div>
+                <div class="form-group code">
+                    <input id="phoneCode" maxlength="6"  placeholder="请输入6位数字验证码" />
+                    <a class="send-btn" id="countDownTxt" href="javascript:;;">发送验证码</a>
+                </div>
+                <div class="form-group">
+                    <input id="userPassword" maxlength="20" autocomplete="new-password" type="password" placeholder="请设置6-20位字母+数字的密码" />
+                </div>
+                <div id="errorMsg" class="error-msg">
+                    <i class="icon-font icon-gth"></i>
+                    <span></span>
+                </div>
+                <div class="agree">
+                    <label>
+                        <input id="agreeCheckboxBtn" type="checkbox" checked />
+                        <span>我已阅读并同意<a href="${tzp.getContextPath()}/agreement/zhuce">《亿钱贷注册协议》</a></span>
+                    </label>
+                </div>
+            </div>
+            <button type="button" class="reg-btn" id="regBtn">注册领取888元红包</button>
+        </form>
+    </div>
+
+    <div class="copy-right">
+        <p>市场有风险，出借需谨慎</p>
+        <p>深圳市亿钱贷电子商务有限公司版权所有</p>
+    </div>
+</div>
+<script src="${tzp.getContextPath()}/public/js/risk/jquery.min.js?v=fab12e7"></script>
+<script src="${tzp.getContextPath()}/public/js/bonus/validCode.js?v=5374809"></script>
+<script src="${tzp.getContextPath()}/public/js/plugins/layer/layer.js?v=5c06706"></script>
+  <script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script> 
+ <script src="${tzp.getContextPath()}/public/js/wx.js?v=c703a88"></script> 
+ <script>
+ $(function () {
+ initWxData(_wxData)
+})
+var _wxData = {
+	  	  "imgUrl": "${shareData.img!''}",
+	      "link": "${shareData.wapUrl!''}/event/bonus?code=${code!''}",
+	      "desc": "${shareData.desc!''}",
+	      "title":"${shareData.title!''}"
+};
+ </script>
+</body>
+<#include "/includes/count.html" /> 
+</html>

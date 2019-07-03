@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>登录-亿钱贷</title>
+    <#include "/includes/style.html" />
+    <!--页面样式-->
+    <link href="${tzp.getContextPath()}/dist/css/pages/account/register.css?v=e33f992" rel="stylesheet">
+</head>
+<body class="main-bg">
+    <!-- 头部开始 -->
+    <#include "/includes/header.html" />
+    <!--内容开始-->
+    <!--注册面板-->
+    <div class="am-panel am-panel-default reg-panel" style="height: 5.48rem">
+        <div class="am-panel-bd">
+            <div class="am-text-center logo-pic">
+                <img src="/public/images/account/logo_reg.png?v=7e49277" />
+            </div>
+            <form class="am-form" id="registerForm" method="post" autocomplete="off" action="${tzp.getContextPath()}/secure/dologin">
+            
+              <#if publicKeyMap??>
+				<input type="hidden" id="modulus" value="${publicKeyMap.modulus}" />
+				<input type="hidden" id="exponent" value="${publicKeyMap.exponent}" />
+	            <input type="hidden" name="userType" value="2" />
+	            <input type="hidden" id ="_callbackUrl" name="_callbackUrl" value="${callbackUrl!''}">
+			</#if>  
+
+                <div class="am-form-group form-icon reg-mobile">
+                    <i class="icon-left icon-font icon-account"></i>
+                    <input id="userName" name="userLoginName" type="hidden" />
+                    <input autocomplete="new-password" class="am-form-field" value="<#if errorMsg??>${(userMobile!'')}</#if>" maxlength="18" type="text" id="userMobile" placeholder="请输入手机号码或用户名">
+                </div>
+                <div class="am-form-group form-icon reg-mobile">
+                    <i class="icon-left icon-font icon-psw"></i>
+                    <input id="userPwd" name="userPassword" type="hidden" />
+                    <input class="am-form-field" maxlength="20" autocomplete="password" type="password" id="password" placeholder="请输入您的登录密码">
+                </div>
+              	<!--三次密码错误后-->
+                <div id="codeGroup" class="am-form-group am-g form-icon code login-code">
+                    <div class="am-u-sm-8">
+                        <i class="icon-left icon-font icon-msg"></i>
+                        <input class="am-form-field" maxlength="5" id="captcha" name="captcha" placeholder="请输入图形验证码">
+                    </div>
+                    <div class="am-u-sm-4 am-text-right" >
+                        <img id="codePicBtn" src="${tzp.getContextPath()}/txjcaptcha.svl"/>
+                    </div>
+                </div>
+                <div class="am-form-group">
+                   <p class="msg am-text-danger"></i><span id="errorMsg"></span></p>
+                </div>
+                <div class="am-form-group">
+                    <a id="submitBtn" data-am-loading="{spinner: 'loading', loadingText: '加载中...'}" class="am-btn am-btn-secondary am-round am-btn-block am-btn-xl">登录</a>
+                </div>
+                <div class="am-g link">
+                    <div class="am-u-sm-6">
+                        <a href="/secure/register" class="am-text-primary">注册</a>
+                    </div>
+                    <div class="am-u-sm-6 am-text-right">
+                        <a href="${tzp.getContextPath()}/spa/account/forget/pwd" class="am-text-primary">忘记密码</a>
+                    </div>
+                </div>
+                <input type="hidden" name="callbackUrl" value="${callbackUrl!''}">
+            </form>
+        </div>
+    </div>
+    <#include "/includes/script.html" />
+</body>
+<!--页面js-->
+<script src="${tzp.getContextPath()}/public/js/security/BigInt.js?v=5d5cb7e"></script>
+<script src="${tzp.getContextPath()}/public/js/security/Barrett.js?v=8076bc6"></script>
+<script src="${tzp.getContextPath()}/public/js/security/RSA.js?v=8143dee"></script>
+<script src="${tzp.getContextPath()}/dist/js/pages/account/login.js?v=2945a7d"></script>
+<#include "/includes/count.html" /> 
+</html>

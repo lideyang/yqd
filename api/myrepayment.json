@@ -1,0 +1,275 @@
+{
+  "count": 5,
+  "success": true,
+  "data": [
+    {
+      "repayList": [
+        {
+          "principal": 337.36000000,
+          "repayIncome": 8.50000000,
+          "awardIncome": 0,
+          "ticketIncome": 0E-8,
+          "allIncome": 8.50000000,
+          "prdName": "微花贷_20181017_0578",
+          "settleDate": 1550419200000,
+          "investStatus": "1",
+          "investType": "1"
+        }
+      ],
+      "totalAmt": 345.86000000,
+      "incomeAmt": 8.50000000,
+      "yearMonth": "2019-02"
+    },
+    {
+      "repayList": [
+        {
+          "principal": 331.81000000,
+          "repayIncome": 14.05000000,
+          "awardIncome": 0,
+          "ticketIncome": 0E-8,
+          "allIncome": 14.05000000,
+          "prdName": "微花贷_20181017_0579",
+          "settleDate": 1545062400000,
+          "investStatus": "1",
+          "investType": "1"
+        }
+      ],
+      "totalAmt": 345.86000000,
+      "incomeAmt": 14.05000000,
+      "yearMonth": "2018-12"
+    },
+    {
+      "repayList": [
+        {
+          "principal": 334.58000000,
+          "repayIncome": 11.28000000,
+          "awardIncome": 0,
+          "ticketIncome": 0E-8,
+          "allIncome": 11.28000000,
+          "prdName": "微花贷_20181017_0510",
+          "settleDate": 1547740800000,
+          "investStatus": "1",
+          "investType": "1"
+        }
+      ],
+      "totalAmt": 345.86000000,
+      "incomeAmt": 11.28000000,
+      "yearMonth": "2019-01"
+    },
+    {
+      "repayList": [
+        {
+          "principal": 143.01000000,
+          "repayIncome": 93.89000000,
+          "awardIncome": 0,
+          "ticketIncome": 0E-8,
+          "allIncome": 2.89000000,
+          "prdName": "微花贷_20181017_0511",
+          "settleDate": 1555516800000,
+          "investStatus": "1",
+          "investType": "1"
+        },
+        {
+          "principal": 3343.01000000,
+          "repayIncome": 24.89000000,
+          "awardIncome": 0,
+          "ticketIncome": 0E-8,
+          "allIncome": 2.89000000,
+          "prdName": "微花贷_20181017_0323",
+          "settleDate": 1555516800000,
+          "investStatus": "1",
+          "investType": "4"
+        },
+        {
+          "principal": 843.01000000,
+          "repayIncome": 2.89000000,
+          "awardIncome": 0,
+          "ticketIncome": 0E-8,
+          "allIncome": 2.89000000,
+          "prdName": "微花贷_20181217_0421",
+          "settleDate": 1555516800000,
+          "investStatus": "1",
+          "investType": "1"
+        },
+        {
+          "principal": 243.01000000,
+          "repayIncome": 32.89000000,
+          "awardIncome": 0,
+          "ticketIncome": 0E-8,
+          "allIncome": 2.89000000,
+          "prdName": "微花贷_20181017_0315",
+          "settleDate": 1555516800000,
+          "investStatus": "1",
+          "investType": "4"
+        },
+        {
+          "principal": 3343.01000000,
+          "repayIncome": 512.89000000,
+          "awardIncome": 0,
+          "ticketIncome": 0E-8,
+          "allIncome": 2.89000000,
+          "prdName": "微花贷_20181017_0323",
+          "settleDate": 1555516800000,
+          "investStatus": "1",
+          "investType": "1"
+        }
+      ],
+      "totalAmt": 345.90000000,
+      "incomeAmt": 2.89000000,
+      "yearMonth": "2019-04"
+    },
+    {
+      "repayList": [
+        {
+          "principal": 340.17000000,
+          "repayIncome": 255.69000000,
+          "awardIncome": 0,
+          "ticketIncome": 0E-8,
+          "allIncome": 5.69000000,
+          "prdName": "微花贷_20181017_0512",
+          "settleDate": 1554307200000,
+          "investStatus": "1",
+          "investType": "1"
+        },
+        {
+          "principal": 6324.17000000,
+          "repayIncome": 132.69000000,
+          "awardIncome": 0,
+          "ticketIncome": 0E-8,
+          "allIncome": 5.69000000,
+          "prdName": "微花贷_20181017_0513",
+          "settleDate": 1554307200000,
+          "investStatus": "1",
+          "investType": "1"
+        },
+        {
+          "principal": 340.17000000,
+          "repayIncome": 235.69000000,
+          "awardIncome": 0,
+          "ticketIncome": 0E-8,
+          "allIncome": 5.69000000,
+          "prdName": "微花贷_20181017_0514",
+          "settleDate": 1554307200000,
+          "investStatus": "4",
+          "investType": "4"
+        },
+        {
+          "principal": 3123.17000000,
+          "repayIncome": 5.69000000,
+          "awardIncome": 0,
+          "ticketIncome": 0E-8,
+          "allIncome": 5.69000000,
+          "prdName": "微花贷_20181017_0515",
+          "settleDate": 1554307200000,
+          "investStatus": "4",
+          "investType": "4"
+        }
+      ],
+      "totalAmt": 345.86000000,
+      "incomeAmt": 5.69000000,
+      "yearMonth": "2019-04"
+    },
+    {
+      "repayList": [
+        {
+          "principal": 640.17000000,
+          "repayIncome": 255.69000000,
+          "awardIncome": 0,
+          "ticketIncome": 0E-8,
+          "allIncome": 5.69000000,
+          "prdName": "微花贷_20181017_0512",
+          "settleDate": 1552838400000,
+          "investStatus": "1",
+          "investType": "1"
+        },
+        {
+          "principal": 3324.17000000,
+          "repayIncome": 132.69000000,
+          "awardIncome": 0,
+          "ticketIncome": 0E-8,
+          "allIncome": 5.69000000,
+          "prdName": "微花贷_20181017_0513",
+          "settleDate": 1552838400000,
+          "investStatus": "1",
+          "investType": "1"
+        },
+        {
+          "principal": 840.17000000,
+          "repayIncome": 235.69000000,
+          "awardIncome": 0,
+          "ticketIncome": 0E-8,
+          "allIncome": 5.69000000,
+          "prdName": "微花贷_20181017_0514",
+          "settleDate": 1552838400000,
+          "investStatus": "4",
+          "investType": "4"
+        },
+        {
+          "principal": 1123.17000000,
+          "repayIncome": 5.69000000,
+          "awardIncome": 0,
+          "ticketIncome": 0E-8,
+          "allIncome": 5.69000000,
+          "prdName": "微花贷_20181017_0515",
+          "settleDate": 1552838400000,
+          "investStatus": "4",
+          "investType": "4"
+        }
+      ],
+      "totalAmt": 345.86000000,
+      "incomeAmt": 5.69000000,
+      "yearMonth": "2019-03"
+    },
+    {
+      "repayList": [
+        {
+          "principal": 140.17000000,
+          "repayIncome": 255.69000000,
+          "awardIncome": 0,
+          "ticketIncome": 0E-8,
+          "allIncome": 5.69000000,
+          "prdName": "微花贷_20181017_0512",
+          "settleDate": 1558108800000,
+          "investStatus": "1",
+          "investType": "1"
+        },
+        {
+          "principal": 3324.17000000,
+          "repayIncome": 132.69000000,
+          "awardIncome": 0,
+          "ticketIncome": 0E-8,
+          "allIncome": 5.69000000,
+          "prdName": "微花贷_20181017_0513",
+          "settleDate": 1558108800000,
+          "investStatus": "1",
+          "investType": "1"
+        },
+        {
+          "principal": 540.17000000,
+          "repayIncome": 235.69000000,
+          "awardIncome": 0,
+          "ticketIncome": 0E-8,
+          "allIncome": 5.69000000,
+          "prdName": "微花贷_20181017_0514",
+          "settleDate": 1558108800000,
+          "investStatus": "4",
+          "investType": "4"
+        },
+        {
+          "principal": 2123.17000000,
+          "repayIncome": 5.69000000,
+          "awardIncome": 0,
+          "ticketIncome": 0E-8,
+          "allIncome": 5.69000000,
+          "prdName": "微花贷_20181017_0515",
+          "settleDate": 1558108800000,
+          "investStatus": "4",
+          "investType": "4"
+        }
+      ],
+      "totalAmt": 345.86000000,
+      "incomeAmt": 5.69000000,
+      "yearMonth": "2019-05"
+    }
+  ]
+}

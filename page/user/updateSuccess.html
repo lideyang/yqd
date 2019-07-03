@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>修改交易密码-亿钱贷</title>
+    <#include "/includes/style.html" />
+    <!--页面样式-->
+    <link href="${tzp.getContextPath()}/dist/css/pages/user/rechargeSuccess.css?v=790d6d8" rel="stylesheet">
+</head>
+<body class="main-bg">
+<!-- 头部开始 -->
+<#include "/includes/header.html" />
+<!--充值成功面板-->
+<div class="am-panel am-panel-default reg-panel success-panel">
+	    <div class="am-panel-bd am-text-center">
+	        <i class="icon-font icon-right1 info-icon am-text-secondary"></i>
+	        <h3 class="am-text-center">${msg!'修改交易密码成功'}</h3>
+	        <p>&nbsp;</p>
+	        <a href="${tzp.getContextPath()}/spa/user/center" class="am-btn am-btn-secondary am-round am-btn-block am-btn-xl">返回我的账户</a>
+	    </div>
+
+</div>
+<!--底部菜单-->
+<#include "/includes/script.html" />
+<!--页面js-->
+<script src="${tzp.getContextPath()}/dist/js/pages/user/rechargeSuccess.js?v=c1367b8"></script>
+</body>
+
+<#include "/includes/count.html" /> 
+</html>

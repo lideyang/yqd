@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>提现-亿钱贷</title>
+    <#include "/includes/style.html" />
+    <!--页面样式-->
+    <link href="/dist/css/pages/user/withdraw.css?v=68b5f25" rel="stylesheet">
+</head>
+<body class="main-bg">
+<!-- 头部开始 -->
+<header data-am-widget="header" class="am-header am-header-default" id="topHeader">
+    <div class="am-header-left am-header-nav">
+        <a id="nextBtn" href="javascript:;;" class="">
+            <i class="am-header-icon icon-font icon-prev"></i>
+            返回
+        </a>
+    </div>
+
+    <h1 class="am-header-title">
+        <a id="headerTitle" href="#title-link" class="">
+            亿钱贷
+        </a>
+    </h1>
+    <div class="am-header-right am-header-nav">
+        <a href="${tzp.getContextPath()}/spa/user/withdrawRecord" class="">提现记录</a>
+    </div>
+</header>
+<#if !weixin>
+<script>
+    var isWeiXin = false;
+</script>
+<#else>
+<script>
+    var isWeiXin = true;
+</script>
+</#if>
+<div class="main-content">
+<!--银行卡信息-->
+<div class="am-g bank-card-layer">
+    <div class="am-u-sm-3 bank-logo am-text-center">
+        <i class="icon-font-bank icon-${(userBank.bankCode)!''}"></i>
+    </div>
+    <div class="am-u-sm-9">
+        <h2 class="">${(userBank.bankName)!''}（尾号${(userBank.accountStar?substring(14))!''}）</h2>
+        <p>可用余额(元)：<span class="am-text-secondary">${(accountVo.availableAmt!0)?string(',##0.00')}</span></p>
+    </div>
+</div>
+<div class="withdraw-layer">
+	<!-- 计算手续费变量 -->
+	<input type="hidden" id="freeAmt" value="${(accountVo.freeAmt)!0}">
+	<input type="hidden" id="feeRate" value="${feeRate!0}">
+	<input type="hidden" id="hasT1Count" value="${hasT1Count!0}">
+	<input type="hidden" id="hasT0Count" value="${hasT0Count!0}">
+	<input type="hidden" id="withdrawlCount" value="${withdrawlCount!3}">
+	<input type="hidden" id="singleCashFee" value="${singleCashFee!2}">
+    <input type="hidden" id="bankId" value="${(userBank.bankId)!''}">
+    <input type="hidden" id="availableAmt" value="${(accountVo.availableAmt!0)}">
+    
+	<input type="hidden" id="maxCashAmt" value="${maxCashAmt!0}">
+	<input type="hidden" id="minCashAmt" value="${minCashAmt!0}">
+	<input type="hidden" id="auditAmount" value="${auditAmount!0}">
+	<input type="hidden" id="t0Quota" value="${t0Quota!0}">
+    <form class="withdraw-form" id="withdrawForm">
+	    <input type="hidden" id="bankCode" value="${(userBank.bankCode)!''}">
+    	<input type="hidden" name="codeType" value="tx_code">
+        <div class="type-layer" id="typeLayer">
+        
+            <div class="am-form-group type first <#if !t0Switch>disabled</#if>">
+                <label class="am-radio">
+                    <input type="radio" id="urgent" name="withdrawType" value="URGENT" data-am-ucheck <#if !t0Switch>disabled<#else>checked</#if>>
+                    	<#if rechargeClose?? >充值提现关闭T0的提示xxxx</#if>
+                   		快速提现（预计当天到账）
+                   		<i id="qCashIcon" class="icon-font icon-wenhao1" <#if !noQuta??>style="display: none"</#if> ></i>
+                </label>
+                <#if rechargeClose?? >
+                    <p class="am-text-danger tips" style="display: block">新注册用户当日充值的金额，在当日仅支持普通提现</p>
+                <#else>
+                    <p id="timeTips" class="am-text-danger tips">22:00-24:00间，提现金额为${(t0LimitAmount)!0}以上将无法当天到账</p>
+                </#if>
+            </div>
+            <div class="am-form-group type">
+                <label class="am-radio">
+                    <input id="fastCashRadio" type="radio" name="withdrawType" value="NORMAL" data-am-ucheck <#if !t0Switch>checked</#if>>
+                    	普通提现（预计下个工作日到账，节假日顺延）
+                </label>
+            </div>
+        </div>
+			<#assign remainCount = (withdrawlCount!3) - (hasT0Count!0) >
+			<#assign remainCount = (remainCount>0)?string(remainCount,"0") >   
+        <div class="info-layer">
+            <div class="am-form-group withdraw-money">
+                <label>￥</label>
+                <input type="text" class="am-form-field money-txt" maxlength="12" id="withdrawAmount" name="withdrawAmount" placeholder="请输入提现金额" />
+                <a id="allCashBtn" class="am-text-center all-cash-btn" href="javascript:;">全部提现</a>
+            </div>
+            <div class="am-g poundage">
+                <div class="am-u-sm-6">
+                    提现手续费：<span class="am-text-secondary" id="poundageTxt">0.00元</span><i id="poundageTips" data-am-popover="{trigger:'click',content: '今天剩余<span>${remainCount}</span>次免费提现次数，<br> 超过次数将收取${singleCashFee!2}元/笔费用'}" class="icon-font icon-wenhao pop-show"></i>
+                </div>
+                <div class="am-u-sm-6 am-text-right">
+                    实际到账：<span class="am-text-secondary" id="cashTxt">0.00元</span>
+                </div>
+            </div>
+            <p class="num" id="numTips"  <#if !t0Switch > style="display: none;" </#if> >
+                <label class="am-checkbox">
+                    <#if t0ReceiveCount gt 0 >
+                    	本月免费快速提现次数尚未领取，<a href="${tzp.getContextPath()}/task/list" class="am-text-primary">立即领取</a>
+                    <#elseif t0Count gt 0 >
+                    	 <input id="deductFee" name="num" type="checkbox"  value="1" data-am-ucheck <#if hasT0Count lt 3 >checked="checked"</#if> >抵扣手续费，本月剩余 1 次免费快速提现次数
+                    <#else>
+                    	<input id="deductFee" name="num" type="checkbox" disabled="disabled" value="" data-am-ucheck >抵扣手续费，本月剩余 0 次免费快速提现次数
+                    </#if>
+                </label>
+            </p>
+        </div>
+
+        <button data-am-loading="{spinner: 'loading', loadingText: '加载中...'}" type="submit" id="submitBtn" class="am-btn am-btn-secondary am-round am-btn-block am-btn-xl submit-btn">下一步</button>
+    </form>
+    <p class="am-text-center tips"><a id="djOptBtn" href="javascript:;" class="am-text-primary">提现资金冻结说明</a></p>
+</div>
+<p class="am-text-muted am-text-center"><a href="/static/cashRule" class="am-text-default">提现规则说明</a></p>
+</div>
+<form class="am-form info-form" id="xwform" method="post">
+
+</form>
+<!--底部菜单-->
+<#include "/includes/script.html" />
+<script type="text/javascript">
+//var isShowOpenModal=<#if !(isDepositary??) || isDepositary!='1'>true<#else>false</#if> ;
+var isShowOpenModal=false
+var auditHour =  Number('${auditHour!18}');
+	var currentHour=Number('${.now?string("HH")}');
+	var today='${.now?string("yyyy-MM-dd")}';
+	var auditAmount =  Number('${auditAmount!0}');
+	var dateArr=[];
+	<#if  holiday ??>
+	<#list holiday?keys as key>
+		dateArr["${key}"]="${holiday[key]?string('yes', 'no')}";
+	</#list>
+	</#if>
+	
+	var t0LimitAmount = Number('${(t0LimitAmount)!0}'),
+ 	t0Switch = "${t0Switch?string('true','false')}",
+ 	t0Count=Number('${(t0Count)!0}'),
+ 	t0ReceiveCount=Number('${(t0ReceiveCount)!0}') 	
+ 	;
+ 	
+    var hasT1Count = Number('${hasT1Count!0}'),
+    hasT0Count = Number('${hasT0Count!0}'),
+    withdrawlCount = Number('${withdrawlCount!3}'),
+    remainT1Count = withdrawlCount<hasT1Count?0:(withdrawlCount-hasT1Count),
+    remainT0Count = withdrawlCount<hasT0Count?0:(withdrawlCount-hasT0Count); 	
+</script>
+
+<script src="/dist/js/pages/user/withdraw.js?v=f75e86c"></script>
+</body>
+
+<#include "/includes/count.html" />
+</html>

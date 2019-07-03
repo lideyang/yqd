@@ -1,0 +1,28 @@
+<header data-am-widget="header" class="am-header am-header-default" id="topHeader">
+    <div class="am-header-left am-header-nav">
+        <a id="nextBtn" href="javascript:;;" class="">
+            <i class="am-header-icon icon-font icon-prev"></i>
+            返回
+        </a>
+    </div>
+
+    <h1 class="am-header-title">
+        <a id="headerTitle" href="#title-link" class="">
+            亿钱贷
+        </a>
+    </h1>
+    <div class="am-header-right am-header-nav">
+        <a href="#right-link" class="">
+            <i class="am-header-icon am-icon-bars"></i>
+        </a>
+    </div>
+</header>
+<#if !weixin>
+    <script>
+        var isWeiXin = false;
+    </script>
+<#else>
+    <script>
+        var isWeiXin = true;
+    </script>
+</#if>

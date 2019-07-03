@@ -1,0 +1,536 @@
+.activity-june-layer {
+  background-color: #ed416e;
+  padding-bottom: .5rem;
+
+  .banner {
+    position: relative;
+
+    img {
+      width: 100%;
+    }
+
+    p {
+      position: absolute;
+      bottom: .18rem;
+      left: 0;
+      width: 100%;
+      color: #fff;
+      text-align: center;
+      font-size: 12px;
+    }
+  }
+
+  .title {
+    background: url("../../../../assets/active/june/title.png") no-repeat;
+    background-size: 100% auto;
+    color: #9d0211;
+    text-align: center;
+    margin: 0 0 .05rem;
+    padding-right: .05rem;
+  }
+
+  .tips {
+    color: #fff;
+    margin: 0 0 .2rem;
+  }
+
+  .cart-layer {
+    padding: .3rem 0 0;
+
+    li {
+      margin: 0 0 .5rem;
+      padding: 0 .2rem;
+      background: url("../../../../assets/active/june/split.png") no-repeat bottom center;
+      background-size: 100% auto;
+
+      .boxer {
+        position: relative;
+        top: -.3rem;
+      }
+
+      p {
+        margin: 0;
+        text-align: center;
+        color: #fff;
+        font-size: 12px;
+      }
+
+      .cart {
+        margin: 0 .1rem .05rem;
+        padding: .1rem .1rem .1rem .2rem;
+        background: url("../../../../assets/active/june/card.png") no-repeat;
+        background-size: contain;
+        text-align: center;
+        height: .9605rem;
+
+        .num {
+          font-size: 48px;
+          color: #fff;
+          line-height: .4rem;
+          margin: .05rem 0 0;
+
+          span {
+            font-size: 20px;
+          }
+        }
+      }
+
+      .btn {
+        color: #ff5d73;
+        background-color: #fff100;
+        display: inline-block;
+        padding: .01rem .2rem;
+        border-radius: 8px;
+
+        &.btn-disabled {
+          color: #fff;
+          background-color: #a6a6a6;
+          border-color: #a6a6a6;
+          cursor: not-allowed;
+        }
+      }
+    }
+  }
+
+  .luck-layer {
+    background: url("../../../../assets/active/june/split.png") no-repeat bottom center;
+    background-size: 100% auto;
+    padding: .3rem .15rem 0;
+
+    .boxer {
+      position: relative;
+      top: -.3rem;
+      background: url("../../../../assets/active/june/luckdraw.png") no-repeat;
+      background-size: cover;
+      width: 3.5rem;
+      height: 2.06rem;
+      margin: 0 auto .3rem;
+    }
+
+    .dropdown {
+      position: relative;
+      top: .18rem;
+      height: 1rem;
+      overflow: hidden;
+      width: 2.15rem;
+      margin: 0 auto;
+
+      .roller {
+        position: absolute;
+        top: 0;
+      }
+
+      .step1 {
+        left: 0;
+      }
+
+      .step2 {
+        left: .75rem;
+      }
+
+      .step3 {
+        left: 1.5rem;
+      }
+    }
+
+    .start-btn {
+      margin: .3rem auto 0;
+      width: .7rem;
+      height: .4rem;
+    }
+
+    .luck-info {
+      margin: .12rem 0 0;
+      padding: 0 .2rem 0 0;
+      color: #681614;
+
+      a {
+        color: #fff;
+      }
+    }
+  }
+
+  .opt {
+    margin: .3rem .15rem 0;
+    padding: .3rem;
+    background-color: #fcf3f1;
+    border-radius: 12px;
+    color: #666;
+
+    p {
+      margin: 0 0 .05rem;
+    }
+
+    h3 {
+      margin: .2rem 0 .05rem;
+    }
+  }
+
+  .cy-layer {
+    .tips {
+      margin: 0 .2rem .25rem;
+    }
+
+    ul.cy-list {
+      padding: 0 .25rem;
+      margin: 0 0 .2rem;
+
+      li {
+        position: relative;
+        float: left;
+        margin: 0 0 .2rem;
+        width: 1.55rem;
+        height: 1.95rem;
+
+        &:nth-child(2n-1) {
+          margin: 0 .15rem 0 0;
+        }
+
+        &.active {
+          .card-layer {
+            transform: rotateY(-180deg);
+          }
+
+          .card-layer2 {
+            transform: rotateY(0deg);
+          }
+        }
+
+        &.status0 {
+          .card-layer {
+            background: url("../../../../assets/active/june/successful-bright.png") no-repeat;
+          }
+        }
+
+        &.status1 {
+          .card-layer {
+            background: url("../../../../assets/active/june/successful.png") no-repeat;
+          }
+        }
+
+        &.status2 {
+          .card-layer {
+            background: url("../../../../assets/active/june/Failed.png") no-repeat;
+          }
+
+          .card-layer2 {
+            background: url("../../../../assets/active/june/Failed-Share.png") no-repeat;
+            padding-top: .15rem;
+
+            .info {
+              margin: 0 0 .35rem;
+            }
+          }
+        }
+
+        .card-layer {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 1.6rem;
+          background-size: cover !important;
+          transform-style: preserve-3d;
+          backface-visibility: hidden;
+          transition: transform 2s;
+          transform: rotateY(0);
+
+          .info {
+            position: relative;
+            margin: 0 .15rem .26rem;
+            padding: .15rem 0 0;
+
+            .status, .num {
+              color: #b36321;
+            }
+
+            .status {
+              font-size: 12px;
+            }
+
+            .num {
+              font-size: 24px;
+              line-height: .32rem;
+            }
+
+            p {
+              margin: 0;
+              color: #db391e;
+              font-size: 10px;
+            }
+          }
+
+          .share {
+            font-size: 12px;
+            padding: 0 0 0 .13rem;
+            color: #000;
+            background: url("../../../../assets/active/june/weixin.png") no-repeat .06rem .06rem #fff;
+            background-size: .2rem;
+            border-radius: 20px;
+            padding: .03rem .1rem .03rem .25rem;
+            width: 1rem;
+            margin: 0 auto;
+          }
+
+          .time {
+            color: #fff;
+            transform: scale(.7);
+
+            i {
+              margin: 0 0 0 .05rem;
+            }
+          }
+        }
+
+        .card-layer2 {
+          transform: rotateY(-180deg);
+
+          .info {
+            margin: 0 0 .16rem;
+            padding-top: .15rem;
+            transform: scale(.8);
+
+            p {
+              line-height: .16rem;
+            }
+
+            .money {
+              color: #9d6123;
+            }
+
+            .tips {
+              color: #663300;
+              margin: .05rem 0;
+            }
+
+            strong {
+              font-size: 12px;
+            }
+          }
+        }
+
+        .more {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+
+          p {
+            margin: 0 .3rem;
+            color: #f8d280;
+            border-radius: 20px;
+            background-color: rgba(25, 25, 25, .3);
+          }
+        }
+      }
+    }
+
+    .pagination {
+      position: relative;
+      margin: .3rem .3rem;
+
+      img {
+        width: .3rem;
+        margin: 0 .05rem;
+      }
+
+      a {
+        position: absolute;
+        right: 0;
+        top: 0;
+        color: #fff;
+        margin: .05rem 0 0;
+        font-size: 12px;
+      }
+    }
+  }
+}
+
+.activity-may-tips-modal {
+  .am-modal-dialog {
+    background: url('../../../../assets/active/june/popbg.png') no-repeat;
+    background-size: 100% auto;
+    padding: .2rem 0 .3rem;
+    color: #ec8248;
+
+    p {
+      margin: 0
+    }
+
+    .title {
+      margin:0 0 .1rem;
+      img {
+        width: 2rem
+      }
+    }
+
+    .type {
+      position: relative;
+      margin:0 0 .1rem;
+      span{
+        position: absolute;
+        width: 100%;
+        left: 0;
+        top: .2rem;
+        color: #fff;
+        font-size: 16px;
+      }
+      img {
+        width: .95rem
+      }
+    }
+
+    .tips {
+      margin: 0 0 .1rem;
+      font-size: 18px;
+      line-height: .28rem;
+    }
+
+    a {
+      display: inline-block;
+      line-height: .3rem;
+      width:2rem;
+      color: #fff;
+      text-align: center;
+      border-radius: .2rem;
+      background: linear-gradient(to right,#fd7c37,#fe4c25);
+    }
+
+    .am-modal-bd {
+      padding: .15rem;
+      border-bottom: none;
+    }
+  }
+}
+
+.activity-may-tips-modal2 {
+  .am-modal-dialog {
+    background: url('../../../../assets/active/june/luck_modal_bg.png') no-repeat;
+    background-size: 100% auto;
+    padding: 1.7rem 0 .3rem;
+    color: #ec8248;
+
+    p, h2 {
+      line-height: .2rem;
+    }
+
+    p {
+      margin: 0
+    }
+
+    strong {
+      margin: 0 .05rem;
+    }
+
+    .tips {
+      margin: 0 0 .16rem
+    }
+
+    a {
+      display: inline-block;
+      line-height: .3rem;
+      color: #fff;
+      text-align: center;
+    }
+
+    .am-modal-bd {
+      padding: .15rem;
+      border-bottom: none;
+    }
+  }
+}
+
+.activity-may-tips-modal3 {
+  .am-modal-dialog {
+    color: #666;
+    border-radius: 12px;
+
+    .close-btn {
+      i {
+        font-size: 32px;
+      }
+    }
+
+    .title {
+      width: 2.53rem;
+      height: .57rem;
+      margin: -.4rem auto .2rem;
+      background: url("../../../../assets/active/june/luck_modal_title.png") no-repeat;
+      background-size: cover;
+      color: #fff;
+      padding: .02rem 0 0;
+    }
+
+    .am-modal-bd {
+      border-bottom: none;
+    }
+
+    .record-list {
+      table {
+        font-size: 12px;
+
+        thead {
+          td {
+            background-color: #faf4eb;
+          }
+        }
+
+        tr {
+          td {
+            padding: 0;
+            vertical-align: middle;
+            height: .3rem;
+
+            &:last-child {
+              width: 1rem;
+            }
+          }
+        }
+
+      }
+    }
+  }
+}
+
+.activity-may-tips-modal4 {
+  .am-modal-dialog {
+    background: url('../../../../assets/active/june/pop5.png') no-repeat;
+    background-size: 100% auto;
+    padding: 1.7rem 0 .3rem;
+    color: #ec8248;
+    position: relative;
+
+    .tips {
+      margin: 0 0 .38rem
+    }
+
+    a {
+      color: #fff;
+    }
+
+    .am-modal-bd {
+      border-bottom: none;
+    }
+  }
+}
+
+.activity-may-tips-modal5 {
+  .am-modal-dialog {
+    padding-top: 1.6rem;
+
+    .tips {
+      margin: 0;
+      line-height: .2rem;
+    }
+
+    .no-luck-tips {
+      font-size: 12px;
+      margin: 0 0 .11rem;
+
+      p {
+        margin: 0;
+        line-height: .2rem;
+      }
+    }
+  }
+}

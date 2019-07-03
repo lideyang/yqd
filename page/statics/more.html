@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>更多-亿钱贷</title>
+    <#include "/includes/style.html" />
+    <!--页面样式-->
+    <link href="${tzp.getContextPath()}/dist/css/pages/user/more.css?v=f8b2b51" rel="stylesheet">
+</head>
+<body>
+<!-- 头部开始 -->
+<#include "/includes/header.html" />
+<!--内容开始-->
+<div class="menu">
+    <div class="list">
+        <div class="am-g">
+            <a href="${tzp.getContextPath()}/static/companyList">
+                <div class="am-u-sm-2 am-text-center icon">
+                    <i class="icon-font icon-about-us2 am-text-primary"></i>
+                </div>
+                <div class="am-u-sm-9">
+                    <h2>关于我们</h2>
+                </div>
+                <div class="am-u-sm-1 am-text-right">
+                    <i class="icon-font icon-next am-text-muted"></i>
+                </div>
+            </a>
+        </div>
+        <div class="am-g">
+            <a href="${tzp.getContextPath()}/spa/help/center">
+                <div class="am-u-sm-2 am-text-center icon">
+                    <i class="icon-font icon-new-user am-text-primary"></i>
+                </div>
+                <div class="am-u-sm-9">
+                    <h2>帮助中心</h2>
+                </div>
+                <div class="am-u-sm-1 am-text-right">
+                     <i class="icon-font icon-next am-text-muted"></i>
+                </div>
+            </a>
+        </div>
+        <div class="am-g">
+            <a href="${tzp.getContextPath()}/static/feedback">
+                <div class="am-u-sm-2 am-text-center icon">
+                    <i class="icon-font icon-feedback am-text-primary"></i>
+                </div>
+                <div class="am-u-sm-9">
+                    <h2>意见反馈</h2>
+                </div>
+                <div class="am-u-sm-1 am-text-right">
+                    <i class="icon-font icon-next am-text-muted"></i>
+                </div>
+            </a>
+        </div>
+        <div class="am-g">
+            <div class="am-u-sm-2 am-text-center icon">
+                <i class="icon-font icon-call-center am-text-primary"></i>
+            </div>
+            <div class="am-fl">
+                <h2>客服热线</h2>
+            </div>
+            <div class="am-fr tel am-text-right">
+                <p class="am-text-lg am-text-info"><a class="am-text-info" href="tel:${serviceTelephone!''}">${serviceTelephone!''}</a></p>
+                <p class="am-text-muted am-text-nowrap am-text-xs">服务时间&nbsp;&nbsp;${serviceTime!''}</p>
+            </div>
+        </div>
+    </div>
+</div>
+<p class="am-text-center logo">
+    <img src="${tzp.getContextPath()}/public/images/logo_home.png?v=55d1f4d" />
+</p>
+<!--底部菜单-->
+
+<#include "/includes/script.html" />
+<!--页面js-->
+<script src="${tzp.getContextPath()}/dist/js/pages/user/more.js?v=8dd9959"></script>
+</body>
+<#include "/includes/count.html" /> 
+</html>

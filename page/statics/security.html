@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>风控体系-亿钱贷</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta content="telephone=no" name="format-detection">
+    <link rel="stylesheet" href="${tzp.getContextPath()}/public/css/base.css?v=20f3ff7"/>
+    <link rel="stylesheet" href="${tzp.getContextPath()}/public/css/common.css?v=a8683db"/>
+    <script>
+        (function (doc, win) {
+            var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                recalc = function () {
+                    var clientWidth = docEl.clientWidth;
+                    if (!clientWidth) return;
+                    docEl.style.fontSize = (clientWidth >= 720 ? 100 : clientWidth / 7.5) + 'px';
+                };
+            if (!doc.addEventListener) return;
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+        })(document, window);
+    </script>
+</head>
+<body class="bgmain">
+<div class="m-page wp">
+    <div class="m-banner">
+        <#if !type??><a href="${tzp.getContextPath()}/static/aboutUs" class="back" ><img alt="" src="${tzp.getContextPath()}../../public/images/main/backbtn.png?v=1db6fae" height="30" ></a></#if>
+        <h2>四大体系 为您守护</h2>
+        <h6>多重风控体系层层把控风险   资深技术团队专业技术支持</h6>
+    </div>
+    <div class="m-model">
+        <div class="m-desc">
+            <div class="hd">资金由银行托管</div>
+            <div class="bd"><em>合作机构为项目设立专项账户，并委托其合作银行提供资金托管服务，实现平台与项目资金的完全隔离。</em></div>
+            <div class="pic100 mt-5"><img src="${tzp.getContextPath()}../../public/images/main/security2.png?v=0083ece" alt="" /></div>
+        </div>
+        <div class="m-desc rmt-30">
+            <div class="hd">完善风控机制</div>
+            <ul class="m-list1">
+                <li><i class="icon icon1"></i>
+                    <h2>资深金融、互金背景专业风控团队<br>严格筛选产品</h2>
+                    <h6>亿钱贷汇聚传统金融与互联网金融领域的资深专业人才，更引入央企风控精英率领风控管理团队，严守风控底线</h6>
+                </li>
+                <li><i class="icon icon2"></i>
+                    <h2>严选底层资产，多维度深层次综合评估</h2>
+                    <h6>亿钱贷对底层资产方股东背景、尽职调查、增信措施、兑付能力等方面进行综合评估，采用评审专家表决制，力保资产优质</h6>
+                </li>
+                <li><i class="icon icon3"></i>
+                    <h2>投后密切跟踪，及时披露预警</h2>
+                    <h6>亿钱贷平台配以专业的投后管理团队，提供严密的跟踪管理服务：定期报告、及时披露、兑付提醒、突发状况预警</h6>
+                </li>
+                <li><i class="icon icon4"></i>
+                    <h2>第三方支付机构实时监控资金流向</h2>
+                    <h6>与第三方支付机构通联支付、宝付支付形成长久战略合作关系，进行资金安全隔离，并实时监控资金流向</h6>
+                </li>
+                <li><i class="icon icon5"></i>
+                    <h2>知名律师事务所提供全程法律支持</h2>
+                    <h6>国内知名律师事务所担任平台常年法律顾问，为平台及用户提供专业、高效、全程法律支持。</h6>
+                </li>
+            </ul>
+            <div class="pic100 mt-20"><img alt="" src="${tzp.getContextPath()}../../public/images/main/security.png?v=f18ae72"></div>
+        </div>
+        <div class="m-desc rmt-30">
+            <div class="hd">技术保障</div>
+            <div class="ct2"><em>独立实名账户</em></div>
+            <div class="bd">用户信息均由公安部全国公民身份信息系统实名认证，用户资金进出只对应实名认证后的唯一银行卡。</div>
+            <div class="ct2"><em>SSL证书加密</em></div>
+            <div class="bd">通过SSL证书认证用户加密数据，并采用256位数据加密技术，严防窃取账户信息，确保数据完整安全传输。</div>
+            <div class="ct2"><em>云端数据备份</em></div>
+            <div class="bd">采用阿里云服务器分布式计算系统强大的容灾机制，24小时不间断数据备份，确保数据零丢失。 </div>
+            <div class="ct2"><em>24小时监控</em></div>
+            <div class="bd">后台系统24小时对用户账户实时监控，账户资金发生变动实时通知，确保用户资金安全。 </div>
+            <div class="ct2"><em>多重防火墙加固隔离</em></div>
+            <div class="bd">采用DDOS、WAF、硬件三重防火墙隔离病毒，全方位抵御网络非法入侵。 </div>
+        </div>
+        <div class="m-desc rmt-30">
+            <div class="hd">法律保障</div>
+            <div class="pic100 mt-10"><img src="${tzp.getContextPath()}../../public/images/main/b3.jpg?v=1f28997" alt="" /></div>
+            <div class="bd mt-20">与国内知名的律师事务所达成长期战略合作伙伴关系，为平台及用户提供专业规范的信息服务和权威的法律依据与保障。专业强大的互联网金融领域精英律师团队对行业合规要求与风险防范进行全方位严密梳理与控制，并提供相关线下延伸的法律服务。</div>
+        </div>
+    </div>
+</div>
+<!--底部菜单-->
+
+</body>
+<#include "/includes/count.html" /> 
+</html>

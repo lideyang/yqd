@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /public/
+Disallow: /source/
+Disallow: /page/
+Disallow: /mock-server/
+Disallow: /contract

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>开启微信免登录-亿钱贷</title>
+    <#include "/includes/style.html" />
+    <!--页面样式-->
+    <link href="${tzp.getContextPath()}/dist/css/pages/account/weixinLogin.css?v=f8e74c1" rel="stylesheet">
+</head>
+<body class="main-bg">
+<!-- 头部开始 -->
+<#include "/includes/header.html" />
+<!--微信登录面板-->
+<div class="am-panel am-panel-default reg-panel weixin-panel">
+    <div class="am-panel-bd">
+        <div class="title am-text-center">
+            <img src="/public/images/logo.png?v=5ebb42b">
+        </div>
+        <form class="am-form am-form-horizontal" id="weixinLoginForm" method="post" action="">
+            <div class="am-form-group">
+                <input class="am-form-field" value="" maxlength="11" type="tel" pattern="[0-9]*" name="userLoginName"
+                       id="userLoginName" placeholder="请输入手机号">
+            </div>
+	       	<#if publicKeyMap??>
+				<input type="hidden" id="modulus" value="${publicKeyMap.modulus}" />
+				<input type="hidden" id="exponent" value="${publicKeyMap.exponent}" />
+			</#if>               
+            <div class="am-form-group">
+                <input class="am-form-field" type="password" autocomplete="new-password" id="userPassword" name="userPassword" placeholder="请输入登录密码">
+            </div>
+            <div class="am-form-group">
+                <button id="submitBtn" data-am-loading="{spinner: 'loading', loadingText: '加载中...'}" type="submit"
+                        class="am-btn am-btn-secondary am-round am-btn-block am-btn-xl">登录
+                </button>
+            </div>
+        </form>
+        <p class="am-text-center">
+            没有账号？<a class="am-text-primary" href="">免费注册</a>
+        </p>
+    </div>
+</div>
+<#include "/includes/script.html" />
+</body>
+<!--页面js-->
+<script src="${tzp.getContextPath()}/public/js/security/BigInt.js?v=5d5cb7e"></script>
+<script src="${tzp.getContextPath()}/public/js/security/Barrett.js?v=8076bc6"></script>
+<script src="${tzp.getContextPath()}/public/js/security/RSA.js?v=8143dee"></script>
+<script src="${tzp.getContextPath()}/dist/js/pages/account/weixinLogin.js?v=3704f55"></script>
+<#include "/includes/count.html" /> 
+</html>

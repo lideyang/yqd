@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>我的易智投-亿钱贷</title>
+    <#include "/includes/style.html" />
+    <!--页面样式-->
+    <link href="${tzp.getContextPath()}/dist/css/pages/user/myPlan.css?v=4dea923" rel="stylesheet">
+</head>
+<body>
+<!-- 头部开始 -->
+<#include "/includes/header.html" />
+<!--tabs-->
+<div class="am-tabs my-invest" id="myInvestTabs" data-am-tabs>
+
+    <ul class="am-tabs-nav am-nav am-nav-tabs" id="tabsList">
+        <li class="am-text-center" id="liwra1"><a data-id="wrapper1" href="#tab1">申请中(${investCount!0})</a></li>
+        <li class="am-active am-text-center" id="liwra2"><a data-id="wrapper2" href="#tab2">持有中(${repayCount!0})</a></li>
+        <li class="am-text-center" id="liwra3"><a data-id="wrapper3" href="#tab3">已到期</a></li>
+    </ul>
+    
+  
+    <div class="am-tabs-bd">
+        <div class="am-tab-panel am-fade" id="tab1">
+            <div class="am-g tips">
+                <div class="am-u-sm-1 am-text-right"><i class="icon-font icon-info"></i></div>
+                <div class="am-u-sm-11"><div id="tipsContent" class="tips-content">当天17点前发布的易智投，将会在当天17点结束募集；当天17点后发布的易智投，将在次日17点结束募集。   </div></div>
+            </div>
+            <div class="am-g my-invest-header am-text-center" >
+                <div class="am-u-sm-6">
+                    <p class="am-text-lg" >${invest1}</p>
+                    <p>委托出借本金(元)</p>
+                </div>
+                <div class="am-text-xl split"></div>
+                <div class="am-u-sm-6">
+                    <p class="am-text-lg">${income1}</p>
+                    <p>预期收益(元)</p>
+                </div>
+            </div>
+            <div id="wrapper1" class="mescroll" style="top:1.2rem">
+                <!--产品列表-->
+                <div class="product-list">
+                    <ul class="events-list" id="eventsList1">
+                        <li>
+                            正在加载内容...
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="am-tab-panel am-fade am-in am-active" id="tab2">
+            <div class="am-g my-invest-header am-text-center" >
+                <div class="am-u-sm-6">
+                    <p class="am-text-lg" >${invest2}</p>
+                    <p>委托出借本金(元)</p>
+                </div>
+                <div class="am-text-xl split"></div>
+                <div class="am-u-sm-6">
+                    <p class="am-text-lg">${income2}</p>
+                    <p>待收收益(元)</p>
+                </div>
+            </div>
+            <div id="wrapper2" class="mescroll">
+                <!--产品列表-->
+                <div class="product-list">
+                    <ul class="events-list" id="eventsList2">
+                        <li>
+                            正在加载内容...
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="am-tab-panel am-fade" id="tab3">
+            <div class="am-g my-invest-header am-text-center" >
+                <div class="am-u-sm-6">
+                    <p class="am-text-lg" >${invest3}</p>
+                    <p>委托出借本金(元)</p>
+                </div>
+                <div class="am-text-xl split"></div>
+                <div class="am-u-sm-6">
+                    <p class="am-text-lg">${income3}</p>
+                    <p>已收收益(元)</p>
+                </div>
+            </div>
+            <div id="wrapper3" class="mescroll">
+                <!--产品列表-->
+                <div class="product-list">
+                    <ul class="events-list" id="eventsList3">
+                        <li>
+                            正在加载内容...
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<input type="hidden" value="${tabType!''}" id="tabType">
+<#include "/includes/script.html" />
+<!--页面js-->
+<script type="text/x-handlebars-template" id="tpi-list-item1">
+    {{#each this}}
+    <li>
+        <div class="am-g title">
+            <a class="am-text-default" data-href="/member/plan/autobidDetail/{{investId}}" href="javascript:;;">
+                <span class="name">{{prdNo}}</span>
+                <span class="am-text-default am-fr">
+                    {{dayFormater investTime}}
+                </span>
+            </a>
+        </div>
+        <div class="am-g invest-amount">
+            <div class="am-u-sm-12 am-text-muted">
+                出借本金<span class="am-text-default">{{formatCurrency investAmount}}</span>元
+            </div>
+        </div>
+        <div class="am-g invest">
+            <div class="am-u-sm-4 info">
+                <p class="rate am-text-secondary">
+                    {{prdRate}}<span>%</span>{{#expression awardRate '>' 0}}<span>+{{awardRate}}%</span>{{/expression}}
+                </p>
+                <p class="am-text-muted">
+                    协议约定年化利率
+                </p>
+            </div>
+            <div class="am-u-sm-5">
+                <p class="am-text-default amount">
+                    {{formatCurrency expectIncome}}
+                </p>
+                <p class="am-text-muted">
+                    预期收益(元)
+                </p>
+            </div>
+            <div class="am-u-sm-3">
+                <p class="am-text-default">
+                    {{prdPeriodStr}}
+                </p>
+                <p class="am-text-muted">委托期限</p>
+            </div>
+        </div>
+        <!--<div class="am-g">-->
+            <!--{{#expression couponAmt '>' 0}}-->
+            <!--<div class="am-u-sm-5">-->
+                <!--已使用<span class="am-text-primary">{{formatCurrency couponAmt}}</span>元红包-->
+            <!--</div>-->
+ 			<!--<div class="am-u-sm-7 am-text-right am-text-default am-text-nowrap">-->
+                <!--委托时间{{dateFormater investTime}}-->
+            <!--</div>-->
+            <!--{{/expression}}-->
+            <!--{{#expression couponAmt '<=' 0}}-->
+            <!--<div class="am-u-sm-7 am-text-default am-text-nowrap">-->
+                <!--委托时间{{dateFormater investTime}}-->
+            <!--</div>-->
+            <!--{{/expression}}-->
+        <!--</div>-->
+    </li>
+    {{/each}}
+</script>
+<script type="text/x-handlebars-template" id="tpi-list-item2">
+    {{#each this}}
+    <li>
+        <div class="am-g title">
+            <a class="am-text-default" data-href="/member/plan/autobidDetail/{{investId}}" href="javascript:;">
+                <span class="name">{{prdNo}}</span>
+                <span class="am-text-primary"></span>
+                <i class="icon-font icon-next am-fr"></i>
+            </a>
+        </div>
+        <div class="am-g invest-amount">
+            <div class="am-u-sm-12 am-text-muted">
+                出借本金<span class="am-text-default">{{formatCurrency investAmount}}</span>元
+            </div>
+        </div>
+        <div class="am-g invest">
+            <div class="am-u-sm-4 info">
+                <p class="rate am-text-default">
+                    {{prdRate}}<span>%</span>{{#expression awardRate '>' 0}}<span>+{{awardRate}}%</span>{{/expression}}
+                </p>
+                <p class="am-text-muted">
+                    协议约定年化利率
+                </p>
+            </div>
+            <div class="am-u-sm-5">
+                <p class="am-text-secondary amount">
+                    {{formatCurrency expectIncome}}
+                </p>
+                <p class="am-text-muted">
+                    待收收益(元)
+                </p>
+            </div>
+            <div class="am-u-sm-3">
+                <p class="am-text-default">
+                    {{dayFormater settleDate}}
+                </p>
+                <p class="am-text-muted">到期时间</p>
+            </div>
+        </div>
+    </li>
+    {{/each}}
+</script>
+<script type="text/x-handlebars-template" id="tpi-list-item3">
+    {{#each this}}
+    <li>
+        <div class="am-g title">
+            <a class="am-text-default" data-href="/member/plan/autobidDetail/{{investId}}" href="javascript:;">
+                <span class="name">{{prdNo}}</span>
+                <span class="am-text-primary"></span>
+                <i class="icon-font icon-next am-fr"></i>
+            </a>
+        </div>
+        <div class="am-g invest-amount">
+            <div class="am-u-sm-12 am-text-muted">
+                出借本金<span class="am-text-default">{{formatCurrency investAmount}}</span>元
+            </div>
+        </div>
+        <div class="am-g invest">
+            <div class="am-u-sm-4 info">
+                <p class="rate am-text-default">
+                    {{prdRate}}<span>%</span>{{#expression awardRate '>' 0}}<span>+{{awardRate}}%</span>{{/expression}}
+                </p>
+                <p class="am-text-muted">
+                    协议约定年化利率
+                </p>
+            </div>
+            <div class="am-u-sm-5">
+                <p class="am-text-secondary amount">
+                 {{formatCurrency hasTotalIncome}}
+                </p>
+                <p class="am-text-muted">
+                    已收收益(元)
+                </p>
+            </div>
+            <div class="am-u-sm-3">
+                <p class="am-text-default">
+                    {{dayFormater settleDate}}
+                </p>
+                <p class="am-text-muted">到期时间</p>
+            </div>
+        </div>
+        <div class="am-g">
+            <div class="am-u-sm-5">
+            </div>
+            <div class="am-u-sm-7 am-text-right am-text-default am-text-nowrap">
+            </div>
+        </div>
+    </li>
+    {{/each}}
+</script>
+<script src="${tzp.getContextPath()}/dist/js/pages/user/myPlan.js?v=49c47f7"></script>
+</body>
+<#include "/includes/count.html" /> 
+</html>

@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html class="androidFix">
+<head>
+    <title>我要出借-亿钱贷</title>
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-control" content="no-cache,no-store,must-revalidate">
+    <meta http-equiv="Expires" content="0">
+    <#include "/includes/style.html" />
+    <!--页面样式-->
+    <link href="${tzp.getContextPath()}/dist/css/pages/product/confirm.css?v=84d1e0f" rel="stylesheet">
+    <style>
+        .product-confirm-layer .product-confirm .am-g.item.title{
+            padding-top:.58rem;
+            height: 2.06rem;
+        }
+    </style>
+</head>
+<body class="androidFix">
+<!-- 头部开始 -->
+<#include "/includes/header.html" />
+<!--内容开始-->
+<div class="product-confirm-layer">
+    <div class="am-container product-confirm" id="productConfirm">
+        <div class="am-g item title">
+            <div class="am-g">
+                <div class="am-u-sm-12 am-text-center repay-invest">
+                    剩余可投：${loan.remainAmount}元
+                </div>
+            </div>
+            <div class="am-g form">
+                <div class="am-u-sm-10">
+                    <span>可用余额:</span>
+                    <span>￥${(accountVo.availableAmt!0)?string(',##0.00')}</span>
+                </div>
+                <div class="am-u-sm-2 am-text-right">
+                    <a class="recharge-link" href="${tzp.getContextPath()}/member/account/recharge">去充值</a>
+                </div>
+                <div class="am-u-sm-12 product-confirm-money">
+                    <div class="am-g item">
+                        <div class="am-u-sm-9 money">
+                            <label class="icon">￥</label>
+                            <input type="tel" autocomplete="off" placeholder="起投金额${(loan.minAmt!0)?string(',##0')}元" id="subscriptionTxt" maxlength="8" class="am-text-default" onkeyup="value=value.replace(/\b(0+)/gi,'');value=value.replace(/[^\d]/gi,'');"/>
+                            <input type="hidden" id="pre_subscriptionTxt"/>
+                        </div>
+                        <div class="am-u-sm-3 am-text-right">
+                            <span class="am-text-secondary" id="maxInvestSpan">最大出借</span>
+                        </div>
+                    </div>
+                    <div class="am-g item">
+                        <div class="am-u-sm-6 am-text-muted">
+                            预期收益  <span id="interestAmtTd">0</span>元
+                        </div>
+                        <div class="am-u-sm-6 am-text-muted am-text-right">
+                            剩余可投${(loan.remainInestAmt!0)?string(',##0')}元
+                        </div>
+                    </div>
+                    <hr data-am-widget="divider" class="am-divider am-divider-default" />
+                    <div class="am-g item red">
+                        <div class="am-u-sm-4">
+                            <h3 id="choseRedTxt" class="am-text-default">选择优惠券</h3>
+                            <i id="redTips" style="margin:0 0 0 2px" class="icon-font icon-information am-text-muted"></i>
+                        </div>
+                        <div class="am-u-sm-8 am-text-muted am-text-right" id="chooseTicketBtn">
+                            <#if voucherCount?? && voucherCount gt 0>
+                            <span id="ticketBtnTxt">${(voucherCount)!'0'}个可用优惠券</span><i class="icon-font icon-next"></i>
+                            <#else>
+                            暂无可用优惠券
+                            </#if>
+                        <input type="hidden" id="isOpenTickList"
+                        <#if (ticketList?? || voucherList??)>
+                        value="1"
+                        <#else>
+                        value="0"
+                    </#if>>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="product-confirm-btn">
+    <div class="am-g">
+        <div class="am-u-sm-12">
+            <label>
+                <label class="am-checkbox-inline vertical-middle">
+                    <input id="agreementStatus" type="checkbox"  value="" data-am-ucheck>阅读并同意
+                </label>
+                <a class="am-text-primary vertical-middle" href="${tzp.getContextPath()}/contract/exchange?assetsId=${loan.loanId!''}">《${subscribeName!''}》</a>
+                <a class="am-text-primary vertical-middle" href="${tzp.getContextPath()}/contract/debt-risk">《风险及禁止性行为提示书》</a>
+            </label>
+        </div>
+    </div>
+
+    <#if _p2p_member_user??>
+    <#if loan.awardType=='2' && canInvest=='0' >
+    <button type="button" class="submit-btn am-btn am-btn-secondary am-round am-btn-block am-btn-xl" disabled="disabled">本项目为新手专享</button>
+    <#else>
+    <button id="submit" type="button" class="submit-btn am-btn am-btn-secondary am-round am-btn-block am-btn-xl" disabled>我要出借</button>
+</#if>
+<#else>
+<button type="button" class="submit-btn am-btn am-btn-secondary am-round am-btn-block am-btn-xl" onclick="layerLogin();">出借请登录</button>
+</#if>
+<p class="am-text-center am-text-muted">市场有风险，出借需谨慎</p>
+</div>
+</div>
+<div class="am-container product-choose-ticket" id="productChooseTicket">
+    <h2 class="am-titlebar-title" id="backConfirmBtn">
+        <i class="icon-font icon-prev am-text-secondary"></i>
+        <span class="am-text-secondary">返回</span>
+    </h2>
+    <!--不使用优惠券-->
+    <div class="am-g no-use-layer" id="noUseLayer">
+        <div class="am-u-sm-11 info">
+            不使用优惠券
+        </div>
+        <div class="am-u-sm-1 am-text-center choose">
+            <i class="icon-font icon-right am-text-muted"></i>
+        </div>
+    </div>
+<ul class="product-choose-list" id="redboxList">
+    <!-- 遍历红包 -->
+    <#if voucherList??> <#list (voucherList) as vlist>
+    <li class="gray" data-limit-amount="${vlist.limitAmount}" data-award-amount="${vlist.awardAmount}" data-add-days="${vlist.addDays}" data-award-type="${vlist.awardType}" data-value="${vlist.awardDtlId}">
+        <div class="am-g invest">
+            <div class="am-u-sm-2 am-text-center icon">
+                <span>¥${(vlist.awardAmount!0)?string(',##0')}</span>
+            </div>
+            <div class="am-u-sm-9 info">
+                <p class="title">${vlist.actName!''}</p>
+                <p class="am-text-default am-text-sm">${vlist.limitPeriodsStr!''}</p>
+                <p class="am-text-default am-text-sm require">满${(vlist.limitAmount!0)?string(',##0.00')}返${(vlist.awardAmount!0)?string(',##0')} </p>
+                <p class="am-text-muted am-text-sm day">有效期至：${(vlist.deadTime?string('yyyy-MM-dd HH:mm:ss'))!''}</p>
+            </div>
+            <div class="am-u-sm-1 am-text-center choose">
+                <a href="javascript:;;">
+                    <i class="icon-font icon-right am-text-muted"></i>
+                </a>
+            </div>
+        </div>
+    </li> </#list> </#if>
+</ul>
+         <#if ticketList??>
+            <!--<p class="title am-text-default">可使用奖励券</p>-->
+        </#if>
+         <ul class="product-choose-list choose-jiaxi-list" id="jiaxiList">
+         	<#if ticketList??><#list ticketList as vlist>
+             <li class="gray" data-limit-amount="${vlist.limitAmount}" data-award-amount="${vlist.awardAmount}" data-add-days="${vlist.addDays}" data-award-type="${vlist.awardType}" data-value="${vlist.awardDtlId}">
+                 <div class="am-g invest">
+                     <div class="am-u-sm-3 am-text-center icon">
+                         <span>${(vlist.awardAmount!0)?string(',##0.00')}%</span>
+                     </div>
+                     <div class="am-u-sm-8 info">
+                         <p class="title">${vlist.actName!''}</p>
+                         <p class="am-text-default am-text-sm">${vlist.limitPeriodsStr!''}</p>
+                         <p class="am-text-default am-text-sm require">单笔出借满${(vlist.limitAmount!0)?string(',##0.00')}元奖励${(vlist.awardAmount!0)?string(',##0.00')}%</p>
+                         <p class="am-text-muted am-text-sm day">有效期至：${(vlist.deadTime?string('yyyy-MM-dd HH:mm:ss'))!''}</p>
+                     </div>
+                     <div class="am-u-sm-1 am-text-center choose">
+                         <a href="javascript:;;">
+                             <i class="icon-font icon-right am-text-muted"></i>
+                         </a>
+                     </div>
+                 </div>
+             </li>
+             </#list>
+        </#if>
+</ul>
+</div>
+<div data-am-widget="navbar" class="am-navbar subscription-btn" id="confirmChooseTicketBtn" style="display: none">
+    <a class="am-btn am-btn-secondary am-btn-block am-btn-xl"href="javascript:;;">确认</a>
+</div>
+</div>
+<div style="display: none;">
+    <form class="mt-10 clearfix" action="${tzp.getContextPath()}/product/invest/rechage-back-assi"  method="post" id="submit_form">
+    </form>
+</div>
+<!--实名绑卡提示-->
+<div style="display: none" id="bankCardModal">
+    <div class="bank-card-modal">
+        <p class="am-text-center">
+            <img src="/public/images/product/confirm_fxpc_icon.png?v=8754745" />
+        </p>
+        <h2 class="am-text-center"><#if riskTip??&&riskTip=='0'>您风险评估已过期<#else>您尚未完成风险评估</#if></h2>
+        <p>风险评估旨在了解您对风险的承受能力，帮助您降低风险。</p>
+        <p class="am-text-center pc-link"><a class="text-one-primary am-text-lg" href="${tzp.getContextPath()}/member/auth/risk-ass?loanId=${loan.loanId!''}">开始评估</a></p>
+    </div>
+</div>
+<!--风险提示-->
+<div id="riskModal" style="display: none;padding:15px;">
+    <p>您的风险承受能力为<span class="text-danger" >${riskType!''}</span>，相对应的出借金额上限为<span class="text-danger">${userAssessLimit!0}万元</span></p>
+    <p>当前累计已出借<span class="text-danger" id="totalDueStr">${(totalDue!0)?string(',##0.00')}元</span>,请修改出借金额或重新进行<a class="text-primary" href="${tzp.getContextPath()}/member/auth/risk-ass">风险评测</a></p>
+    <p style="margin:30px 0 0" class="am-text-center"><button class="am-btn am-btn-primary" onclick="javascript:layer.closeAll()">我知道了</button></p>
+</div>
+
+
+<div id="assetsRiskModel" style="display: none;padding:15px;">
+    <p>您的风险承受能力为<span class="text-danger" >${riskType!''}</span>，可出借风险等级为<span class="text-danger" id="allowType"></span>的项目</p>
+    <p>当前项目的风险等级为<span class="text-danger" id="totalDueStr"><#if orgRisk??>${orgRisk.riskGradeStr}<#else></#if></span>,请重新选择其他出借的项目或重新进行<a class="text-primary" href="${tzp.getContextPath()}/member/auth/risk-ass">风险评测</a></p>
+    <p style="margin:30px 0 0" class="am-text-center"><button class="am-btn am-btn-primary" onclick="javascript:layer.closeAll()">我知道了</button></p>
+</div>
+<!--余额不足提示-->
+<div style="display: none" id="rechargeModal">
+    <div class="recharge-modal">
+        <div class="info-layer">
+            <h3>支付金额：<span id="rechargeAmountTxt" class="am-text-danger"></span>元</h3>
+            <p class="am-text-default tips">
+                请选择支付方式
+            </p>
+        </div>
+        <div class="list">
+            <div class="am-g">
+                <div class="am-u-sm-6 am-text-muted">
+                    <i class="icon-font icon-balance vertical-middle"></i><span class="vertical-middle">可用余额</span>
+                </div>
+                <div class="am-u-sm-6 am-text-muted am-text-right">${(accountVo.availableAmt!0)?string(',##0.00')}元</div>
+            </div>
+            <div class="am-g">
+                <div class="am-u-sm-6">
+                    <i class="icon-font icon-card2 am-text-primary vertical-middle"></i><span class="vertical-middle">银行卡充值</span>
+                </div>
+                <div class="am-u-sm-6 am-text-right"><span id="bankRechargeTxt"></span>元</div>
+            </div>
+        </div>
+        <p class="am-text-center"><a class="text-one-primary am-text-lg" href="javascript:;;" id="goRechargeBtn">去充值</a></p>
+    </div>
+</div>
+<input type="hidden" <#if _p2p_member_user??>
+<#if userSecurity?? && (!userSecurity.checkName || !assessType??) >
+value="1"
+</#if>
+</#if> id="isOPenSecurity">
+<#include "/includes/script.html" />
+<!--页面js-->
+<script type="text/javascript">
+    var loanId="${loan.loanId!''}";
+    var maxAmt=${(loan.maxAmt!0)};//最大出借额度
+    <#if accountVo??>
+    var availableAmt=${(accountVo.availableAmt!0)};
+    <#else>
+    var availableAmt=0;//可用余额
+    </#if>
+    var loanPeriod=${loan.loanPeriod};//期限
+    var totalDue = ${totalDue!0};
+    var userAssessLimit = ${userAssessLimit!0};
+    var periodStr="${loan.periodStr!''}";//期限单位
+    var minAmt=${(loan.minAmt!0)};//最小投资金额
+    var remainInvestAmt=${(loan.remainInestAmt!0)};//最大可投金额
+    var isLastInvest=minAmt>=remainInvestAmt;
+    var repayWar="${loan.repayMode!''}";//还款方式
+    var repayMode=Number("${loan.repayMode!''}");//还款方式
+    var unit=${loan.loanPeriodUnit};//单位
+    var platRate=${loan.platRate!'0'}//投资利率
+    var awardRate=${loan.awardRate!'0'};//加息利率
+    var ticketArr=[];
+    var vouchersArr=[];
+    var productName="${loan.loanTitle!''}";
+    var isAssessStatus=<#if assessType??> true<#else> false </#if>;
+    var isShowOpenModal=<#if  !(_p2p_member_user??)|| _p2p_member_user.isDepositary=='1' >false<#else>true</#if>
+    <#if (ticketList?? || voucherList??)>
+        var voucherList=${(voucherList?size)!'0'};
+    <#else>
+        var voucherList=0;
+    </#if>
+    
+    var riskAss="${riskType!''}";
+    var riskGrade = "1"; 
+    var riskGradeStr = "";
+    <#if orgRisk??>
+    	riskGrade = "${orgRisk.riskGrade}";
+    	riskGradeStr = "${orgRisk.riskGradeStr}";
+    </#if>
+    var isAssetstRisk = true;
+    if(riskGrade==1){
+    	isAssetstRisk = false;
+    }
+    if(riskGrade==2){
+    	if(riskAss=='稳健型'||riskAss=='平衡型'||riskAss=='积极型'){
+    		isAssetstRisk = false;
+    	}
+    }
+
+    if(riskGrade==3){
+    	if(riskAss=='平衡型'||riskAss=='积极型'){
+    		isAssetstRisk = false;
+    	}
+    }
+    if(riskGrade==4){
+    	if(riskAss=='积极型'){
+    		isAssetstRisk = false;
+    	}
+    }
+    var riskStr = "";
+    if(riskAss=='保守型'){
+    	riskStr ="WR1(保守型)";
+    }
+    if(riskAss=='稳健型'){
+    	riskStr ="WR1(保守型)、";
+    	riskStr+="WR2(稳健型)"
+    }
+    if(riskAss=='平衡型'){
+    	riskStr ="WR1(保守型)、";
+    	riskStr+="WR2(稳健型)、";
+    	riskStr+="WR3(平衡型)";
+    }
+    
+    
+</script>
+<script src="${tzp.getContextPath()}/dist/js/pages/product/confirm.js?v=22efd4d"></script>
+</body>
+<#include "/includes/count.html" />
+</html>

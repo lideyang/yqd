@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>出借返现，第一名返现6888元-亿钱贷</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.5, maximum-scale=0.5, user-scalable=0">
+    <meta content="telephone=no" name="format-detection">
+    <script>
+        //设置rem
+        (function (doc, win) {
+            var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize';
+            var dpr = window.devicePixelRatio || 1;
+            // adjust body font size
+            function setBodyFontSize() {
+                if (document.body) {
+                    document.body.style.fontSize = '24px'
+                }
+                else {
+                    document.addEventListener('DOMContentLoaded', setBodyFontSize)
+                }
+            }
+
+            setBodyFontSize();
+            function setRemUnit() {
+                var clientWidth = docEl.clientWidth;
+                if (!clientWidth) return;
+                docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+            }
+
+            setRemUnit()
+            if (!doc.addEventListener) return;
+            win.addEventListener(resizeEvt, setRemUnit);
+            window.addEventListener('pageshow', function (e) {
+                if (e.persisted) {
+                    setRemUnit()
+                }
+            })
+        })(document, window);
+    </script>
+    <!-- 公共样式 -->
+    <link href="${tzp.getContextPath()}/dist/css/global.css?v=63e48b6" rel="stylesheet">
+    <link rel="stylesheet" href="/dist/css/pages/activity/nov.css?v=0f39c62" />
+</head>
+<body style="font-size:20px;">
+<div class="main-content">
+    <div class="title opt-1">年化出借达标领奖励</div>
+    <div class="level-table" id="levelTable">
+        <p class="tips am-text-center">我的累计年化出借为<span>${(investAmt!0)?string(',##0.00')}</span>元， 可获得奖励总额为<span>${(awardAmt!0)?string(',##0.00')}</span>元</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>年化出借额</th>
+                    <th>现金</th>
+                    <th>未领奖励</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+            
+            <#if rules??>
+			<#list rules as rule>
+            <tr>
+                <td>${(rule.amountRange!0)?string(',##0.00')}元</td>
+                <td><img src="/public/images/active/nov/icon.png?v=de37517" />${rule.awardAmount}元</td>
+                <td>${(rule.remainderAmt!0)?string(',##0.00')}元</td>
+                <#if _p2p_member_user??>
+                <#if rule.remainderCount gt 0>
+                <td><button class="btn btn-reward" data-award='${rule.remainderAmt}' data-rule='${rule.ruleId}'>领奖励</button></td>
+                <#else>
+                 <td><a href="/product/index" class="btn btn-invest">去出借</a></td>
+                </#if>
+                <#else>
+                 <td><a href="/spa/account/login?callbackUrl=/event/nov" class="btn btn-invest">登录参与</a></td>
+                </#if>
+            </tr>
+            	</#list>
+			</#if>
+            </tbody>
+        </table>
+        <p class="am-text-center">注：满足最大累计年化出借后，可循环获得奖励，易智投委托成功后计入累计年化出借，散标在出借起息后计入累计年化出借</p>
+    </div>
+    <div class="title opt-2">年化出借额前十名领奖励</div>
+    <div class="top-layer">
+        <ul class="am-cf">
+            <li>6,888元</li>
+            <li>2,888元</li>
+            <li>1,888元</li>
+        </ul>
+        <p class="am-text-center">我的累计年化出借为<span>￥${(investAmt!0)?string(',##0.00')}</span>元,当前排名第<span><#if investAmt??&&investAmt gt 0>${myRank!'--'}<#else>--</#if></span>位</p>
+    </div>
+    <div class="top-10">
+        <table>
+            <thead>
+            <tr>
+                <th>排名</th>
+                <th>姓名</th>
+                <th>手机号码</th>
+                <th>累计年化出借</th>
+            </tr>
+            </thead>
+            <tbody>
+            	<#list ranks as rank>
+            <tr>
+                <td></td>
+                <#if rank??>
+                <td>${(rank.userName)!''}</td>
+				<td>${(rank.userLoginName)!''}</td>
+				<td>${(rank.yearAmt!0)?string(',##0.00')}</td>
+	            <#else>
+	             <td colspan="3">
+	                    <div class="border">虚位以待</div>
+	                </td>
+	            </#if>
+            </tr>
+            </#list>
+            </tbody>
+        </table>
+        <p class="am-text-center tips">注:受散标起息时间的影响，排行榜最终排名以12月1日中午12点的排名为准，若累计年化出借金额相同，则先完成出借的用户排名在前。</p>
+    </div>
+</div>
+<div class="opt">
+    <h3>活动规则</h3>
+    <ul>
+        <li>1、活动时间：2018年11月9日-2018年11月30日。</li>
+         <li>2、债权转让不参与以上年化出借金额的累计，易智投委托成功即计入年化出借金额，散标出借项目需起息后才计入年化出借金额。</li>
+         <li>3、累计年化出借前10名的奖励在活动结束后7个工作日内发放，年化出借达标的奖励在页面领取，符合领取条件的散标债权禁止转让，若活动结束后7天内未领取，则视为自动放弃领取资格。</li>
+         <li>4、年化出借计算方式：<br/>
+             1）易智投/每月付息到期还本/一次性还本付息：年化=出借金额/12*期限<br/>
+             2）等额本息项目<br/>
+             期限≤3个月：年化=出借金额/12*期限*0.7<br/>
+             3＜期限≤6个月：年化=出借金额/12*期限*0.6<br/>
+             期限＞6个月：年化=出借金额/12*期限*0.55<br/>
+             说明：若是天标，则换算成月，月=项目天数/30<br/>
+             每笔出借换算的年化金额保留两位小数，两位小数后面位舍去。
+         </li>
+         <li>5、活动期间，如规则有所调整，以本平台公布的新公告或公告刷新的内容为准，若有疑问可咨询微信在线客服或拨打客服电话：400-090-9968（工作日9:00-18:00）。</li>
+    </ul>
+</div>
+<div class="copy-right">
+    <p>© 2018 亿钱贷 | All rights reserved </p>
+    <p>深圳市亿钱贷电子商务有限公司 <a href="http://www.miit.gov.cn/" target="_blank">粤ICP备14041671号-1</a></p>
+    <p>市场有风险，出借需谨慎</p>
+</div>
+</div>
+<div class="reward-layer" style="display: none" id="rewardLayer">
+    <h2>领取成功</h2>
+    <p><span class="am-text-danger" id="amountTxt"><span id ="rewardAmt">0</span>元现金</span>已领取发放至账户</p>
+    <p>继续出借可领更多奖励</p>
+    <a class="btn" href="/product/index">我要出借</a>
+</div>
+<#include "/includes/script.html" />
+<script type="text/x-handlebars-template" id="tpi-list-item">
+    {{#each this}}
+    <tr>
+        <td>{{prettifyDate investTime}}</td>
+        <td>{{formatCurrency investAmt}}</td>
+        <td>{{loanPeriod}}{{periodtUnitStr}}</td>
+        <td>{{repayModeStr}}</td>
+        <td>{{formatCurrency yearAmt}}</td>
+    </tr>
+    {{/each}}
+</script>
+<!--页面js-->
+<script src="${tzp.getContextPath()}/dist/js/pages/activity/nov.js?v=5c19eba"></script>
+</body>
+<#include "/includes/count.html" />
+</html>

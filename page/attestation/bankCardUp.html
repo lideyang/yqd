@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>银行卡升级-亿钱贷</title>
+    <#include "/includes/style.html" />
+    <!--页面样式-->
+    <link href="${tzp.getContextPath()}/dist/css/pages/account/bankCardUp.css?v=0cc8f39" rel="stylesheet">
+</head>
+<body class="main-bg">
+<!-- 头部开始 -->
+<#include "/includes/header.html" />
+<!--银行卡面板-->
+<div class="am-panel am-panel-default bank-card-panel">
+    <div class="bank-card-layer">
+        <img src="${tzp.getContextPath()}/public/images/bank/${(userBank.bankCode)!''}.png">
+        <h2 class="am-text-center">${(userBank.accountStar)!''}</h2>
+        <p>持卡人：${userBank.fuzzyRealName!''}</p>
+    </div>
+    <div class="am-panel-bd">
+        <div class="up-info am-text-center">
+            认证支付充值系统已升级，更安全更快。<br/>
+            请验证银行卡预留手机号已以完成升级。
+        </div>
+        <form class="am-form am-form-horizontal" id="bankCardInfoForm">
+        <input type="hidden" id="bankId" name="bankId" value="${(userBank.bankId)!''}">  
+            <div class="am-form-group code">
+                <label>验证码</label>
+                <input   id="userMobile" name="userMobile" value="${userBank.reserveMobile!''}" type="hidden" >
+                <input class="am-form-field" id="verifyCode" name="verifyCode" placeholder="6位数字" maxlength="6">
+                <a id="codeBtn" class="am-btn am-btn-secondary am-radius code-btn">获取验证码</a>
+            </div>
+            <div class="am-form-group">
+                <button id="submitBtn" data-am-loading="{spinner: 'loading', loadingText: '加载中...'}" type="submit" class="am-btn am-btn-secondary am-round am-btn-block am-btn-xl submit-btn">确认</button>
+            </div>
+        </form>
+    </div>
+</div>
+<#include "/includes/script.html" />
+</body>
+<!--页面js-->
+<script src="${tzp.getContextPath()}/dist/js/pages/account/bankCardUp.js?v=9b5b2ce"></script>
+<#include "/includes/count.html" /> 
+</html>

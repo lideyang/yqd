@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>提现规则说明-亿钱贷</title>
+    <#include "/includes/style.html" />
+    <!--页面样式-->
+    <link href="${tzp.getContextPath()}/dist/css/pages/user/cashRule.css?v=ee3388c" rel="stylesheet">
+</head>
+<body>
+<!-- 头部开始 -->
+<#include "/includes/header.html" />
+<!--内容开始-->
+<div class="cash-rule-layer">
+    <ul>
+        <li>
+            <table class="">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>快速提现</th>
+                        <th>普通提现</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>手续费</td>
+                    <td>提现金额x0.05%</td>
+                    <td>免费</td>
+                </tr>
+                <tr>
+                    <td>预计到账时间</td>
+                    <td>当天到账</td>
+                    <td>
+                        下一个工作日到账，<br/>
+                        节假日顺延
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <ul>
+                <li>注：在提现额度之内，出借人如果选择普通提现，有3次/日免费提现次数，超过免费次数后收取5元/笔手续费。出借人如果选择快速提现，超过3次/日提现次数后加收5元/笔手续费；</li>
+                <li>超出提现额度，出借人的提现手续费按照3次/日后手续费标准收费。</li>
+            </ul>
+        </li>
+        <li>
+            <h3>提现须知</h3>
+            <ul>
+                <li>1、提现额度：单笔提现金额限额为100~1,000,000元，提现手续费减免额度=账户当前出借已收本息+平台奖励-已成功提现金额；</li>
+                <li>2、提现审核：提现金额大于5万时，需经人工审核，审核时间工作日为9:00~17:00，周六为9:00~15:00，周日提现业务统一顺延至下周一处理，法定节假日提现受理时间以平台公告为准；</li>
+                <li>3、到账时间：上述到账时间仅供参考，实际到账时间会因收款账户开户行不同而有所差异。</li>
+            </ul>
+        </li>
+    </ul>
+</div>
+<#include "/includes/script.html" />
+<!--页面js-->
+<script src="${tzp.getContextPath()}/dist/js/pages/user/cashRule.js?v=de2c5ba"></script>
+</body>
+<#include "/includes/count.html" /> 
+</html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html class="androidFix">
+<head>
+    <title>委托出借确认-亿钱贷</title>
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-control" content="no-cache,no-store,must-revalidate">
+    <meta http-equiv="Expires" content="0">
+    <#include "/includes/style.html" />
+    <!--页面样式-->
+    <link href="${tzp.getContextPath()}/dist/css/pages/product/autoConfirm.css?v=4572479" rel="stylesheet">
+    <style>
+        .product-confirm-layer .product-confirm .am-g.item.title{
+            padding-top:.58rem;
+            height: 2.06rem;
+        }
+    </style>
+</head>
+<body class="androidFix">
+<!-- 头部开始 -->
+<#include "/includes/header.html" />
+<!--内容开始-->
+<div class="product-confirm-layer">
+    <div class="am-container product-confirm" id="productConfirm">
+    <input type="hidden" value="${investAmt!0}" id="investAmt">
+    <input type="hidden" value="${prdId!''}" id="prdId">
+        <div class="am-g item">
+            <div class="title">
+                <h3 class="am-text-center">流动性风险提示</h3>
+                <p>委托期满，未到期的债权授权平台发起债权转让，平台不承诺
+                    债权转让成功，未能成功转让的债权，出借人需持有相应借款
+                    项目直至到期。</p>
+            </div>
+            <div class="product-confirm-money">
+                <div class="am-g item">
+                    <div class="am-u-sm-4 am-text-muted">
+                        委托出借金额
+                    </div>
+                    <div class="am-u-sm-8 am-text-right">
+                    ${((investAmt)!0)?string(',##0.00')}元
+                    </div>
+                </div>
+                <div class="am-g item">
+                    <div class="am-u-sm-3 am-text-muted">
+                        预期收益
+                    </div>
+                    <div class="am-u-sm-9 am-text-right" id="totalIncomeText">
+                       ${((income)!0)?string(',##0.00')}元
+                    </div>
+                </div>
+                <div class="am-g item">
+                    <div class="am-u-sm-3 am-text-muted">
+                        投标范围
+                    </div>
+                    <div class="am-u-sm-9 am-text-right">
+                        	企链贷/微农贷/优车贷/微花贷/微企贷
+                    </div>
+                </div>
+            </div>
+            <div class="am-g item red">
+                <div class="am-u-sm-4">
+                    <h3 id="choseRedTxt" class="am-text-default">选择优惠券</h3>
+                    <i id="redTips" style="margin:0 0 0 2px" class="icon-font icon-information am-text-muted"></i>
+                </div>
+                <div class="am-u-sm-8 am-text-right" id="chooseTicketBtn">
+                    <#if count?? && count gt 0 >
+                    <span id="ticketBtnTxt"></span><i class="icon-font icon-next"></i>
+                    <#else>
+                    <span class="am-text-default">暂无可用优惠券</span>
+                </#if>
+                </div>
+            </div>
+        </div>
+        <div class="product-confirm-btn">
+            <div class="am-g">
+                <div class="am-u-sm-12">
+                    <label>
+                        <label class="am-checkbox-inline vertical-middle">
+                            <input id="quitType" type="checkbox" name="quitType" value="1" data-am-ucheck>阅读并同意
+                        </label>
+                        <span class="vertical-middle">委托期满，授权平台将未到期债权自动发起债权转让</span>
+                    </label>
+                </div>
+                <div class="am-u-sm-12">
+                    <label>
+                        <label class="am-checkbox-inline vertical-middle">
+                            <input id="agreementStatus" type="checkbox"  value="" data-am-ucheck>阅读并同意
+                        </label>
+                        <a class="am-text-primary vertical-middle" href="${tzp.getContextPath()}/contract/entrust?assetsId=${(bean.prdId)!''}">《委托出借协议》</a>
+                        <a class="am-text-primary vertical-middle" href="${tzp.getContextPath()}/contract/entrust-risk">《风险及禁止性行为提示书》</a>
+                         <#if showTemplate??&&showTemplate=='1'>
+                        <a class="am-text-primary vertical-middle" href="${tzp.getContextPath()}/contract/liquidity">《流动性风险提示书》</a>
+                        </#if>
+                    </label>
+                </div>
+            </div>
+            <p class="am-text-center am-text-muted">市场有风险，出借需谨慎</p>
+        </div>
+    </div>
+    <div class="am-container product-choose-ticket" id="productChooseTicket">
+        <h2 class="am-titlebar-title" id="backConfirmBtn">
+            <i class="icon-font icon-prev am-text-secondary"></i>
+            <span class="am-text-secondary">返回出借页</span>
+        </h2>
+        <!--不使用优惠券-->
+        <div class="am-g no-use-layer" id="noUseLayer">
+            <div class="am-u-sm-11 info">
+                不使用优惠券
+            </div>
+            <div class="am-u-sm-1 am-text-center choose">
+                <i class="icon-font icon-right am-text-muted"></i>
+            </div>
+        </div>
+        <ul class="product-choose-list" id="redboxList">
+         	<#if vouchers??>
+         	 <#list vouchers as vlist>
+            <!-- 遍历红包 -->
+            <li data-limit-amount="${vlist.limitAmount}" data-award-amount="${vlist.awardAmount}" data-add-days="${vlist.addDays}" data-award-type="${vlist.awardType}" data-value="${vlist.awardDtlId}">
+                <div class="am-g invest">
+                    <div class="am-u-sm-2 am-text-center icon">
+                        <span>¥${(vlist.awardAmount!0)?string(',##0')}</span>
+                    </div>
+                    <div class="am-u-sm-9 info">
+                        <p class="title">${vlist.actName!''}</p>
+                        <p class="am-text-default am-text-sm">${vlist.limitPeriodsStr!''}</p>
+                        <p class="am-text-default am-text-sm require">满${(vlist.limitAmount!0)?string(',##0.00')}返${(vlist.awardAmount!0)?string(',##0')}  </p>
+                        <p class="am-text-muted am-text-sm day">${(vlist.deadTime?string('yyyy-MM-dd HH:mm:ss'))!''}</p>
+                    </div>
+                    <div class="am-u-sm-1 am-text-center choose">
+                        <a href="javascript:;;"> <i
+                                class="icon-font icon-right am-text-muted"></i>
+                        </a>
+                    </div>
+                </div>
+            </li>
+            </#list>
+            </#if>
+        </ul>
+        
+         <ul class="product-choose-list choose-jiaxi-list" id="jiaxiList">
+         	<#if ticketList??><#list ticketList as vlist>
+             <li data-limit-amount="${vlist.limitAmount}" data-award-amount="${vlist.awardAmount}" data-add-days="${vlist.addDays}" data-award-type="${vlist.awardType}" data-value="${vlist.awardDtlId}">
+                 <div class="am-g invest">
+                     <div class="am-u-sm-3 am-text-center icon">
+                         <span>${(vlist.awardAmount!0)?string(',##0.00')}%</span>
+                     </div>
+                     <div class="am-u-sm-8 info">
+                         <p class="title">${vlist.actName!''}</p>
+                         <p class="am-text-default am-text-sm">${vlist.limitPeriodsStr!''}</p>
+                         <p class="am-text-default am-text-sm require">单笔出借满${(vlist.limitAmount!0)?string(',##0.00')}元奖励${(vlist.awardAmount!0)?string(',##0.00')}%</p>
+                         <p class="am-text-muted am-text-sm day">有效期至：${(vlist.deadTime?string('yyyy-MM-dd HH:mm:ss'))!''}</p>
+                     </div>
+                     <div class="am-u-sm-1 am-text-center choose">
+                         <a href="javascript:;;">
+                             <i class="icon-font icon-right am-text-muted"></i>
+                         </a>
+                     </div>
+                 </div>
+             </li>
+             </#list>
+        </#if>
+</ul>
+    </div>
+
+    <div data-am-widget="navbar" class="am-navbar subscription-btn" id="confirmChooseTicketBtn" style="display: none">
+        <a class="am-btn am-btn-secondary am-btn-block am-btn-xl"href="javascript:;;">确认</a>
+    </div>
+
+    <div data-am-widget="navbar" class="am-navbar subscription-btn" id="submitBtn">
+        <a class="am-btn am-btn-secondary am-btn-block am-btn-xl"href="javascript:;;" disabled>确认</a>
+    </div>
+</div>
+<!--风险提示-->
+<div style="display: none" id="bankCardModal">
+    <div class="bank-card-modal">
+        <p class="am-text-center">
+            <img src="/public/images/product/confirm_fxpc_icon.png?v=8754745" />
+        </p>
+        <h2 class="am-text-center"><#if riskTip??&&riskTip=='0'>您风险评估已过期<#else>您尚未完成风险评估</#if></h2>
+        <p>风险评估旨在了解您对风险的承受能力，帮助您降低风险。</p>
+        <p class="am-text-center pc-link"><a class="text-one-primary am-text-lg" href="${tzp.getContextPath()}/member/auth/risk-ass?prdId=${bean.prdId!''}">开始评估</a></p>
+    </div>
+</div>
+
+
+<input type="hidden" id="isOpenTickList" value="1" />
+
+<#include "/includes/script.html" />
+<!--页面js-->
+<script type="text/javascript">
+var isAssessStatus=<#if assessStatus??> true<#else> false </#if>;
+var redCount=${count!'0'};
+var currentLoanPeriod=${period!'1'};//期限
+var currentLoanPeriodUnit=1;//单位
+var repayMode=Number("2");//还款方式
+var productIncome=${((income)!0)};
+</script>
+<script src="${tzp.getContextPath()}/dist/js/pages/product/autoConfirm.js?v=aa494dd"></script>
+</body>
+<#include "/includes/count.html" />
+</html>

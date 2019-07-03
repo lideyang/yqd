@@ -1,0 +1,75 @@
+@import "../../../less/amaze/variables";
+.publish-hegui-layer{
+  .content{
+    padding: .3rem .2rem;
+    img.title{
+      width:2.6rem;
+      display: block;
+      margin:0 auto .2rem;
+    }
+    .menu {
+      margin: .3rem auto .15rem;
+      width: 3rem;
+      li {
+        position: relative;
+        float: left;
+        width: .4rem;
+        line-height: .35rem;
+        margin: 0 .1rem 0 0;
+        color: #fff;
+        background-color: #ddd;
+        border-radius: 10px;
+        &.active{
+          background: linear-gradient(to bottom,#731cfa,#2ea2e4);
+          &:before{
+            position: absolute;
+            bottom:-8px;
+            left:50%;
+            margin-left: -8px;
+            content:'';
+            width:0;
+            height:0;
+            border-right:8px solid transparent;
+            border-left:8px solid transparent;
+            border-top:8px solid #2ea2e4;
+          }
+        }
+        img {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          z-index: 0;
+        }
+        span {
+          position: relative;
+        }
+      }
+    }
+    .banner{
+      margin:0 0 .4rem;
+      padding: .4rem .3rem;
+      height: 2.36rem;
+      background-size: cover;
+      &.auto{
+        height: 2.6rem;
+      }
+      h3,p{
+        color:#fff;
+      }
+      h3{
+        font-size: 16px;
+        margin:0 0 .1rem;
+        img{
+          width:.8rem;
+        }
+      }
+      p{
+        margin:0;
+      }
+    }
+  }
+  .bottom-pic{
+    width:100%;
+  }
+}

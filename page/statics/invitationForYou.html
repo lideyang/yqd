@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <script>
+        //设置rem
+        (function (doc, win) {
+            var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize';
+            var dpr = window.devicePixelRatio || 1;
+            // adjust body font size
+            function setBodyFontSize() {
+                if (document.body) {
+                    document.body.style.fontSize = '14px'
+                }
+                else {
+                    document.addEventListener('DOMContentLoaded', setBodyFontSize)
+                }
+            }
+
+            setBodyFontSize();
+            function setRemUnit() {
+                var clientWidth = docEl.clientWidth;
+                if (!clientWidth) return;
+                if (clientWidth >= 750) {
+                    docEl.style.fontSize = '100px';
+                } else {
+                    docEl.style.fontSize = 200 * (clientWidth / 750) + 'px';
+                }
+            }
+
+            setRemUnit()
+            if (!doc.addEventListener) return;
+            win.addEventListener(resizeEvt, setRemUnit);
+            window.addEventListener('pageshow', function (e) {
+                if (e.persisted) {
+                    setRemUnit()
+                }
+            })
+        })(document, window);
+    </script>
+    <link rel="stylesheet" href="/public/css/active/report2018/icons.css?v=1cce3c4" />
+    <link rel="stylesheet" href="/dist/css/pages/static/report2018.css?v=67ea0c0">
+    <style>
+        html, body {
+            position: relative;
+            height: 100%;
+        }
+        body {
+            background: #eee;
+            font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            color:#000;
+            margin: 0;
+            padding: 0;
+        }
+        .swiper-container {
+            width: 100%;
+            height: 100%;
+        }
+        .swiper-slide {
+            text-align: center;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+<div id="loading" class="loading-overlay">
+    <img class="spinner" src="/public/images/active/report2018/loading.svg">
+</div>
+<!-- 场景 -->
+<div id="reportLayer" class="swiper-container">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide login no-data">
+            <div class="ani content wn-icon wn-icon-se_content" swiper-animate-effect="fadeIn" swiper-animate-duration="1.2s" swiper-animate-delay=".3s">
+                <div class="layer">
+                    <div class="ani content" swiper-animate-effect="fadeIn" swiper-animate-duration="1.2s" swiper-animate-delay=".3s">
+                        <p class="ani date" swiper-animate-effect="slideRight" swiper-animate-duration="1.2s" swiper-animate-delay="1s">
+				            <span>${regTime!''}</span><br/>
+					                        你加入了亿钱贷
+				        </p>
+	                    <p class="ani num" swiper-animate-effect="slideLeft" swiper-animate-duration="1.2s" swiper-animate-delay="1.6s">
+					                        很高兴亿钱贷陪你走过了 <span>${totalJoinTime!''}</span>个日子<br/>
+					                        你的每笔财富,都有亿钱贷帮你增值
+	                    </p>
+	                    <a href="${tzp.getContextPath()}/event/recommend" class="ani button wn-icon wn-icon-first_button" swiper-animate-effect="pulse" swiper-animate-duration="2s" swiper-animate-delay="3s">立即邀请</a>
+                	</div>
+                </div>
+            </div>
+	  </div>
+          <p class="ani light wn-icon wn-icon-se_light" swiper-animate-effect="wiggle" swiper-animate-duration="3.3s" swiper-animate-delay="1.2s"></p>
+          <p class="ani flower wn-icon wn-icon-se_flower" swiper-animate-effect="spinner" swiper-animate-duration="2.8s" swiper-animate-delay=".7s"></p>
+          <!--分享url-->
+          <input type="hidden" id="shareUrl" value="${wapUrl!''}/secure/land?code=${recomCode!''}" />
+          <input type="hidden" value="您的好友${realName!''}喊你一起赚收益啦，平台上市背景+专业合规，快快上车~" id="shareDesc">
+          <input type="hidden" value="送您888元新手专属奖励金,邀请您来亿钱贷一起赚钱" id="shareTitle">
+          <input type="hidden" value="${wapUrl!''}/secure/land?code=${recomCode!''}" id="shareLink">
+          <input type="hidden" value="${wapUrl!''}/public/images/logo-w.png" id="shareImg">
+          <p class="ani bottom wn-icon wn-icon-first_bottom" swiper-animate-effect="slideUp" swiper-animate-duration="1.2s" swiper-animate-delay=".5s"></p>
+          <p class="ani left wn-icon wn-icon-first_right" swiper-animate-effect="slideLeft" swiper-animate-duration="1.2s" swiper-animate-delay=".8s"></p>
+    </div>
+</div>
+
+<#include "/includes/script.html" />
+<script>
+    function swiperAnimateCache(a){for(j=0;j<a.slides.length;j++)for(allBoxes=a.slides[j].querySelectorAll(".ani"),i=0;i<allBoxes.length;i++)allBoxes[i].attributes["style"]?allBoxes[i].setAttribute("swiper-animate-style-cache",allBoxes[i].attributes["style"].value):allBoxes[i].setAttribute("swiper-animate-style-cache"," "),allBoxes[i].style.visibility="hidden"}function swiperAnimate(a){clearSwiperAnimate(a);var b=a.slides[a.activeIndex].querySelectorAll(".ani");for(i=0;i<b.length;i++)b[i].style.visibility="visible",effect=b[i].attributes["swiper-animate-effect"]?b[i].attributes["swiper-animate-effect"].value:"",b[i].className=b[i].className+"  "+effect+" "+"animated",style=b[i].attributes["style"].value,duration=b[i].attributes["swiper-animate-duration"]?b[i].attributes["swiper-animate-duration"].value:"",duration&&(style=style+"animation-duration:"+duration+";-webkit-animation-duration:"+duration+";"),delay=b[i].attributes["swiper-animate-delay"]?b[i].attributes["swiper-animate-delay"].value:"",delay&&(style=style+"animation-delay:"+delay+";-webkit-animation-delay:"+delay+";"),b[i].setAttribute("style",style)}function clearSwiperAnimate(a){for(j=0;j<a.slides.length;j++)for(allBoxes=a.slides[j].querySelectorAll(".ani"),i=0;i<allBoxes.length;i++)allBoxes[i].attributes["swiper-animate-style-cache"]&&allBoxes[i].setAttribute("style",allBoxes[i].attributes["swiper-animate-style-cache"].value),allBoxes[i].style.visibility="hidden",allBoxes[i].className=allBoxes[i].className.replace("animated"," "),allBoxes[i].attributes["swiper-animate-effect"]&&(effect=allBoxes[i].attributes["swiper-animate-effect"].value,allBoxes[i].className=allBoxes[i].className.replace(effect," "))}
+</script>
+<script src="/dist/js/pages/static/report2018.js?v=918c5ef"></script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>公司简介-亿钱贷</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta content="telephone=no" name="format-detection">
+    <link rel="stylesheet" href="${tzp.getContextPath()}/public/css/base.css?v=20f3ff7"/>
+    <link rel="stylesheet" href="${tzp.getContextPath()}/public/css/common.css?v=a8683db"/>
+    <script>
+        (function(doc, win) {
+            var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                recalc = function() {
+                    var clientWidth = docEl.clientWidth;
+                    if(!clientWidth) return;
+                    docEl.style.fontSize = (clientWidth >= 720 ? 100 : clientWidth / 7.5) + 'px';
+                };
+            if(!doc.addEventListener) return;
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+        })(document, window);
+    </script>
+</head>
+<body class="bgmain">
+<div class="m-page wp">
+    <div class="m-banner">
+        <a href="${tzp.getContextPath()}/static/aboutUs" class="back" ><img alt="" src="${tzp.getContextPath()}../../public/images/main/backbtn.png?v=1db6fae" height="30" ></a>
+        <div class="logo"><img src="${tzp.getContextPath()}../../public/images/main/logo.png?v=4e6ccb7" alt=""/></div>
+        <h6>砥砺八载 从心出发</h6>
+    </div>
+
+    <div class="m-model">
+        <div class="m-desc">
+            <div class="hd">上市公司全资控股</div>
+            <div class="bd">亿钱贷隶属于深圳市亿钱贷电子商务有限公司，是A股上市公司深南股份（证券代码 002417）之全资子公司，注册资本2亿元。</div>
+        </div>
+        <div class="m-desc rmt-30">
+            <div class="hd">金融科技开放服务平台</div>
+            <div class="bd">亿钱贷致力于打造国内一流的金融科技开放服务平台，坚持以实体经济需求为服务导向，通过科技手段提升金融服务效率，推动金融产品创新。</div>
+        </div>
+        <div class="m-desc rmt-30">
+            <div class="hd">企业文化</div>
+            <div class="bd">亿钱贷汇聚周世平先生于互联网金融领域多年之沉淀，依托强大的行业资源，秉承稳健共赢的合作理念，为亿钱贷注册用户提供专业的项目展示、风险揭示、资产披露、信息反馈等一系列辅助性互联网技术服务。</div>
+        </div>
+    </div>
+</div>
+<!--底部菜单-->
+
+</body>
+<#include "/includes/count.html" /> 
+</html>

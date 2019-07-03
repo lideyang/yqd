@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>推荐活动-亿钱贷</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.5, maximum-scale=0.5, user-scalable=0">
+    <meta content="telephone=no" name="format-detection">
+    <script>
+        //设置rem
+        (function (doc, win) {
+            var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize';
+            var dpr = window.devicePixelRatio || 1;
+            // adjust body font size
+            function setBodyFontSize() {
+                if (document.body) {
+                    document.body.style.fontSize = '20px'
+                }
+                else {
+                    document.addEventListener('DOMContentLoaded', setBodyFontSize)
+                }
+            }
+
+            setBodyFontSize();
+            function setRemUnit() {
+                var clientWidth = docEl.clientWidth;
+                if (!clientWidth) return;
+                if (clientWidth >= 1200) {
+                    docEl.style.fontSize = '100px';
+                } else {
+                    docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+                }
+            }
+
+            setRemUnit()
+            if (!doc.addEventListener) return;
+            win.addEventListener(resizeEvt, setRemUnit);
+            window.addEventListener('pageshow', function (e) {
+                if (e.persisted) {
+                    setRemUnit()
+                }
+            })
+        })(document, window);
+    </script>
+    <link href="${tzp.getContextPath()}/dist/css/global.css?v=63e48b6" rel="stylesheet">
+    <!--页面样式-->
+    <link href="${tzp.getContextPath()}/dist/css/pages/activity/recommend.css?v=827f309" rel="stylesheet">
+    <#if !weixin>
+    <script>
+        var isWeiXin = false;
+    </script>
+    <#else>
+    <script>
+        var isWeiXin = true;
+    </script>
+    </#if>
+    <script type="text/javascript">
+        var basePath = "${(tzp.getContextPath())!''}";
+    </script>
+</head>
+<body>
+<!--推荐活动-->
+<div class="content">
+    <a href="/static/recommendRule" class="rule">活动规则</a>
+    <div class="time am-text-center">活动时间：2018年10月01日-2019年6月30日</div>
+    <div class="my-recommend-layer am-text-center"   <#if _p2p_member_user??>id="myRecommendLayer"</#if>>
+        <h3 class="title">我的邀请奖励</h3>
+       <#if _p2p_member_user??>
+        <h3>${(allAmt!0)?string(',##0.00')}</h3>
+        <p>累计奖励(元)</p>
+        <div class="am-g info">
+            <div class="am-u-sm-6">
+                <h4>${(todayAmt!0)?string(',##0.00')}</h4>
+                <p>昨日奖励(元)</p>
+            </div>
+            <div class="am-u-sm-6">
+                <h4>${(investCount!0)}/${(recomCount!0)}</h4>
+                <p>已出借/已注册(人)</p>
+            </div>
+        </div>
+        <#else>
+        <a class="am-btn am-round btn-login" href="/spa/account/login?callbackUrl=/member/recom/list">登录查看我的邀请奖励</a>
+        </#if>
+    </div>
+    <div class="opt-title opt-1">一重好礼  最高200元现金</div>
+    <div class="opt-1-layer">
+        <p class="tips am-text-center">
+            推荐的单个好友注册后30个自然日内，累计出借达到相应金额
+        </p>
+        <p class="tips am-text-center">出借期限需≥3个月或90天</p>
+        <div class="title am-text-center">累计可获得奖励50+50+100=200元</div>
+        <ul>
+            <li>
+                <span class="am-fl"><span>50</span>元</span>
+                10,000元≤累计出借额<30,000元
+            </li>
+            <li>
+                <span class="am-fl"><span>50</span>元</span>
+                30,000元≤累计出借额<50,000元
+            </li>
+            <li>
+                <span class="am-fl"><span>100</span>元</span>
+                	累计出借额≥50,000元
+            </li>
+        </ul>
+    </div>
+    <div class="opt-title opt-2">二重好礼  最高0.8%佣金</div>
+    <div class="opt-2-layer">
+        <p class="tips am-text-center">
+        推荐用户出借，可获得被推荐人<span>待收本金年化X%</span>的奖励</p>
+        <ul>
+            <li>
+                <div class="am-fl">
+                    <p>好友待收本金年化</p>
+                    奖励<span><span>0.4</span>%</span>
+                </div>
+                <p class="am-fl">
+                被推荐人待收之和<50,000元
+                </p>
+            </li>
+            <li>
+                <div class="am-fl">
+                    <p>好友待收本金年化</p>
+                    奖励<span><span>0.6</span>%</span>
+                </div>
+                <p class="am-fl">
+                    50,000元≤被推荐人待收之和＜200,000元
+                </p>
+            </li>
+            <li>
+                <div class="am-fl">
+                    <p>好友待收本金年化</p>
+                    奖励<span><span>0.8</span>%</span>
+                </div>
+                <p class="am-fl">
+                被推荐人待收之和≥200,000元
+                </p>
+            </li>
+        </ul>
+    </div>
+    <div class="opt-title opt-3">三重好礼  好友注册就送10元红包</div>
+    <div class="opt-3-layer am-text-center">
+        <p class="tips">好友注册后，推荐人获得10元现金红包，数量上不封顶<i data-am-popover="{trigger:'click',content: '好友注册后，系统给推荐人自动发放10元红包，出借90天及以上项目金额满1000元可用。'}" class="icon-font icon-wenhao pop-show"></i></p>
+        <div class="red-boxer">
+            <span>10</span>元
+        </div>
+    </div>
+    <div class="am-text-center recommend-code">
+        您的专属推荐码：${recomCode!''} 或${phone!''}
+    </div>
+</div>
+<#if _p2p_member_user??>
+<div data-am-widget="navbar" class="am-navbar am-cf am-navbar-default" id="shareBtn">
+    立即邀请<img class="fr" src="/public/images/active/recommend/code.png?v=da758ee"  id="codePicBtn" />
+</div>
+<#else>
+<a data-am-widget="navbar" class="am-navbar am-cf am-navbar-default" href="/spa/account/login?callbackUrl=/event/recommend">
+    立即邀请
+</a>
+</#if>
+<!--分享url-->
+<input type="hidden" id="shareUrl" value="${wapUrl!''}/secure/land?code=${recomCode!''}" />
+<input type="hidden" value="您的好友${realName!''}喊你一起赚收益啦，平台上市背景+专业合规，快快上车~" id="shareDesc">
+<input type="hidden" value="送您888元新手专属奖励金" id="shareTitle">
+<input type="hidden" value="${wapUrl!''}/public/images/logo-w.png" id="shareImg">
+<#include "/includes/script.html" />
+<#if weixin>
+<script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+</#if>
+</body>
+<!--页面js-->
+<script src="${tzp.getContextPath()}/dist/js/pages/activity/recommend.js?v=54a1acd"></script>
+<#include "/includes/count.html" /> 
+</html>

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>2018年度报告</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <script>
+        //设置rem
+        (function (doc, win) {
+            var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize';
+            var dpr = window.devicePixelRatio || 1;
+            // adjust body font size
+            function setBodyFontSize() {
+                if (document.body) {
+                    document.body.style.fontSize = '14px'
+                }
+                else {
+                    document.addEventListener('DOMContentLoaded', setBodyFontSize)
+                }
+            }
+
+            setBodyFontSize();
+            function setRemUnit() {
+                var clientWidth = docEl.clientWidth;
+                if (!clientWidth) return;
+                if (clientWidth >= 750) {
+                    docEl.style.fontSize = '100px';
+                } else {
+                    docEl.style.fontSize = 200 * (clientWidth / 750) + 'px';
+                }
+            }
+
+            setRemUnit()
+            if (!doc.addEventListener) return;
+            win.addEventListener(resizeEvt, setRemUnit);
+            window.addEventListener('pageshow', function (e) {
+                if (e.persisted) {
+                    setRemUnit()
+                }
+            })
+        })(document, window);
+    </script>
+    <link rel="stylesheet" href="/public/css/active/report2018/icons.css?v=1cce3c4" />
+    <link rel="stylesheet" href="/dist/css/pages/static/report2018.css?v=67ea0c0">
+    <style>
+        html, body {
+            position: relative;
+            height: 100%;
+        }
+        body {
+            background: #eee;
+            font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            color:#000;
+            margin: 0;
+            padding: 0;
+        }
+        .swiper-container {
+            width: 100%;
+            height: 100%;
+        }
+        .swiper-slide {
+            text-align: center;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+<div id="loading" class="loading-overlay">
+    <img class="spinner" src="/public/images/active/report2018/loading.svg">
+</div>
+<!-- 场景 -->
+<div id="reportLayer" class="swiper-container">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide home">
+            <p class="ani title wn-icon wn-icon-first_title" swiper-animate-effect="wiggle" swiper-animate-duration="2.6s" swiper-animate-delay="0s"></p>
+            <p class="ani text wn-icon wn-icon-first_text" swiper-animate-effect="bounceIn" swiper-animate-duration="1s" swiper-animate-delay=".6s"></p>
+            <p class="ani button wn-icon wn-icon-first_button" swiper-animate-effect="pulse" swiper-animate-duration="2s" swiper-animate-delay="1s" id="homeNextBtn">立即打开账单</p>
+            <p class="ani bottom wn-icon wn-icon-first_bottom" swiper-animate-effect="slideUp" swiper-animate-duration="1.2s" swiper-animate-delay=".5s"></p>
+            <p class="ani left wn-icon wn-icon-first_right" swiper-animate-effect="slideLeft" swiper-animate-duration="1.2s" swiper-animate-delay=".8s"></p>
+            <p class="ani money wn-icon wn-icon-first_money" swiper-animate-effect="fadeIn" swiper-animate-duration="2.4s" swiper-animate-delay="1.2s"></p>
+        </div>
+        <div class="swiper-slide login">
+            <div class="ani content wn-icon wn-icon-se_content" swiper-animate-effect="fadeIn" swiper-animate-duration="1.2s" swiper-animate-delay=".3s">
+                <div class="layer">
+                    <p class="ani date" swiper-animate-effect="slideRight" swiper-animate-duration="1.2s" swiper-animate-delay="1s">
+            <span>${regTime!''}</span><br/>
+                        你加入了亿钱贷
+                    </p>
+                    <p class="ani num" swiper-animate-effect="slideLeft" swiper-animate-duration="1.2s" swiper-animate-delay="1.6s">
+                        很高兴亿钱贷陪你走过了 <span>${totalJoinTime!''}</span>个日子<br/>
+                        你的每笔财富,都有亿钱贷帮你增值
+                    </p>
+                </div>
+            </div>
+            <p class="ani yun1 wn-icon wn-icon-se_yun1" swiper-animate-effect="slideRight" swiper-animate-duration=".8s" swiper-animate-delay=".5s"></p>
+            <p class="ani light1 wn-icon wn-icon-se_light" swiper-animate-effect="wiggle" swiper-animate-duration="3.3s" swiper-animate-delay="1.2s"></p>
+            <p class="ani yun2 wn-icon wn-icon-se_yun1" swiper-animate-effect="slideLeft" swiper-animate-duration=".8s" swiper-animate-delay=".8s"></p>
+            <p class="ani yun3 wn-icon wn-icon-se_yun1" swiper-animate-effect="slideLeft" swiper-animate-duration=".8s" swiper-animate-delay="1.1s"></p>
+            <p class="ani light2 wn-icon wn-icon-se_light" swiper-animate-effect="wiggle" swiper-animate-duration="3.5s" swiper-animate-delay="1.5s"></p>
+            <p class="ani yun4 wn-icon wn-icon-se_yun" swiper-animate-effect="slideRight" swiper-animate-duration=".8s" swiper-animate-delay="1.4s"></p>
+            <p class="ani piao wn-icon wn-icon-se_piao" swiper-animate-effect="spinner" swiper-animate-duration="2.8s" swiper-animate-delay=".7s"></p>
+            <p class="ani next-icon wn-icon wn-icon-next_icon" swiper-animate-effect="wobble" swiper-animate-duration="1s" swiper-animate-delay=".5s"></p>
+            <p class="ani flower wn-icon wn-icon-se_flower" swiper-animate-effect="spinner" swiper-animate-duration="2.8s" swiper-animate-delay=".7s"></p>
+            <p class="ani bottom wn-icon wn-icon-first_bottom" swiper-animate-effect="slideUp" swiper-animate-duration="1.2s" swiper-animate-delay=".5s"></p>
+            <p class="ani left wn-icon wn-icon-first_right" swiper-animate-effect="slideLeft" swiper-animate-duration="1.2s" swiper-animate-delay=".8s"></p>
+        </div>
+        <#if totalInvestAmt?? && totalInvestAmt gt 0>
+        	<div class="swiper-slide th">
+            <div class="ani content wn-icon wn-icon-th_content" swiper-animate-effect="fadeIn" swiper-animate-duration="1.2s" swiper-animate-delay=".3s">
+                <div class="layer">
+                    <p class="ani date" swiper-animate-effect="slideDown" swiper-animate-duration="1.2s" swiper-animate-delay="1s">
+          	                这一年<br/>
+                        你在亿钱贷总共出借了<br/>
+                        <span style="font-size: 38px;line-height: 1.2">￥${(totalInvestAmt)?string(',##0.00')!'0.00'}</span>
+                    </p>
+                    <p class="ani num" swiper-animate-effect="slideUp" swiper-animate-duration="1.2s" swiper-animate-delay="1.2s">
+                                                 在<span>${firstInvestTime!''}</span>,进行了今年的第一笔出借<br/>
+                       俗话说的好,赚钱要趁早
+                    </p>
+                </div>
+            </div>
+            <p class="ani sz wn-icon wn-icon-th_sz" swiper-animate-effect="flip" swiper-animate-duration="1s" swiper-animate-delay=".5s"></p>
+            <p class="ani yb wn-icon wn-icon-th_yb" swiper-animate-effect="wiggle" swiper-animate-duration="2.8s" swiper-animate-delay="1.3s"></p>
+            <p class="ani piao wn-icon wn-icon-th_piao" swiper-animate-effect="scaleAndFadeIn" swiper-animate-duration=".8s" swiper-animate-delay=".5s"></p>
+            <p class="ani flower wn-icon wn-icon-th_flower" swiper-animate-effect="scaleAndFadeIn" swiper-animate-duration=".7s" swiper-animate-delay=".8s"></p>
+            <p class="ani money wn-icon wn-icon-th_money" swiper-animate-effect="wiggle" swiper-animate-duration="3.6s" swiper-animate-delay="1.5s"></p>
+            <p class="ani bottom wn-icon wn-icon-first_bottom" swiper-animate-effect="slideUp" swiper-animate-duration="1.2s" swiper-animate-delay=".5s"></p>
+            <p class="ani left wn-icon wn-icon-first_right" swiper-animate-effect="slideLeft" swiper-animate-duration="1.2s" swiper-animate-delay=".8s"></p>
+        	</div>
+        	<div class="swiper-slide income">
+            <div class="ani content wn-icon wn-icon-income_content" swiper-animate-effect="fadeIn" swiper-animate-duration="1.2s" swiper-animate-delay=".3s">
+                <div class="layer">
+                    <div class="ani total" swiper-animate-effect="fadeIn" swiper-animate-duration=".8s" swiper-animate-delay="1.2s">
+                        <p>2018年</p><!--易智投+散标债权+出借奖励+红包+奖励券+推荐奖励  -->
+                        <p>你在亿钱贷累计赚取了</p>
+                        <h2>￥${(receiveIncome + investInCome + penaltyAward + voucherInCome + subsidyAward + promotionAward + actAward)?string(',##0.00')!'0.00'}</h2>
+                    </div>
+                    <div class="ani level" swiper-animate-effect="fadeIn" swiper-animate-duration=".8s" swiper-animate-delay="2.3s">
+                        <p>恭喜你</p>
+                        <p>在通往财富自由的路上</p>
+                        <p>又前进了一步</p>
+                    </div>
+                </div>
+            </div>
+            <p class="ani yun wn-icon wn-icon-income_yun" swiper-animate-effect="wobble" swiper-animate-duration="4.8s" swiper-animate-delay=".6s"></p>
+            <p class="ani yb wn-icon wn-icon-income_yb" swiper-animate-effect="zoomer" swiper-animate-duration="2.6s" swiper-animate-delay=".7s"></p>
+            <p class="ani pig wn-icon wn-icon-income_pig" swiper-animate-effect="wiggle" swiper-animate-duration="2.8s" swiper-animate-delay=".3s"></p>
+            <p class="ani pig2 wn-icon wn-icon-income_pig2" swiper-animate-effect="wiggle" swiper-animate-duration="2.6s" swiper-animate-delay=".5s"></p>
+            <p class="ani bottom wn-icon wn-icon-first_bottom" swiper-animate-effect="slideUp" swiper-animate-duration="1.2s" swiper-animate-delay=".5s"></p>
+            <p class="ani left wn-icon wn-icon-first_right" swiper-animate-effect="slideLeft" swiper-animate-duration="1.2s" swiper-animate-delay=".8s"></p>
+        </div>
+        <div class="swiper-slide income invest">
+            <p class="ani money1 wn-icon wn-icon-th_money" swiper-animate-effect="hinge" swiper-animate-duration="3.6s" swiper-animate-delay=".5s"></p>
+            <p class="ani money2 wn-icon wn-icon-th_money" swiper-animate-effect="hinge" swiper-animate-duration="3.4s" swiper-animate-delay=".3s"></p>
+            <div class="ani content wn-icon wn-icon-income_content" swiper-animate-effect="fadeIn" swiper-animate-duration="1.2s" swiper-animate-delay=".3s">
+                <div class="layer">
+                    <div class="ani total" swiper-animate-effect="fadeIn" swiper-animate-duration=".8s" swiper-animate-delay="1.2s">
+                        <p>2018年</p><!-- 活动奖励+出借奖励+红包+奖励券+推荐奖励 -->
+                        <p>你在亿钱贷累计获得奖励</p>
+                        <h2>￥${(actAward + penaltyAward + voucherInCome + subsidyAward + promotionAward)?string(',##0.00')!'0.00'}</h2>
+                    </div>
+                    <div class="ani level" swiper-animate-effect="fadeIn" swiper-animate-duration=".8s" swiper-animate-delay="2.3s">
+                        <p>再接再厉</p>
+                        <p>积极参与平台的每次活动,<br/>
+                        	可以获得更多奖励哦~
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <p class="ani title wn-icon wn-icon-invest_title" swiper-animate-effect="bounceIn" swiper-animate-duration="1.2s" swiper-animate-delay=".3s"></p>
+            <p class="ani pig2 wn-icon wn-icon-income_pig2" swiper-animate-effect="wiggle" swiper-animate-duration="2.6s" swiper-animate-delay=".5s"></p>
+            <p class="ani bottom wn-icon wn-icon-first_bottom" swiper-animate-effect="slideUp" swiper-animate-duration="1.2s" swiper-animate-delay=".5s"></p>
+            <p class="ani left wn-icon wn-icon-first_right" swiper-animate-effect="slideLeft" swiper-animate-duration="1.2s" swiper-animate-delay=".8s"></p>
+        </div>
+        <#else>
+        	<div class="swiper-slide th">
+            <div class="ani content wn-icon wn-icon-th_content" swiper-animate-effect="fadeIn" swiper-animate-duration="1.2s" swiper-animate-delay=".3s">
+                <div class="layer">
+                    <p class="ani date" swiper-animate-effect="slideDown" swiper-animate-duration="1.2s" swiper-animate-delay="1s">
+          	这一年              
+                        你还没有在亿钱贷进行出借<br/>
+                    </p>
+                    <p class="ani num" swiper-animate-effect="slideUp" swiper-animate-duration="1.2s" swiper-animate-delay="1.2s">
+                       俗话说的好,赚钱要趁早,快来试试吧
+                    </p>
+                </div>
+            </div>
+            <p class="ani sz wn-icon wn-icon-th_sz" swiper-animate-effect="flip" swiper-animate-duration="1s" swiper-animate-delay=".5s"></p>
+            <p class="ani yb wn-icon wn-icon-th_yb" swiper-animate-effect="wiggle" swiper-animate-duration="2.8s" swiper-animate-delay="1.3s"></p>
+            <p class="ani piao wn-icon wn-icon-th_piao" swiper-animate-effect="scaleAndFadeIn" swiper-animate-duration=".8s" swiper-animate-delay=".5s"></p>
+            <p class="ani flower wn-icon wn-icon-th_flower" swiper-animate-effect="scaleAndFadeIn" swiper-animate-duration=".7s" swiper-animate-delay=".8s"></p>
+            <p class="ani money wn-icon wn-icon-th_money" swiper-animate-effect="wiggle" swiper-animate-duration="3.6s" swiper-animate-delay="1.5s"></p>
+            <p class="ani bottom wn-icon wn-icon-first_bottom" swiper-animate-effect="slideUp" swiper-animate-duration="1.2s" swiper-animate-delay=".5s"></p>
+            <p class="ani left wn-icon wn-icon-first_right" swiper-animate-effect="slideLeft" swiper-animate-duration="1.2s" swiper-animate-delay=".8s"></p>
+        	</div>
+        </#if>
+        <div class="swiper-slide recommend">
+            <div class="ani content" swiper-animate-effect="fadeIn" swiper-animate-duration="1.2s" swiper-animate-delay=".3s">
+                <div class="wn-icon wn-icon-recommend_split top"></div>
+                <div class="wn-icon wn-icon-recommend_split2 up-split"></div>
+                <div class="layer">
+                    <#if recommendCount?? && recommendCount gt 0>
+                    <div class="ani total" swiper-animate-effect="fadeIn" swiper-animate-duration=".8s" swiper-animate-delay="1.2s">
+                        <p>2018年</p>
+                        <p>你累计邀请了${recommendCount!'0'}</p>
+                        <p>个朋友加入亿钱贷</p>
+                        <h2>赚取了${awardsAmt?string(',##0.00')!'0.00'}元奖励</h2>
+                    </div>
+                    <div class="ani level" swiper-animate-effect="fadeIn" swiper-animate-duration=".8s" swiper-animate-delay="2.4s">
+                        <p>赚钱好机会,值得奔走相告</p>
+                    </div>
+                    <#else>
+                    <div class="ani total" swiper-animate-effect="fadeIn" swiper-animate-duration=".8s" swiper-animate-delay="1.2s">
+                        <p>2018年</p>
+                        <p>你还没有邀请过好友</p>
+                        <p>成功邀请好友,即可获得赚钱好机会</p>
+                    </div>
+                    <div class="ani level" swiper-animate-effect="fadeIn" swiper-animate-duration=".8s" swiper-animate-delay="2.4s">
+                        <p>值得奔走相告</p>
+                    </div>
+                </#if>
+            </div>
+            <a href="${tzp.getContextPath()}/event/recommend" class="ani button wn-icon wn-icon-first_button" swiper-animate-effect="pulse" swiper-animate-duration="2s" swiper-animate-delay="3s">邀请好友</a>
+            </div>
+            <p class="ani light wn-icon wn-icon-se_light" swiper-animate-effect="wiggle" swiper-animate-duration="3.3s" swiper-animate-delay="1.2s"></p>
+            <p class="ani flower wn-icon wn-icon-se_flower" swiper-animate-effect="spinner" swiper-animate-duration="2.8s" swiper-animate-delay=".7s"></p>
+            <!--分享url-->
+            <input type="hidden" id="shareUrl" value="${wapUrl!''}/secure/land?code=${recomCode!''}" />
+            <input type="hidden" value="您的好友${realName!''}喊你一起赚收益啦，平台上市背景+专业合规，快快上车~" id="shareDesc">
+            <input type="hidden" value="送您888元新手专属奖励金,邀请您来亿钱贷一起赚钱" id="shareTitle">
+            <input type="hidden" value="${wapUrl!''}/secure/land?code=${recomCode!''}" id="shareLink">
+            <input type="hidden" value="${wapUrl!''}/public/images/logo-w.png" id="shareImg">
+            <p class="ani bottom wn-icon wn-icon-first_bottom" swiper-animate-effect="slideUp" swiper-animate-duration="1.2s" swiper-animate-delay=".5s"></p>
+            <p class="ani left wn-icon wn-icon-first_right" swiper-animate-effect="slideLeft" swiper-animate-duration="1.2s" swiper-animate-delay=".8s"></p>
+        </div>
+    </div>
+    <!--<div class="button-next wn-icon wn-icon-arrow"></div>-->
+</div>
+
+<#include "/includes/script.html" />
+<script>
+    function swiperAnimateCache(a){for(j=0;j<a.slides.length;j++)for(allBoxes=a.slides[j].querySelectorAll(".ani"),i=0;i<allBoxes.length;i++)allBoxes[i].attributes["style"]?allBoxes[i].setAttribute("swiper-animate-style-cache",allBoxes[i].attributes["style"].value):allBoxes[i].setAttribute("swiper-animate-style-cache"," "),allBoxes[i].style.visibility="hidden"}function swiperAnimate(a){clearSwiperAnimate(a);var b=a.slides[a.activeIndex].querySelectorAll(".ani");for(i=0;i<b.length;i++)b[i].style.visibility="visible",effect=b[i].attributes["swiper-animate-effect"]?b[i].attributes["swiper-animate-effect"].value:"",b[i].className=b[i].className+"  "+effect+" "+"animated",style=b[i].attributes["style"].value,duration=b[i].attributes["swiper-animate-duration"]?b[i].attributes["swiper-animate-duration"].value:"",duration&&(style=style+"animation-duration:"+duration+";-webkit-animation-duration:"+duration+";"),delay=b[i].attributes["swiper-animate-delay"]?b[i].attributes["swiper-animate-delay"].value:"",delay&&(style=style+"animation-delay:"+delay+";-webkit-animation-delay:"+delay+";"),b[i].setAttribute("style",style)}function clearSwiperAnimate(a){for(j=0;j<a.slides.length;j++)for(allBoxes=a.slides[j].querySelectorAll(".ani"),i=0;i<allBoxes.length;i++)allBoxes[i].attributes["swiper-animate-style-cache"]&&allBoxes[i].setAttribute("style",allBoxes[i].attributes["swiper-animate-style-cache"].value),allBoxes[i].style.visibility="hidden",allBoxes[i].className=allBoxes[i].className.replace("animated"," "),allBoxes[i].attributes["swiper-animate-effect"]&&(effect=allBoxes[i].attributes["swiper-animate-effect"].value,allBoxes[i].className=allBoxes[i].className.replace(effect," "))}
+</script>
+<script src="/dist/js/pages/static/report2018.js?v=918c5ef"></script>
+</body>
+</html>

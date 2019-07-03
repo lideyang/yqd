@@ -1,0 +1,131 @@
+@import "../../header";
+@import "../../amaze/variables";
+body {
+  background-color: #f5f9fb;
+}
+.user-setting-layer{
+  .am-header-default{
+    .header-account();
+  }
+  .setting-panel{
+    padding: 0 0 .1rem;
+    .header {
+      .name {
+        padding:.15rem .2rem;
+        > div {
+          line-height: .4rem;
+        }
+        img {
+          width: .4rem;
+          border-radius: 50%;
+          box-shadow: 0 0 8px rgba(0, 0, 0, .2);
+        }
+        .mobile {
+          padding: 0 0 0 .1rem;
+        }
+      }
+    }
+
+    .risk {
+      color: #666;
+      padding: .05rem .3rem;
+      background-color: #f6fbfc;
+    }
+
+    .menu {
+      width: 100%;
+      padding:.1rem .2rem;
+      .icon {
+        border-right: 2px solid #dbdbdb;
+        padding: .07rem 0;
+        font-size: 12px;
+        line-height: .20rem;
+      }
+      > .list {
+        background-color: #fff;
+        margin:0;
+        border-radius: 8px;
+        > div.am-g {
+          margin:0 0 .2rem;
+          line-height: 38px;
+          &:last-child{
+            margin:0;
+          }
+          > a {
+            color: #333;
+            &:visited,&:focus{
+              .icon{
+                border-right-color: #dbdbdb!important;
+              }
+            }
+          }
+          span.split {
+            margin: 0 .1rem;
+          }
+          h2, p {
+            margin: 0;
+            padding: 0 0 0 .15rem;
+            line-height: 1.3;
+          }
+          h2 {
+            font-size: 16px;
+            margin:0 0 .02rem;
+            &.flow {
+              line-height: 38px;
+            }
+          }
+          .am-text-one-primary{
+            color:@one-primary;
+          }
+          .icon-font {
+            font-size: 22px;
+            margin: 0 .15rem 0 0;
+            &.icon-next{
+              font-size:24px;
+              color:#ddd;
+            }
+            &.icon-information{
+              font-size: 20px;
+            }
+          }
+          > div.am-text-right {
+            line-height: .38rem;
+            height: .38rem;
+          }
+        }
+      }
+    }
+  }
+  .subscription-btn {
+    padding: 0;
+    line-height: 1;
+    height: auto;
+  }
+
+  .weixin-btn {
+    color: #fff;
+  }
+  .layui-layer{
+    border-radius: 8px;
+  }
+  .layui-layer-title{
+    border-radius: 8px 8px 0 0;
+  }
+  .auto-modal{
+    text-align: center;
+    .layui-layer-title{
+      padding:0;
+    }
+    .layui-layer-btn{
+      text-align: center;
+      padding: .1rem 0;
+      border-top:1px solid #ececec;
+    }
+    p{
+      margin:0 0 .1rem;
+      i{
+        margin:0 .05rem 0 0;
+      }
+    }
+  }
+}

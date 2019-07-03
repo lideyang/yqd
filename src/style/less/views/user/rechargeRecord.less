@@ -1,0 +1,53 @@
+@import "../../header";
+@import "../../amaze/variables";
+.recharge-record-layer {
+  .am-header-default {
+    .header-account(#fff, #2969ca);
+  }
+
+  .total-recharge {
+    padding: .15rem .3rem;
+  }
+
+  ul {
+    padding: 0 .2rem;
+    box-shadow: 0 0 10px rgba(25, 25, 25, .05);
+    background-color: #fff;
+
+    li {
+      padding: .15rem .1rem;
+      border-bottom: 1px solid #eaeaea;
+
+      h4 {
+        margin: 0;
+      }
+
+      p {
+        margin: 0;
+      }
+
+      i {
+        font-size: 20px;
+        line-height: 1;
+      }
+
+      .detail {
+        padding: .1rem 0 0;
+
+        p {
+          margin: 0 0 .1rem;
+        }
+
+        strong {
+          margin: 0 0 .1rem;
+          display: block;
+        }
+      }
+
+      .cancel-btn {
+        border: 1px solid @global-primary;
+        color: @global-primary;
+      }
+    }
+  }
+}

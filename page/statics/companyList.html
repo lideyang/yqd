@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>公司信息-信息披露-亿钱贷</title>
+    <#include "/includes/style.html" />
+    <!--页面样式-->
+    <link href="${tzp.getContextPath()}/dist/css/pages/static/about.css?v=76409ef" rel="stylesheet">
+    <style>
+        html,body{
+            height: 100%;
+        }
+        .home-layer{
+            margin:0;
+        }
+    </style>
+</head>
+<body class="about-home">
+<!-- 头部开始 -->
+<#include "/includes/header.html" />
+<div class="home-layer">
+    <ul class="am-list about-list">
+        <li><a href="${tzp.getContextPath()}/static/intro"><span class="am-fr">详情<i class="icon-font icon-next"></i></span></a></li>
+        <li><a href="${tzp.getContextPath()}/static/shareholder"><span class="am-fr">详情<i class="icon-font icon-next"></i></span></a></li>
+        <li><a href="${tzp.getContextPath()}/static/contact"><span class="am-fr">详情<i class="icon-font icon-next"></i></span></a></li>
+    </ul>
+</div>
+<!--底部菜单-->
+
+<#include "/includes/script.html" />
+<!--页面js-->
+<script src="${tzp.getContextPath()}/dist/js/pages/static/about.js?v=1443982"></script>
+</body>
+<#include "/includes/count.html" />
+</html>

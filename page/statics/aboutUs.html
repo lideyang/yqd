@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>关于我们-亿钱贷</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta content="telephone=no" name="format-detection">
+    <link rel="stylesheet" href="${tzp.getContextPath()}/public/css/base.css?v=20f3ff7"/>
+    <link rel="stylesheet" href="${tzp.getContextPath()}/public/css/common.css?v=a8683db"/>
+    <script>
+        (function (doc, win) {
+            var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                recalc = function () {
+                    var clientWidth = docEl.clientWidth;
+                    if (!clientWidth) return;
+                    docEl.style.fontSize = (clientWidth >= 720 ? 100 : clientWidth / 7.5) + 'px';
+                };
+            if (!doc.addEventListener) return;
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+        })(document, window);
+    </script>
+</head>
+<body class="bgmain">
+<div class="m-page wp">
+    <div class="m-banner">
+        <img src="${tzp.getContextPath()}/public/images/main/banner.jpg?v=09c8a34" alt="" class="pic"/>
+    </div>
+    <div class="m-indexlist">
+        <ul class="list clearfix">
+            <li><a href="${tzp.getContextPath()}/static/aboutUsInfo">
+                <i class="icon icon1"></i>
+                <h2>公司简介</h2>
+                <h6>金融科技开放服务平台</h6>
+            </a></li>
+            <li><a href="${tzp.getContextPath()}/static/tradeMode">
+                <i class="icon icon2"></i>
+                <h2>交易模式</h2>
+                <h6>合作机构甄选优质资产</h6>
+            </a></li>
+            <li><a href="${tzp.getContextPath()}/static/security">
+                <i class="icon icon3"></i>
+                <h2>风控体系</h2>
+                <h6>四大体系 为您守护</h6>
+            </a></li>
+            <li><a href="${tzp.getContextPath()}/static/manage">
+                <i class="icon icon4"></i>
+                <h2>管理团队</h2>
+                <h6>汇集金融/互联网专业人才</h6>
+            </a></li>
+            <li><a href="${tzp.getContextPath()}/static/contact">
+                <i class="icon icon5"></i>
+                <h2>联系我们</h2>
+                <h6>欢迎来电咨询</h6>
+            </a></li>
+        </ul>
+    </div>
+</div>
+<#include "/includes/sign.html" />
+<!--底部菜单-->
+
+<script type="text/javascript" src="${tzp.getContextPath()}/public/js/risk/jquery.min.js?v=fab12e7"></script>
+<script type="text/javascript" src="${tzp.getContextPath()}/public/js/plugins/layer/mobile/layer.js?v=e64a491"></script>
+</body>
+<#include "/includes/count.html" /> 
+</html>

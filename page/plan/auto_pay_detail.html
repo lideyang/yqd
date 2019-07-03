@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>${(bean.fontStr)!'易智投'}-亿钱贷</title>
+    <#include "/includes/style.html" />
+    <!--页面样式-->
+    <link href="${tzp.getContextPath()}/dist/css/pages/product/autoDetail.css?v=0e95bf0" rel="stylesheet">
+    <#if !weixin>
+    <script>
+        var isWeiXin = false;
+    </script>
+    <#else>
+    <script>
+        var isWeiXin = true;
+    </script>
+    </#if>
+</head>
+<body>
+<!-- 头部开始 -->
+<header data-am-widget="header" class="am-header am-header-default" id="topHeader">
+    <div class="am-header-left am-header-nav">
+        <a id="nextBtn" href="javascript:;;" class="">
+            <i class="am-header-icon icon-font icon-prev"></i>
+            返回
+        </a>
+    </div>
+
+    <h1 class="am-header-title">
+        <a id="headerTitle" href="#title-link" class="">
+            易智投
+        </a>
+    </h1>
+    <div class="am-header-right am-header-nav" id="wxShareBtn" data-clipboard-text="/plan/index">
+        <a href="#right-link" class="">
+            <i class="icon-font icon-share"></i>
+        </a>
+    </div>
+</header>
+<!--内容开始-->
+<div class="am-container">
+    <!--产品列表-->
+    <div class="product-detail-content">
+        <div class="product-detail-main">
+            <div class="auto-progress">
+                <h3>服务流程</h3>
+                <img src="/public/images/product/auto_detail_info.png?v=e59fa64" />
+            </div>
+
+            <div class="am-tabs product-detail-tabs" data-am-tabs="{noSwipe: 1,selector:{nav:'.am-tabs-nav'}}">
+                <div class="tabs-list">
+                    <ul class="am-tabs-nav am-nav am-nav-tabs" id="typeList">
+                        <li class="am-active"><a href="#tab1">服务详情<p class="split"><i></i></p></a></li>
+                        <li><a href="#tab2">散标明细</a><p class="split"><i></i></p></li>
+                        <li><a href="#tab3">委托记录</a><p class="split"><i></i></p></li>
+                    </ul>
+                </div>
+                <div class="am-tabs-bd">
+                    <div class="am-tab-panel am-fade am-in am-active" id="tab1">
+         
+                        <div class="item-content">
+                    <table class="am-table server">
+                        <tr>
+                        <td>服务编号</td>
+                        <td class="target-prdno">${(bean.prdNo)!''}</td>
+                    </tr>
+                    <tr>
+                        <td>简介</td>
+                        <td>
+                            <p class="split">易智投是亿钱贷推出的委托出借工具，在基于出借人的自主选择前提下，通过系统自动匹配，协助出借人分散出借。当您使用易智投服务进行出借时，将授权亿钱贷为您选择符合以下条件的项目并为您进行循环出借：经平台严谨风控审核的、信息详细披露的借款项目或被转让债权。</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>协议约定年化利率</td>
+                        <td>
+                        	<span class="target-rate">${(bean.prdRate?string('#.##'))!' - '}</span>%
+                        	<#if bean.awardRate?? && bean.awardRate gt 0>
+                        	<span class="target-award-rate-div" ><span class="target-award-rate" >+${(bean.awardRate?string('#.##'))}</span>%</span>
+                        	</#if>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>委托期限</td>
+                        <td>
+                            <p class="split">${(bean.prdPeriod)!' - '}个月，指亿钱贷为出借人提供易智投出借服务的期限，委托期内，出借人委托出借金额无法取出，易智投的债权也无法转让；委托出借的实际标的期限可能会超过委托期限，委托期满，根据出借人的选择，授权平台将全部未到期债权进行债权转让或者继续持有未到期债权直至到期。平台不承诺债权转让成功，未能成功转让的债权，出借人需持相应借款项目直至到期。
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>出借范围</td>
+                        <td>见“出借资产明细”下的具体借款标的，平台将依据出借人的风险能力评估结果匹配相应风险等级的标的。</td>
+                    </tr>
+                    <tr>
+                        <td>授权出借规则</td>
+                        <td>最低委托金额<span class="target-min">${(bean.minAmount?string(',##0.00'))!' - '}</span>元，最高委托金额<span class="target-max">${(bean.maxAmount?string(',##0.00'))!' - '}</span>元（将依据出借人的风险能力评估结果进行调整）。</td>
+                    </tr>
+                    <tr>
+                        <td>回款方式</td>
+                        <td><p class="split">委托期满，已到期的债权和转让成功的债权的本息等金额，在扣除平台服务费用后，返回至账户可用余额。未到期债权会持续进行转让，直至转让成功或债权到期还款后，资金返回至账户可用余额。</p></td>
+                    </tr>
+                    <tr>
+                        <td>起息日</td>
+                        <td>17：00前委托出借成功，预计当天起息；17：00后委托成功，预计次日起息。以实际起息日为准。</td>
+                    </tr>
+                    <tr>
+                        <td>费用说明</td>
+                         <#if _p2p_member_user??>
+                     	<td>平台服务费用详见<a class="text-primary" href="${tzp.getContextPath()}/contract/entrust?assetsId=${bean.prdId!''}">《委托服务协议》</a>。</td>
+                     	<#else>
+                     	<td>平台服务费用详见<a class="text-primary" href="${tzp.getContextPath()}/spa/account/login?callbackUrl=/plan/detail/${bean.prdId!''}" >《委托服务协议》</a>。</td>
+                     </#if>
+                    </tr>
+                    <tr>
+                        <td>常见问题</td>
+                        <td>参见帮助中心<a class="am-text-info" href="${tzp.getContextPath()}/help/index?typeId=8f3020812c54497b94718882fd127485">易智投相关说明</a></td>
+                    </tr>
+                </table>
+            </div>
+                    </div>
+                    <div class="am-tab-panel am-fade" id="tab2">
+                        <table class="am-table invest am-text-center">
+                            <thead>
+                            <tr>
+                                <th style="width:36%">项目名称</th>
+                                <th style="width:34%">借款金额（元）</th>
+                                <th style="width:30%">期限</th>
+                            </tr>
+                            </thead>
+                            <tbody id="investDetailTable">
+                            </tbody>
+                        </table>
+                        <div class="row" id="paginationList" style="display: none">
+                            <div class="am-u-sm-10 am-u-sm-centered">
+                                <ul data-am-widget="pagination" class="am-pagination am-pagination-select">
+                                    <li class="am-pagination-prev">
+                                        <a disabled href="javascript:;;" class="am-btn am-btn-default" id="paginationPrevBtn">上一页</a>
+                                    </li>
+                                    <li class="am-pagination-select">
+                                        <select id="paginationSelect">
+                                        </select>
+                                    </li>
+                                    <li class="am-pagination-next">
+                                        <a href="javascript:;;" class="am-btn am-btn-default" id="paginationNextBtn">下一页</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="am-tab-panel am-fade mescroll" id="tab3">
+                        <table class="am-table invest am-text-center">
+                            <thead>
+                            <tr>
+                                <th style="width:36%">出借人</th>
+                                <th style="width:34%">委托金额（元）</th>
+                                <th style="width:30%">委托时间</th>
+                            </tr>
+                            </thead>
+                            <tbody id="investRecordTable">
+
+                            </tbody>
+                        </table>
+                        <div class="row" id="paginationList2" style="display: none">
+                            <div class="am-u-sm-10 am-u-sm-centered">
+                                <ul data-am-widget="pagination" class="am-pagination am-pagination-select">
+                                    <li class="am-pagination-prev">
+                                        <a disabled href="javascript:;;" class="am-btn am-btn-default" id="paginationPrevBtn2">上一页</a>
+                                    </li>
+                                    <li class="am-pagination-select">
+                                        <select id="paginationSelect2">
+                                        </select>
+                                    </li>
+                                    <li class="am-pagination-next">
+                                        <a href="javascript:;;" class="am-btn am-btn-default" id="paginationNextBtn2">下一页</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--材料modal-->
+<div class="am-modal am-modal-no-btn material-modal" tabindex="-1" id="materialModal">
+    <div class="am-modal-dialog">
+        <div class="am-modal-hd">
+            <a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close>&times;</a>
+        </div>
+        <div class="am-modal-bd">
+            <img id="materialPicUrl" src="" />
+        </div>
+    </div>
+</div>
+<input type="hidden" value="你要的产品都在这，还不快来！" id="shareDesc">
+<input type="hidden" value="资金动起来，乐享稳稳的收益！" id="shareTitle">
+<input type="hidden" value="${wapUrl!''}/spa/product/auto" id="shareLink">
+<input type="hidden" value="${wapUrl!''}/public/images/logo-w.png" id="shareImg">
+<div id="shareit">
+    <img class="arrow" src="/public/images/icon/share.png?v=39c644d">
+
+</div>
+
+<#include "/includes/script.html" />
+<script type="text/x-handlebars-template" id="tpi-list-item">
+    {{#each this}}
+	<tr data-id="{{loanId}}">
+     	<td>{{loanTitle}}</td>
+     	<td>{{formatCurrency loanAmt}}</td>
+     	<td>{{loanPeriodStr}}</td>
+     </tr>
+    {{/each}}
+</script>
+
+<script type="text/x-handlebars-template" id="tpi-list-item2">
+    {{#each this}}
+	<tr>
+     	<td>{{userLoginNameStr}}</td>
+     	<td>{{formatCurrency investAmount}}元</td>
+     	<td>{{prettifyDate investTime}}</td>
+     </tr>
+    {{/each}}
+</script>
+<!--页面js-->
+<script type="text/javascript">
+    var loanId = '${(bean.prdId)!''}';
+</script>
+<script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script src="${tzp.getContextPath()}/dist/js/pages/product/autoDetail.js?v=513857d"></script>
+</body>
+<#include "/includes/count.html" /> 
+</html>

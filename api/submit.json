@@ -1,0 +1,21 @@
+{
+  "success": true,
+  "code": null,
+  "msg": "",
+  "toUrl": null,
+  "jsonData": {
+    "message": null,
+    "errorCode": "0000",
+    "postUrl": "https://xwbk.lanmaoly.com/bha-neo-app/lanmaotech/gateway",
+    "postMap": {
+      "reqData": "{\"amount\":\"100.00\",\"bankcode\":\"CMBC\",\"callbackMode\":\"DIRECT_CALLBACK\",\"expectPayCompany\":\"YEEPAY\",\"expired\":\"20190412170632\",\"platformUserNo\":\"18051601364302994347665103079989\",\"rechargeWay\":\"SWIFT\",\"redirectUrl\":\"http://dev-wap.yiqiandai.com:3000/rmi/xw/callback\",\"requestNo\":\"1904111706322787137\",\"swiftRoute\":\"ORIGINAL_SWIFT\",\"timestamp\":\"20190411170634\"}",
+      "platformNo": "6000005782",
+      "sign": "lfI4iVerZ6Fs12dRFbBN7PfutQ10eddcKJKDKqxngpBxuIJXd6apflIEdEicA6eoGS5Hz6oKoLTIGuGa5iw++ULNQ5Ex7pu4LentrEU6p8iyll7YyN0iYt1Y+WqfbUMabaT6Yqx5Nzl7rF+mxcs6nYmU5kwUylSefMSaJoaLP7kGluFo+MZ9LpnWUztrnfUUAewnrF6tVvzysd4s1+x9/XNoLaKtxjjct4vq6UcTPy62ndnKgALDRi39ieKMmmkG2cJPVqcudG46T+ZBoJfqS16P14d6bR2dvmf6zz6u7Ocigbi/mWHcluJVtz0pjhPQsr4QIcNOII9La8nJoIYP5w==",
+      "keySerial": "1",
+      "serviceName": "RECHARGE"
+    },
+    "method": "post",
+    "target": "_self",
+    "successed": true
+  }
+}

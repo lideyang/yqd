@@ -1,0 +1,24 @@
+{
+  "status": true,
+  "msg":"",
+  "data": {
+    "name": "lidy",
+    "isDefaultUsername": "1",
+    "userSecurity": {
+      "depositary": true,
+      "checkName": false,
+      "bindBank": false,
+      "authListStatus": true,
+      "password":false
+    },
+    "realName": "李**",
+    "realID": "360702************612",
+    "bankName": "招商银行",
+    "bankID": "2713",
+    "RiskAssessmentStatus": "已评估",
+    "RiskAssessmentType": "稳健型",
+    "repay": "532.32",
+    "isShowOpenModal":true,
+    "isRiskAssessment": false
+  }
+}

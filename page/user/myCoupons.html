@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>优惠券-亿钱贷</title>
+    <#include "/includes/style.html" />
+    <!--页面样式-->
+    <link href="${tzp.getContextPath()}/dist/css/pages/user/myCoupons.css?v=42884fd" rel="stylesheet">
+</head>
+<body>
+<!-- 头部开始 -->
+<header data-am-widget="header" class="am-header am-header-default" id="topHeader">
+    <div class="am-header-left am-header-nav">
+        <a id="nextBtn" href="javascript:;;" class="">
+            <i class="am-header-icon icon-font icon-prev"></i>
+            返回
+        </a>
+    </div>
+
+    <h1 class="am-header-title">
+        <a id="headerTitle" href="#title-link" class="">
+            优惠券
+        </a>
+    </h1>
+    <div class="am-header-right am-header-nav">
+        <a href="${tzp.getContextPath()}/static/couponsRule">
+            <i class="icon-font icon-wenhao1"></i>
+        </a>
+    </div>
+</header>
+<!--内容开始-->
+<div class="am-tabs my-coupons-tabs" data-am-tabs id="myCouponsTabs">
+    <ul class="am-tabs-nav am-nav am-nav-tabs" id="firstTabs">
+        <li class="am-active"><a data-id="2" href="#tab2" class="am-text-center">红包</a></li>
+        <li><a href="#tab3" data-id="3" class="am-text-center">奖励券</a></li>
+    </ul>
+    <p class="am-text-center" id="useCouponsTips">
+        您共使用<span class="am-text-warning">${useCount!'0'}</span>个优惠券，已为您节省<span class="am-text-warning">${(coupon!0)?string(',##0.00')}</span>元
+    </p>
+    <div class="am-tabs-bd">
+        <div class="am-tab-panel am-fade am-in am-active" id="tab2">
+            <div class="am-container product-choose-ticket">
+                <div class="product-choose-list mescroll" style="top:0" id="wrapper2">
+                    <ul id="productTableList2">
+<!--                         <li>正在加载内容...</li> -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="am-tab-panel am-fade" id="tab3">
+            <div class="am-container product-choose-ticket">
+                <div class="product-choose-list mescroll" id="wrapper3">
+                	<!--<#if useCount??><div style="margin:.1rem 0 0" class="am-text-muted">提示：奖励券的收益将随借款标每期回款一起发放</div></#if>-->
+                    <ul id="productTableList3">
+<!--                         <li>正在加载内容...</li> -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="menu-navbar">
+    <ul class="am-avg-sm-2" id="menuBar">
+        <li >
+            <a id="hisBtn" href="javascript:;;" class="am-btn am-btn-default am-round">红包历史记录</a>
+        </li>
+        <li>
+            <a href="/spa/product/auto" class="am-btn am-btn-secondary am-round">
+                立即出借
+            </a>
+        </li>
+    </ul>
+</div>
+<#include "/includes/script.html" />
+<!--页面js-->
+<script type="text/x-handlebars-template" id="tpi-list-item">
+    {{#each this}}
+	{{#expression useStatus '==' 0 '&&' isValid '==' 1}}
+		<li>
+	{{else}}
+		<li class="gray">
+    {{/expression}}
+        <div class="am-g invest">
+			{{#expression awardType '==' 3 }}
+            <div class="am-u-sm-3 am-text-center icon icon-jiaxi">
+                <span class="am-text-danger am-text-nowrap num">{{formatCurrency awardAmount}}%</span>
+                <i class="icon-red"></i>
+            {{else}}
+            <div class="am-u-sm-3 am-text-center icon">
+                <span class="am-text-danger am-text-nowrap num">¥{{formatCurrency awardAmount false}}</span>
+                <i class="icon-red"></i>
+    		{{/expression}}
+            </div>
+            <div class="am-u-sm-9 info">
+  				<p class="title require">{{actName}}</p>
+               <p class="am-text-default am-text-sm">{{limitPeriodStr}}<br/>{{limitPeriodRemarkStr}}</p>
+                <p class="am-text-muted am-text-sm day">有效期至：{{deadTimeYMDStr}}</p>
+            </div>
+        </div>
+{{#expression useStatus '==' 0 '&&' isValid '==' 1}}
+	{{else}}
+        {{#expression useStatus '==' 1 }}
+            <img class="use-icon" src="/public/images/icon/used_red.png" />
+       {{else}}
+            <img class="use-icon" src="/public/images/icon/expired_red.png" />
+        {{/expression}}
+    </li>
+{{/expression}}
+    {{/each}}
+</script>
+<script src="${tzp.getContextPath()}/dist/js/pages/user/myCoupons.js?v=6d255ec"></script>
+</body>
+<#include "/includes/count.html" /> 
+</html>

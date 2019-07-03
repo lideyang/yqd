@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>微信绑定-亿钱贷</title>
+    <#include "/includes/style.html" />
+    <!--页面样式-->
+    <link href="${tzp.getContextPath()}/dist/css/pages/static/wxBindSuccess.css?v=76409ef" rel="stylesheet">
+</head>
+<body>
+
+<!-- 头部开始 -->
+<#include "/includes/header.html" />
+<div class="wx-bind-boxer am-text-center">
+  <div class="icon">
+    <i class="icon-font icon-right am-text-success"></i>
+  </div>
+  <div class="info">
+    <p>您的亿钱贷账号  <span class="am-text-secondary">${(_p2p_member_user.nickName)}</span></p>
+    <p>将与微信号 <span class="am-text-secondary">${(nickName!'')}</span> 绑定成功</p>
+  </div>
+  <p class="bind-btn">
+    <a class="am-btn am-btn-success am-btn-xl am-block am-radius" href="/spa/user/center">确定</a>
+  </p>
+</div>
+<!--底部菜单-->
+
+<#include "/includes/script.html" />
+<!--页面js-->
+<script src="${tzp.getContextPath()}/dist/js/pages/static/wxBindSuccess.js?v=1443982"></script>
+</body>
+<#include "/includes/count.html" />
+</html>

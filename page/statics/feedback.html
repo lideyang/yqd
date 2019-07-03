@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>我的回款-亿钱贷</title>
+    <#include "/includes/style.html" />
+    <!--页面样式-->
+    <link href="${tzp.getContextPath()}/dist/css/pages/static/feedback.css?v=b1c2ebb" rel="stylesheet">
+</head>
+<body>
+<!-- 头部开始 -->
+<#include "/includes/header.html" />
+<div class="feedback">
+    <p class="am-text-center am-text-lg am-text-secondary">请写下您的问题或意见</p>
+    <p class="am-text-center am-text-lg am-text-secondary">我们会尽快处理并反馈，谢谢！</p>
+    <textarea class="" rows="5" id="content"></textarea>
+    <button id="submitBtn" class="am-btn am-btn-secondary am-round am-btn-block am-btn-xl">提交</button>
+</div>
+<!--底部菜单-->
+
+<#include "/includes/script.html" />
+<!--页面js-->
+<script src="${tzp.getContextPath()}/dist/js/pages/static/feedback.js?v=8af35c5"></script>
+</body>
+<#include "/includes/count.html" /> 
+</html>

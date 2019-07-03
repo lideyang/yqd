@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>砸蛋攻略-亿钱贷</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.5, maximum-scale=0.5, user-scalable=0">
+    <meta content="telephone=no" name="format-detection">
+    <script>
+        //设置rem
+        (function (doc, win) {
+            var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize';
+            var dpr = window.devicePixelRatio || 1;
+            // adjust body font size
+            function setBodyFontSize() {
+                if (document.body) {
+                    document.body.style.fontSize = '24px'
+                }
+                else {
+                    document.addEventListener('DOMContentLoaded', setBodyFontSize)
+                }
+            }
+
+            setBodyFontSize();
+            function setRemUnit() {
+                var clientWidth = docEl.clientWidth;
+                if (!clientWidth) return;
+                docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+            }
+
+            setRemUnit()
+            if (!doc.addEventListener) return;
+            win.addEventListener(resizeEvt, setRemUnit);
+            window.addEventListener('pageshow', function (e) {
+                if (e.persisted) {
+                    setRemUnit()
+                }
+            })
+        })(document, window);
+    </script>
+    <#if !weixin>
+    <script>
+        var isWeiXin = false;
+    </script>
+    <#else>
+    <script>
+        var isWeiXin = true;
+    </script>
+    </#if>
+    <!-- 公共样式 -->
+    <link href="${tzp.getContextPath()}/dist/css/global.css?v=6feeeb4" rel="stylesheet">
+    <link rel="stylesheet" href="/dist/css/pages/activity/decGl.css?v=feb678d" />
+    <link rel="stylesheet" href="/public/css/active/dec2/icons2.css?v=feb678d" />
+</head>
+<body style="font-size:24px;">
+    <div id="mainContent" class="main-content">
+        <div class="title wn-icon wn-icon-title">方式一</div>
+        <div class="opt opt-1 am-cf">
+            <div class="am-fl wn-icon wn-icon-icon1"></div>
+            <div class="tips">首次开启默认获得3枚</div>
+        </div>
+        <div class="title wn-icon wn-icon-title">方式二</div>
+        <div class="opt opt-2 am-cf">
+            <div class="am-fl wn-icon wn-icon-icon2"></div>
+            <div class="tips">
+                <p>好友助力直接获得话费限好友首次助力，上限50次</p>
+                <a class="share-link" data-clipboard-text="${wapUrl!''}/secure/land?code=12332" href="javascript:;;">去邀请好友</a>
+            </div>
+        </div>
+        <div class="title wn-icon wn-icon-title">方式三</div>
+        <div class="opt opt-3 am-cf">
+            <div class="am-fl wn-icon wn-icon-icon3"></div>
+            <div class="tips">
+                <p>邀请好友消蛋且好友<br/>成功注册获得1枚限50枚</p>
+                <a class="share-link" data-clipboard-text="${wapUrl!''}/secure/land?code=12332" href="javascript:;;">去邀请好友</a>
+            </div>
+        </div>
+        <div class="title wn-icon wn-icon-title">方式四</div>
+        <div class="opt opt-4 am-cf">
+            <div class="am-fl wn-icon wn-icon-icon4">
+            </div>
+            <div class="tips">
+                <p>新邀请注册好友并<br/>出借任意金额，获取3枚</p>
+                <a class="share-link" data-clipboard-text="${wapUrl!''}/secure/land?code=12332" href="javascript:;;">去邀请好友</a>
+            </div>
+        </div>
+        <!--<div class="title wn-icon wn-icon-title">方式五</div>-->
+        <!--<div class="opt opt-5 am-cf">-->
+            <!--<div class="am-fl wn-icon wn-icon-icon5"></div>-->
+            <!--<div class="tips">-->
+                <!--<p>每日答题正确可获得1枚 </p>-->
+                <!--<a href="/event/dec_quesion">去答题</a>-->
+            <!--</div>-->
+        <!--</div>-->
+    </div>
+</div>
+    <div id="shareit">
+        <h3>点击右上角按钮分享</h3>
+        <ul>
+            <li>
+                <div class="wn-icon wn-icon-py">
+                </div>
+                <p>选择“发送给朋友”</p>
+            </li>
+            <li>
+                <div class="wn-icon wn-icon-pyq">
+                </div>
+                <p>或选择“分享到朋友圈”</p>
+            </li>
+        </ul>
+        <div class="wn-icon wn-icon-arrow">
+    </div>
+    <input type="hidden" value="火速领福利，给自己涨工资！" id="shareDesc">
+    <input type="hidden" value="年化10%，别犹豫！" id="shareTitle">
+    <input type="hidden" value="${wapUrl!''}/product/detail/" id="shareLink">
+    <input type="hidden" value="${wapUrl!''}/public/images/logo-w.png" id="shareImg">
+    <#include "/includes/script.html" />
+    <#if !weixin>
+    <#else>
+    <script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+    </#if>
+    <script src="${tzp.getContextPath()}/dist/js/pages/activity/decGl.js?v=ea094ed"></script>
+</body>
+<#include "/includes/count.html" />
+</html>

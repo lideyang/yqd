@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>散标资产-亿钱贷</title>
+    <#include "/includes/style.html" />
+    <!--页面样式-->
+    <link href="${tzp.getContextPath()}/dist/css/pages/user/myInvest.css?v=e0b77d4" rel="stylesheet">
+</head>
+<body>
+<!-- 头部开始 -->
+<header data-am-widget="header" class="am-header am-header-default" id="topHeader">
+    <div class="am-header-left am-header-nav">
+        <a id="nextBtn" href="javascript:;;" class="">
+            <i class="am-header-icon icon-font icon-prev"></i>
+            返回
+        </a>
+    </div>
+
+    <h1 class="am-header-title">
+        <a id="headerTitle" href="#title-link" class="">
+            散标资产
+        </a>
+    </h1>
+    <div class="am-header-right am-header-nav">
+        <a href="${tzp.getContextPath()}/member/invest/hisRepayed-list" class="">历史资产</a>
+    </div>
+</header>
+
+<!--tabs-->
+<div class="am-tabs my-invest" id="myInvestTabs" data-am-tabs>
+    <ul class="am-tabs-nav am-nav am-nav-tabs" id="tabsList">
+        <li class="am-text-center" id="liwra1"><a data-id="wrapper1" href="#tab1">待放款(${investCount!0})</a></li>
+        <li class="am-active am-text-center" id="liwra2"><a data-id="wrapper2" href="#tab2">持有中(${repayCount!0})</a></li>
+        <li class="am-text-center" id="liwra3"><a data-id="wrapper3" href="#tab3">转让中(${transferingCount!0})</a></li>
+    </ul>
+    <div class="am-g my-invest-header am-text-center" id="div_1" style="display: none">
+        <div class="am-u-sm-6">
+            <p class="am-text-lg" >${(investPrincipal?string(',##0.00'))!'-'}元</p>
+            <p>出借本金</p>
+        </div>
+        <div class="am-text-xl split"></div>
+        <div class="am-u-sm-6">
+            <p class="am-text-lg">${(investIncome?string(',##0.00'))!'-'}元</p>
+            <p>预期收益</p>
+        </div>
+    </div>
+    
+    <div class="am-g my-invest-header am-text-center" id="div_2">
+        <div class="am-u-sm-6">
+            <p class="am-text-lg" >${(holdPrincipal?string(',##0.00'))!'-'}元</p>
+            <p>待收本金</p>
+        </div>
+        <div class="am-text-xl split"></div>
+        <div class="am-u-sm-6">
+            <p class="am-text-lg">${(holdIncome?string(',##0.00'))!'-'}元</p>
+            <p>待收收益</p>
+        </div>
+    </div>
+    
+    <!-- <div class="am-g my-invest-header am-text-center" id="div_3" style="display: none">
+        <div class="am-u-sm-6">
+            <p class="am-text-lg" >${(endPrincipal?string(',##0.00'))!'-'}元</p>
+            <p>已收本金</p>
+        </div>
+        <div class="am-text-xl split"></div>
+        <div class="am-u-sm-6">
+            <p class="am-text-lg">${(endIncome?string(',##0.00'))!'-'}元</p>
+            <p>已收收益</p>
+        </div>
+    </div> -->
+    <div class="am-tabs-bd">
+        <div class="am-tab-panel am-fade" id="tab1">
+            <div id="wrapper1" class="mescroll">
+                <!--产品列表-->
+                <div class="product-list">
+                    <ul class="events-list" id="eventsList1">
+                        <li>
+                            正在加载内容...
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="am-tab-panel am-fade am-in am-active" id="tab2">
+            <div id="wrapper2" class="mescroll">
+                <!--产品列表-->
+                <div class="product-list">
+                    <ul class="events-list" id="eventsList2">
+                        <li>
+                            正在加载内容...
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="am-tab-panel am-fade" id="tab3">
+            <div id="wrapper3" class="mescroll">
+                <!--产品列表-->
+                <div class="product-list">
+                    <ul class="events-list" id="eventsList3">
+                        <li>
+                            正在加载内容...
+                        </li>
+                    </ul>
+                </div>
+                <p class="am-text-center">
+                    <a class="am-text-primary" href="/member/transfer/explain">债权转让规则说明</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<input type="hidden" value="${tabType!''}" id="tabType">
+<#include "/includes/script.html" />
+<!--页面js-->
+<!--待放款  -->
+<script type="text/x-handlebars-template" id="tpi-list-item1">
+    {{#each this}}
+    <li>
+        <div class="am-g title">
+            <a class="am-text-default detail-link" data-href="/member/invest/invest-details/{{loanId}}/{{investId}}" href="javascript:;">
+ {{#expression prdType '==' 0}}
+                <span class="am-badge am-radius label-qn">企</span>
+                {{/expression}}
+                {{#expression prdType '==' 1}}
+                <span class="am-badge am-radius label-sn">农</span>
+                {{/expression}}
+                {{#expression prdType '==' 2}}
+                <span class="am-badge am-radius label-wh">微</span>
+                {{/expression}}
+                {{#expression prdType '==' 3}}
+                <span class="am-badge am-radius label-lb">保</span>
+                {{/expression}}
+                {{#expression prdType '==' 4}}
+                <span class="am-badge am-radius label-cb">车</span>
+                {{/expression}}
+                {{#expression prdType '==' 5}}
+                <span class="am-badge am-radius label-wq">商</span>
+                {{/expression}}
+                <span class="name">{{loanTitle}}</span>
+                <i class="icon-font icon-next am-fr"></i>
+                <span class="am-text-primary am-fr">
+           
+                    {{#expression loanStatus '=='2 '||' loanStatus '==' 5}}
+                                 满标中{{formatCurrency percent}}%
+                    {{else}}
+                        {{loanStatusStr}}
+                    {{/expression}}
+                </span>
+            </a>
+        </div>
+        <div class="am-g am-text-center invest">
+            <div class="am-u-sm-4 info">
+               <p class="rate am-text-lg am-text-secondary">
+                    {{platRate}}<span>%</span>{{#expression awardRate '>' 0}}<span>+{{awardRate}}%</span>{{/expression}}
+                </p>
+                <p class="am-text-muted">
+                    协议约定年化利率
+                </p>
+            </div>
+            <div class="am-u-sm-5">
+                <p class="am-text-default am-text-lg">
+                  {{formatCurrency investAmt}}
+                </p>
+                <p class="am-text-muted">
+                    出借本金(元)
+                </p>
+            </div>
+            <div class="am-u-sm-3">
+               <p class="am-text-default am-text-lg">
+                    {{loanPeriod}}{{periodtUnitStr}}
+                </p>
+                <p class="am-text-muted">项目期限</p>
+            </div>
+        </div>
+    </li>
+    {{/each}}
+</script>
+<!--持有中  -->
+<script type="text/x-handlebars-template" id="tpi-list-item2">
+    {{#each this}}
+    <li class="hold">
+        <div class="am-g title">
+            <div class="am-u-sm-8">
+                <a class="am-text-default detail-link" data-href="/member/invest/invest-details/{{loanId}}/{{debtId}}" href="javascript:;">
+              {{#expression prdType '==' 0}}
+                <span class="am-badge am-radius label-qn">企</span>
+                {{/expression}}
+                {{#expression prdType '==' 1}}
+                <span class="am-badge am-radius label-sn">农</span>
+                {{/expression}}
+                {{#expression prdType '==' 2}}
+                <span class="am-badge am-radius label-wh">微</span>
+                {{/expression}}
+                {{#expression prdType '==' 3}}
+                <span class="am-badge am-radius label-lb">保</span>
+                {{/expression}}
+                {{#expression prdType '==' 4}}
+                <span class="am-badge am-radius label-cb">车</span>
+                {{/expression}}
+                {{#expression prdType '==' 5}}
+                <span class="am-badge am-radius label-wq">商</span>
+                {{/expression}}
+                    <span class="name">{{loanTitle}}</span>
+                    <span class="am-text-primary"></span>
+                    <!--<i class="icon-font icon-next am-fr"></i>-->
+                </a>
+            </div>
+            <div class="am-u-sm-4 am-text-right">
+                {{#if isTransferApplyStatus}}
+                <a href="${tzp.getContextPath()}/member/transfer/apply/{{debtId}}" class="am-btn am-round am-btn-xs am-btn-primary">转让</a>
+                {{/if}}
+            </div>
+        </div>
+        <div class="am-g invest am-text-center">
+            <div class="am-u-sm-6">
+                <p class="am-text-default am-text-lg">
+                     <strong>{{formatCurrency sumPrincipal}}</strong>
+                </p>
+                <p class="am-text-muted">
+                  待收本金（元）
+                </p>
+            </div>
+            <div class="am-u-sm-6 info">
+                <span class="split"></span>
+                 <p class="rate am-text-secondary am-text-lg">
+                    <strong>{{formatCurrency planIncome}}</strong>
+                </p>
+                <p class="am-text-muted">
+                    待收收益(元)
+                </p>
+            </div>
+        </div>
+        <div class="am-g tips">
+            <div class="am-u-sm-6 am-text-muted">
+                协议约定年化利率
+            </div>
+            <div class="am-u-sm-6 am-text-default am-text-right">
+                 {{platRate}}<span>%</span>{{#expression awardRate '>' 0}}<span>+{{awardRate}}%</span>{{/expression}}
+            </div>
+        </div>
+        <div class="am-g tips">
+            <div class="am-u-sm-6 am-text-muted">
+                回款时间
+            </div>
+            <div class="am-u-sm-6 am-text-default am-text-right">
+                {{dayFormater nextRepayTime}}
+            </div>
+        </div>
+    </li>
+    {{/each}}
+</script>
+<!--转让中  -->
+<script type="text/x-handlebars-template" id="tpi-list-item3">
+    {{#each this}}
+    <li class="transfer">
+        <div class="am-g title">
+            <div class="am-u-sm-8">
+                <a class="am-text-default detail-link" data-href="/member/transfer/detail/{{debtId}}" href="javascript:;">
+				 {{#expression prdType '==' 0}}
+                <span class="am-badge am-radius label-qn">企</span>
+                {{/expression}}
+                {{#expression prdType '==' 1}}
+                <span class="am-badge am-radius label-sn">农</span>
+                {{/expression}}
+                {{#expression prdType '==' 2}}
+                <span class="am-badge am-radius label-wh">微</span>
+                {{/expression}}
+                {{#expression prdType '==' 3}}
+                <span class="am-badge am-radius label-lb">保</span>
+                {{/expression}}
+                {{#expression prdType '==' 4}}
+                <span class="am-badge am-radius label-cb">车</span>
+                {{/expression}}
+                {{#expression prdType '==' 5}}
+                <span class="am-badge am-radius label-wq">商</span>
+                {{/expression}}
+                    <span class="name">{{loanTitle}}</span>
+                    <span class="am-text-primary"></span>
+                    <!--<i class="icon-font icon-next am-fr"></i>-->
+                </a>
+            </div>
+            <div class="am-u-sm-4 am-text-right">
+           <a href="javascript:;;" data-id = "{{transferApplyId}}" class="transferApply am-btn am-round am-btn-xs am-btn-primary">撤销转让</a>
+		 </div>
+        </div>
+        <div class="am-g invest">
+            <div class="am-u-sm-5">
+               <p class="am-text-default am-text-lg">
+                     <strong>{{formatCurrency transferPrice}}</strong>
+                </p>
+                <p class="am-text-muted">
+                    转让金额
+                </p>
+            </div>
+            <div class="am-u-sm-3 info">
+                <p class="rate am-text-default  am-text-lg">
+                       <strong>{{formatCurrency transferFee}}</strong>
+                </p>
+                <p class="am-text-muted">
+                    手续费
+                </p>
+            </div>
+            <div class="am-u-sm-4 am-text-right">
+                <p class="am-text-default am-text-lg">
+                  <strong>
+				{{#expression applyStatus '==' 5}}
+                  {{dayFormater createTime}}   
+    		{{/expression}}
+			{{#expression applyStatus '==' 2}}
+                  {{dayFormater createTime}}   
+    		{{/expression}}
+			{{#expression applyStatus '==' 1}}
+                  审核中 
+    		{{/expression}}	
+			</strong>
+                </p>
+                <p class="am-text-muted">申请日期</p>
+            </div>
+        </div>
+
+	{{#expression applyStatus '==' 5}}
+        <div class="am-g opt">
+            <div class="am-u-sm-12 am-text-nowrap">
+                <i class="icon-font icon-information vertical-middle"></i>
+                <span class="vertical-middle">还款日暂时下架，次日将自动恢复上架</span>
+            </div>
+        </div>
+  {{/expression}}
+    </li>
+    {{/each}}
+</script>
+<script>
+    var isShowOpenModal=<#if  !(_p2p_member_user??)|| _p2p_member_user.isDepositary=='1' >false<#else>true</#if>;
+</script>
+<script src="${tzp.getContextPath()}/dist/js/pages/user/myInvest.js?v=459bbe3"></script>
+</body>
+<#include "/includes/count.html" /> 
+</html>

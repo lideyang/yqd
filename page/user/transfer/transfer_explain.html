@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>转让规则说明-亿钱贷</title>
+    <#include "/includes/style.html" />
+    <!--页面样式-->
+    <link href="${tzp.getContextPath()}/dist/css/pages/static/transferExplain.css?v=2a7f95f" rel="stylesheet">
+</head>
+<body>
+<!-- 头部开始 -->
+<#include "/includes/header.html" />
+<!--页面开始-->
+<div class="container">
+    <ul>
+        <li>
+            <h3>1、哪些债权可以进行债权转让？</h3>
+            <ul>
+                <li>1) 债权处于非逾期状态；</li>
+                <li>2) 债权持有时间不小于30天；</li>
+                <li>3) 距离项目结清日不小于15天；</li>
+                <li>4) 由保险公司出具保单的乐保贷项目禁止转让，其他乐保贷产品可以转让；</li>
+                <li>5) 债权还款日当日不可发起债权转让申请，如需进行债权转让，可于还款后第二日进行尝试；</li>
+                <li>6) 出借时如使用了红包，债权持有时间需大于等于红包使用期限条件才能进行债权转让；</li>
+                <li>7) 如出借时参与了平台奖励活动，债权转让条件请参看相应活动细则。</li>
+            </ul>
+        </li>
+        <li>
+            <h3>2、债权转让的需要收手续费吗？</h3>
+            <ul>
+                <li> 答：手续费为转让价格的0.5%，转让成功后收取；如债权持有大于等于90天，则免手续费；
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+<#include "/includes/script.html" />
+<script src="${tzp.getContextPath()}/dist/js/pages/static/transferExplain.js?v=1433892"></script>
+</body>
+<#include "/includes/count.html" />
+</html>

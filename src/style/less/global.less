@@ -1,0 +1,575 @@
+@import "amaze/amazeui";
+@import "../../font/iconfont.css";
+@import "amaze/variables";
+
+html,body {
+  height: 100%;
+}
+
+body {
+  font-size: 14px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+  -webkit-text-size-adjust: 100% !important;
+  text-size-adjust: 100% !important;
+  -moz-text-size-adjust: 100% !important;
+
+  &.blue-bg {
+    background: linear-gradient(to bottom, #f2f9fe, #e4efff);
+  }
+
+  &.gray-bg {
+    background: #f9f9f9;
+  }
+
+  &.full {
+    height: 100%;
+  }
+}
+
+.layout-layer {
+  height: 100%;
+}
+
+a, button {
+  outline: none;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* icon */
+.am-next, .am-prev {
+
+}
+
+.am-icon-caret-up:before {
+  content: '\e67c';
+}
+
+.am-icon-caret-down:before {
+  content: '\e602';
+}
+
+.am-icon-check:before {
+  content: '\e60d'
+}
+
+/* slider */
+.am-slider-default {
+  margin: 0;
+}
+
+/* navbar */
+.am-navbar-nav {
+  .icon-font {
+    font-size: 20px;
+  }
+}
+
+/* text */
+.text-one-primary {
+  color: #0099ff;
+}
+
+.text-gray {
+  color: #333
+}
+
+/* btn */
+.btn-secondary, .btn-secondary:focus, .btn-secondary:hover {
+  border: 2px solid @global-secondary;
+  background-color: #fff;
+  color: @global-secondary;
+}
+
+.btn-three, .btn-three:focus, .btn-three:hover {
+  border: 2px solid @global-primary;
+  background-color: #fff;
+  color: @global-primary;
+}
+
+.btn-disabled, .btn-disabled:hover, .btn-disabled:focus, .btn-disabled:active {
+  color: #fff;
+  background-color: #ccc;
+  border-color: #ccc;
+  cursor: not-allowed;
+}
+
+.btn-disabled2, .btn-disabled2:hover, .btn-disabled2:focus, .btn-disabled2:active {
+  color: #a6a6a6;
+  background-color: #fff;
+  border-color: #a6a6a6;
+  cursor: not-allowed;
+}
+
+.btn-download {
+  color: #fff;
+  border: none;
+  background: #3863ca; /* 一些不支持背景渐变的浏览器 */
+  background: linear-gradient(to bottom, #3863ca, #2f2987);
+}
+
+.link-white {
+  color: #fff;
+}
+
+.vertical-middle {
+  vertical-align: middle;
+}
+
+.outside_input {
+  display: none !important;
+}
+
+/* bg */
+.main-bg {
+  background: url(/public/images/main_bg.jpg) no-repeat #f1f1f1;
+  background-size: 100% auto;
+}
+
+/* animation */
+@keyframes icon-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(359deg);
+  }
+}
+
+.am-icon-spin {
+  display: inline-block;
+  animation: icon-spin 2s infinite linear;
+}
+
+/* 环状圈 */
+.circle {
+  width: .6rem;
+  height: .6rem;
+  position: relative;
+  border-radius: 50%;
+  background: @global-secondary;
+
+  .pie_left, .pie_right {
+    width: .6rem;
+    height: .6rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .left, .right {
+    width: .6rem;
+    height: .6rem;
+    background: #bfbfbf;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    -webkit-backface-visibility: hidden;
+    -webkit-perspective: 1000;
+  }
+
+  .pie_right, .right {
+    clip: rect(0, auto, auto, .3rem);
+    transition: all .3s ease-in;
+  }
+
+  .pie_left, .left {
+    clip: rect(0, .3rem, auto, 0);
+    transition: all .3s ease .3s;
+  }
+
+  .mask {
+    width: .52rem;
+    height: .52rem;
+    line-height: .52rem;
+    border-radius: 50%;
+    left: .04rem;
+    top: .04rem;
+    background: #fff;
+    position: absolute;
+    text-align: center;
+    font-size: 12px;
+    font-weight: bold;
+    color: #666;
+  }
+}
+
+/* layer */
+.layui-layer-msg {
+  width: 100% !important;
+  min-height: 50px !important;
+  line-height: 1 !important;
+  top: 0 !important;
+  left: 0 !important;
+  background-color: rgba(0, 0, 0, .7) !important;
+  border-radius: 0 !important;
+  color: #fff !important;
+  border-bottom: none !important;
+}
+
+/* 刷新加载*/
+/*下拉刷新和上拉加载的滑动区域*/
+.mescroll {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+}
+
+/*启用硬件加速:使动画渲染流畅,解决部分手机闪白屏问题,在下拉刷新和上拉加载触发时启用,结束后移除,避免滥用导致其他兼容性问题*/
+.mescroll-hardware {
+  -webkit-transform: translateZ(0);
+  -webkit-transform-style: preserve-3d;
+  -webkit-backface-visibility: hidden;
+  -webkit-perspective: 1000;
+}
+
+/*下拉刷新区域*/
+.mescroll-downwarp {
+  position: relative;
+  width: 100%;
+  height: 0;
+  overflow: hidden;
+  text-align: center;
+}
+
+/*下拉刷新--高度重置的过渡动画*/
+.mescroll-downwarp-reset {
+  -webkit-transition: height 300ms;
+  transition: height 300ms;
+}
+
+/*下拉刷新--内容区,定位于区域底部*/
+.mescroll-downwarp .downwarp-content {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  min-height: 30px;
+  padding: 10px 0;
+}
+
+/*上拉加载区域*/
+.mescroll-upwarp {
+  min-height: 30px;
+  padding: 15px 0;
+  text-align: center;
+  visibility: hidden; /*代替display: none,列表快速滑动到底部能及时显示上拉加载的区域*/
+}
+
+/*下拉刷新,上拉加载--提示文本*/
+.mescroll-downwarp .downwarp-tip,
+.mescroll-upwarp .upwarp-tip,
+.mescroll-upwarp .upwarp-nodata {
+  display: inline-block;
+  font-size: 12px;
+  color: gray;
+  vertical-align: middle;
+}
+
+.mescroll-downwarp .downwarp-tip,
+.mescroll-upwarp .upwarp-tip {
+  margin-left: 8px;
+}
+
+/*下拉刷新,上拉加载--旋转进度条*/
+.mescroll-downwarp .downwarp-progress,
+.mescroll-upwarp .upwarp-progress {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 1px solid gray;
+  border-bottom-color: transparent;
+  vertical-align: middle;
+  margin-bottom: 0;
+}
+
+/*旋转动画*/
+.mescroll-rotate {
+  -webkit-animation: mescrollRotate 0.6s linear infinite;
+  animation: mescrollRotate 0.6s linear infinite;
+}
+
+@-webkit-keyframes mescrollRotate {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes mescrollRotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/*无任何数据的空布局*/
+.mescroll-empty {
+  width: 100%;
+  padding-top: 20px;
+  text-align: center;
+}
+
+.mescroll-empty .empty-icon {
+  width: 45%;
+}
+
+.mescroll-empty .empty-tip {
+  margin-top: 6px;
+  font-size: 14px;
+  color: gray;
+}
+
+.mescroll-empty .empty-btn {
+  max-width: 50%;
+  margin: 20px auto;
+  padding: 10px;
+  border: 1px solid #65AADD;
+  border-radius: 6px;
+  background-color: white;
+  color: #65AADD;
+}
+
+.mescroll-empty .empty-btn:active {
+  opacity: .75;
+}
+
+/*回到顶部的按钮*/
+.mescroll-totop {
+  z-index: 9990;
+  position: fixed;
+  right: 10px;
+  bottom: 30px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  opacity: 0;
+}
+
+/*显示动画--淡入*/
+.mescroll-lazy-in,
+.mescroll-fade-in {
+  -webkit-animation: mescrollFadeIn .5s linear forwards;
+  animation: mescrollFadeIn .5s linear forwards;
+}
+
+@-webkit-keyframes mescrollFadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes mescrollFadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/*隐藏动画--淡出*/
+.mescroll-fade-out {
+  pointer-events: none;
+  -webkit-animation: mescrollFadeOut .5s linear forwards;
+  animation: mescrollFadeOut .5s linear forwards;
+}
+
+@-webkit-keyframes mescrollFadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes mescrollFadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/*滚动条轨道背景(默认在PC端设置)*/
+.mescroll-bar::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+/*滚动条轨道宽度 (默认在PC端设置)*/
+.mescroll-bar::-webkit-scrollbar {
+  width: 6px;
+}
+
+/*滚动条游标 (默认在PC端设置)*/
+.mescroll-bar::-webkit-scrollbar-thumb {
+  border-radius: 6px;
+  background-color: #ccc;
+}
+
+/*滚动条游标鼠标经过的颜色变化 (默认在PC端设置)*/
+.mescroll-bar::-webkit-scrollbar-thumb:hover {
+  background-color: #aaa;
+}
+
+/* layer-alert*/
+.layer-alert {
+  .layui-layer-btn {
+    border-top: 1px solid #eaeaea;
+    padding: 0;
+    height: .4rem;
+
+    a {
+      display: inline-block;
+      background: #fff;
+      width: 100%;
+      border: none;
+      color: @global-primary;
+      height: .4rem;
+      line-height: .4rem;
+      border-radius: 0;
+      margin: 0;
+    }
+  }
+}
+
+/* popover */
+.v-popover {
+  display: inline-block;
+
+  &:focus, .trigger:focus {
+    outline: none;
+  }
+}
+
+.tooltip {
+  display: block;
+  z-index: 10000;
+  max-width: 80%;
+
+  .tooltip-inner {
+    background: black;
+    color: white;
+    border-radius: 16px;
+    padding: 5px 10px 4px;
+  }
+
+  .tooltip-arrow {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    position: absolute;
+    margin: 5px;
+    border-color: black;
+    z-index: 1;
+  }
+
+  &[x-placement^="top"] {
+    margin-bottom: 5px;
+
+    .tooltip-arrow {
+      border-width: 5px 5px 0 5px;
+      border-left-color: transparent !important;
+      border-right-color: transparent !important;
+      border-bottom-color: transparent !important;
+      bottom: -5px;
+      left: calc(50% - 5px);
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+  }
+
+  &[x-placement^="bottom"] {
+    margin-top: 5px;
+
+    .tooltip-arrow {
+      border-width: 0 5px 5px 5px;
+      border-left-color: transparent !important;
+      border-right-color: transparent !important;
+      border-top-color: transparent !important;
+      top: -5px;
+      left: calc(50% - 5px);
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+  }
+
+  &[x-placement^="right"] {
+    margin-left: 5px;
+
+    .tooltip-arrow {
+      border-width: 5px 5px 5px 0;
+      border-left-color: transparent !important;
+      border-top-color: transparent !important;
+      border-bottom-color: transparent !important;
+      left: -5px;
+      top: calc(50% - 5px);
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
+
+  &[x-placement^="left"] {
+    margin-right: 5px;
+
+    .tooltip-arrow {
+      border-width: 5px 0 5px 5px;
+      border-top-color: transparent !important;
+      border-right-color: transparent !important;
+      border-bottom-color: transparent !important;
+      right: -5px;
+      top: calc(50% - 5px);
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
+
+  &.popover {
+    .popover-inner {
+      background: rgba(25, 25, 25, .85);
+      color: #fff;
+      padding: .1rem;
+      border-radius: 5px;
+      box-shadow: 0 5px 30px rgba(black, .1);
+      font-size: 12px;
+
+      p {
+        margin: 0;
+      }
+    }
+
+    .popover-arrow {
+      border-color: rgba(25, 25, 25, .85);
+    }
+  }
+
+  &[aria-hidden='true'] {
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity .15s, visibility .15s;
+  }
+
+  &[aria-hidden='false'] {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity .15s;
+  }
+}

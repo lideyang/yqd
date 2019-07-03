@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>待偿余额及出借人总数管控的暂行办法-亿钱贷</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.5, maximum-scale=0.5, user-scalable=0">
+    <meta content="telephone=no" name="format-detection">
+    <script>
+        //设置rem
+        (function (doc, win) {
+            var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize';
+            var dpr = window.devicePixelRatio || 1;
+            // adjust body font size
+            function setBodyFontSize() {
+                if (document.body) {
+                    document.body.style.fontSize = '24px'
+                }
+                else {
+                    document.addEventListener('DOMContentLoaded', setBodyFontSize)
+                }
+            }
+
+            setBodyFontSize();
+            function setRemUnit() {
+                var clientWidth = docEl.clientWidth;
+                if (!clientWidth) return;
+                docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+            }
+
+            setRemUnit()
+            if (!doc.addEventListener) return;
+            win.addEventListener(resizeEvt, setRemUnit);
+            window.addEventListener('pageshow', function (e) {
+                if (e.persisted) {
+                    setRemUnit()
+                }
+            })
+        })(document, window);
+    </script>
+    <!-- 公共样式 -->
+    <link href="${tzp.getContextPath()}/dist/css/global.css?v=63e48b6" rel="stylesheet">
+    <link rel="stylesheet" href="/dist/css/pages/static/control.css?v=e853382" />
+</head>
+<body style="font-size:24px;">
+    <img class="banner" src="/public/images/about/control_banner.png?v=23d51ee" />
+    <div class="am-panel am-panel-default control-panel">
+        <div class="title">
+            <p>2018年12月6日，深圳市互金协会发布《关于进一步规范网络借贷信息中介行业专项整治期间有关行为的通知》，暂时控制待偿余额不增长，保持出借人总数动态减少。</p>
+            <p>为严格执行该通知，亿钱贷从即日起实行以下待偿余额及出借人总数管控的暂行办法。合规运营是亿钱贷一直以来的坚持，感谢大家的理解与支持。</p>
+        </div>
+        <div class="info money-layer">
+            <h2>${(loanControlSum!0)?string(',##0.00')}</h2>
+            <p>当前代偿余额</p>
+            <hr/>
+            <h2>445,595,650.05</h2>
+            <p>2018年12月6日代偿余额</p>
+        </div>
+        <div class="info person-layer">
+            <h2>${(loanControlCount!0)?string(',##0')}</h2>
+            <p>当前出借人总数</p>
+            <hr/>
+            <h2>4,745</h2>
+            <p>2018年12月6日出借人总数</p>
+        </div>
+        <div class="opt">
+            <h2>一、关于代偿余额的管控</h2>
+            <p>平台将通过控制易智投和散标的发布，实现对代偿余额的管控。当代偿余额接近或高于2018年12月6日代偿余额时，将暂停发布新的易智投或散标。</p>
+            <h2>二、关于出借人总数的管控</h2>
+            <p>平台将通过“出借资格”实现对出借人总数的管控。具备“出借资格”的用户才能进行出借，具体措施如下：</p>
+            <ul>
+                <li>1、从即日起有待收资产的用户，或无待收但7天内有回款的用户，将自动获得“出借资格”；</li>
+                <li>2、当出借人总数低于2018年12月6日出借人总数时，无“出借资格”的用户在出借时，将自动获得“出借资格”；</li>
+                <li>3、拥有“出借资格”的用户，全部资产已回款，无待收的情况连续超过7天，将自动失去“出借资格”。</li>
+            </ul>
+        </div>
+    </div>
+</body>
+<#include "/includes/script.html" />
+<!--页面js-->
+<script src="${tzp.getContextPath()}/dist/js/pages/static/control.js?v=6d98888"></script>
+</body>
+<#include "/includes/count.html" />
+</html>

@@ -1,0 +1,28 @@
+<div data-am-widget="navbar" class="am-navbar am-cf" id="footerNavBar">
+    <ul class="am-navbar-nav am-cf am-avg-sm-4">
+        <li>
+            <a id="nav_index" href="/">
+                <i class="icon-font icon-home"></i>
+                <span class="am-navbar-label">首页</span>
+            </a>
+        </li>
+        <li>
+            <a id="nav_invest" href="${tzp.getContextPath()}/spa/product/auto" class="">
+                <i class="icon-font icon-case"></i>
+                <span class="am-navbar-label">出借</span>
+            </a>
+        </li>
+        <li>
+            <a id="nav_xinpi" href="${tzp.getContextPath()}/spa/publish/home" class="">
+                <i class="icon-font icon-info_1"></i>
+                <span class="am-navbar-label">信披</span>
+            </a>
+        </li>
+        <li>
+            <a id="nav_member" href="<#if _p2p_member_user??>${tzp.getContextPath()}/spa/user/center<#else>${tzp.getContextPath()}/spa/account/login</#if>" class="">
+                <i class="icon-font icon-my-account"></i>
+                <span class="am-navbar-label">我的</span>
+            </a>
+        </li>
+    </ul>
+</div>

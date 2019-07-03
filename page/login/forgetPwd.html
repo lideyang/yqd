@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>重置登录密码-亿钱贷</title>
+    <#include "/includes/style.html" />
+    <!--页面样式-->
+    <link href="${tzp.getContextPath()}/dist/css/pages/account/forgetPwd.css?v=3a963e0" rel="stylesheet">
+</head>
+<body class="main-bg">
+<!-- 头部开始 -->
+<#include "/includes/header.html" />
+<!--登录密码面板-->
+<div class="am-panel am-panel-default reg-panel pwd-panel">
+    <div class="am-panel-bd">
+        <form class="am-form am-form-horizontal" id="updatewTradePwdForm" method="post" onautocomplete="off" action="${tzp.getContextPath()}/secure/findPwd/setLoginPwd">
+            <div data-am-widget="titlebar" class="am-titlebar am-titlebar-default">
+                <h2 class="am-titlebar-title ">
+                    重置登录密码
+                </h2>
+            </div>
+            <div class="am-form-group">
+                <input class="am-form-field" onautocomplete="off" value="" maxlength="11" type="tel" pattern="[0-9]*" name="userMobile" id="userMobile" placeholder="请输入手机号">
+            </div>
+            <div class="am-form-group code" style="position: relative;">
+                <input class="am-form-field" maxlength="6" type="tel" pattern="[0-9]*" id="verifyCode" name="verifyCode"
+                       placeholder="请输入6位数字验证码">
+                <a class="am-btn am-btn-secondary re-send-btn am-radius" id="countDownBtn" style="position: absolute;">获取验证码</a>
+            </div>
+            <div class="am-form-group">
+                <button id="submitBtn" data-am-loading="{spinner: 'loading', loadingText: '加载中...'}" type="submit"
+                        class="am-btn am-btn-secondary am-round am-btn-block am-btn-xl">确定
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+<#include "/includes/script.html" />
+</body>
+<!--页面js-->
+<script src="${tzp.getContextPath()}/dist/js/pages/account/forgetPwd.js?v=355da2c"></script>
+<#include "/includes/count.html" /> 
+</html>

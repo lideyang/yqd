@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>申请债转成功-亿钱贷</title>
+    <#include "/includes/style.html" />
+    <!--页面样式-->
+    <link href="${tzp.getContextPath()}/dist/css/pages/product/success.css?v=95c526f" rel="stylesheet">
+    <style>
+        .success-panel div.list .bg img{
+            height: 1rem;
+        }
+    </style>
+</head>
+<body class="main-bg">
+<!-- 头部开始 -->
+<#include "/includes/header.html" />
+<!--出借成功面板-->
+<div class="am-panel am-panel-default success-panel">
+    <div class="am-panel-bd am-text-center">
+        <div style="padding:.3rem 0 1.7rem">
+            <i class="icon-font icon-right1 info-icon am-text-success"></i>
+            <h3 class="am-text-center am-text-default" style="font-weight: bold;margin:.2rem 0 .05rem">您的转让申请已提交审核</h3>
+            <p class="am-text-default">审核通过后，将自动发布到债权转让专区</p>
+        </div>
+        <a href="${tzp.getContextPath()}/member/invest/hold-list?tabType=holdList" class="am-btn btn-secondary am-round am-btn-block am-btn-xl success-btn">查看我的资产</a>
+        <a href="${tzp.getContextPath()}/static/transferList" class="am-btn am-btn-secondary am-round am-btn-block am-btn-xl success-btn">继续申请转让</a>
+    </div>
+</div>
+<#include "/includes/script.html" />
+</body>
+<!--页面js-->
+<script src="${tzp.getContextPath()}/dist/js/pages/product/success.js?v=4ea123e"></script>
+<#include "/includes/count.html" /> 
+</html>

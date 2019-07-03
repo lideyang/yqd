@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>银行卡信息-亿钱贷</title>
+    <#include "/includes/style.html" />
+    <!--页面样式-->
+    <link href="${tzp.getContextPath()}/dist/css/pages/user/bankCardInfo.css?v=5aaed51" rel="stylesheet">
+</head>
+<body class="main-bg">
+<!-- 头部开始 -->
+<#include "/includes/header.html" />
+<!--银行卡面板-->
+<div class="am-panel am-panel-default bank-card-panel">
+    <div class="bank-card-layer">
+        <img src="/public/images/bank/${(userBank.bankCode)!''}.png">
+        <h2 class="am-text-center">${(userBank.accountStar)!''}</h2>
+        <p>持卡人：${(userBank.fuzzyRealName)!''}</p>
+    </div>
+    <#if userBank.changeStatus=='1' >
+        <p class="am-text-center msg">
+            <a class="am-text-primary" href="${tzp.getContextPath()}/member/secure/changeCard">更换银行卡</a>
+        </p>
+    <#else>
+        <p class="am-text-muted am-text-center tips">如有需要请<a class="text-one-primary" href="tel:400-090-9968">联系客服更换银行卡</a></p>
+    </#if>
+</div>
+<#include "/includes/script.html" />
+</body>
+<!--页面js-->
+<script src="${tzp.getContextPath()}/dist/js/pages/user/bankCardInfo.js?v=15fbe40"></script>
+<#include "/includes/count.html" /> 
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>公告列表-亿钱贷</title>
+    <#include "/includes/style.html" />
+    <!--页面样式-->
+    <link href="${tzp.getContextPath()}/dist/css/pages/static/noticeDetail.css?v=62f9151" rel="stylesheet">
+</head>
+<body>
+<!-- 头部开始 -->
+<#include "/includes/header.html" />
+<div class="notice-detail">
+    <div class="am-panel">
+        <h2 class="am-text-center am-text-secondary">${(notice.title)!''}</h2>
+        <p class="am-text-center am-text-muted time">${(notice.createTime?string('yyyy-MM-dd'))!'无'}</p>
+        <div class="am-text-muted">
+         	${notice.content}
+        </div>
+    </div>
+</div>
+<!--底部菜单-->
+<#include "/includes/script.html" />
+<!--页面js-->
+<script src="${tzp.getContextPath()}/dist/js/pages/static/noticeDetail.js?v=fd90ab4"></script>
+</body>
+<#include "/includes/count.html" /> 
+</html>

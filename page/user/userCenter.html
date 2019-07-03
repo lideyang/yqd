@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>我的账户-亿钱贷</title>
+    <#include "/includes/style.html" />
+    <!--页面样式-->
+    <link href="${tzp.getContextPath()}/dist/css/pages/user/userCenter.css?v=7f3cd0a" rel="stylesheet">
+    <style>
+        .header {
+            padding-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<!-- 头部开始 -->
+
+<!--内容开始-->
+<div class="header">
+    <div class="main">
+        <div class="am-g name">
+            <div class="am-u-sm-10">
+                <a class="link-white" href="${tzp.getContextPath()}/member/secure/security">
+                    <img src="<#if picUrl??>${picUrl}<#else>${tzp.getContextPath()}/public/images/icon/header.png</#if>" id="userPicUrl"/>
+                    <span class="mobile">${(_p2p_member_user.nickName)}</span>
+                </a>
+            </div>
+            <div class="am-u-sm-2 am-text-right">
+                <a class="link-white" href="${tzp.getContextPath()}/static/more">更多</a>
+            </div>
+        </div>
+        <div class="am-g assets">
+            <div class="am-u-sm-6 link-layer total-invert">
+                <a class="title" href="${tzp.getContextPath()}/member/account/userAssets">
+                    <p>
+                        <span>
+                            总资产
+                            <#if accountVo.totalAssetUnitStr??>
+                            <#else>(元)
+                            </#if>
+                        </span>
+                        <i id="hideTotalAmountBtn" class="icon-font icon-eye-open"></i>
+                    </p>
+                    <h3>
+                       <span class="egg-status" data-amount="${(accountVo.totalAssetStr!'0')}<#if accountVo.totalAssetUnitStr??>万</#if>" id="totalAmount">
+                           ${(accountVo.totalAssetStr!'0')}<#if accountVo.totalAssetUnitStr??>万</#if>
+                        </span>
+                    </h3>
+                    <i class="icon-font icon-next"></i>
+                </a>
+            </div>
+            <div class="am-u-sm-7 link-layer">
+                <a class="title" href="javascript:;;">
+                    <p>
+                        <span>
+                           累计收益(元)
+                        </span>
+                    </p>
+                    <h3>
+                       <span class="egg-status" data-amount="${(accountVo.obtainIncome!0)}<#if accountVo.obtainIncomeUnitStr??>万<#else></#if>" id="totalAmount">
+                           ${(accountVo.obtainIncome!0)}<#if accountVo.obtainIncomeUnitStr??>万<#else></#if>
+                        </span>
+                    </h3>
+                </a>
+            </div>
+            <div class="am-u-sm-5 link-layer">
+                <a class="title" href="javascript:;;">
+                    <p>
+                        <span>
+                           昨日收益(元)
+                        </span>
+                    </p>
+                    <h3>
+                       <span class="egg-status" data-amount="${(accountVo.yesterdayIncome!'0')?string(',##0.00')}" id="totalAmount">
+                           ${(accountVo.yesterdayIncome!'0')?string(',##0.00')}
+                        </span>
+                    </h3>
+                </a>
+            </div>
+        </div>
+    </div>
+    <#if arrivingCoupon?? || cashingAmount??>
+    <div class="notice">
+        <ul id="noticeList">
+            <#if cashingAmount??>
+            <li class="use-red">
+                <i class="icon-font icon-laba"></i>您有<span class="am-text-danger">${cashingAmount?string(',###.##')}</span>元提现资金正在处理中
+            </li>
+            </#if>
+            <#if arrivingCoupon??>
+            <li class="use-red">
+                <i class="icon-font icon-laba"></i>您有<span class="am-text-danger">${arrivingCoupon?string(',###.##')}</span>元红包现金，将在出借项目起息后到账
+            </li>
+            </#if>
+        </ul>
+    </div>
+    </#if>
+</div>
+
+<#if !(ua ??) >
+<div class="am-g risk am-text-center" id="evaluatingLayer">
+    <div class="am-u-sm-12">
+        <i id="closeEvaluatingBtn" class="icon-font icon-close"></i>
+        <p>您尚未完成风险承受能力评估</p>
+        <a class="am-btn am-btn-secondary am-round btn-go" href="${tzp.getContextPath()}/member/auth/risk-ass">去评估</a>
+    </div>
+</div>
+</#if>
+
+<div class="menu">
+    <div class="list">
+        <div class="am-g">
+            <div class="am-u-sm-1 am-text-center icon">
+                <i class="icon-font icon-balance am-text-primary"></i>
+            </div>
+            <div class="am-u-sm-6 re-pay">
+                <div class="re-pay-layer">
+                    <h2>可用余额</h2>
+                    <p>
+                        <span class="am-text-danger egg-status">${(accountVo.availableAmtStr!0)} </span>
+                        <#if accountVo.availableAmtUnitStr??>万
+                        <#else>元
+                    </#if>
+                    </p>
+                </div>
+            </div>
+            <div class="am-u-sm-5 am-text-right">
+                <a class="am-btn am-btn-default am-radius"
+                   href="${tzp.getContextPath()}/member/account/cash">提现</a>
+                <a class="am-btn am-btn-secondary am-radius"
+                   href="${tzp.getContextPath()}/spa/user/recharge">充值</a>
+            </div>
+        </div>
+    </div>
+    <div class="list grid-layer">
+        <div class="am-g grid">
+            <div class="am-u-sm-6">
+                <a href="${tzp.getContextPath()}/member/plan/autobid">
+                    <div class="am-g">
+                        <div class="am-u-sm-2 am-text-center icon">
+                            <i class="icon-font icon-take am-text-primary"></i>
+                        </div>
+                        <div class="am-u-sm-10 info">
+                            <div class="info-layer">
+                                <h2>我的易智投</h2>
+                                <p class="am-text-nowrap">待收<span class="am-text-danger egg-status">
+                                ${(accountVo.hplanPrinInter!0)?string(',##0.00')}
+                             </span>元</p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="am-u-sm-6 last">
+                <a href="${tzp.getContextPath()}/member/invest/hold-list">
+                    <div class="am-g">
+                        <div class="am-u-sm-2 am-text-center icon">
+                            <i class="icon-font icon-invest2 am-text-primary"></i>
+                        </div>
+                        <div class="am-u-sm-10 info">
+                            <div class="info-layer">
+                                <h2>散标资产</h2>
+                                <p class="am-text-nowrap">待收<span class="am-text-danger egg-status">   ${(accountVo.dueInterest+accountVo.duePrincipal!0)?string(',##0.00')}</span>元</p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="am-g grid">
+            <div class="am-u-sm-6">
+                <a href="${tzp.getContextPath()}/spa/user/myRepayment">
+                    <div class="am-g">
+                        <div class="am-u-sm-2 am-text-center icon">
+                            <i class="icon-font icon-returned am-text-primary"></i>
+                        </div>
+                        <div class="am-u-sm-10 info">
+                            <div class="info-layer">
+                                <h2 class="flow">我的回款</h2>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="am-u-sm-6 last">
+                <a href="${tzp.getContextPath()}/member/trade/index">
+                    <div class="am-u-sm-2 am-text-center icon">
+                        <i class="icon-font icon-trsaction am-text-primary"></i>
+                    </div>
+                    <div class="am-u-sm-10 info">
+                        <div class="info-layer">
+                            <h2 class="flow">交易流水</h2>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="list active">
+        <ul class="am-avg-sm-3 am-thumbnails">
+            <li>
+                <a id="myTask" href="${tzp.getContextPath()}/task/list">
+                    <i class="icon-font icon-clipboard am-text-primary"></i>
+                    <h2><span class="vertical-middle">任务中心</span></h2>
+                    <#if remainderAmt?? && remainderAmt gt 0><span class="am-badge am-round am-badge-danger tips">￥${(remainderAmt!0)?string(',##0.00') }</span><#else>
+                    <span class="am-badge am-round am-badge-danger tips">new</span>
+                    </#if>
+                </a>
+            </li>
+            <li>
+                <a href="${tzp.getContextPath()}/spa/user/myCoupons">
+                    <i class="icon-font icon-wallet am-text-primary"></i>
+                    <h2 class="flow">优惠券</h2>
+                    <#if (count)?? && (count) gt 0>
+                    <span class="am-badge am-round am-badge-danger tips">${(count!0)}</span>
+                </#if>
+                </a>
+            </li>
+            <li>
+                <a href="${tzp.getContextPath()}/event/recommend">
+                    <i class="icon-font icon-love-letter am-text-primary"></i>
+                    <h2>邀请有奖</h2>
+                    <#if (todayAmt)?? && (todayAmt) gt 0>
+                    <span class="am-badge am-round am-badge-danger tips">+${(todayAmt!0)?string(',##0.00')}</span>
+                </#if>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+</div>
+<p class="am-text-muted am-text-center">资金已由新网银行存管，安全更合规</p>
+<!--客服热线-->
+<div class="am-g kefu am-text-center">
+    <p class="am-text-primary">
+        客服热线 <a class="am-text-primary" href="tel:${serviceTelephone}">${serviceTelephone}</a>
+    </p>
+    <p class="am-text-muted time">
+        服务时间 ${serviceTime}
+    </p>
+</div>
+<!--底部菜单-->
+<#include "/includes/footer.html" />
+<#include "/includes/script.html" />
+</body>
+<!--页面js-->
+<script>
+    var currentTime="${.now}";
+    var isShowOpenModal=<#if  !(_p2p_member_user??)|| _p2p_member_user.isDepositary=='1' >false<#else>true</#if>
+    var user ="laalsrae${_p2p_member_user.nickName!''}tipsdate";
+</script>
+<script src="${tzp.getContextPath()}/dist/js/pages/user/userCenter.js?v=ec8b7ad"></script>
+<#include "/includes/count.html" />
+</html>

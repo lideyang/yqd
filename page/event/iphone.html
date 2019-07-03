@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>秋高气爽换新机时-亿钱贷</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.5, maximum-scale=0.5, user-scalable=0">
+    <meta content="telephone=no" name="format-detection">
+    <script>
+        //设置rem
+        (function (doc, win) {
+            var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize';
+            var dpr = window.devicePixelRatio || 1;
+            // adjust body font size
+            function setBodyFontSize() {
+                if (document.body) {
+                    document.body.style.fontSize = '24px'
+                }
+                else {
+                    document.addEventListener('DOMContentLoaded', setBodyFontSize)
+                }
+            }
+
+            setBodyFontSize();
+            function setRemUnit() {
+                var clientWidth = docEl.clientWidth;
+                if (!clientWidth) return;
+                if (clientWidth >= 1200) {
+                    docEl.style.fontSize = '100px';
+                } else {
+                    docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+                }
+            }
+
+            setRemUnit()
+            if (!doc.addEventListener) return;
+            win.addEventListener(resizeEvt, setRemUnit);
+            window.addEventListener('pageshow', function (e) {
+                if (e.persisted) {
+                    setRemUnit()
+                }
+            })
+        })(document, window);
+    </script>
+    <!-- 公共样式 -->
+    <link href="${tzp.getContextPath()}/dist/css/global.css?v=63e48b6" rel="stylesheet">
+    <link rel="stylesheet" href="/dist/css/pages/activity/oct.css?v=1e31ba5" />
+</head>
+<body style="font-size:20px;">
+<div class="main-content">
+    <div class="my-info">
+        <p>我的年化出借</p>
+        <h3>${(investAmt!0)?string(',##0.00')}元</h3>
+        <#if _p2p_member_user??>
+        <p class="detail-btn" id="detailBtn">查看明细</p>
+        <#else>
+          <a class="login-btn am-text-primary" href="${tzp.getContextPath()}/spa/account/login?callbackUrl=/event/iphone">请先登录</a>
+        </#if>
+        <a class="invest-btn" href="/product/index">立即出借</a>
+    </div>
+    <div class="product-list">
+        <div class="process-layer" style="height: ${(min!0)/500000*10}rem;" >
+            <div class="bg"></div>
+            <div class="tips" data-am-popover="{content:'再出借年化￥${(diff!0)?string(',##0.00')}元,<br/>可获得${phone}哦'}">
+            </div>
+        </div>
+        <ul>
+            <li>
+                <h4>￥1,000,000</h4>
+                <p>年化出借(元)</p>
+            </li>
+            <li>
+                <h4>￥900,000</h4>
+                <p>年化出借(元)</p>
+            </li>
+            <li>
+                <h4>￥800,000</h4>
+                <p>年化出借(元)</p>
+            </li>
+            <li>
+                <h4>￥700,000</h4>
+                <p>年化出借(元)</p>
+            </li>
+            <li>
+                <h4>￥600,000</h4>
+                <p>年化出借(元)</p>
+            </li>
+        </ul>
+    </div>
+    <div class="calculator" id="calculator">
+        <input class="money" id="money" type="text" placeholder="请输入出借金额" />
+        <select type="text" id="month" class="month" placeholder="选择期限">
+            <option value="1">1个月</option>
+            <option value="3">3个月</option>
+            <option value="6">6个月</option>
+            <option value="12">12个月</option>
+        </select>
+        <select type="text" id="type" class="type" placeholder="选择还款方式">
+            <option value="1">等额本息</option>
+            <option value="2">每月付息,到期还本(易智投)</option>
+        </select>
+        <input id="year" class="year" readonly />
+    </div>
+    <div class="opt">
+        <h3>活动规则</h3>
+        <ul>
+            <li>1、活动时间：2018年10月22日-2018年11月07日，仅限易智投参与活动。</li>
+            <li>2、为了更好的活动体验，10月1日-10月21日的出借金额（排除债权转让），均可计入年化出借金额，年化出借金额计算公式如下：<br/>
+                易智投/每月付息到期还本：年化=出借金额/12*期限<br/>
+                3个月等额本息：年化=出借金额/12*3*0.7<br/>
+                6个月等额本息：年化=出借金额/12*6*0.6<br/>
+                12个月等额本息：年化=出借金额/12*12*0.55<br/>
+                说明：若是天标，则换算成月，月=项目天数/30
+            </li>
+            <li>3、若年化出借金额超过最大奖励的年化，再出借满足条件可循环获得iPhone，举例：年化出借金额满200万，则可获得两台iPhone Xs 512G。</li>
+            <li>
+                4、满足奖品出借金额后，请联系客服登记手机颜色及收货地址，奖品在活动结束后15个工作日内寄出，如因APPLE/HUAWEI官网缺货等第三方因素造成延时，以实际沟通为准。
+            </li>
+            <li>5、华为手机价格以华为官方发布的国内价格为准，奖品可按奖品价值的九折兑现，兑现金额发放至平台账户。</li>
+            <li>6、活动期间，如规则有所调整，以本平台公布的新公告或公告刷新的内容为准，恕不再另外单独向用户进行提醒。</li>
+            <li>7、若有疑问可咨询微信在线客服或拨打客服电话：400-090-9968（工作日9:00-18:00）。</li>
+        </ul>
+    </div>
+</div>
+<div class="copy-right">
+    <p>© 2018 亿钱贷 | All rights reserved </p>
+    <p>深圳市亿钱贷电子商务有限公司 <a href="http://www.miit.gov.cn/" rel="noopener noreferrer" target="_blank">粤ICP备14041671号-1</a></p>
+    <p>市场有风险，出借需谨慎</p>
+</div>
+</div>
+<div class="detail-layer" style="display: none" id="detailLayer">
+    <table class="am-table am-table-bordered am-text-center">
+        <thead>
+            <tr>
+                <th>出借时间</th>
+                <th>出借金额</th>
+                <th>出借期限</th>
+                <th>还款方式</th>
+                <th>年化出借金额</th>
+            </tr>
+        </thead>
+        <tbody id="tableList">
+
+        </tbody>
+    </table>
+    <ul data-am-widget="pagination" class="am-pagination am-pagination-select" id="paginationList">
+
+    </ul>
+</div>
+<#include "/includes/script.html" />
+<script type="text/x-handlebars-template" id="tpi-list-item">
+    {{#each this}}
+    <tr>
+        <td>{{prettifyDate investTime}}</td>
+        <td>{{formatCurrency investAmt}}</td>
+        <td>{{loanPeriod}}{{periodtUnitStr}}</td>
+        <td>{{repayModeStr}}</td>
+        <td>{{formatCurrency yearAmt}}</td>
+    </tr>
+    {{/each}}
+</script>
+<!--页面js-->
+<script src="${tzp.getContextPath()}/dist/js/pages/activity/oct.js?v=0f03fc0"></script>
+</body>
+<#include "/includes/count.html" />
+</html>

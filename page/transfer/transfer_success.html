@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>受让成功-亿钱贷</title>
+    <#include "/includes/style.html" />
+    <!--页面样式-->
+    <link href="${tzp.getContextPath()}/dist/css/pages/transfer/success.css?v=45cb4d4" rel="stylesheet">
+    <style>
+        .success-panel div.list .bg img{
+            height: 1rem;
+        }
+    </style>
+</head>
+<body class="main-bg">
+<!-- 头部开始 -->
+<#include "/includes/header.html" />
+<!--出借成功面板-->
+<div class="am-panel am-panel-default success-panel">
+    <div class="am-panel-bd am-text-center">
+        <div style="padding:.3rem 0 .5rem">
+            <i class="icon-font icon-right1 info-icon am-text-success"></i>
+            <h3 class="am-text-center am-text-default" style="font-weight: bold;margin:.2rem 0 .05rem">受让申请成功</h3>
+             <p class="am-text-default">${(result.investAmount!0)?string(',##0.00')} 元 | ${(result.prdName!'')}</p>
+            <p class="am-text-default" style="margin:0 0 .4rem;"></p>
+               <div class="list am-text-left" style="padding:0 .2rem;">
+	            <div class="bg am-fl">
+	                <img src="${tzp.getContextPath()}/public/images/icon/product_success_list.png?v=cb5e756" />
+	            </div>
+               	<ul>
+	                <li>
+	                    <h3 class="am-text-default">受让成功</h3>
+	                    <p class="am-text-muted">${(investTime?string('yyyy-MM-dd HH:mm:ss'))!''}</p>
+	                </li>
+	                <li>
+	                    <h3 class="am-text-default">项目到期</h3>
+	                    <p class="am-text-muted">${(result.settleDate?string('yyyy-MM-dd'))!''}到期，
+					 <#if result.expectedIncome gt 1>
+						预期收益${(result.expectedIncome!0)?string(',##0.00')}元
+					<#else>
+						预期收益${(result.expectedIncome!0)}元
+                    </#if>
+						</p>
+	                </li>
+                </ul>
+            </div>   
+        </div>
+        <a href="${tzp.getContextPath()}/member/invest/hold-list" class="am-btn btn-secondary am-round am-btn-block am-btn-xl success-btn">查看我的债转</a>
+        <a href="${tzp.getContextPath()}/spa/product/auto" class="am-btn am-btn-secondary am-round am-btn-block am-btn-xl success-btn">查看其他项目</a>
+    </div>
+</div>
+<#include "/includes/script.html" />
+</body>
+<!--页面js-->
+<script src="${tzp.getContextPath()}/dist/js/pages/transfer/success.js?v=254858b"></script>
+<#include "/includes/count.html" /> 
+</html>

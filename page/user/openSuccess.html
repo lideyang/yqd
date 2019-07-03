@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>开通存管成功-亿钱贷</title>
+    <#include "/includes/style.html" />
+    <!--页面样式-->
+    <link href="${tzp.getContextPath()}/dist/css/pages/depository/openSuccess.css?v=5838481" rel="stylesheet">
+</head>
+<body class="main-bg">
+<!-- 头部开始 -->
+<#include "/includes/header.html" />
+<!--出借成功面板-->
+<div class="am-panel am-panel-default success-panel">
+    <div class="am-panel-bd am-text-center">
+        <i class="icon-font icon-right1 info-icon am-text-success"></i>
+        <h3 class="am-text-center am-text-default tips">${result!''}</h3>
+        <a href="${tzp.getContextPath()}/spa/product/auto" class="am-btn am-btn-secondary am-round am-btn-block am-btn-xl success-btn">浏览出借项目</a>
+        <a href="${tzp.getContextPath()}/spa/user/center" class="am-btn btn-secondary am-round am-btn-block am-btn-xl success-btn">查看我的账户</a>
+    </div>
+</div>
+<#include "/includes/script.html" />
+</body>
+<!--页面js-->
+<script src="${tzp.getContextPath()}/dist/js/pages/depository/openSuccess.js?v=f5c7d0d"></script>
+<#include "/includes/count.html" />
+</html>

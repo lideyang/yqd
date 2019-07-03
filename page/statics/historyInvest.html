@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>历史资产-亿钱贷</title>
+    <#include "/includes/style.html" />
+    <!--页面样式-->
+    <link href="${tzp.getContextPath()}/dist/css/pages/user/historyInvest.css?v=3538dd6" rel="stylesheet">
+    <style>
+        html,body{
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+<!-- 头部开始 -->
+<header data-am-widget="header" class="am-header am-header-default" id="topHeader">
+    <div class="am-header-left am-header-nav">
+        <a id="nextBtn" href="javascript:;;" class="">
+            <i class="am-header-icon icon-font icon-prev"></i>
+            返回
+        </a>
+    </div>
+
+    <h1 class="am-header-title">
+        <a id="headerTitle" href="#title-link" class="">
+            散标资产
+        </a>
+    </h1>
+    <div class="am-header-right am-header-nav">
+        <a href="${tzp.getContextPath()}/member/invest/hold-list" class="">散标资产</a>
+    </div>
+</header>
+
+<!--tabs-->
+<div class="am-tabs my-invest" id="myInvestTabs" data-am-tabs>
+    <ul class="am-tabs-nav am-nav am-nav-tabs" id="tabsList">
+        <li class="am-text-center" id="liwra1"><a data-id="wrapper1" href="#tab1">已结清</a></li>
+        <li class="am-active am-text-center" id="liwra2"><a data-id="wrapper2" href="#tab2">已转让</a></li>
+    </ul>
+    <div class="am-g my-invest-header am-text-center" id="div_1" style="display: none">
+        <div class="am-u-sm-6">
+            <p class="am-text-lg" >${(endPrincipal?string(',##0.00'))!'-'}</p>
+            <p>已收本金(元)</p>
+        </div>
+        <div class="am-text-xl split"></div>
+        <div class="am-u-sm-6">
+            <p class="am-text-lg">${(endIncome?string(',##0.00'))!'-'}</p>
+            <p>已收收益(元)</p>
+        </div>
+    </div>
+
+<!--     <div class="am-g my-invest-header am-text-center" id="div_2"> -->
+<!--         <div class="am-u-sm-6"> -->
+<!--             <p class="am-text-lg" >${(transferedPrincipal?string(',##0.00'))!'-'}元</p> -->
+<!--             <p>已收本金</p> -->
+<!--         </div> -->
+<!--         <div class="am-text-xl split"></div> -->
+<!--         <div class="am-u-sm-6"> -->
+<!--             <p class="am-text-lg">${(transferedIncome?string(',##0.00'))!'-'}元</p> -->
+<!--             <p>已收收益</p> -->
+<!--         </div> -->
+<!--     </div> -->
+
+    <div class="am-tabs-bd">
+        <div class="am-tab-panel am-fade" id="tab1">
+            <div id="wrapper1" class="mescroll">
+                <!--产品列表-->
+                <div class="product-list">
+                    <ul class="events-list" id="eventsList1">
+                        <li>
+                            正在加载内容...
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="am-tab-panel am-fade am-in am-active" id="tab2">
+            <div id="wrapper2" class="mescroll">
+                <!--产品列表-->
+                <div class="product-list">
+                    <ul class="events-list" id="eventsList2">
+                        <li>
+                            正在加载内容...
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<input type="hidden" value="${tabType!''}" id="tabType">
+<#include "/includes/script.html" />
+<!--页面js-->
+<!--已结清列表  -->
+<script type="text/x-handlebars-template" id="tpi-list-item1">
+    {{#each this}}
+    <li>
+        <div class="am-g title">
+            <a class="am-text-default detail-link" data-href="/member/invest/invest-details/{{loanId}}/{{debtId}}" href="javascript:;">
+ {{#expression prdType '==' 0}}
+                <span class="am-badge am-radius label-qn">企</span>
+                {{/expression}}
+                {{#expression prdType '==' 1}}
+                <span class="am-badge am-radius label-sn">农</span>
+                {{/expression}}
+                {{#expression prdType '==' 2}}
+                <span class="am-badge am-radius label-wh">微</span>
+                {{/expression}}
+                {{#expression prdType '==' 3}}
+                <span class="am-badge am-radius label-lb">保</span>
+                {{/expression}}
+                {{#expression prdType '==' 4}}
+                <span class="am-badge am-radius label-cb">车</span>
+                {{/expression}}
+                {{#expression prdType '==' 5}}
+                <span class="am-badge am-radius label-wq">商</span>
+                {{/expression}}
+                <span class="name">{{loanTitle}}</span>
+                <i class="icon-font icon-next am-fr"></i>
+            </a>
+        </div>
+      <div class="am-g am-text-center invest">
+            <div class="am-u-sm-4 info">
+                <p class="rate am-text-lg am-text-secondary">
+                    <strong>{{platRate}}<span>%</span>{{#expression awardRate '>' 0}}<span>+{{awardRate}}%</span>{{/expression}}</strong>
+                </p>
+                <p class="am-text-muted">
+                    协议约定年化利率
+                </p>
+            </div>
+            <div class="am-u-sm-4">
+                <p class="am-text-default am-text-lg">
+                    <strong> {{formatCurrency buyPrice}}</strong>
+                </p>
+                <p class="am-text-muted">
+                    出借本金(元)
+                </p>
+            </div>
+            <div class="am-u-sm-4 am-text-right">
+                <p class="am-text-default am-text-lg">
+                    <strong>{{formatCurrency totalIncome}}</strong>
+                </p>
+                <p class="am-text-muted">已收收益(元)</p>
+            </div>
+        </div>
+    </li>
+    {{/each}}
+</script>
+<!--已转让列表  -->
+<script type="text/x-handlebars-template" id="tpi-list-item2">
+    {{#each this}}
+    <li>
+        <div class="am-g title">
+            <div class="am-u-sm-8">
+                <a class="am-text-default detail-link" data-href="/member/transfer/info/{{debtId}}" href="javascript:;">
+ {{#expression prdType '==' 0}}
+                <span class="am-badge am-radius label-qn">企</span>
+                {{/expression}}
+                {{#expression prdType '==' 1}}
+                <span class="am-badge am-radius label-sn">农</span>
+                {{/expression}}
+                {{#expression prdType '==' 2}}
+                <span class="am-badge am-radius label-wh">微</span>
+                {{/expression}}
+                {{#expression prdType '==' 3}}
+                <span class="am-badge am-radius label-lb">保</span>
+                {{/expression}}
+                {{#expression prdType '==' 4}}
+                <span class="am-badge am-radius label-cb">车</span>
+                {{/expression}}
+                {{#expression prdType '==' 5}}
+                <span class="am-badge am-radius label-wq">商</span>
+                {{/expression}}
+                    <span class="name">{{loanTitle}}</span>
+                    <span class="am-text-primary"></span>
+                    <!--<i class="icon-font icon-next am-fr"></i>-->
+                </a>
+            </div>
+        </div>
+        <div class="am-g am-text-center invest">
+            <div class="am-u-sm-4 info">
+                <p class="rate am-text-lg am-text-default">
+                    <strong> {{formatCurrency transferPrice}}</strong>
+                </p>
+                <p class="am-text-muted">
+                    转让金额(元)
+                </p>
+            </div>
+            <div class="am-u-sm-4">
+                <p class="am-text-default am-text-lg">
+                    <strong>{{formatCurrency transferFee}}</strong>
+                </p>
+                <p class="am-text-muted">
+                    手续费
+                </p>
+            </div>
+            <div class="am-u-sm-4">
+                <p class="am-text-default am-text-lg">
+                    <strong>{{dayFormater dealTime}}</strong>
+                </p>
+                <p class="am-text-muted">转让日期</p>
+            </div>
+        </div>
+    </li>
+    {{/each}}
+</script>
+<script>
+    var isShowOpenModal=<#if  !(_p2p_member_user??)|| _p2p_member_user.isDepositary=='1' >false<#else>true</#if>;
+</script>
+<script src="/dist/js/pages/user/historyInvest.js?v=06b7bdf"></script>
+</body>
+<#include "/includes/count.html" />
+</html>

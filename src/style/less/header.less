@@ -1,0 +1,19 @@
+/* header */
+.header-account(@color: #fff,@bgColor:none) {
+  background: @bgColor;
+  color: #fff;
+  border-bottom: none;
+  z-index: 999;
+  .am-header-nav {
+    > a {
+      color: @color
+    }
+  }
+  .am-header-title {
+    color: #fff;
+
+    a {
+      color: @color;
+    }
+  }
+}

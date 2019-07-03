@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>组织架构-信息披露-亿钱贷</title>
+    <#include "/includes/style.html" />
+    <!--页面样式-->
+    <link href="${tzp.getContextPath()}/dist/css/pages/static/about.css?v=76409ef" rel="stylesheet">
+    <style>
+        .framework canvas{
+            max-width: 100%;
+        }
+    </style>
+</head>
+<body>
+<!-- 头部开始 -->
+<#include "/includes/header.html" />
+<div class="home-layer">
+    <h2 class="title">组织架构</h2>
+    <div class="intro">
+        <div class="panel framework">
+            <p>目前公司下设市场拓展部、运营管理部、产品管理部、风险控制部、技术开发部、法务合规部、财务管理部、综合管理部和客户服务部九个一级部门。团队管理大多以扁平化管理为主，各部门间相互配合、相互提升、分工明确，指令下达快速，业务活动组织较流畅。</p>
+            <img src="/public/images/about/framework.png?v=e5757b6" />
+        </div>
+    </div>
+    <h2 class="title">人员结构</h2>
+    <div class="intro">
+        <div class="panel framework">
+            <p>截止4月起，亿钱贷平台工作人员数总计49人。技术人员与风控人员合计22人，其中拥有本科及以上学历占73%以上，具体的年龄结构与学历分布情况如下图：</p>
+            <canvas id="personAgeCanvas"></canvas>
+            <canvas id="personEducationCanvas"></canvas>
+        </div>
+    </div>
+</div>
+<#include "/includes/sign.html" />
+<!--底部菜单-->
+
+<#include "/includes/script.html" />
+<!--页面js-->
+<script>
+    //人员结构
+    var totalArr=[{text:'25岁及以下',color:'#21c28e',val:16}, {text:'26岁至30岁',color:'#2ad4da',val:45},{text:'31岁至40岁',color:'#51a0e3',val:35},{text:'41岁及以上',color:'#43aee0',val:4}];
+    //学历结构
+    var totalArr2=[{text:'博士及硕士',color:'#7177e8',val:12}, {text:'本科',color:'#7ab5ed',val:61},{text:'专科',color:'#7edaea',val:27}];
+</script>
+<script src="${tzp.getContextPath()}/dist/js/pages/static/framework.js?v=7ccbc0b"></script>
+</body>
+<#include "/includes/count.html" />
+</html>

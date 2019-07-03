@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>支持银行-亿钱贷</title>
+    <#include "/includes/style.html" />
+    <!--页面样式-->
+    <link href="${tzp.getContextPath()}/dist/css/pages/account/supportBank.css?v=06a52b9" rel="stylesheet">
+</head>
+<body class="main-bg">
+<!-- 头部开始 -->
+<#include "/includes/header.html" />
+<div class="am-panel am-panel-default support-bank-layer">
+    <p class="am-text-muted">支付额度会根据银行规定进行调整，仅供参考</p>
+    <div class="list">
+        <#list bankList as bank>
+            <div class="am-g">
+            <div class="am-u-sm-2 icon">
+                <img src="/public/images/bank/icon/${bank.bankCode}.png" />
+            </div>
+            <div class="am-u-sm-10 bank-info">
+                <h2>${bank.bankCodeCn!''}</h2>
+                <p class="am-text-muted">${bank.remark!''}</p>
+            </div>
+        </div>
+        </#list>
+    </div>
+</div>
+<!--底部菜单-->
+
+<#include "/includes/script.html" />
+<!--页面js-->
+<script src="${tzp.getContextPath()}/dist/js/pages/account/supportBank.js?v=1fa97f1"></script>
+</body>
+<#include "/includes/count.html" /> 
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>好友喊你来加薪-亿钱贷</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,minimal-ui">
+    <script>
+        //设置rem
+        (function (doc, win) {
+            var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                recalc = function () {
+                    var clientWidth = docEl.clientWidth;
+                    if (!clientWidth) return;
+                    if (clientWidth >= 750) {
+                        docEl.style.fontSize = '100px';
+                    } else {
+                        docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+                    }
+                };
+
+            if (!doc.addEventListener) return;
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+        })(document, window);
+    </script>
+    <link rel="stylesheet" href="${tzp.getContextPath()}/public/css/event/bonus.css?v=13a83ed"/>
+</head>
+<body>
+<div class="top">
+    <div class="container clearfix">
+        <img class="logo pull-left" src="${tzp.getContextPath()}/public/images/event/logo.png?v=4cfa8f6"/>
+        <div class="title pull-left">
+            <p>A股上市公司全资控股</p>
+            <p>证券代码002417</p>
+        </div>
+    </div>
+</div>
+<div class="content success">
+    <div class="banner">
+        <img src="${tzp.getContextPath()}/public/images/event/banner.png?v=a73100f" />
+        <h2>已发放到您的亿钱贷账户</h2>
+    </div>
+    <a href="${download!''}" class="reg-btn">下载APP去出借</a>
+    <p class="down-load-p">下载亿钱贷APP查看您的红包</p>
+    <div class="copy-right">
+        <p>市场有风险，出借需谨慎</p>
+        <p>深圳市亿钱贷电子商务有限公司版权所有</p>
+    </div>
+    <img class="bottom" src="${tzp.getContextPath()}/public/images/event/bottom.png?v=583b3a3" />
+</div>
+<#include "/includes/tongji.html" />
+</body>
+<#include "/includes/count.html" /> 
+</html>

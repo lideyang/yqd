@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>4月活动-亿钱贷</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.5, maximum-scale=0.5, user-scalable=0">
+    <meta content="telephone=no" name="format-detection">
+    <script>
+        //设置rem
+        (function (doc, win) {
+            var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize';
+            var dpr = window.devicePixelRatio || 1;
+            // adjust body font size
+            function setBodyFontSize() {
+                if (document.body) {
+                    document.body.style.fontSize = '24px'
+                }
+                else {
+                    document.addEventListener('DOMContentLoaded', setBodyFontSize)
+                }
+            }
+
+            setBodyFontSize();
+            function setRemUnit() {
+                var clientWidth = docEl.clientWidth;
+                if (!clientWidth) return;
+                docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+            }
+
+            setRemUnit()
+            if (!doc.addEventListener) return;
+            win.addEventListener(resizeEvt, setRemUnit);
+            window.addEventListener('pageshow', function (e) {
+                if (e.persisted) {
+                    setRemUnit()
+                }
+            })
+        })(document, window);
+    </script>
+    <!-- 公共样式 -->
+    <link href="${tzp.getContextPath()}/dist/css/global.css?v=63e48b6" rel="stylesheet">
+    <link rel="stylesheet" href="/dist/css/pages/activity/april.css?v=cd00215" />
+</head>
+<body style="font-size:20px;">
+<div class="main-content">
+    <h3 class="tips opt1 am-text-center">待收本金满1000元可领，今日剩余可领数量为<span id="klqzs">5</span>个</h3>
+    <div class="red-layer am-text-center">
+        <ul id="redList">
+            <li>
+                <i class="icon spinner">
+                    <h4>0.4<span>%</span></h4>
+                </i>
+                <a class="btn btn-link" data-id="321" href="/spa/account/login?callbackUrl=/event/2019/mar">立即登录</a>
+                <p>1个月及以上项目使用</p>
+            </li>
+            <li>
+                <i class="icon spinner">
+                    <h4>0.6<span>%</span></h4>
+                </i>
+                <a class="btn btn-link"  href="/spa/account/login?callbackUrl=/event/2019/mar">立即登录</a>
+                <p>3个月及以上项目使用</p>
+            </li>
+            <li>
+                <i class="icon spinner">
+                    <h4>1.2<span>%</span></h4>
+                </i>
+                <a class="btn btn-link"  href="/spa/account/login?callbackUrl=/event/2019/mar">立即登录</a>
+                <p>6个月及以上项目使用</p>
+            </li>
+            <li>
+                <i class="icon spinner">
+                    <h4>1.0<span>%</span></h4>
+                </i>
+                <a class="btn btn-link"  href="/spa/account/login?callbackUrl=/event/2019/mar">立即登录</a>
+                <p>12个月及以上项目使用</p>
+            </li>
+        </ul>
+    </div>
+    <div class="content">
+        <div class="pro-layer info-layer">
+            <div class="am-text-center boxer">
+                <div class="am-g">
+                    <div class="am-u-sm-3">
+                        <h4>我的当前排名</h4>
+                        <p>222</p>
+                    </div>
+                    <div class="am-u-sm-9">
+                        <h3>新增待收本金:2222.22</h3>
+                        <h3>2019年4月1日凌晨待收本金:2222.22</h3>
+                        <h3>当前待收本金:222332.22</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="pro-layer list-layer">
+            <ul>
+                <li>
+                    <span>名次</span>
+                    <span>可获奖励</span>
+                </li>
+                <li >
+                    <span><i class="icon icon-1"></i></span>
+                    <span>5888.00</span>
+                </li>
+                <li >
+                    <span><i class="icon icon-2"></i></span>
+                    <span>3888.00</span>
+                </li>
+                <li >
+                    <span><i class="icon icon-3"></i></span>
+                    <span>2888.00</span>
+                </li>
+                <li class="active">
+                    <span><span>4-12<span class="brow">st</span></span></span>
+                    <span>1888.00</span>
+                    <i class="tips">您在这里</i>
+                </li>
+                <li >
+                    <span><span>13-50<span class="brow">st</span></span></span>
+                    <span>888.00</span>
+                </li>
+                <li >
+                    <span><span>51-100<span class="brow">st</span></span></span>
+                    <span>388.00</span>
+                </li>
+                <li >
+                    <span><span>101-200<span class="brow">st</span></span></span>
+                    <span>188.00</span>
+                </li>
+                <li >
+                    <span><span>201-500<span class="brow">st</span></span></span>
+                    <span>88.00</span>
+                </li>
+                <li >
+                    <span><span>501-1000<span class="brow">st</span></span></span>
+                    <span>18.00</span>
+                </li>
+            </ul>
+        </div>
+        <p class="tips am-text-center">
+            注：排名会根据您本月的新增待收本金进行排名<br/>
+            最终排名以4月30日24点的新增待收本金排名为准
+        </p>
+    </div>
+    <!--<h3 class="tips opt3 am-text-center"><a href="/invest/list">立即出借</a></h3>-->
+    <ul class="baoji" id="baojiList">
+        <li>
+            <p class="title">满5000元使用</p>
+            <h4>18</h4>
+            <p class="tips">3个月及以上项目使用</p>
+            <a href="javascript:;;">点击领取</a>
+        </li>
+        <li>
+            <p class="title">满6000元使用</p>
+            <h4>20</h4>
+            <p class="tips">3个月及以上项目使用</p>
+            <a class="btn-disabled" href="javascript:;;">点击领取</a>
+        </li>
+        <li>
+            <p class="title">满10,000元使用</p>
+            <h4>50</h4>
+            <p class="tips">6个月及以上项目使用</p>
+            <a href="javascript:;;">点击领取</a>
+        </li>
+    </ul>
+    <div class="opt">
+        <h4>奖励规则</h4>
+        <ul>
+            <li>1、新增待收本金排名前500名分别获得相应返现奖励</li>
+            <li>2、新增待收=月末待收-月初待收</li>
+            <li>3、返现金额在活动结后7个工作日内发放</li>
+            <li>4、未进排名，且待收金额在本月没有下降，则在活动结束后7天内在活动页面手动领取88元红包（月末待收较月初不降或降100以内均可领取）</li>
+            <li>5、活动时间：4月1日-4月30日</li>
+        </ul>
+    </div>
+</div>
+<div class="reward-layer" style="display: none" id="rewardLayer">
+    <p>成功领取<span class="am-text-secondary" id="amountTxt">0</span>张</p>
+    <p>还可以领取<span class="am-text-secondary" id="reTxt">0</span>张</p>
+    <a id="modalBtn" class="btn" href="javascript:;;">知道了</a>
+</div>
+<#include "/includes/script.html" />
+<!--页面js-->
+<script src="/dist/js/pages/activity/april.js?v=98ff151"></script>
+</body>
+
+<#include "/includes/count.html" />
+</html>

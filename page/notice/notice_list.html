@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>公告列表-亿钱贷</title>
+    <#include "/includes/style.html" />
+    <!--页面样式-->
+    <link href="${tzp.getContextPath()}/dist/css/pages/static/notice.css?v=876d8ce" rel="stylesheet">
+    <#if weixin>
+    <style>
+        .mescroll{
+            top:.6rem;
+        }
+    </style>
+    </#if>
+</head>
+<body>
+<!-- 头部开始 -->
+<#include "/includes/header.html" />
+<#if type?? && type=='notice'>
+    <h2 class="title-header">通知公告</h2>
+<#elseif type?? && type=='law'>
+    <h2 class="title-header">出借人教育</h2>
+<#else>
+    <h2 class="title-header">新闻列表</h2>
+</#if>
+<div class="mescroll" id="wrapper">
+    <ul class="am-list notice" id="content">
+        <li>
+            内容加载中...
+        </li>
+    </ul>
+</div>
+
+<input type="hidden" value="${type!''}" id="listType">
+<#if type?? && (type=='notice'||type=='law' )>
+<input type="hidden" value="15" id="pageSize">
+<#else>
+<input type="hidden" value="10" id="pageSize">
+</#if>
+<!--底部菜单-->
+<#include "/includes/script.html" />
+<script type="text/x-handlebars-template" id="tpi-list-item">
+    {{#each this}}
+    <li class="am-g am-list-item-dated">
+        <a href="/article/notice/{{uuid}}" class="am-list-item-hd am-text-default">{{title}}</a>
+        <p class="date">{{dayFormater createTime}}</p>
+    </li>
+    {{/each}}
+</script>
+<!--底部菜单-->
+<!--页面js-->
+<script src="${tzp.getContextPath()}/dist/js/pages/static/notice.js?v=2a114d5"></script>
+</body>
+<#include "/includes/count.html" /> 
+</html>

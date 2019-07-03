@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>累计收益-亿钱贷</title>
+    <#include "/includes/style.html" />
+    <!--页面样式-->
+    <link href="${tzp.getContextPath()}/dist/css/pages/user/userAddAssets.css?v=131b388" rel="stylesheet">
+</head>
+<body class="">
+<!-- 头部开始 -->
+<#include "/includes/header.html" />
+<!--内容开始-->
+<div class="user-asset-panel" id="userAssetPanel">
+    <ul class="tabs am-text-center">
+        <li><a href="${tzp.getContextPath()}/member/account/userAssets">持有资产</a></li>
+        <li class="active"><a href="${tzp.getContextPath()}/member/account/incomePandect">累计收益</a></li>
+    </ul>
+    <h2 class="total-amount am-text-center">${(obtainIncome!0)?string(',##0.00')}</h2>
+    <p id="myAmountIcon" class="tips am-text-center">累计收益(元)<i class="icon-font icon-wenhao"></i></p>
+    <ul class="am-list admin-sidebar-list asset-sidebar-list" id="myAccountList">
+        <li class="am-panel">
+            <a class="title" data-am-collapse="{target: '#user-nav'}">
+                <i class="icon-font icon-Loan"></i><span class="">出借收益</span><span class="am-fr"><span class="">${(loanIncome!0)?string(',##0.00')}</span><i class="icon-font icon-bottom arrow"></i></span>
+            </a>
+            <ul class="am-list am-collapse admin-sidebar-sub" id="user-nav">
+                <li>易智投已收收益<span class="am-fr num">${(receiveIncome!0)?string(',##0.00')}</span></li>
+                <li>散标&债权已收收益<span class="am-fr num">${(investInCome!0)?string(',##0.00')}</span></li>
+            </ul>
+        </li>
+
+        <li class="am-panel">
+            <a class="title" data-am-collapse="{target: '#company-nav'}">
+                <i class="icon-font icon-Exchange"></i><span class="">其他收益</span><span class="am-fr"><span class="">${(otherIncome!0)?string(',##0.00')}</span><i class="icon-font icon-bottom arrow"></i></span>
+            </a>
+            <ul class="am-list am-collapse admin-sidebar-sub" id="company-nav">
+                <li>红包收益<span class="am-fr num">${(voucherInCome!0)?string(',##0.00')}</span></li>
+                <li>奖励券收益<span class="am-fr num">${(subsidyAward!0)?string(',##0.00')}</span></li>
+                <li>出借奖励<span class="am-fr num">${(penaltyAward!0)?string(',##0.00')}</span></li>
+                <li>推荐奖励<span class="am-fr num">${(promotionAward!0)?string(',##0.00')}</span></li>
+                <li>活动奖励<span class="am-fr num">${(actAward!0)?string(',##0.00')}</span></li>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+<p class="reg-tips am-text-center">
+    ${regTime!''}注册，您加入亿钱贷已有<span class="am-text-primary">${totalJoinTime!0}</span>天
+</p>
+<div class="count-list">
+    <div class="am-g am-text-center">
+        <div class="am-u-sm-4">
+            <h4>${(totalRechargeAmt!0)?string(',##0.00')}</h4>
+            <p class="am-text-muted">累计充值</p>
+        </div>
+        <div class="am-u-sm-4">
+            <h4>${(totalCashAmt!0)?string(',##0.00')}</h4>
+            <p class="am-text-muted">累计提现</p>
+        </div>
+        <div class="am-u-sm-4">
+            <h4>${(totalInvestAmt!0)?string(',##0.00')}</h4>
+            <p class="am-text-muted">累计出借</p>
+        </div>
+    </div>
+</div>
+
+<!--底部菜单-->
+<#include "/includes/script.html" />
+</body>
+<!--页面js-->
+<script type="text/javascript">
+    var totalAsset=${(obtainIncome!0)};
+    var totalAssetText=['总收益',"${(obtainIncome!0)?string(',##0.00')}元"];
+    var totalArr=[100, 0, 0, 0,0];//如果没有钱的话，默认显示可用余额
+    var interest=0;// 产品收益：投资产品产生的利息
+    var investAward=0;// 投资券奖励：累计使用的红包金额+已到帐的加息券收益
+    var penaltyAward=0;// 平台加息贴息：已到帐的产品平台加息收益+平台资金站岗贴息收益
+    var actAward=0;// 投资返现，满标收官奖励等
+    var recomAward=0;// 推荐好友投资得到的奖励
+    if(totalAsset>0){
+        interest=${(vo.interest!0)}/totalAsset*100;
+        investAward=${(vo.investAward!0)}/totalAsset*100;
+        penaltyAward=${(vo.penaltyAward!0)}/totalAsset*100;
+        actAward=${(vo.actAward!0)}/totalAsset*100;
+        recomAward=${(vo.recomAward!0)}/totalAsset*100;
+        totalArr=[0,interest,investAward,actAward,recomAward]
+    }
+
+
+</script>
+<script src="${tzp.getContextPath()}/dist/js/pages/user/userAddAssets.js?v=f27325e"></script>
+<#include "/includes/count.html" />
+</html>

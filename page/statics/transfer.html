@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>债权转让-亿钱贷</title>
+    <#include "/includes/style.html" />
+    <!--页面样式-->
+    <link href="${tzp.getContextPath()}/dist/css/pages/static/transfer.css" rel="stylesheet">
+    <script>
+        //设置rem
+        (function (doc, win) {
+            var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize';
+            var dpr = window.devicePixelRatio || 1;
+            // adjust body font size
+            function setBodyFontSize() {
+                if (document.body) {
+                    document.body.style.fontSize = '14px'
+                }
+                else {
+                    document.addEventListener('DOMContentLoaded', setBodyFontSize)
+                }
+            }
+
+            setBodyFontSize();
+            function setRemUnit() {
+                var clientWidth = docEl.clientWidth;
+                if (!clientWidth) return;
+                if (clientWidth >= 750) {
+                    docEl.style.fontSize = '100px';
+                } else {
+                    docEl.style.fontSize = 200 * (clientWidth / 750) + 'px';
+                }
+            }
+
+            setRemUnit()
+            if (!doc.addEventListener) return;
+            win.addEventListener(resizeEvt, setRemUnit);
+            window.addEventListener('pageshow', function (e) {
+                if (e.persisted) {
+                    setRemUnit()
+                }
+            })
+        })(document, window);
+    </script>
+</head>
+<body>
+<!-- 头部开始 -->
+<#include "/includes/header.html" />
+<div class="md-act">
+	<div class="wp">
+	  	<div class="intro">
+			<div class="pic100"><img src="${tzp.getContextPath()}/public/images/transfer/process1.png"></div>
+			<div class="desc">亿钱贷平台为满足出借人的的资金流动性需求，推出了债权转让服务。该服务允许出借人将符合转让条件的债权转给平台其他出借人，进而缓解资金流动性问题。</div>
+			<div class="pic100"><img src="${tzp.getContextPath()}/public/images/transfer/process2.png"></div>
+		</div>
+		<div class="question">
+			<div class="title">常见问题</div>
+			<h2>Q1：哪些债权可以进行债权转让？</h2>
+			<p>1、债权处于非逾期状态；</p>
+			<p>2、债权持有时间不小于30天；</p>
+			<p>3、距离项目结清日不小于15天；</p>
+			<p>4、由保险公司出具保单的乐保贷项目禁止转让，其他乐保贷产品可以转让；</p>
+			<p>5、债权还款日当日不可发起债权转让申请，如需进行债权转让，可于还款后第二日进行尝试；</p>
+			<p>6、出借时如使用了红包，债权持有时间需大于等于红包使用期限条件才能进行债权转让；</p>
+			<p>7、如出借时参与了平台奖励活动，债权转让条件请参看相应活动细则。</p>
+			<h2>Q2：债权转让需要收手续费吗？</h2>
+			<p>1、手续费为转让价格的0.5%，转让成功后收取；</p>
+			<p>2、如债权持有大于等于90天，则免手续费。</p>
+			<h2>Q3：受让的债权还能再转让吗？</h2>
+			<p>1、只要符合转让条件，受让的债权可以再次申请转让，无次数限定。</p>
+		</div>
+	</div>
+</div>
+<#include "/includes/script.html" />
+<script src="${tzp.getContextPath()}/dist/js/pages/static/transfer.js"></script>
+<!--页面js-->
+</body>
+<#include "/includes/count.html" />
+</html>

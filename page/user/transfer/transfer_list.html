@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>债权转让-亿钱贷</title>
+    <#include "/includes/style.html" />
+    <!--页面样式-->
+    <link href="${tzp.getContextPath()}/dist/css/pages/user/transferList.css?v=1b0cc9d" rel="stylesheet">
+</head>
+<body>
+<!-- 头部开始 -->
+<header data-am-widget="header" class="am-header am-header-default" id="topHeader">
+    <div class="am-header-left am-header-nav">
+        <a id="nextBtn" href="javascript:;;" class="">
+            <i class="am-header-icon icon-font icon-prev"></i>
+            返回
+        </a>
+    </div>
+
+    <h1 class="am-header-title">
+        <a id="headerTitle" href="#title-link" class="">
+            债权转让
+        </a>
+    </h1>
+    <div class="am-header-right am-header-nav">
+        <a href="${tzp.getContextPath()}/member/transfer/explain">
+            <i class="icon-font icon-wenhao1"></i>
+        </a>
+    </div>
+</header>
+<!--tabs-->
+<div class="am-tabs my-invest" id="myInvestTabs" data-am-tabs>
+    <ul class="am-tabs-nav am-nav am-nav-tabs" id="tabsList">
+        <li class="am-text-center am-active" id="liwra1"><a data-id="wrapper1" href="#tab1">可转让</a></li>
+        <li class="am-text-center" id="liwra2"><a data-id="wrapper2" href="#tab2">转让中</a></li>
+        <li class="am-text-center" id="liwra3"><a data-id="wrapper3" href="#tab3">已转让</a></li>
+        <li class="am-text-center" id="liwra4"><a data-id="wrapper4" href="#tab4">已受让</a></li>
+    </ul>
+    <div class="am-tabs-bd">
+        <div class="am-tab-panel am-fade am-in am-active" id="tab1">
+            <div id="wrapper1" class="mescroll">
+                <!--产品列表-->
+                <div class="product-list">
+                    <ul class="events-list" id="eventsList1">
+                        <li>
+                            正在加载内容...
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="am-tab-panel am-fade" id="tab2">
+            <div id="wrapper2" class="mescroll">
+                <!--产品列表-->
+                <div class="product-list">
+                    <ul class="events-list" id="eventsList2">
+                        <li>
+                            正在加载内容...
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="am-tab-panel am-fade" id="tab3">
+            <div id="wrapper3" class="mescroll">
+                <!--产品列表-->
+                <div class="product-list">
+                    <ul class="events-list" id="eventsList3">
+                        <li>
+                            正在加载内容...
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="am-tab-panel am-fade" id="tab4">
+            <div id="wrapper4" class="mescroll">
+                <!--产品列表-->
+                <div class="product-list">
+                    <ul class="events-list" id="eventsList4">
+                        <li>
+                            正在加载内容...
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<input type="hidden" value="${tabType!''}" id="tabType">
+<#include "/includes/script.html" />
+<!--页面js-->
+<script type="text/x-handlebars-template" id="tpi-list-item1">
+    {{#each this}}
+    <li>
+        <div class="am-g title">
+            <a class="am-text-default" href="${tzp.getContextPath()}/member/transfer/detail/{{debtId}}">
+                <span class="name">{{loanTitle}}</span>
+			{{#if isTransferApplyStatus }}
+           		<span data-id="{{debtId}}" class="am-btn-primary am-round am-fr transfer-btn apply-btn">
+                    	转让
+                </span>
+            {{else}}
+          	<span class="am-fr am-text-danger">
+                   	{{isNotTransferApplyStr}}
+            </span>
+            {{/if}}
+            </a>
+        </div>
+        <div class="am-g invest">
+            <div class="am-u-sm-4">
+                <p class="am-text-muted">
+                    	出借本金
+                </p>
+                <p class="am-text-default">
+                  {{formatCurrency buyPrice}}
+                </p>
+            </div>
+            <div class="am-u-sm-4 info">
+                <p class="am-text-muted">
+                    	待收利息
+                </p>
+                <p class="rate am-text-primary">
+                     {{formatCurrency planIncome}}
+                </p>
+            </div>
+            <div class="am-u-sm-4 am-text-right">
+                <p class="am-text-muted">到期日</p>
+                <p class="am-text-default">
+                   {{dayFormater endTime}} 
+                </p>
+            </div>
+        </div>
+        <div class="am-g">
+        </div>
+    </li>
+    {{/each}}
+</script>
+<script type="text/x-handlebars-template" id="tpi-list-item2">
+    {{#each this}}
+    <li>
+        <div class="am-g title">
+            <a class="am-text-default" href="/member/transfer/detail/{{debtId}}">
+                <span class="name">{{loanTitle}}</span>
+                <span data-id="{{transferApplyId}}" class="btn-three am-round am-fr transfer-btn revoke-btn">
+                   	 撤回转让
+                </span>
+            </a>
+        </div>
+        <div class="am-g invest">
+            <div class="am-u-sm-4">
+                <p class="am-text-muted">
+                    转让金额
+                </p>
+                <p class="am-text-default">
+                    {{formatCurrency transferPrice}}
+                </p>
+            </div>
+            <div class="am-u-sm-4 info">
+                <p class="am-text-muted">
+                    手续费
+                </p>
+                <p class="rate am-text-primary">
+                    {{formatCurrency transferFee}}元
+                </p>
+            </div>
+            <div class="am-u-sm-4 am-text-right">
+                <p class="am-text-muted">申请日期</p>
+                
+			{{#expression applyStatus '==' 5}}
+    	      	<p class="am-text-default">
+                  {{dayFormater createTime}}   
+                </p>
+    		{{/expression}}
+
+			{{#expression applyStatus '==' 2}}
+    	      	<p class="am-text-default">
+                  {{dayFormater createTime}}   
+                </p>
+    		{{/expression}}
+			{{#expression applyStatus '==' 1}}
+    	      	<p class="am-text-default">
+                  审核中 
+                </p>
+    		{{/expression}}	
+            </div>
+        </div>
+ 	{{#expression applyStatus '==' 5}}
+            <div class="am-g am-text-danger am-text-xs tips">
+            <i class="icon-font icon-info_2"></i>还款日暂时下架，次日将自动恢复上架
+        </div>
+    {{/expression}}
+
+       
+    </li>
+    {{/each}}
+</script>
+<script type="text/x-handlebars-template" id="tpi-list-item3">
+    {{#each this}}
+    <li>
+    <div class="am-g title">
+        <a class="am-text-default" href="/member/transfer/detail/{{debtId}}">
+            <span class="name">{{loanTitle}}</span>
+        </a>
+    </div>
+    <div class="am-g invest">
+        <div class="am-u-sm-4">
+            <p class="am-text-muted">
+                转让金额
+            </p>
+            <p class="am-text-default">
+                {{formatCurrency transferPrice}}
+            </p>
+        </div>
+        <div class="am-u-sm-4 info">
+            <p class="am-text-muted">
+                手续费
+            </p>
+            <p class="rate am-text-primary">
+             {{formatCurrency transferFee}}  
+            </p>
+        </div>
+        <div class="am-u-sm-4 am-text-right">
+            <p class="am-text-muted">转让日期</p>
+            <p class="am-text-default">
+              {{dayFormater dealTime}}   
+            </p>
+        </div>
+    </div>
+    </li>
+    {{/each}}
+</script>
+<script type="text/x-handlebars-template" id="tpi-list-item4">
+    {{#each this}}
+    <li>
+    <div class="am-g title">
+        <a class="am-text-default" href="/member/transfer/detail/{{debtId}}">
+            <span class="name">{{loanTitle}}</span>
+        </a>
+    </div>
+    <div class="am-g invest">
+        <div class="am-u-sm-4">
+            <p class="am-text-muted">
+                转让金额
+            </p>
+            <p class="am-text-default">
+                {{formatCurrency transferPrice}}元
+            </p>
+        </div>
+        <div class="am-u-sm-4 info">
+            <p class="am-text-muted">
+               剩余期限
+            </p>
+            <p class="rate am-text-primary">
+              {{remainPeriodDay}}天 
+            </p>
+        </div>
+        <div class="am-u-sm-4 am-text-right">
+            <p class="am-text-muted">转让日期</p>
+            <p class="am-text-default">
+                {{dayFormater dealTime}}
+            </p>
+        </div>
+    </div>
+    </li>
+    {{/each}}
+</script>
+<script src="${tzp.getContextPath()}/dist/js/pages/user/transferList.js?v=5deb62d"></script>
+</body>
+<#include "/includes/count.html" /> 
+</html>

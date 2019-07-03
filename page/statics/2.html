@@ -1,0 +1,555 @@
+
+<!DOCTYPE html>
+<html class="androidFix">
+<head>
+    <title>委托出借确认-亿钱贷</title>
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-control" content="no-cache,no-store,must-revalidate">
+    <meta http-equiv="Expires" content="0">
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="author" content="亿钱贷,yiqiandai.com,深圳市亿钱贷电子商务有限公司"/>
+    <meta name="keywords" content="亿钱贷、个人理财、理财投资、投资理财、网贷平台、小额贷款、企业贷款、个人小额贷款、网贷投资、互联网金融平台">
+    <meta name="description" content="亿钱贷（www.yiqiandai.com）——中国值得信赖的互联网金融平台，秉承合规运营、稳健发展的原则，致力为用户提供专业、透明、高效的互联网金融服务。">
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <meta name="x5-page-mode" content="no-title">
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="Cache" content="no-cache">
+
+    <script>
+        //设置rem
+        (function (doc, win) {
+            var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize';
+            var dpr = window.devicePixelRatio || 1;
+            // adjust body font size
+            function setBodyFontSize() {
+                if (document.body) {
+                    document.body.style.fontSize = '14px'
+                }
+                else {
+                    document.addEventListener('DOMContentLoaded', setBodyFontSize)
+                }
+            }
+
+            setBodyFontSize();
+            function setRemUnit() {
+                var clientWidth = docEl.clientWidth;
+                if (!clientWidth) return;
+                if (clientWidth >= 750) {
+                    docEl.style.fontSize = '100px';
+                } else {
+                    docEl.style.fontSize = 200 * (clientWidth / 750) + 'px';
+                }
+            }
+
+            setRemUnit()
+            if (!doc.addEventListener) return;
+            win.addEventListener(resizeEvt, setRemUnit);
+            window.addEventListener('pageshow', function (e) {
+                if (e.persisted) {
+                    setRemUnit()
+                }
+            })
+        })(document, window);
+    </script>
+    <link rel="Bookmark" href="/favicon.ico?v=50e06d8">
+    <link rel="Shortcut Icon" href="/favicon.ico?v=50e06d8"/>
+    <!-- 公共样式 -->
+    <link href="/dist/css/global.css?v=63e48b6" rel="stylesheet">
+    <script type="text/javascript">
+        var basePath = "";
+    </script>
+    <!--页面样式-->
+    <link href="/dist/css/pages/product/autoConfirm.css?v=4572479" rel="stylesheet">
+    <style>
+        .product-confirm-layer .product-confirm .am-g.item.title{
+            padding-top:.58rem;
+            height: 2.06rem;
+        }
+    </style>
+</head>
+<body class="androidFix">
+<!-- 头部开始 -->
+<header data-am-widget="header" class="am-header am-header-default" id="topHeader">
+    <div class="am-header-left am-header-nav">
+        <a id="nextBtn" href="javascript:;;" class="">
+            <i class="am-header-icon icon-font icon-prev"></i>
+            返回
+        </a>
+    </div>
+
+    <h1 class="am-header-title">
+        <a id="headerTitle" href="#title-link" class="">
+            亿钱贷
+        </a>
+    </h1>
+    <div class="am-header-right am-header-nav">
+        <a href="#right-link" class="">
+            <i class="am-header-icon am-icon-bars"></i>
+        </a>
+    </div>
+</header>
+<script>
+    var isWeiXin = false;
+</script>
+<!--内容开始-->
+<div class="product-confirm-layer">
+    <div class="am-container product-confirm" id="productConfirm">
+        <input type="hidden" value="1000" id="investAmt">
+        <input type="hidden" value="dc8584ba19734d0baa62cd8ce3214d22" id="prdId">
+        <div class="am-g item">
+            <div class="title">
+                <h3 class="am-text-center">流动性风险提示</h3>
+                <p>委托期满，未到期的债权授权平台发起债权转让，平台不承诺
+                    债权转让成功，未能成功转让的债权，出借人需持有相应借款
+                    项目直至到期。</p>
+            </div>
+            <div class="product-confirm-money">
+                <div class="am-g item">
+                    <div class="am-u-sm-3 am-text-muted">
+                        委托出借金额
+                    </div>
+                    <div class="am-u-sm-9 am-text-right">
+                        1,000.00元
+                    </div>
+                </div>
+                <div class="am-g item">
+                    <div class="am-u-sm-3 am-text-muted">
+                        预期收益
+                    </div>
+                    <div class="am-u-sm-9 am-text-right" id="totalIncomeText">
+                        49.99元
+                    </div>
+                </div>
+                <div class="am-g item">
+                    <div class="am-u-sm-3 am-text-muted">
+                        投标范围
+                    </div>
+                    <div class="am-u-sm-9 am-text-right">
+                        企链贷/微农贷/优车贷/微花贷/微企贷
+                    </div>
+                </div>
+            </div>
+            <div class="am-g item red">
+                <div class="am-u-sm-4">
+                    <h3 id="choseRedTxt" class="am-text-default">选择优惠券</h3>
+                    <i id="redTips" style="margin:0 0 0 2px" class="icon-font icon-information am-text-muted"></i>
+                </div>
+                <div class="am-u-sm-8 am-text-right" id="chooseTicketBtn">
+                    <span id="ticketBtnTxt"></span><i class="icon-font icon-next"></i>
+                </div>
+            </div>
+        </div>
+        <div class="product-confirm-btn">
+            <div class="am-g">
+                <div class="am-u-sm-12">
+                    <label>
+                        <label class="am-checkbox-inline vertical-middle">
+                            <input id="quitType" type="checkbox" name="quitType" value="1" data-am-ucheck>阅读并同意
+                        </label>
+                        <span class="vertical-middle">委托期满，授权平台将未到期债权自动发起债权转让</span>
+                    </label>
+                </div>
+                <div class="am-u-sm-12">
+                    <label>
+                        <label class="am-checkbox-inline vertical-middle">
+                            <input id="agreementStatus" type="checkbox"  value="" data-am-ucheck>阅读并同意
+                        </label>
+                        <a class="am-text-primary vertical-middle" href="/contract/entrust?assetsId=dc8584ba19734d0baa62cd8ce3214d22">《委托出借协议》</a>
+                        <a class="am-text-primary vertical-middle" href="/contract/entrust-risk">《风险及禁止性行为提示书》</a>
+                    </label>
+                </div>
+            </div>
+            <p class="am-text-center am-text-muted">市场有风险，出借需谨慎</p>
+        </div>
+    </div>
+    <div class="am-container product-choose-ticket" id="productChooseTicket">
+        <h2 class="am-titlebar-title" id="backConfirmBtn">
+            <i class="icon-font icon-prev am-text-secondary"></i>
+            <span class="am-text-secondary">返回出借页</span>
+        </h2>
+        <!--不使用优惠券-->
+        <div class="am-g no-use-layer" id="noUseLayer">
+            <div class="am-u-sm-11 info">
+                不使用优惠券
+            </div>
+            <div class="am-u-sm-1 am-text-center choose">
+                <i class="icon-font icon-right am-text-muted"></i>
+            </div>
+        </div>
+        <ul class="product-choose-list" id="redboxList">
+            <!-- 遍历红包 -->
+            <li data-limit-amount="1" data-award-amount="20" data-add-days="0" data-award-type="2" data-value="e51db5b6162b4e1788145a081432a08d">
+                <div class="am-g invest">
+                    <div class="am-u-sm-2 am-text-center icon">
+                        <span>¥20</span>
+                    </div>
+                    <div class="am-u-sm-9 info">
+                        <p class="title">用户福利</p>
+                        <p class="am-text-default am-text-sm">限1天及以上项目使用</p>
+                        <p class="am-text-default am-text-sm require">满1.00返20  </p>
+                        <p class="am-text-muted am-text-sm day">2019-01-02 00:00:00</p>
+                    </div>
+                    <div class="am-u-sm-1 am-text-center choose">
+                        <a href="javascript:;;"> <i
+                                class="icon-font icon-right am-text-muted"></i>
+                        </a>
+                    </div>
+                </div>
+            </li>
+            <!-- 遍历红包 -->
+            <li data-limit-amount="1000" data-award-amount="20" data-add-days="0" data-award-type="2" data-value="0dcc3f343ce044f89943f1dbfbefd1a7">
+                <div class="am-g invest">
+                    <div class="am-u-sm-2 am-text-center icon">
+                        <span>¥20</span>
+                    </div>
+                    <div class="am-u-sm-9 info">
+                        <p class="title">新手专享注册即送888元现金红包</p>
+                        <p class="am-text-default am-text-sm">限1个月及以上项目使用</p>
+                        <p class="am-text-default am-text-sm require">满1,000.00返20  </p>
+                        <p class="am-text-muted am-text-sm day">2019-01-10 00:00:01</p>
+                    </div>
+                    <div class="am-u-sm-1 am-text-center choose">
+                        <a href="javascript:;;"> <i
+                                class="icon-font icon-right am-text-muted"></i>
+                        </a>
+                    </div>
+                </div>
+            </li>
+            <!-- 遍历红包 -->
+            <li data-limit-amount="1000" data-award-amount="20" data-add-days="0" data-award-type="2" data-value="0b788e116a0d4f9b8211436f054ea3cd">
+                <div class="am-g invest">
+                    <div class="am-u-sm-2 am-text-center icon">
+                        <span>¥20</span>
+                    </div>
+                    <div class="am-u-sm-9 info">
+                        <p class="title">新手专享注册即送888元现金红包</p>
+                        <p class="am-text-default am-text-sm">限1个月及以上项目使用</p>
+                        <p class="am-text-default am-text-sm require">满1,000.00返20  </p>
+                        <p class="am-text-muted am-text-sm day">2019-01-10 00:00:01</p>
+                    </div>
+                    <div class="am-u-sm-1 am-text-center choose">
+                        <a href="javascript:;;"> <i
+                                class="icon-font icon-right am-text-muted"></i>
+                        </a>
+                    </div>
+                </div>
+            </li>
+            <!-- 遍历红包 -->
+            <li data-limit-amount="1" data-award-amount="10" data-add-days="0" data-award-type="2" data-value="5c003d87d82e468ea81c21de5b1671a5">
+                <div class="am-g invest">
+                    <div class="am-u-sm-2 am-text-center icon">
+                        <span>¥10</span>
+                    </div>
+                    <div class="am-u-sm-9 info">
+                        <p class="title">用户福利</p>
+                        <p class="am-text-default am-text-sm">限1天及以上项目使用</p>
+                        <p class="am-text-default am-text-sm require">满1.00返10  </p>
+                        <p class="am-text-muted am-text-sm day">2019-01-10 00:00:00</p>
+                    </div>
+                    <div class="am-u-sm-1 am-text-center choose">
+                        <a href="javascript:;;"> <i
+                                class="icon-font icon-right am-text-muted"></i>
+                        </a>
+                    </div>
+                </div>
+            </li>
+            <!-- 遍历红包 -->
+            <li data-limit-amount="1" data-award-amount="10" data-add-days="0" data-award-type="2" data-value="c0622299fef94f81a3bebc20ecc3e118">
+                <div class="am-g invest">
+                    <div class="am-u-sm-2 am-text-center icon">
+                        <span>¥10</span>
+                    </div>
+                    <div class="am-u-sm-9 info">
+                        <p class="title">用户福利</p>
+                        <p class="am-text-default am-text-sm">限1天及以上项目使用</p>
+                        <p class="am-text-default am-text-sm require">满1.00返10  </p>
+                        <p class="am-text-muted am-text-sm day">2019-01-10 00:00:00</p>
+                    </div>
+                    <div class="am-u-sm-1 am-text-center choose">
+                        <a href="javascript:;;"> <i
+                                class="icon-font icon-right am-text-muted"></i>
+                        </a>
+                    </div>
+                </div>
+            </li>
+            <!-- 遍历红包 -->
+            <li data-limit-amount="1" data-award-amount="5" data-add-days="0" data-award-type="2" data-value="8c4cd443c14c49e39d91f0178dec74cc">
+                <div class="am-g invest">
+                    <div class="am-u-sm-2 am-text-center icon">
+                        <span>¥5</span>
+                    </div>
+                    <div class="am-u-sm-9 info">
+                        <p class="title">用户福利</p>
+                        <p class="am-text-default am-text-sm">限1个月及以上项目使用</p>
+                        <p class="am-text-default am-text-sm require">满1.00返5  </p>
+                        <p class="am-text-muted am-text-sm day">2018-12-29 00:00:00</p>
+                    </div>
+                    <div class="am-u-sm-1 am-text-center choose">
+                        <a href="javascript:;;"> <i
+                                class="icon-font icon-right am-text-muted"></i>
+                        </a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+
+        <ul class="product-choose-list choose-jiaxi-list" id="jiaxiList">
+            <li data-limit-amount="100" data-award-amount="1.8" data-add-days="0" data-award-type="3" data-value="0744af2e4bec425ea247a42c69f1ba93">
+                <div class="am-g invest">
+                    <div class="am-u-sm-3 am-text-center icon">
+                        <span>1.80%</span>
+                    </div>
+                    <div class="am-u-sm-8 info">
+                        <p class="title">12月奖励券</p>
+                        <p class="am-text-default am-text-sm">限6个月及以上项目使用</p>
+                        <p class="am-text-default am-text-sm require">单笔出借满100.00元奖励1.80%</p>
+                        <p class="am-text-muted am-text-sm day">有效期至：2018-12-09 00:00:01</p>
+                    </div>
+                    <div class="am-u-sm-1 am-text-center choose">
+                        <a href="javascript:;;">
+                            <i class="icon-font icon-right am-text-muted"></i>
+                        </a>
+                    </div>
+                </div>
+            </li>
+            <li data-limit-amount="100" data-award-amount="1.8" data-add-days="0" data-award-type="3" data-value="6fb8b9fea76a4840bc25536d950472d9">
+                <div class="am-g invest">
+                    <div class="am-u-sm-3 am-text-center icon">
+                        <span>1.80%</span>
+                    </div>
+                    <div class="am-u-sm-8 info">
+                        <p class="title">12月奖励券</p>
+                        <p class="am-text-default am-text-sm">限6个月及以上项目使用</p>
+                        <p class="am-text-default am-text-sm require">单笔出借满100.00元奖励1.80%</p>
+                        <p class="am-text-muted am-text-sm day">有效期至：2018-12-11 00:00:00</p>
+                    </div>
+                    <div class="am-u-sm-1 am-text-center choose">
+                        <a href="javascript:;;">
+                            <i class="icon-font icon-right am-text-muted"></i>
+                        </a>
+                    </div>
+                </div>
+            </li>
+            <li data-limit-amount="100" data-award-amount="1.8" data-add-days="0" data-award-type="3" data-value="1a289889a20947d1b7b578494781bea8">
+                <div class="am-g invest">
+                    <div class="am-u-sm-3 am-text-center icon">
+                        <span>1.80%</span>
+                    </div>
+                    <div class="am-u-sm-8 info">
+                        <p class="title">12月奖励券</p>
+                        <p class="am-text-default am-text-sm">限6个月及以上项目使用</p>
+                        <p class="am-text-default am-text-sm require">单笔出借满100.00元奖励1.80%</p>
+                        <p class="am-text-muted am-text-sm day">有效期至：2018-12-12 00:00:01</p>
+                    </div>
+                    <div class="am-u-sm-1 am-text-center choose">
+                        <a href="javascript:;;">
+                            <i class="icon-font icon-right am-text-muted"></i>
+                        </a>
+                    </div>
+                </div>
+            </li>
+            <li data-limit-amount="100" data-award-amount="1.8" data-add-days="0" data-award-type="3" data-value="df654e2398f34cbdb225e036f13af59c">
+                <div class="am-g invest">
+                    <div class="am-u-sm-3 am-text-center icon">
+                        <span>1.80%</span>
+                    </div>
+                    <div class="am-u-sm-8 info">
+                        <p class="title">12月奖励券</p>
+                        <p class="am-text-default am-text-sm">限6个月及以上项目使用</p>
+                        <p class="am-text-default am-text-sm require">单笔出借满100.00元奖励1.80%</p>
+                        <p class="am-text-muted am-text-sm day">有效期至：2018-12-14 00:00:00</p>
+                    </div>
+                    <div class="am-u-sm-1 am-text-center choose">
+                        <a href="javascript:;;">
+                            <i class="icon-font icon-right am-text-muted"></i>
+                        </a>
+                    </div>
+                </div>
+            </li>
+            <li data-limit-amount="100" data-award-amount="1.6" data-add-days="0" data-award-type="3" data-value="e530bb4ddc054366bfb1ebff5f136fdc">
+                <div class="am-g invest">
+                    <div class="am-u-sm-3 am-text-center icon">
+                        <span>1.60%</span>
+                    </div>
+                    <div class="am-u-sm-8 info">
+                        <p class="title">12月奖励券</p>
+                        <p class="am-text-default am-text-sm">限3个月及以上项目使用</p>
+                        <p class="am-text-default am-text-sm require">单笔出借满100.00元奖励1.60%</p>
+                        <p class="am-text-muted am-text-sm day">有效期至：2018-12-11 00:00:01</p>
+                    </div>
+                    <div class="am-u-sm-1 am-text-center choose">
+                        <a href="javascript:;;">
+                            <i class="icon-font icon-right am-text-muted"></i>
+                        </a>
+                    </div>
+                </div>
+            </li>
+            <li data-limit-amount="100" data-award-amount="1.6" data-add-days="0" data-award-type="3" data-value="3cbdc3fca38d4b35b9c6c4a980c8f9a2">
+                <div class="am-g invest">
+                    <div class="am-u-sm-3 am-text-center icon">
+                        <span>1.60%</span>
+                    </div>
+                    <div class="am-u-sm-8 info">
+                        <p class="title">12月奖励券</p>
+                        <p class="am-text-default am-text-sm">限3个月及以上项目使用</p>
+                        <p class="am-text-default am-text-sm require">单笔出借满100.00元奖励1.60%</p>
+                        <p class="am-text-muted am-text-sm day">有效期至：2018-12-12 00:00:01</p>
+                    </div>
+                    <div class="am-u-sm-1 am-text-center choose">
+                        <a href="javascript:;;">
+                            <i class="icon-font icon-right am-text-muted"></i>
+                        </a>
+                    </div>
+                </div>
+            </li>
+            <li data-limit-amount="100" data-award-amount="1.6" data-add-days="0" data-award-type="3" data-value="01e0f8604e3143b09e3f4c9855c5570f">
+                <div class="am-g invest">
+                    <div class="am-u-sm-3 am-text-center icon">
+                        <span>1.60%</span>
+                    </div>
+                    <div class="am-u-sm-8 info">
+                        <p class="title">12月奖励券</p>
+                        <p class="am-text-default am-text-sm">限3个月及以上项目使用</p>
+                        <p class="am-text-default am-text-sm require">单笔出借满100.00元奖励1.60%</p>
+                        <p class="am-text-muted am-text-sm day">有效期至：2018-12-14 00:00:00</p>
+                    </div>
+                    <div class="am-u-sm-1 am-text-center choose">
+                        <a href="javascript:;;">
+                            <i class="icon-font icon-right am-text-muted"></i>
+                        </a>
+                    </div>
+                </div>
+            </li>
+            <li data-limit-amount="100" data-award-amount="0.8" data-add-days="0" data-award-type="3" data-value="8aa8dc2ab4064246848f6b68fd9c2704">
+                <div class="am-g invest">
+                    <div class="am-u-sm-3 am-text-center icon">
+                        <span>0.80%</span>
+                    </div>
+                    <div class="am-u-sm-8 info">
+                        <p class="title">12月奖励券</p>
+                        <p class="am-text-default am-text-sm">限1个月及以上项目使用</p>
+                        <p class="am-text-default am-text-sm require">单笔出借满100.00元奖励0.80%</p>
+                        <p class="am-text-muted am-text-sm day">有效期至：2018-12-09 00:00:01</p>
+                    </div>
+                    <div class="am-u-sm-1 am-text-center choose">
+                        <a href="javascript:;;">
+                            <i class="icon-font icon-right am-text-muted"></i>
+                        </a>
+                    </div>
+                </div>
+            </li>
+            <li data-limit-amount="100" data-award-amount="0.8" data-add-days="0" data-award-type="3" data-value="837a687531be4086a1f231cd20903d08">
+                <div class="am-g invest">
+                    <div class="am-u-sm-3 am-text-center icon">
+                        <span>0.80%</span>
+                    </div>
+                    <div class="am-u-sm-8 info">
+                        <p class="title">12月奖励券</p>
+                        <p class="am-text-default am-text-sm">限1个月及以上项目使用</p>
+                        <p class="am-text-default am-text-sm require">单笔出借满100.00元奖励0.80%</p>
+                        <p class="am-text-muted am-text-sm day">有效期至：2018-12-11 00:00:01</p>
+                    </div>
+                    <div class="am-u-sm-1 am-text-center choose">
+                        <a href="javascript:;;">
+                            <i class="icon-font icon-right am-text-muted"></i>
+                        </a>
+                    </div>
+                </div>
+            </li>
+            <li data-limit-amount="100" data-award-amount="0.8" data-add-days="0" data-award-type="3" data-value="01cbbf76ed1d4f178a6371c2d6ce7951">
+                <div class="am-g invest">
+                    <div class="am-u-sm-3 am-text-center icon">
+                        <span>0.80%</span>
+                    </div>
+                    <div class="am-u-sm-8 info">
+                        <p class="title">12月奖励券</p>
+                        <p class="am-text-default am-text-sm">限1个月及以上项目使用</p>
+                        <p class="am-text-default am-text-sm require">单笔出借满100.00元奖励0.80%</p>
+                        <p class="am-text-muted am-text-sm day">有效期至：2018-12-14 00:00:01</p>
+                    </div>
+                    <div class="am-u-sm-1 am-text-center choose">
+                        <a href="javascript:;;">
+                            <i class="icon-font icon-right am-text-muted"></i>
+                        </a>
+                    </div>
+                </div>
+            </li>
+            <li data-limit-amount="100" data-award-amount="0.5" data-add-days="0" data-award-type="3" data-value="9c2243b331c64172944a81020e9acd45">
+                <div class="am-g invest">
+                    <div class="am-u-sm-3 am-text-center icon">
+                        <span>0.50%</span>
+                    </div>
+                    <div class="am-u-sm-8 info">
+                        <p class="title">双十一</p>
+                        <p class="am-text-default am-text-sm">限1个月及以上项目使用</p>
+                        <p class="am-text-default am-text-sm require">单笔出借满100.00元奖励0.50%</p>
+                        <p class="am-text-muted am-text-sm day">有效期至：2018-12-16 00:00:01</p>
+                    </div>
+                    <div class="am-u-sm-1 am-text-center choose">
+                        <a href="javascript:;;">
+                            <i class="icon-font icon-right am-text-muted"></i>
+                        </a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div data-am-widget="navbar" class="am-navbar subscription-btn" id="confirmChooseTicketBtn" style="display: none">
+        <a class="am-btn am-btn-secondary am-btn-block am-btn-xl"href="javascript:;;">确认</a>
+    </div>
+
+    <div data-am-widget="navbar" class="am-navbar subscription-btn" id="submitBtn">
+        <a class="am-btn am-btn-secondary am-btn-block am-btn-xl"href="javascript:;;" disabled>确认</a>
+    </div>
+</div>
+<!--风险提示-->
+<div style="display: none" id="bankCardModal">
+    <div class="bank-card-modal">
+        <p class="am-text-center">
+            <img src="/public/images/product/confirm_fxpc_icon.png?v=8754745" />
+        </p>
+        <h2 class="am-text-center">您尚未完成风险评估</h2>
+        <p>风险评估旨在了解您对风险的承受能力，帮助您降低风险。</p>
+        <p class="am-text-center pc-link"><a class="text-one-primary am-text-lg" href="/member/auth/risk-ass?prdId=dc8584ba19734d0baa62cd8ce3214d22">开始评估</a></p>
+    </div>
+</div>
+
+
+<input type="hidden" id="isOpenTickList" value="1" />
+
+<input type="hidden" id="refreshed" value="no">
+<!-- 框架js -->
+<script src="/dist/js/vendor.dll.js?v=c87a945"></script>
+<!-- 公共js -->
+<script src="/dist/js/common.js?v=1db9454"></script>
+<!--页面js-->
+<script type="text/javascript">
+    var isAssessStatus= true;
+    var redCount=17;
+    var currentLoanPeriod=6;//期限
+    var currentLoanPeriodUnit=1;//单位
+    var repayMode=Number("2");//还款方式
+    var productIncome=49.99;
+</script>
+<script src="/dist/js/pages/product/autoConfirm.js?v=aa494dd"></script>
+</body>
+<script src="https://s13.cnzz.com/z_stat.php?id=1274433082&web_id=1274433082" async="async"></script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?89ba87a30e7b15af0ee8d33d1d50d967";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script></html>

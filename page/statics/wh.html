@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>微花贷-亿钱贷</title>
+    <#include "/includes/style.html" />
+    <!--页面样式-->
+    <link href="${tzp.getContextPath()}/dist/css/pages/static/product.css?v=b5c5cb3" rel="stylesheet">
+    <link href="${tzp.getContextPath()}/public/css/about/product_icon.css?v=2251bef" rel="stylesheet">
+</head>
+<body>
+<!-- 头部开始 -->
+<#include "/includes/header.html" />
+<img src="/public/images/about/wh_banner.png?v=fcfbea6" class="banner" />
+<div class="wn-info">
+    <h3 class="am-text-center">微花贷简介</h3>
+    <p class="tips">微花贷主要针对具有良好信用记录和稳定收入来源的客户群体，在有特定的消费场景和明确借款用途下，为其提供小额资金分期的信息撮合服务。</p>
+    <ul>
+        <li data-am-scrollspy="{animation: 'slide-left'}" class="am-cf"><i class="wn-icon wn-icon-1"></i><p>选择与有分期业务的助贷机构合作，由助贷机构推荐借款客户到亿钱贷平台；</p></li>
+        <li data-am-scrollspy="{animation: 'slide-right'}" class="am-cf"><i class="wn-icon wn-icon-2"></i><p>由平台进行甄别、筛选，然后选择资质优秀的客户在平台发布信息；</p></li>
+        <li data-am-scrollspy="{animation: 'slide-left'}" class="am-cf"><i class="wn-icon wn-icon-3"></i><p>平台对出借人、借款人提供信息撮合服务；</p></li>
+    </ul>
+</div>
+<div class="wh-kh-layer">
+    <h3 class="am-text-center">借款客户</h3>
+    <p class="am-text-center tips">客户背景</p>
+    <ul class="title am-cf">
+        <li class="am-g">
+            <div class="am-u-sm-5 am-text-center">
+                <i class="wn-icon wn-icon-26"></i>
+            </div>
+            <div class="am-u-sm-7" data-am-scrollspy="{animation: 'slide-right'}">
+                <p>本人主动申请且具有</p>
+                <p>良好的信用记录和还款能力</p>
+            </div>
+        </li>
+        <li class="am-g">
+            <div class="am-u-sm-5 am-text-center">
+                <i class="wn-icon wn-icon-28"></i>
+            </div>
+            <div class="am-u-sm-7" data-am-scrollspy="{animation: 'slide-right'}">
+                <p>借款用途合规、明确，</p>
+                <p>借款人年龄符合我司要求</p>
+            </div>
+        </li>
+        <li class="am-g">
+            <div class="am-u-sm-5 am-text-center">
+                <i class="wn-icon wn-icon-27"></i>
+            </div>
+            <div class="am-u-sm-7" data-am-scrollspy="{animation: 'slide-right'}">
+                <p>限制高风险行业和</p>
+                <p>高风险地区，优化客户群体</p>
+            </div>
+        </li>
+    </ul>
+</div>
+<div class="ql-use-layer wh-use-layer">
+    <h3 class="am-text-center">助贷机构准入条件</h3>
+    <ul>
+        <li data-am-scrollspy="{animation: 'slide-right'}"><div class="table"><p>合作机构持续运营时间长</p><p>实缴资本和财务状况符合我司准入要求</p></div></li>
+        <li data-am-scrollspy="{animation: 'slide-left'}"><div class="table"><p>拥有独立的风控体系</p><p>具有大数据风控审查能力</p><p>并拥有完整的各项业务流程</p></div></li>
+        <li data-am-scrollspy="{animation: 'slide-right'}"><div class="table"><p>助贷机构或助贷机构的产品</p><p>在第三方评级优良</p></div></li>
+        <li data-am-scrollspy="{animation: 'slide-left'}"><div class="table"><p>企业经营状况良好</p><p>底层资产优质、可靠</p></div></li>
+    </ul>
+</div>
+<div class="mechanism-layer wh">
+    <h3 class="am-text-center">合作机构</h3>
+    <ul>
+        <li>
+            <p class="am-text-center"><i class="wn-icon wn-icon-46" data-am-scrollspy="{animation: 'slide-top'}"></i></p>
+            <p data-am-scrollspy="{animation: 'scale-up'}">
+                2012年起源于国际金融中心上海的北外滩，是一家致力于推动消费和金融行业进入移动化、智能化的科技公司。华兴资本、唯品会、红杉资本、蓝湖资本等风投背景，累计注册用户数超过3000万，多场景线上获客，通过大数据风控系统为金融机构提供助贷支持。
+            </p>
+        </li>
+    </ul>
+</div>
+<div class="wh-hr"><div class="split"></div></div>
+<div class="standard-layer wh">
+    <h3 class="am-text-center">项目标准</h3>
+    <ul class="am-cf">
+        <li data-am-scrollspy="{animation: 'slide-top'}">
+            <i class="wn-icon wn-icon-29"></i>
+            <h4>借款期限</h4>
+            <p>1个月-24个月</p>
+        </li>
+        <li data-am-scrollspy="{animation: 'slide-bottom'}">
+            <i class="wn-icon wn-icon-30"></i>
+            <h4>还款方式</h4>
+            <p>等额本息</p>
+        </li>
+    </ul>
+</div>
+<!--客服热线-->
+<div class="am-g kefu am-text-center">
+    <p class="am-text-primary">
+        客服热线 <a class="am-text-primary" href="tel:${serviceTelephone!''}">${serviceTelephone!''}</a>
+    </p>
+    <p class="am-text-muted time">
+        服务时间 ${serviceTime!''}
+    </p>
+</div>
+<div class="bottom-hr"></div>
+<!--app下载-->
+<div class="bottom-download-app am-text-center">
+    <p class="title am-text-muted">了解更多精选产品</p>
+    <p>
+        <a href="http://a.app.qq.com/o/simple.jsp?pkgname=com.yiqiandai.p2p" class="am-btn am-btn-lg btn-download am-round">下载亿钱贷 APP</a>
+    </p>
+</div>
+
+<!--底部菜单-->
+<#include "/includes/sign.html" />
+<#include "/includes/script.html" />
+<!--页面js-->
+<script src="${tzp.getContextPath()}/dist/js/pages/static/product.js?v=06149dc"></script>
+</body>
+<#include "/includes/count.html" />
+</html>

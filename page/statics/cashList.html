@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>提现记录-亿钱贷</title>
+    <#include "/includes/style.html" />
+    <!--页面样式-->
+    <link href="${tzp.getContextPath()}/dist/css/pages/user/cashList.css?v=97a8090" rel="stylesheet">
+</head>
+<body>
+<!-- 头部开始 -->
+<#include "/includes/header.html" />
+<!--内容开始-->
+<div class="cash-list-layer">
+    <ul>
+        <li>
+            <div class="am-g">
+                <div class="am-u-sm-4">
+                    <p class="am-text-primary"><strong>提现</strong></p>
+                    <p class="am-text-muted">提现成功</p>
+                </div>
+                <div class="am-u-sm-4 am-text-center">
+                    <p class="money"><strong>-1,000.00</strong></p>
+                </div>
+                <div class="am-u-sm-4 am-text-right">
+                    <p class="am-text-default"><strong>2019-01-18</strong></p>
+                    <p class="am-text-muted">14:56</p>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="am-g">
+                <div class="am-u-sm-4">
+                    <p class="am-text-secondary"><strong>提现失败</strong></p>
+                    <p class="am-text-muted">提现过期失效：xxxxx</p>
+                </div>
+                <div class="am-u-sm-4 am-text-center">
+                    <p class="money"><strong>-1,000.00</strong></p>
+                </div>
+                <div class="am-u-sm-4 am-text-right">
+                    <p class="am-text-default"><strong>2019-01-18</strong></p>
+                    <p class="am-text-muted">14:56</p>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>
+<#include "/includes/script.html" />
+<!--页面js-->
+<script src="${tzp.getContextPath()}/dist/js/pages/user/cashList.js?v=78159c6"></script>
+</body>
+<#include "/includes/count.html" /> 
+</html>

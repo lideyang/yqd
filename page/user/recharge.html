@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>充值-亿钱贷</title>
+    <#include "/includes/style.html" />
+    <!--页面样式-->
+    <link href="${tzp.getContextPath()}/dist/css/pages/user/recharge.css?v=28acb04" rel="stylesheet">
+</head>
+<body class="main-bg">
+<!-- 头部开始 -->
+<#include "/includes/header.html" />
+<!--银行卡信息--><#if userBank??>
+<div class="am-g bank-card-layer">
+
+    <div class="am-u-sm-3 am-text-center bank-logo">
+        <i class="icon-font-bank icon-${(userBank.bankCode)!''}"></i>
+    </div>
+    <div class="am-u-sm-9">
+        <h2 class="">${(userBank.bankName)!''}（尾号${(userBank.accountStar?substring(14))!''}）</h2>
+        <p>${(userBank.bankLimit)!''}</p>
+    </div>
+</div>
+<#else>
+<div class="bind-card-layer am-g">
+    <div class="am-u-sm-4 bank-logo">
+        <img src="/public/images/user/bankCard.png?v=0be0e10" />
+    </div>
+    <div class="am-u-sm-8 am-text-right bind-card-link">
+        <a href="${tzp.getContextPath()}/member/auth/bankCard" class="am-text-primary">
+            <span class="am-text-primary vertical-middle">立即绑定银行卡</span>
+            <i class="icon-font icon-card1 vertical-middle"></i>
+        </a>
+    </div>
+</div>
+</#if>
+<!--充值面板-->
+<form class="recharge-form" id="rechargeForm">
+    <input type="hidden" name="bankId" value="${(userBank.bankId)!''}">
+    <input type="hidden" id="singleAmount" value="${(userBank.singleAmount)!'0'}">
+    <input type="hidden" id="remainderDayAmount" value="${(userBank.remainderDayAmount)!'0'}">
+    <input type="hidden" id="signleDayAmount" value="${(userBank.signleDayAmount)!'0'}">
+    <input type="hidden" id="channelStatus" value="${(userBank.channelStatus)!'1'}">
+    <input type="hidden" id="bankName" value="${(userBank.bankName)!'该银行'}">
+    <input type="hidden" id="bankCode" name="bankCode" value="${(userBank.bankCode)!''}">
+    <input type="hidden" id="loanMaxLimit" name="loanMaxLimit" value="${(loanMaxLimit)!''}">
+    <input type="hidden" name="isInvest" <#if (goRechageAmt??) >value="true"<#else>value="false"</#if> >
+    <div class="am-form-group">
+     	<label>￥</label>
+        <input type="tel" class="am-form-field money-txt" <#if (goRechageAmt??) > value="${goRechageAmt!''}" <#else> value="" </#if> maxlength="12" id="amount" name="amount" placeholder="请输入充值金额" />
+    </div>
+    <button id="submitBtn" data-am-loading="{spinner: 'loading', loadingText: '加载中...'}" type="submit" class="am-btn am-btn-secondary am-round am-btn-block am-btn-xl submit-btn">确认</button>
+</form>
+
+<p class="am-text-muted am-text-center">资金已由新网银行存管，安全更合规 </p>
+<form class="am-form info-form" id="xwform" method="post">
+
+</form>
+<!-- 出借上限 -->
+<!-- <div style="display: none" id="limitModals" class="limit-modal">
+    <p class="am-text-center">
+        依照监管部门要求，亿钱贷平台对出借人总数进行控制，暂不开放新增出借人。您充值后可能无法及时出借获得收益，请确认是否继续充值？<br/><a class="am-text-primary" href="/loanControl/controlIntroduce">点击查看详情</a>
+    </p>
+    <p class="am-text-center"><a class="am-btn am-btn-primary am-radius goon-btn">继续充值</a><a class="am-btn am-btn-default am-radius cancel-btn">取消</a></p>
+</div>
+<div style="display: none" id="limitModal" class="limit-modal">
+    <p class="am-text-center">
+        依照监管部门要求，亿钱贷平台对出借人总数进行控制，当前出借人总数已接近上限。您充值后请尽快出借。<br/><a class="am-text-primary" href="/loanControl/controlIntroduce">点击查看详情</a>
+    </p>
+    <p class="am-text-center"><a class="am-btn am-btn-primary am-radius goon-btn">继续充值</a><a class="am-btn am-btn-default am-radius cancel-btn">取消</a></p>
+</div> -->
+<!--底部菜单-->
+<#include "/includes/script.html" />
+</body>
+<!--页面js-->
+<script>
+    var isBindCard=<#if userBank??>true<#else>false</#if>;
+    var isShowOpenModal=<#if !(isDepositary??) || isDepositary!='1'>true<#else>false</#if> ;
+</script>
+<script src="${tzp.getContextPath()}/dist/js/pages/user/recharge.js?v=306b5fc"></script>
+<#include "/includes/count.html" /> 
+</html>

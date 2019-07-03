@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>绑定银行卡-亿钱贷</title>
+    <#include "/includes/style.html" />
+    <!--页面样式-->
+    <link href="${tzp.getContextPath()}/dist/css/pages/account/bankCard.css?v=d9aab58" rel="stylesheet">
+    <style type="text/css">
+		.banktype-class{
+			display: none ;
+		}    
+    </style>
+</head>
+<body class="main-bg">
+<!-- 头部开始 -->
+<#include "/includes/header.html" />
+<!--银行卡面板-->
+<div class="am-panel am-panel-default bank-card-panel">
+    <div class="am-panel-bd am-text-center">
+        <form class="am-form" id="bankCardForm" action="${tzp.getContextPath()}/member/auth/bankCardInfo" method="post">
+            <h3 class="title">请输入您的银行卡号</h3>
+            <div class="bank-card-txt-bg">
+                <input class="bank-card-txt" autocomplete="off" id="bankCard" name="bankNo" type="tel" pattern="[0-9]{16,25}" maxlength="25" />
+            </div>
+            
+            <h3 class="am-text-secondary title banktype-class">请选择开户行</h3>
+            <div class="bank-card-txt-bg banktype-class">
+                <select id="bankCode" name="bankCode">
+                 	<option value="" selected="selected">请选择</option> 
+                  	<#list bankTypes as item>
+                  		<option value="${item.bankCode}">${item.bankCodeCn}</option>
+                  	</#list>
+                </select>
+            </div>
+            <p class="am-text-center">
+                <a class="text-one-primary" href="${tzp.getContextPath()}/member/auth/bankList">查看支持银行</a>
+            </p>
+            <div class="am-form-group msg"  <#if redirectMessage?? >style="visibility:visible;"</#if>>
+                <p class="msg am-text-danger"><span id="errorMsg">${redirectMessage!''}</span></p>
+            </div>
+            <button id="submitBtn" type="submit" data-am-loading="{spinner: 'loading', loadingText: '加载中...'}" class="am-btn am-btn-secondary am-round am-btn-block am-btn-xl bank-card-btn">下一步</button>
+            <p class="am-text-muted">*暂不支持信用卡</p>
+            <p class="am-text-muted">港澳台用户请<a class="text-one-primary" href="tel:400-090-9968">联系客服</a></p>
+        </form>
+    </div>
+</div>
+<#include "/includes/script.html" />
+</body>
+<script>
+    var isShowOpenModal=<#if !(isDepositary??) || isDepositary!='1'>true<#else>false</#if>;
+</script>
+<!--页面js-->
+<script src="${tzp.getContextPath()}/dist/js/pages/account/bankCard.js?v=156e0ce"></script>
+
+<#include "/includes/count.html" /> 
+</html>

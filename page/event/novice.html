@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>注册即送888-亿钱贷</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.5, maximum-scale=0.5, user-scalable=0">
+    <meta content="telephone=no" name="format-detection">
+    <script>
+        //设置rem
+        (function (doc, win) {
+            var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize';
+            var dpr = window.devicePixelRatio || 1;
+            // adjust body font size
+            function setBodyFontSize() {
+                if (document.body) {
+                    document.body.style.fontSize = '14px'
+                }
+                else {
+                    document.addEventListener('DOMContentLoaded', setBodyFontSize)
+                }
+            }
+
+            setBodyFontSize();
+            function setRemUnit() {
+                var clientWidth = docEl.clientWidth;
+                if (!clientWidth) return;
+                if (clientWidth >= 1200) {
+                    docEl.style.fontSize = '100px';
+                } else {
+                    docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+                }
+            }
+
+            setRemUnit()
+            if (!doc.addEventListener) return;
+            win.addEventListener(resizeEvt, setRemUnit);
+            window.addEventListener('pageshow', function (e) {
+                if (e.persisted) {
+                    setRemUnit()
+                }
+            })
+        })(document, window);
+    </script>
+    <link href="${tzp.getContextPath()}/dist/css/global.css?v=63e48b6" rel="stylesheet">
+    <!--页面样式-->
+    <link href="${tzp.getContextPath()}/dist/css/pages/static/newhand.css?v=058235f" rel="stylesheet">
+</head>
+<body>
+<!-- 头部开始 -->
+<!--内容开始-->
+<div class="content">
+    <ul class="info">
+        <li>30秒快速注册<br/>赚888元红包</li>
+        <li>实名认证和绑卡<br/>资金更透明</li>
+        <li>选择合适出借项目</li>
+        <li>出借立返享收益</li>
+    </ul>
+    <ul id="productList" class="product-list">
+        <li style="color:#e42125;">
+            <h3>微花贷</h3>
+            <div class="am-cf">
+                <div class="rate">
+                    8%
+                </div>
+                <div class="info">
+                    <p>协议约定年化利率</p>
+                    <p>出借期限30天</p>
+                </div>
+            </div>
+            <a href="${tzp.getContextPath()}/product/index">马上加入</a>
+        </li>
+        <li style="color:#ff4214;">
+            <h3>优车贷</h3>
+            <div class="am-cf">
+                <div class="rate">
+                    10%
+                </div>
+                <div class="info">
+                    <p>协议约定年化利率</p>
+                    <p>出借期限180天</p>
+                </div>
+            </div>
+            <a href="${tzp.getContextPath()}/product/index">马上加入</a>
+        </li>
+    </ul>
+    <ul class="opt">
+        <li>
+            <h3>上市背景</h3>
+            <p>A股上市公司控股</p>
+            <p>信息公开透明</p>
+        </li>
+        <li>
+            <h3>银行存管</h3>
+            <p>供应链及微农贷款</p>
+            <p>支持实体经济</p>
+        </li>
+        <li>
+            <h3>专业风控</h3>
+            <p>四重安全保障 层层把关全方位为</p>
+            <p>出借人资金保驾护航</p>
+        </li>
+    </ul>
+    <a class="reg-link" href="${tzp.getContextPath()}/spa/account/login">立即领取888元红包</a>
+    <div class="copy-right">
+        <p>© 2018 亿钱贷 | All rights reserved </p>
+        <p>深圳市亿钱贷电子商务有限公司</p>
+        <p><a href="http://www.miit.gov.cn/" rel="noopener noreferrer" target="_blank">粤ICP备14041671号-1</a></p>
+    </div>
+</div>
+<#include "/includes/script.html" />
+<!--页面js-->
+<script src="${tzp.getContextPath()}/dist/js/pages/static/newhand.js?v=a2458f0"></script>
+</body>
+<#include "/includes/count.html" /> 
+</html>

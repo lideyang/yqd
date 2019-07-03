@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>奖励提取明细-亿钱贷</title>
+    <#include "/includes/style.html" />
+    <!--页面样式-->
+    <link href="${tzp.getContextPath()}/dist/css/pages/user/rewardDetail.css?v=9bf85dd" rel="stylesheet">
+</head>
+<body>
+<!-- 头部开始 -->
+<#include "/includes/header.html" />
+<!--奖励信息-->
+<div class="reward-detail-content">
+    <div class="am-g info">
+        <div class="am-u-sm-8">
+            <h3>累计已提取</h3>
+        </div>
+        <div class="am-u-sm-4 am-text-right">
+            <span class="am-text-danger">${(totalAmt!0)?string(',##0.00')}</span>元
+        </div>
+    </div>
+</div>
+<div class="reward-detail-content  mescroll" id="wrapper">
+    <div data-am-widget="titlebar" class="am-titlebar am-titlebar-default">
+        <h2 class="am-titlebar-title">
+            提取记录
+        </h2>
+    </div>
+    <ul id="content">
+
+    </ul>
+</div>
+<#include "/includes/script.html" />
+<script type="text/x-handlebars-template" id="tpi-list-item">
+    {{#each this}}
+        <li>
+            <div class="am-g">
+                <div class="am-u-sm-6">
+                    <p class="am-text-muted">{{dayFormater awardDate}}</p>
+                </div>
+                <div class="am-u-sm-6 am-text-right">
+                    <span class="am-text-danger">+{{formatCurrency awardMoney true}}</span>元
+                </div>
+            </div>
+        </li>
+
+    {{/each}}
+</script>
+<!--页面js-->
+<script src="${tzp.getContextPath()}/dist/js/pages/user/rewardDetail.js?v=daca5c6"></script>
+</body>
+<#include "/includes/count.html" /> 
+</html>

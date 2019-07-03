@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>乐乐派-亿钱贷</title>
+    <#include "/includes/style.html" />
+    <!--页面样式-->
+    <link href="${tzp.getContextPath()}/dist/css/pages/product/detailInfo.css?v=3fcceb6" rel="stylesheet">
+    <link href="${tzp.getContextPath()}/dist/css/pages/product/about.css?v=9c2759d" rel="stylesheet">
+</head>
+<body>
+<!-- 头部开始 -->
+<#include "/includes/header.html" />
+<!--内容开始-->
+<div class="am-container">
+    <!--派派乐详情-->
+    <div class="product-info-content about-content">
+        <div data-am-widget="titlebar" class="am-titlebar am-titlebar-default">
+        </div>
+        <div class="am-text-default">
+             ${loan.loanRemark}
+        </div>
+    </div>
+    <div class="product-info-content about-content">
+        <div data-am-widget="titlebar" class="am-titlebar am-titlebar-default">
+            <h2 class="am-titlebar-title">
+                安心贷的业务模式
+            </h2>
+        </div>
+        <img src="/public/images/product/issue_list.png?v=13bb3a4" />
+        <h3>合作机构：</h3>
+        <p>
+            深圳亚太租赁资产交易中心有限公司（简称“亚租所”）
+        </p>
+        <h3>适用资产：</h3>
+        <p>小贷资产、保理资产、融租资产等单笔规模较低的资产（一般低于100万）</p>
+        <h3>业务流程：</h3>
+        <p>
+            资产方以其持有的资产收益权为基础，在亚租所申请发行收益权转让产品，亚租所对资产审核通过后，对收益权转让产品进行备案和挂牌，并委托亿钱贷平台提供持续性风险揭示、项目展示、预约认购、信息反馈等一系列服务，出借人则通过亿钱贷平台了解产品信息，
+            注册成为亚租所会员后可认购产品，与发行人签订《认购协议》，在亚租所确权登记后，认购完成。
+        </p>
+        <h3>资金结算：</h3>
+        <p>
+            所有的产品认购资金最终是在亚租所完成清算后，通过银企直联通道，向发行方支付转让对价。
+        </p>
+    </div>
+</div>
+<p class="am-text-center am-text-muted">市场有风险 出借需谨慎</p>
+
+<#include "/includes/script.html" />
+<!--页面js-->
+<script src="${tzp.getContextPath()}/dist/js/pages/product/detailInfo.js?v=8c166ce"></script>
+</body>
+<#include "/includes/count.html" /> 
+</html>

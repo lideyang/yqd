@@ -1,0 +1,1423 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>合规披露-亿钱贷</title>
+    <#include "/includes/style.html" />
+    <!--页面样式-->
+    <link href="${tzp.getContextPath()}/dist/css/pages/static/hegui.css?v=70132f2" rel="stylesheet">
+    <style>
+        .sign-bottom{
+            width:100%;
+            max-width: 100%;
+        }
+    </style>
+</head>
+<body>
+<!-- 头部开始 -->
+<#include "/includes/header.html" />
+<img class="banner" src="/public/images/active/hegui/banner.jpg?v=3227b20"/>
+<div class="table-layer">
+    <div data-am-widget="titlebar" class="am-titlebar am-titlebar-default" >
+        <h2 class="am-titlebar-title ">
+            合规整改进度
+        </h2>
+    </div>
+    <div class="am-slider am-slider-default" data-am-flexslider="slideshow: false" id="sliderInfo">
+        <ul class="am-slides">
+            <li>
+                <div class="slider-layer">
+                    <div class="title">
+                        <i class="icon-font icon-duigou"></i>
+                        <span>违反禁止性规定</span>
+                    </div>
+                    <table class="table-info">
+                        <tbody>
+                        <tr>
+                            <td class="title" colspan="2">
+                                存在问题
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">（一）为自身或变相为自身融资</td>
+                        </tr>
+                        <tr>
+                            <td class="title">
+                                问题涉及具体情况
+                            </td>
+                            <td class="title">
+                                是否存在
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>以自身名义在网贷机构平台上融资。网贷机构或其关联方通过虚构借款主体或使用可以控制的账户在本网贷机构平台进行融资，虚构借款用途，最终将该部分借款资金交由网贷机构或其关联方使用。</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td>持有（控制）5%以上股份（表决权）的股东、实际控制人、董事、监事、高级管理人员及其近亲属，以及与网贷机构受同一实际控制人控制的关联方在网贷机构上融资,网贷机构未按要求对上述融资行为进行信息披露，或融资行为违背市场公平交易原则。</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td class="title" colspan="2">法律依据</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">《网络借贷信息中介机构业务活动管理暂行办法》（以下简称《暂行办法》）第三条、第十条（一）等相关规定</td>
+                        </tr>
+
+                        <tr>
+                            <td class="title" colspan="2">
+                                存在问题
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">（二）直接或间接接受、归集出借人资金</td>
+                        </tr>
+                        <tr>
+                            <td class="title">
+                                问题涉及具体情况
+                            </td>
+                            <td class="title">
+                                是否存在
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>在没有具体项目的情况下先行归集出借人资金。</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td>以机构账户接受、归集出借人资金情形，如借贷资金划转时需先通过机构自有账户归集后再进行进一步划转等情形。</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td>通过第三方（股东、实际控制人、董事、监事、高级管理人员、公司员工及其近亲属等）银行账户接受、归集出借人的资金。</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td class="title" colspan="2">法律依据</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">《暂行办法》第三条、第十条（二）、第二十八等相关规定</td>
+                        </tr>
+
+                        <tr>
+                            <td class="title" colspan="2">
+                                存在问题
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">（三）直接或变相向出借人提供担保或承诺保本保息</td>
+                        </tr>
+                        <tr>
+                            <td class="title">
+                                问题涉及具体情况
+                            </td>
+                            <td class="title">
+                                是否存在
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>直接承诺保本保息，包括在官网、APP等对外宣传及相关合同协议中承诺由网贷机构自身保本保息、代偿逾期债权、回购债权等。</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td>变相承诺保本保息，包括在官网、APP等对外宣传及相关合同协议中表示设立风险准备金、备付金、客户质保款等各类客户风险保障机制。</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td class="title" colspan="2">法律依据</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">《暂行办法》第三条、第十条（三）等相关规定</td>
+                        </tr>
+
+                        <tr>
+                            <td class="title" colspan="2">
+                                存在问题
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">（四）自行或委托、授权第三方在互联网、固定电话、移动电话等电子渠道以外的物理场所进行宣传或推介融资项目</td>
+                        </tr>
+                        <tr>
+                            <td class="title">
+                                问题涉及具体情况
+                            </td>
+                            <td class="title">
+                                是否存在
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>通过线下网点自行推介项目、获取资金，委托第三方在线下推介项目、获取资金。</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td>在电子渠道以外的物理场所(如线下门店、楼宇、地铁)开展资金端、资产端产品宣传等所有宣传行为，依托线下门店开展信息采集、核实、贷后跟踪、抵质押管理等风险管理以外的经营行为。</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td>通过报刊、电视、广播等媒体进行业务宣传或推介融资项目。</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td class="title" colspan="2">法律依据</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">《暂行办法》第三条、第十条（四）、第十六条等相关规定</td>
+                        </tr>
+
+                        <tr>
+                            <td class="title" colspan="2">
+                                存在问题
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">（五）违规发放贷款</td>
+                        </tr>
+                        <tr>
+                            <td class="title">
+                                问题涉及具体情况
+                            </td>
+                            <td class="title">
+                                是否存在
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>网贷机构运营企业直接发放贷款或网贷机构通过其股东、实际控制人、董事、监事、高级管理人员、公司员工及其近亲属等发放贷款。</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td class="title" colspan="2">法律依据</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">《暂行办法》第三条、第十条（五）等相关规定</td>
+                        </tr>
+
+
+                        <tr>
+                            <td class="title" colspan="2">
+                                存在问题
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">（六）将融资项目的期限进行拆分（期限错配）</td>
+                        </tr>
+                        <tr>
+                            <td class="title">
+                                问题涉及具体情况
+                            </td>
+                            <td class="title">
+                                是否存在
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>借款人实际借款期限和出借人出借期限不匹配、不对应，包括长期借款被拆分成多个短期借款，或多个短期借款搭配成长期借款。</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td>向出借人提供各类定期产品或承诺出借资金可以随时提取、包括在合同协议中约定通过债权转让方式到期退出的定期产品（借款人实际借款期限和出借人出借期限相匹配；或者在产品名称中标明持满一定时间方可转让、同时已充分向出借人提示流动性风险并由出借人事先书面确认的除外）。</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td class="title" colspan="2">法律依据</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">《暂行办法》第三条、第十条（六）等相关规定</td>
+                        </tr>
+
+                        <tr>
+                            <td class="title" colspan="2">
+                                存在问题
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">（七）自行发售理财等金融产品募集资金，代销银行理财、券商资管、基金、保险或信托产品等金融产品</td>
+                        </tr>
+                        <tr>
+                            <td class="title">
+                                问题涉及具体情况
+                            </td>
+                            <td class="title">
+                                是否存在
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>自行发售理财等金融产品，或在官网等渠道以“理财”名义进行宣传，或网贷机构相关合同协议是购买理财而非借贷合同。</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td>网贷机构撮合交易无法穿透到实际借款人、借款项目，或者出借人仅能获取债权清单、未与借款人逐一签订电子合同。</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td>代销各类理财产品、保险产品、信托产品、基金产品、券商资管产品等。</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td>未经许可发行销售各类资产管理产品，未经许可为其它机构的金融产品开放链接端口、进行广告宣传。</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td class="title" colspan="2">法律依据</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">《暂行办法》第三条、第十条（七）等相关规定</td>
+                        </tr>
+
+                        <tr>
+                            <td class="title" colspan="2">
+                                存在问题
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">（八）开展类资产证券化或实现以打包资产、证券化资产、信托资产、基金份额等形式的债权转让行为</td>
+                        </tr>
+                        <tr>
+                            <td class="title">
+                                问题涉及具体情况
+                            </td>
+                            <td class="title">
+                                是否存在
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>开展类资产证券化业务。开展打包资产、证券化资产、信托资产、基金份额等形式的债权转让。</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td>资产端对接各类地方交易场所的产品，或将网贷机构撮合形成的债权打包后通过地方交易所进行转让。</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td>持有（控制）5%以上股份（表决权）的股东、实际控制人、董事、监事、高级管理人员及其近亲属，以及与网贷机构受同一实际控制人控制的关联方在网贷机构上进行债权转让（即通过“超级放款人”出借资金后在网贷机构上进行债权转让）。</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td>网贷机构承接转让债权。出借人债权转让完成后，网贷机构未履行对债务人的告知义务。</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td>网贷机构承接转让债权、债权转让完成后，未履行对债务人的告知义务、开展可以调整原始收益率的债权转让业务、开展以出借人所持债权作为质押的“净值标”借款业务。</td>
+                            <td>否</td>
+                        </tr>
+
+                        <tr>
+                            <td class="title" colspan="2">
+                                存在问题
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">（九）除相关规定允许外，与其他机构投资、代理销售、经纪等业务进行任何形式的混合、捆绑、代理</td>
+                        </tr>
+                        <tr>
+                            <td class="title">
+                                问题涉及具体情况
+                            </td>
+                            <td class="title">
+                                是否存在
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>商品和网贷机构撮合借贷产品捆绑销售。其他金融产品、服务与网贷机构撮合借贷产品捆绑销售。</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td class="title" colspan="2">法律依据</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">《暂行办法》第三条、第十条（九）等相关规定</td>
+                        </tr>
+
+                        <tr>
+                            <td class="title" colspan="2">
+                                存在问题
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">（十）虚构、夸大融资项目的真实性、收益前景，隐瞒融资项目的瑕疵及风险，以歧义性语言或其他欺骗性手段等进行虚假片面宣传或促销等，捏造、散布虚假信息或不完整信息损害他人商业信誉，误导出借人或借款人</td>
+                        </tr>
+                        <tr>
+                            <td class="title">
+                                问题涉及具体情况
+                            </td>
+                            <td class="title">
+                                是否存在
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>对融资项目或网贷机构经营信息进行虚构（如虚构与第三方机构的业务合作等）。</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td>对融资项目或网贷机构经营信息进行夸大宣传、隐瞒瑕疵及风险（如夸大累计交易金额、借贷余额、出借人数等业务数据，或将与第三方机构的一般业务往来夸大为全面业务合作等）。</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td>对收益水平或获利前景等使用“最佳、安全、风险较低”等误导性用语，或通过与银行存款、理财产品等金融产品收益率进行对比等方式误导出借人。</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td>以歧义性语言或其他欺骗性手段等进行虚假片面宣传或促销等。</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td>通过损害他人商业信誉的方式误导公众或出借人。</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td>捏造、散布虚假或不完整信息。</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td class="title" colspan="2">法律依据</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">《暂行办法》第三条、第十条（十）等相关规定</td>
+                        </tr>
+
+                        <tr>
+                            <td class="title" colspan="2">
+                                存在问题
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">（十一）向借款用途为投资股票、场外配资、期货合约、结构化产品及其他衍生品等高风险的融资提供信息中介服务</td>
+                        </tr>
+                        <tr>
+                            <td class="title">
+                                问题涉及具体情况
+                            </td>
+                            <td class="title">
+                                是否存在
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>向借款用途为投资股票、场外配资、期货合约、结构化产品及其他衍生品等高风险的融资提供信息中介服务。</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td class="title" colspan="2">法律依据</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">《暂行办法》第三条、第十条（十一）等相关规定</td>
+                        </tr>
+
+                        <tr>
+                            <td class="title" colspan="2">
+                                存在问题
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">（十二）从事股权众筹等业务</td>
+                        </tr>
+                        <tr>
+                            <td class="title">
+                                问题涉及具体情况
+                            </td>
+                            <td class="title">
+                                是否存在
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>发售股权众筹产品或以“股权众筹”名义开展业务宣传、推介等。</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td class="title" colspan="2">法律依据</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">《暂行办法》第三条、第十条（十二）等相关规定</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </li>
+            <li>
+                <div class="slider-layer">
+                    <div class="title">
+                        <i class="icon-font icon-duigou"></i>
+                        <span>违反法定义务及风险管理要求</span>
+                    </div>
+                    <table class="table-info">
+
+                        <tr>
+                            <td class="title" colspan="2">
+                                存在问题
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">（十三）未对融资项目的真实性、合法性及其信用风险等情况进行审核、评价、分类</td>
+                        </tr>
+                        <tr>
+                            <td class="title">
+                                问题涉及具体情况
+                            </td>
+                            <td class="title">
+                                是否存在
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>未制定对融资项目的真实性、合法性及其信用风险等情况进行审核、评价、分类的制度、措施，或相关制度、措施不健全。</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td>未实际执行对融资项目的真实性、合法性及其信用风险等情况进行审核、评价、分类的制度、措施。</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td class="title" colspan="2">法律依据</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">《暂行办法》第九条（一）、（二）等相关规定</td>
+                        </tr>
+
+
+                        <tr>
+                            <td class="title" colspan="2">
+                                存在问题
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">（十四）未采取措施防范欺诈行为</td>
+                        </tr>
+                        <tr>
+                            <td class="title">
+                                问题涉及具体情况
+                            </td>
+                            <td class="title">
+                                是否存在
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>未制定防范欺诈的制度、措施或未实际执行已经制定的防范欺诈制度、措施。</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td>发现欺诈行为或其他损害出借人利益的情形，未能依法及时公告并终止相关网络借贷活动。</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td class="title" colspan="2">法律依据</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">按照《暂行办法》第九条（三）规定</td>
+                        </tr>
+
+                        <tr>
+                            <td class="title" colspan="2">
+                                存在问题
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">（十五）未履行反洗钱和反恐怖融资规定</td>
+                        </tr>
+                        <tr>
+                            <td class="title">
+                                问题涉及具体情况
+                            </td>
+                            <td class="title">
+                                是否存在
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>未制定客户身份识别、可疑交易报告、客户身份资料和交易记录保存等反洗钱和反恐怖融资方面的制度、措施。</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td>未进行客户身份识别、未进行可疑交易报告、未对客户身份资料和交易记录等依法保存。</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td class="title" colspan="2">法律依据</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">按照《暂行办法》第九条（七）规定</td>
+                        </tr>
+
+                        <tr>
+                            <td class="title" colspan="2">
+                                存在问题
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">（十六）未落实客户实名注册要求</td>
+                        </tr>
+                        <tr>
+                            <td class="title">
+                                问题涉及具体情况
+                            </td>
+                            <td class="title">
+                                是否存在
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>未要求或未严格执行出借人、借款人实名注册要求。</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td class="title" colspan="2">法律依据</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">《暂行办法》第十一条等相关规定</td>
+                        </tr>
+
+                        <tr>
+                            <td class="title" colspan="2">
+                                存在问题
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">（十七）违反借贷金额应当小额分散的要求</td>
+                        </tr>
+                        <tr>
+                            <td class="title">
+                                问题涉及具体情况
+                            </td>
+                            <td class="title">
+                                是否存在
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>网贷机构仍存在2016年8月24日后新增自然人、法人或其他组织的借款余额超限额的情形。</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td class="title" colspan="2">法律依据</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">《暂行办法》第十七条等相关规定</td>
+                        </tr>
+
+                        <tr>
+                            <td class="title" colspan="2">
+                                存在问题
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">（十八）违反信息安全保障相关管理要求</td>
+                        </tr>
+                        <tr>
+                            <td class="title">
+                                问题涉及具体情况
+                            </td>
+                            <td class="title">
+                                是否存在
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>未聘请有资质的专业机构对本机构进行信息安全等级保护测评、或者未申请并通过公安机关网络安全部门的信息系统安全审核。</td>
+                            <td style="padding:.05rem;">否</td>
+                        </tr>
+                        <tr>
+                            <td>未建立完善的防火墙、入侵检测、数据加密以及灾难恢复等网络安全设施和管理制度。</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td>未建立信息科技管理、科技风险管理和科技审计有关制度。</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td>未记录并留存借贷双方上网日志信息、信息交互内容等数据。</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td>未能每两年至少开展一次全面的信息安全评估，或未接受国家及行业主管部门的信息安全检查和审计。</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td>未能在成立两年之内建立或使用与自身业务规模相匹配的应用级灾备系统设施。</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td class="title" colspan="2">法律依据</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">按照《暂行办法》第十八条规定</td>
+                        </tr>
+
+                        <tr>
+                            <td class="title" colspan="2">
+                                存在问题
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">（十九）未对单一融资项目设置募集期</td>
+                        </tr>
+                        <tr>
+                            <td class="title">
+                                问题涉及具体情况
+                            </td>
+                            <td class="title">
+                                是否存在
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>未对融资项目明确投标截止日或募集期超过20个工作日。</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td class="title" colspan="2">法律依据</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">《暂行办法》第十九条等相关规定</td>
+                        </tr>
+
+                        <tr>
+                            <td class="title" colspan="2">
+                                存在问题
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">（二十）未按要求加强与相关征信系统的业务合作</td>
+                        </tr>
+                        <tr>
+                            <td class="title">
+                                问题涉及具体情况
+                            </td>
+                            <td class="title">
+                                是否存在
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>未按要求及时接入有关征信系统并依法提供、查询和使用有关金融信用信息。</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td class="title" colspan="2">法律依据</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">《暂行办法》第二十一条等相关规定</td>
+                        </tr>
+
+                        <tr>
+                            <td class="title" colspan="2">
+                                存在问题
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">（二十一）电子签名、数字认证不符合规定</td>
+                        </tr>
+                        <tr>
+                            <td class="title">
+                                问题涉及具体情况
+                            </td>
+                            <td class="title">
+                                是否存在
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>对出借人与借款人的基本信息及交易信息使用电子签名、电子认证时未按照有关法律法规执行。</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td>使用第三方数字认证系统时，未对第三方数字认证机构进行定期评估以保证有关认证安全可靠并具有独立性。</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td class="title" colspan="2">法律依据</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">《暂行办法》第二十二条等相关规定</td>
+                        </tr>
+
+                        <tr>
+                            <td class="title" colspan="2">
+                                存在问题
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">（二十二）未妥善保存网络借贷业务活动数据和资料</td>
+                        </tr>
+                        <tr>
+                            <td class="title">
+                                问题涉及具体情况
+                            </td>
+                            <td class="title">
+                                是否存在
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>对未制定网络借贷业务活动数据和资料保存制度。</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td>未采取适当的方法和技术记录并妥善保存网络借贷业务活动数据和资料、未做好电子数据的备份。</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td>网络借贷业务活动数据和资料保存期限违反法律法规及网络借贷有关监管规定的要求、借贷合同到期后保存时间少于5年即灭失、损毁或销毁。</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td class="title" colspan="2">法律依据</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">《暂行办法》第二十三条等相关规定</td>
+                        </tr>
+
+                        <tbody>
+                    </table>
+                </div>
+            </li>
+            <li>
+                <div class="slider-layer">
+                    <div class="title">
+                        <i class="icon-font icon-duigou"></i>
+                        <span>未履行对出借人与借款人的保护义务</span>
+                    </div>
+                    <table class="table-info">
+                        <tbody>
+
+                        <tr>
+                            <td class="title" colspan="2">
+                                存在问题
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">（二十三）未经出借人授权代出借人行使决策</td>
+                        </tr>
+                        <tr>
+                            <td class="title">
+                                问题涉及具体情况
+                            </td>
+                            <td class="title">
+                                是否存在
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>未经出借人书面明确授权，代出借人选择出借项目、同意出借条件等（包括未经出借人书面明确授权开展“自动投标”等业务）。</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td class="title" colspan="2">法律依据</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">《暂行办法》第二十五条等相关规定</td>
+                        </tr>
+
+                        <tr>
+                            <td class="title" colspan="2">
+                                存在问题
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">（二十四）未对出借人进行风险提示、尽职评估、分类管理</td>
+                        </tr>
+                        <tr>
+                            <td class="title">
+                                问题涉及具体情况
+                            </td>
+                            <td class="title">
+                                是否存在
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>未通过网贷机构APP、官方网站、相关合同协议、风险及禁止性行为提示书等出借人可获取的渠道向其提示网贷风险和禁止性行为。</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td>虽然向出借人提示网贷风险和禁止性行为，但存在字体不醒目、位置隐蔽等出借人易忽略、不易得的情形，或虽以醒目方式提示网贷风险和禁止性行为，但未经出借人确认。</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td>未制定或未实施对出借人的年龄、财务状况、投资经验、风险偏好、风险承受能力等进行审核评估的制度、措施。</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td>向未进行风险评估的出借人提供交易服务，或未根据风险评估结果对出借人进行分级管理。</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td>未根据风险评估及出借人分级结果对不同风险等级的出借人设置可动态调整的出借限额及出借标的限制。</td>
+                            <td style="padding:.05rem">备注：已开展相关工作，系统开发中，即将上线</td>
+                        </tr>
+                        <tr>
+                            <td class="title" colspan="2">法律依据</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">《暂行办法》第九条（二）、（四）及第二十六条等相关规定</td>
+                        </tr>
+
+                        <tr>
+                            <td class="title" colspan="2">
+                                存在问题
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">（二十五）未对借款人进行风险提示、尽职评估</td>
+                        </tr>
+                        <tr>
+                            <td class="title">
+                                问题涉及具体情况
+                            </td>
+                            <td class="title">
+                                是否存在
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>未以醒目方式向借款人提示利息及相关费用收取规则、禁止性行为、违约后果等，或者虽有提示但并未经借款人确认。</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td>未制定或未实施对借款人的年龄、身份、借款用途、还款能力、资信状况等进行审核评估的制度、措施。</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td class="title" colspan="2">法律依据</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">《暂行办法》第九条（二）等相关规定</td>
+                        </tr>
+
+                        <tr>
+                            <td class="title" colspan="2">
+                                存在问题
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">（二十六）未能合法、安全地采集、处理及使用出借人、借款人信息</td>
+                        </tr>
+                        <tr>
+                            <td class="title">
+                                问题涉及具体情况
+                            </td>
+                            <td class="title">
+                                是否存在
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>未制定客户信息采集、使用及处理方面的安全保护制度。</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td>出借人与借款人信息采集、处理及使用违反相关法律法规或存在安全问题。</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td>删除、篡改客户信息、未经同意将客户信息用于所提供服务之外目的、未经同意泄露、传播、买卖客户信息。</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td>中国境内获取的出借人与借款人信息的分析、处理及存储实际在境外进行。</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td>未有法律法规依据、向境外提供境内出借人和借款人信息。</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td class="title" colspan="2">法律依据</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">《暂行办法》第九条（六）、第二十七条等相关规定</td>
+                        </tr>
+
+
+                        <tr>
+                            <td class="title" colspan="2">
+                                存在问题
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">（二十七）未按规定开展客户资金存管</td>
+                        </tr>
+                        <tr>
+                            <td class="title">
+                                问题涉及具体情况
+                            </td>
+                            <td class="title">
+                                是否存在
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>未完成与银行业金融机构的资金存管（包含仅签订存管协议但业务未上线运行、业务未全部上线、存管银行未通过测评）。</td>
+                            <td rowspan="3" style="padding:0.05rem;">否</td>
+                        </tr>
+                        <tr>
+                            <td>网贷机构设立的资金存管专用账户，绑定的银行卡具备透支功能；专用账户下设子账户的，子账户具备透支功能。</td>
+                        </tr>
+                        <tr>
+                            <td>虽已实施资金存管、但尚未完全符合《网络借贷资金存管业务指引》的具体要求。</td>
+                        </tr>
+                        <tr>
+                            <td class="title" colspan="2">法律依据</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">《暂行办法》第二十八条、《网络借贷资金存管业务指引》、《关于做好P2P网络借贷风险专项整治整改验收工作的通知》（整治办函〔2017〕57号）附件等相关规定</td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </li>
+            <li>
+                <div class="slider-layer">
+                    <div class="title">
+                        <i class="icon-font icon-duigou"></i>
+                        <span>违反信息披露相关要求</span>
+                    </div>
+                    <table class="table-info">
+                        <tbody>
+                        <tr>
+                            <td class="title" colspan="2">
+                                存在问题
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                （二十八）未按要求加强信息披露管理
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="title">
+                                问题涉及具体情况
+                            </td>
+                            <td class="title">
+                                是否存在
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>未在官方网站及提供网络借贷信息中介服务的网络渠道显著位置设置信息披露专栏、展示信息披露内容。</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td>未建立健全信息披露制度，或未指定专人负责信息披露事务，无法确保信息披露专栏内容可供社会公众随时查阅。</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td>信息披露专栏的内容全部或部分没有网络借贷信息中介机构法定代表人签字确认。</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td>未向公众披露咨询、投诉、举报联系电话、电子邮箱、通讯地址等。</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td>披露的信息没有采用中文文本；或同时采用外文文本的，未能保证两种文本的内容一致。</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td>未将信息披露公告文稿和相关备查文件及时报送其工商登记注册地的地方金融监管部门、国务院银行业监督管理机构派出机构，并置备于网络借贷信息中介机构住所供社会公众查阅。</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td>网贷机构官方网站、提供网络借贷信息中介服务的网络渠道以及其他互联网渠道信息披露内容不一致。</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td>信息披露内容存在虚假记载、误导性陈述、重大遗漏或拖延披露。</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td>其他有关问题（如,信批指引没有详细规定，但不披露相关信息可能导致借款人、出借人产生错误判断的信息未及时披露等）。</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td class="title" colspan="2">法律依据</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">《暂行办法》第三条、第九条（四）、第三十条，及《网络借贷信息中介机构业务活动信息披露指引》（银监办发〔2017〕113号）相关规定</td>
+                        </tr>
+
+                        <tr>
+                            <td class="title" colspan="2">
+                                存在问题
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                （二十九）信息披露的内容、时间不符合要求
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="title">
+                                问题涉及具体情况
+                            </td>
+                            <td class="title">
+                                是否存在
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>未按《网络借贷信息中介机构业务活动信息披露指引》（银监办发〔2017〕113号）第七条第一项要求披露相关备案信息。</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td>未按《网络借贷信息中介机构业务活动信息披露指引》（银监办发〔2017〕113号）第七条第二项要求披露相关组织信息。</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td>未按《网络借贷信息中介机构业务活动信息披露指引》（银监办发〔2017〕113号）第七条第三项要求披露相关审核信息。</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td>未在《网络借贷信息中介机构业务活动信息披露指引》（银监办发〔2017〕113号）第七条规定时间内披露相关信息。</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td>未在《网络借贷信息中介机构业务活动信息披露指引》（银监办发〔2017〕113号）第八条规定时间内、逐月向公众披露截至上月末撮合交易的相关信息。</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td>未按《网络借贷信息中介机构业务活动信息披露指引》（银监办发〔2017〕113号）第九条要求及时向出借人披露相关信息。</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td>未按《网络借贷信息中介机构业务活动信息披露指引》（银监办发〔2017〕113号）第十条要求及时向公众披露相关重大信息。</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td>未按《网络借贷信息中介机构业务活动信息披露指引》（银监办发〔2017〕113号）第十一条要求在官方网站上定期以公告形式向公众披露年度报告、相关法律法规及网络借贷有关监管规定。</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td>信息披露内容违反法律法规关于国家秘密、商业秘密、个人隐私的有关规定。</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td class="title" colspan="2">法律依据</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">《暂行办法》第三条、第九条（四）、第三十条，及《网络借贷信息中介机构业务活动信息披露指引》（银监办发〔2017〕113号）相关规定</td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </li>
+            <li>
+                <div class="slider-layer">
+                    <div class="title">
+                        <i class="icon-font icon-duigou"></i>
+                        <span>违反重点领域相关监管要求</span>
+                    </div>
+                    <table class="table-info">
+                        <tbody>
+
+                        <tr>
+                            <td class="title" colspan="2">
+                                存在问题
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                （三十）相关监管要求下发后仍继续开展违规业务
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="title">
+                                问题涉及具体情况
+                            </td>
+                            <td class="title">
+                                是否存在
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2017年6月之后，仍在违规开展以在校学生为放款对象的校园网贷业务。</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td class="title" colspan="2">法律依据</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">《关于进一步加强校园网贷规范管理工作的通知》（银监发〔2017〕26号）第二项相关规定 </td>
+                        </tr>
+
+                        <tr>
+                            <td class="title">
+                                问题涉及具体情况
+                            </td>
+                            <td class="title">
+                                是否存在
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2017年7月15日后，仍与各类地方金融交易场所开展合作。存量合作业务未逐步转让或清偿。</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td class="title" colspan="2">法律依据</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">57号文、《关于对互联网网贷机构与各类交易场所合作从事违法违规业务开展清理整顿的通知》（整治办函〔2017〕64号）</td>
+                        </tr>
+                        <tr>
+                            <td class="title">
+                                问题涉及具体情况
+                            </td>
+                            <td class="title">
+                                是否存在
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>2017年12月20日以后，仍开展“现金贷”业务；存量业务未逐步压缩，未制定退出时间表。</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td class="title" colspan="2">法律依据</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">57号文、《关于规范整顿“现金贷”业务的通知》（整治办函〔2017〕141号，以下简称141号文）</td>
+                        </tr>
+                        <tr>
+                            <td class="title" colspan="2">
+                                存在问题
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                （三十一）未按要求设定、收取利息及各类费用
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="title">
+                                问题涉及具体情况
+                            </td>
+                            <td class="title">
+                                是否存在
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>以利率和各种费用形式对借款人收取的综合资金成本超过了最高人民法院关于民间借贷利率的上限规定。</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td>向借款人收取的综合资金成本（含利息及各类费用）未统一折算为年化形式告知借款人。</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td>各项贷款条件以及逾期处理等信息没有在事前全面、公开披露，或者没有事前向借款人提示相关风险。</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td>从借贷本金中先行扣除利息、保证金或手续费、管理费等各类费用。</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td>设定高额逾期利息、滞纳金、罚息等，设定金额超过了最高人民法院关于民间借贷逾期利率的上限规定。</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td>采用线下收取息费、第三方合作机构向借款人收取息费的方式规避综合资金成本上限要求。</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td class="title" colspan="2">法律依据</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">《关于规范整顿“现金贷”业务的通知》（整治办函〔2017〕141号）</td>
+                        </tr>
+
+                        <tr>
+                            <td class="title" colspan="2">
+                                存在问题
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                （三十二）违反客户保护相关要求
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="title">
+                                问题涉及具体情况
+                            </td>
+                            <td class="title">
+                                是否存在
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>以各种手段诱致借款人过度举债、陷入债务陷阱。</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td>没有全面持续评估借款人的信用情况、偿付能力、贷款用途等情况，未能审慎确定借款人适当性、综合资金成本、贷款金额上限、贷款期限、贷款展期限制、贷款用途限定、还款方式等。</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td>向在校学生、无收入来源、无还款来源或不具备还款能力的借款人提供借贷撮合业务。</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td>提供首付贷、赎楼贷、房地产场外配资等购房融资借贷撮合服务。</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td>提供无指定用途的借贷撮合业务。</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td>将客户的信息采集、甄别筛选、资信评估、开户等核心工作外包。</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td class="title" colspan="2">法律依据</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">《关于规范整顿“现金贷”业务的通知》（整治办函〔2017〕141号）</td>
+                        </tr>
+
+                        <tr>
+                            <td class="title" colspan="2">
+                                存在问题
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                （三十三）违反审慎经营原则
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="title">
+                                问题涉及具体情况
+                            </td>
+                            <td class="title">
+                                是否存在
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>未充分考虑信用记录缺失、多头借款、欺诈等因素对贷款质量可能造成的影响。</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td>以“大数据”为名窃取、滥用客户隐私信息。</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td>隐匿不良资产。</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td>撮合借贷资金的本息没有直接通过借款人银行账户支付或扣除、而是通过第三方合作机构账户中转收付。</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td>网贷机构自身或委托第三方机构均通过暴力、恐吓、侮辱、诽谤、骚扰等方式催收贷款或向债务人、担保人以外的人员进行催收。</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td class="title" colspan="2">法律依据</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">《关于规范整顿“现金贷”业务的通知》（整治办函〔2017〕141号）</td>
+                        </tr>
+
+                        <tr>
+                            <td class="title" colspan="2">
+                                存在问题
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                （三十四）非法催收
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="title">
+                                问题涉及具体情况
+                            </td>
+                            <td class="title">
+                                是否存在
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>网贷机构自身或委托第三方机构均通过暴力、恐吓、侮辱、诽谤、骚扰等方式催收贷款或向债务人、担保人以外的人员进行催收。</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td class="title" colspan="2">法律依据</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">《关于规范整顿“现金贷”业务的通知》（整治办函〔2017〕141号）</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </li>
+            <li>
+                <div class="slider-layer">
+                    <div class="title">
+                        <i class="icon-font icon-duigou"></i>
+                        <span style="font-size: 15px">其他违反有关法律法规、监管规定的情形</span>
+                    </div>
+                    <table class="table-info">
+                        <tbody>
+                        <tr>
+                            <td class="title" colspan="2">
+                                存在问题
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                （三十五）规模控制不到位
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="title">
+                                问题涉及具体情况
+                            </td>
+                            <td class="title">
+                                是否存在
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>检查时点的规模总量较2017年6月增长幅度较大。</td>
+                            <td>备注：按照要求向监管机关和互金协会报送数据，并在其指导下控制规模。</td>
+                        </tr>
+                        <tr>
+                            <td class="title" colspan="2">
+                                存在问题
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                （三十六）公司内控管理
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="title">
+                                问题涉及具体情况
+                            </td>
+                            <td class="title">
+                                是否存在
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>未建立客户投诉处理制度，或者对客户投诉未能依法、及时答复、处理；未落实相关监管要求，包括：未按照有关监管部门要求报送各类信息、资料、未按照有关监管规定及时报告重大事项、及时整改违规经营行为及其他未落实监管要求的情形。</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td class="title" colspan="2">法律依据</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">按照《暂行办法》第九条（五）规定</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="info-layer">
+    <div data-am-widget="titlebar" class="am-titlebar am-titlebar-default">
+        <h2 class="am-titlebar-title am-text-nowrap">
+            亿钱贷严格按照下列法律法规及政策进行合规备案
+        </h2>
+    </div>
+    <ul>
+        <li><a href="/article/notice/18051601413050290006380141750274">《网络借贷信息中介机构业务活动管理暂行办法》</a></li>
+        <li><a href="/article/notice/18051601413051990006550149201400">《网络借贷资金存管业务指引》</a></li>
+        <li><a href="/article/notice/18051601413057290007080148341809">《关于做好P2P网络借贷风险专项整治整改验收工作的通知》</a></li>
+        <li><a href="/article/notice/18051601413053290006680146520310">《网络借贷信息中介机构业务活动信息披露指引》</a></li>
+        <li style="width: 3.5rem"><a href="/article/notice/18051601413038590005210146649952">《最高人民法院关于审理民间借贷案件适用法律若干问题的规定》</a></li>
+        <li><a href="/article/notice/18051601413054390006790146081040">《网络借贷信息中介机构备案登记管理指引》</a></li>
+    </ul>
+</div>
+<#include "/includes/sign.html" />
+<!--底部菜单-->
+
+<#include "/includes/script.html" />
+<!--页面js-->
+<script src="${tzp.getContextPath()}/dist/js/pages/static/hegui.js?v=224bebe"></script>
+</body>
+<#include "/includes/count.html" />
+</html>

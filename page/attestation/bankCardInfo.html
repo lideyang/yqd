@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>银行卡信息-亿钱贷</title>
+    <#include "/includes/style.html" />
+    <!--页面样式-->
+    <link href="${tzp.getContextPath()}/dist/css/pages/account/bankCardInfo.css?v=047e6b2" rel="stylesheet">
+</head>
+<body class="main-bg">
+<!-- 头部开始 -->
+<#include "/includes/header.html" />
+<!--银行卡面板-->
+<div class="am-panel am-panel-default bank-card-panel">
+              <#if (userInfo.userIdno) ?? >
+				<#assign tempUserIdno = userInfo.userIdnoStr >
+               <#assign tempUserRealName = userInfo.userNameStr>                        	
+              </#if>      
+    <div class="am-panel-bd">
+        <form class="am-form am-form-horizontal" id="bankCardInfoForm">
+        	<input type="hidden" name="bankNo" value="${vo.bankNo}" >
+        	<#if vo.bankCode ?? >
+	            <div class="bank-card-layer">
+	                <img src="${tzp.getContextPath()}/public/images/bank/${vo.bankCode}.png" />
+	                <h2 class="am-text-center">${vo.bankNo}</h2>
+	                <p>${vo.remark!''}</p>
+	            </div>
+	            <input type="hidden" name="bankCode" value="${vo.bankCode}" >
+            <#else>
+	            <div class="am-form-group">
+	            	<label>开户行</label>
+                            <select class="select-comm select-1" id="bankCodeSel" name="bankCode">
+                            	<#list bankTypes as item>
+                            	<option value="${item.bankCode!''}" data-limit=${item.remark!''} >${item.bankCodeCn!''}</option>
+                            	</#list>
+                            </select>	            	
+	                <h2 class="am-text-center">${vo.bankNo}</h2>
+	                <p>单笔限额20万，单日限额20万</p>
+	            </div>            	
+            </#if>
+            
+            <div data-am-widget="titlebar" class="am-titlebar am-titlebar-default" >
+                <h2 class="am-titlebar-title ">
+                    持卡人信息
+                </h2>
+            </div>
+            <div class="am-form-group">
+                <label>姓名</label>
+                <input class="am-form-field"  id="realName" name="realName" placeholder="持卡人姓名" value="${tempUserRealName!''}" <#if tempUserRealName??> readonly="readonly"<#else>maxlength="10"</#if> >
+            </div>
+            <div class="am-form-group">
+                <label>身份证</label>
+                <input type="text" class="am-form-field"  id="idNo" name="idNo" value="${tempUserIdno!''}" placeholder="持卡人证件号" <#if tempUserIdno??> readonly="readonly"<#else>maxlength="18"</#if>  >
+            </div>
+            <div data-am-widget="titlebar" class="am-titlebar am-titlebar-default" >
+                <h2 class="am-titlebar-title ">
+                    手机验证
+                </h2>
+            </div>
+            <div class="am-form-group">
+                <label>手机号</label>
+                <input type="tel" class="am-form-field" maxlength="11" id="userMobile" name="userMobile" placeholder="银行预留手机号">
+            </div>
+            <div class="am-form-group code">
+                <label>验证码</label>
+                <input class="am-form-field" id="verifyCode" name="verifyCode" placeholder="4位或6位数字" maxlength="6">
+                <a id="codeBtn" class="am-btn am-btn-secondary am-radius code-btn">获取验证码</a>
+            </div>
+            <div class="am-form-group">
+                <button id="submitBtn" data-am-loading="{spinner: 'loading', loadingText: '加载中...'}" type="submit" class="am-btn am-btn-secondary am-round am-btn-block am-btn-xl submit-btn">确认</button>
+            </div>
+        </form>
+    </div>
+</div>
+<#include "/includes/script.html" />
+</body>
+<!--页面js-->
+<script src="${tzp.getContextPath()}/dist/js/pages/account/bankCardInfo.js?v=66f8988"></script>
+<#include "/includes/count.html" /> 
+</html>

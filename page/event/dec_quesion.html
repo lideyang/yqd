@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>答题消蛋-亿钱贷</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.5, maximum-scale=0.5, user-scalable=0">
+    <meta content="telephone=no" name="format-detection">
+    <script>
+        //设置rem
+        (function (doc, win) {
+            var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize';
+            var dpr = window.devicePixelRatio || 1;
+            // adjust body font size
+            function setBodyFontSize() {
+                if (document.body) {
+                    document.body.style.fontSize = '24px'
+                }
+                else {
+                    document.addEventListener('DOMContentLoaded', setBodyFontSize)
+                }
+            }
+
+            setBodyFontSize();
+            function setRemUnit() {
+                var clientWidth = docEl.clientWidth;
+                if (!clientWidth) return;
+                docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+            }
+
+            setRemUnit()
+            if (!doc.addEventListener) return;
+            win.addEventListener(resizeEvt, setRemUnit);
+            window.addEventListener('pageshow', function (e) {
+                if (e.persisted) {
+                    setRemUnit()
+                }
+            })
+        })(document, window);
+    </script>
+    <!-- 公共样式 -->
+    <link href="${tzp.getContextPath()}/dist/css/global.css?v=6feeeb4" rel="stylesheet">
+    <link rel="stylesheet" href="/dist/css/pages/activity/decQuesion.css?v=feb678d" />
+    <link rel="stylesheet" href="/public/css/active/dec2/icons.css?v=feb678d" />
+</head>
+<body style="font-size:24px;">
+    <div id="mainContent" class="main-content">
+        <div id="questionLayer" class="layer">
+            <div class="boxer">
+                <h3 class="title">以下哪一个是亿钱贷股东?</h3>
+                <ul id="answer" class="answer">
+                    <li>A.红岭创投</li>
+                    <li>B.腾讯</li>
+                    <li>C.阿里巴巴</li>
+                </ul>
+            </div>
+        </div>
+        <!--回答正确-->
+        <div id="successLayer" class="success-layer">
+            <img src="/public/images/active/dec2/right.png" class="icon" />
+            <h2>恭喜您，回答正确</h2>
+            <p class="am-text-muted tips">红岭创投持有49%的股份</p>
+            <a class="btn egg-btn" href="javascript:;;" id="getEggBtn"><img src="/public/images/active/dec2/egg-right.png" />领取一枚金蛋</a>
+        </div>
+        <!--回答错误-->
+        <div id="errorLayer" class="success-layer" style="display: none">
+            <img src="/public/images/active/dec2/error.png" class="icon" />
+            <h2>回答错误，再来一次</h2>
+            <p class="am-text-muted tips">红岭创投持有49%的股份</p>
+            <a class="btn" href="javascript:;;" id="agBtn">再答一次</a>
+        </div>
+    </div>
+</div>
+<#include "/includes/script.html" />
+<!--页面js-->
+<script src="${tzp.getContextPath()}/dist/js/pages/activity/decQuesion.js?v=ea094ed"></script>
+</body>
+<#include "/includes/count.html" />
+</html>

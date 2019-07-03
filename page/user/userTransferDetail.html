@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>债权详情-亿钱贷</title>
+    <#include "/includes/style.html" />
+    <!--页面样式-->
+    <link href="${tzp.getContextPath()}/dist/css/pages/user/myInvestDetail.css?v=fa4b867" rel="stylesheet">
+</head>
+<body>
+<!-- 头部开始 -->
+<#include "/includes/header.html" />
+    <!--我的投资详情-->
+    <div class="am-container">
+        <!--项目名称-->
+        <div class="am-g product-info-content title" data-url="${tzp.getContextPath()}/product/detail/${loanId!''}" id="titleLayer">
+            <div class="am-u-sm-8 name">
+                <div class="cell">
+                    <h2 class="am-text-truncate">
+                    	<#if prdType=='0'>
+							<span class="am-badge am-radius label-qn vertical-middle">企</span>
+						</#if>
+						<#if prdType=='1'>
+							<span class="am-badge am-radius label-qn vertical-middle">农</span>
+						</#if>
+						<#if prdType=='2'>
+							<span class="am-badge am-radius label-qn vertical-middle">微</span>
+						</#if>
+						<#if prdType=='3'>
+							<span class="am-badge am-radius label-qn vertical-middle">保</span>
+						</#if>
+						<#if prdType=='4'>
+							<span class="am-badge am-radius label-qn vertical-middle">车</span>
+						</#if>
+						<#if prdType=='5'>
+							<span class="am-badge am-radius label-qn vertical-middle">商</span>
+						</#if>                    
+                        <span class="vertical-middle">${vo.loanTitle!''}</span>
+                    </h2>
+                        <!--<p class="am-text-muted">2018-15-15</p>-->
+                </div>
+            </div>
+            <div class="am-u-sm-4 am-text-right status">
+                <div class="cell">
+                    <!--还款中-->
+                    <!--${vo.loanStatusStr!''}-->
+                    <!--撤销转让-->
+                    <!--<a class="am-btn btn-disabled am-btn-xs am-round" href="javascript:;;">撤销转让</a>-->
+                    <!--撤销转让-->
+                    <!--<a class="am-btn am-btn-primary am-btn-xs am-round" href="javascript:;;">撤销转让</a>-->
+                    <!--转让中-->
+                    <p class="am-text-center">
+                      <#if debtStatusName=='转让中'>
+                       	持有中
+                        <#else>
+                         ${(debtStatusName)!''}
+                      </#if>
+                      
+                    </p>
+                  <#if debtStatusName=='持有中'>
+                    <p class="am-text-center status-btn"><a class="am-btn am-btn-primary am-btn-xs am-round vertical-middle  <#if !(canTransfer??&&canTransfer)>btn-disabled  </#if>"
+                     href="<#if canTransfer??&&canTransfer>${tzp.getContextPath()}/member/transfer/apply/${(debtId)!''}<#else>javascript:;;</#if>"
+                     > <#if canTransfer??&&canTransfer>转让<#else>不可转让</#if></a> <#if !(canTransfer??&&canTransfer)><a class="wenhao-link" href="${tzp.getContextPath()}/member/transfer/explain"><i class="icon-font icon-wenhao vertical-middle am-text-muted"></i></a></#if></p>
+                  
+                    </#if>
+                    <#if debtStatusName=='转让中'>
+                    <p class="am-text-center status-btn"><a class="am-btn am-btn-primary am-btn-xs am-round vertical-middlebtn-disabled" href="javascript:;;">转让中</a></p>
+                    </#if>
+                </div>
+            </div>
+        </div>
+        <!--项目详情-->
+        <!--正常项目不可转让  -->
+       
+        <div class="product-info-content">
+            <div class="am-g am-text-center primary-info">
+	            
+	            	<div class="am-u-sm-4">
+	                    <p class="am-text-default">${(debtDetailVo.buyPrice!0)?string(',##0.00')}</p>
+	                    <p class="am-text-muted">受让债权金额(元)</p>
+	                </div>
+	                <div class="am-u-sm-4 rate">
+	                    <p class="am-text-default am-text-nowrap">${(prdRate!0)?string(',##0.00')}%<#if vo.awardRate?? && vo.awardRate gt 0>+${(awardRate!0)?string(',##0.00')}%</#if></p>
+	                    <p class="am-text-muted am-text-nowrap">项目协议约定年化利率</p>
+	                </div>
+	                <div class="am-u-sm-4">
+	                    <p class="am-text-default">${buyRemainDays!''}</p>
+	                    <p class="am-text-muted">受让期限</p>
+	                </div>
+                   <div class="am-u-sm-4 rate">
+	                    <p class="am-text-default">${(buyTransferPrincipal?string(',##0.00'))!0}</p>
+	                    <p class="am-text-muted">债权本金(元)</p>
+	                </div>
+	                <div class="am-u-sm-4">
+	                    <p class="am-text-default">${(buyAdvanceAmt?string(',##0.00'))!0}</p>
+	                    <p id="repayIcon" class="am-text-muted">垫付利息<i class="icon-font icon-wenhao1"></i></p>
+	                </div>
+	                 <div class="am-u-sm-4">
+	                    <p class="am-text-default time am-text-nowrap" style="font-size:14px;line-height:32px">${repayMode!''}</p>
+	                    <p class="am-text-muted">回款方式</p>
+                	</div>
+	                
+	            </div>
+	            <ul>
+	                <li>
+	                    <span class="am-text-default name">受让时间</span>
+	                    <span class="txt am-text-right am-fr">${(buyDealTime?string('yyyy-MM-dd'))!''} </span>
+	                </li>
+	                <li>
+	                    <span class="am-text-default name">到期时间</span>
+	                    <span class="txt am-text-right am-fr">${settleDate!''}</span>
+	                </li>
+	                <#if debtDetailVo.debtStatus=='1' ||  debtDetailVo.debtStatus=='2'>
+	                      <li>
+                    <span class="am-text-default name">预期项目利息</span>
+                    <span class="txt am-text-right am-fr am-text-secondary">${(plaInterAmt!0)?string(',##0.00')}元</span>
+                    </li>
+                   <li>
+                    <span class="am-text-default name">预期平台奖励</span>
+                    <span class="txt am-text-right am-fr am-text-secondary">${(planAllAward!0)?string(',##0.00')}元</span>
+                    </li>
+	                <li>
+	                    <span class="am-text-default name" id="investIcon">预期收益<i class="icon-font icon-wenhao"></i> </span>
+	                    <span class="txt am-text-right am-fr am-text-secondary">${(plaInterAmt + planAllAward)?string(',##0.00')}元</span>
+	                </li>
+	              	<#else>
+	              	 <li>
+	                    <span class="am-text-default name">已收本金</span>
+	                    <span class="txt am-text-right am-fr am-text-secondary">${(receivedPrincipal!0)?string(',##0.00')}元</span>
+	                </li>
+	              	 <li>
+	                    <span class="am-text-default name" id="yishouIcon">已收收益<i class="icon-font icon-wenhao"></i></span>
+	                    <span class="txt am-text-right am-fr am-text-secondary">${(receivedIncome)?string(',##0.00')}元</span>
+	                </li>
+                    </#if>
+                    <#if   debtDetailVo.debtStatus=='4'>
+                	 <li style="height:.2rem">
+                         <a class="txt am-text-right am-fr am-text-primary" href="${tzp.getContextPath()}/member/invest/repay-list/${loanId!''}/${debtId!''}">已回款(${repayedPeriod!''}/${planPeriod!''})</a>
+	                </li>
+	                </#if>
+
+            </ul>
+        </div>
+<!--         回款计划 -->
+<!--         <#if debtStatusName=='已转让' > -->
+<!--         债转信息 -->
+<!--         <div class="product-info-content transfer-layer"> -->
+<!--             <div class="transfer-title"> -->
+<!--                 <i class="icon-font icon-holdx"></i> -->
+<!--                 <span class="title-info">债权信息</span> -->
+<!--             </div> -->
+<!--             <div class="am-g am-text-center primary-info"> -->
+<!--                 <div class="am-u-sm-4 rate"> -->
+<!--                     <p class="am-text-default">${(todayWorth?string(',##0.00'))!0}</p> -->
+<!--                     <p class="am-text-muted">已收垫付利息</p> -->
+<!--                 </div> -->
+<!--                 <div class="am-u-sm-4"> -->
+<!--                     <p class="am-text-default">${(debtPrincipal?string(',##0.00'))!0}</p> -->
+<!--                     <p class="am-text-muted">债权本金(元)</p> -->
+<!--                 </div> -->
+<!--                 <div class="am-u-sm-4"> -->
+<!--                     <p class="am-text-default">${(transferFee?string(',##0.00'))!0}</p> -->
+<!--                     <p class="am-text-muted">手续费(元)</p> -->
+<!--                 </div> -->
+<!--             </div> -->
+<!--             <div class="am-g"> -->
+<!--                 <div class="am-u-sm-6 am-text-default">申请债权转让</div> -->
+<!--                 <div class="am-u-sm-6 am-text-right">${transferApplyTime!''}</div> -->
+<!--                 <div class="am-u-sm-6 am-text-default">债权转让成功</div> -->
+<!--                 <div class="am-u-sm-6 am-text-right">${transferDealTime!''}</div> -->
+                
+<!--             </div> -->
+<!--         </div> -->
+<!--         </#if> -->
+     <#if debtDetailVo.debtStatus!='4'>
+                <div class="product-info-content repay-layer">
+            <div class="repay-title am-cf">
+                <i class="am-fl icon-font icon-date"></i>
+                <span class="am-fl am-text-primary"><a class="am-text-primary" href="${tzp.getContextPath()}/member/invest/repay-list/${loanId!''}/${debtId!''}">回款计划(${repayedPeriod!''}/${planPeriod!''})</a></span>
+                <span class="am-fr">本金+收益</span>
+            </div>
+            <ul class="am-list admin-sidebar-list re-pay-list" id="myRePayList">
+            <#if (repaylist)??> 
+			<#list repaylist as page>
+                <li class="am-panel">
+                    <div class="am-g title" data-am-collapse="{target: '#user-nav${page.repayPeriod!''}'}">
+                        <div class="am-u-sm-4 am-text-muted am-text-left">${(page.planDate?string('yyyy-MM-dd'))!'-'}</div>
+                        <div class="am-u-sm-4 am-text-muted am-text-center">${page.repayStatusStrNew!''}</div>
+                        <div class="am-u-sm-4 am-text-right"><span class="vertical-middle">${((page.planPrincipal + page.planInterest + page.ticketAward+ page.planPlatReward + page.planSubsidyAmt)!0)?string(',##0.00')}</span><i class="icon-font icon-bottom vertical-middle am-text-primary arrow"></i></div>
+                    </div>
+                    <ul class="am-list am-collapse admin-sidebar-sub" id="user-nav${page.repayPeriod!''}">
+                        <li>本金<span class="am-fr num">${(page.planPrincipal!0)?string(',##0.00')}</span></li>
+                        <li>项目收益<span class="am-fr num">${(page.planInterest+page.planPlatReward + page.planSubsidyAmt+page.ticketAward)?string(',##0.00')}</span></li>
+                    </ul>
+                </li>
+			</#list> 
+			</#if>
+            </ul>
+        </div>
+        </#if>
+        <div class="product-info-content">
+     
+            <a class="link" href="${tzp.getContextPath()}/member/invest/agreement/${debtId!''}?type=2">
+                相关协议<span class="am-fr"><i class="icon-font icon-next am-text-primary vertical-middle"></i></span>
+            </a>
+<!--             <#if originalDebtId??> -->
+<!--             <p class="am-text-center"><a class="am-text-primary" href="${tzp.getContextPath()}/member/invest/invest-details/${loanId}/${originalDebtId}" style="font-weight: bold">原项目资产详情<i class="icon-font icon-next am-text-primary vertical-middle"></i></a></p> -->
+<!--        		</#if> -->
+        </div>
+    </div>
+<p class="am-text-center am-text-muted">市场有风险 出借需谨慎</p>
+<#include "/includes/script.html" />
+<script>
+    var isShowOpenModal=<#if  !(_p2p_member_user??)|| _p2p_member_user.isDepositary=='1' >false<#else>true</#if>;
+    var incomeText="已收收益 = 项目利息 + 出借奖励";
+</script>
+<!--页面js-->
+<script src="${tzp.getContextPath()}/dist/js/pages/user/myInvestDetail.js?v=ca360e9"></script>
+</body>
+<#include "/includes/count.html" /> 
+</html>
+
+

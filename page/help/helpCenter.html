@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>帮助中心-亿钱贷</title>
+    <#include "/includes/style.html" />
+    <!--页面样式-->
+    <link href="${tzp.getContextPath()}/dist/css/pages/user/helpCenter.css?v=13caf90" rel="stylesheet">
+</head>
+<body>
+<!-- 头部开始 -->
+<#include "/includes/header.html" />
+<div class="am-g am-text-center help-list">
+	<#list types as type>
+		<#assign tempClassName="">
+		<#if type.typeName?contains('新手')>
+			<#assign tempClassName="icon-new-hard-center">
+		</#if>
+		<#if type.typeName?contains('登录')>
+			<#assign tempClassName="icon-login">
+		</#if>
+		<#if type.typeName?contains('实名')>
+			<#assign tempClassName="icon-card">
+		</#if>
+		<#if type.typeName?contains('充值')>
+			<#assign tempClassName="icon-withdraw">
+		</#if>
+		<#if type.typeName?contains('红包')>
+			<#assign tempClassName="icon-rules">
+		</#if>
+		<#if type.typeName?contains('出借')>
+			<#assign tempClassName="icon-returned">
+		</#if>
+		<#if type.typeName?contains('保障')>
+			<#assign tempClassName="icon-safety">
+		</#if>
+		<#if type.typeName?contains('资费')>
+		<#assign tempClassName="icon-inroduce">
+		</#if>
+		<#if type.typeName?contains('产品')>
+		<#assign tempClassName="icon-products">
+		</#if>
+		<#if type.typeName?contains('风控')>
+		<#assign tempClassName="icon-Control">
+		</#if>
+		<#if type.typeName?contains('解读')>
+		<#assign tempClassName="icon-xmjd">
+		</#if>
+		<#if type.typeName?contains('债权转让')>
+		<#assign tempClassName="icon-zqzr_">
+		</#if>
+		<#if type.typeName?contains('易智投')>
+		<#assign tempClassName="icon-Loan">
+		</#if>
+		<#if type.typeName?contains('银行存管')>
+		<#assign tempClassName="icon-yhcg">
+		</#if>
+		<#if type.typeName?contains('存管开户')>
+		<#assign tempClassName="icon-cgkh">
+		</#if>
+		<#if type.typeName?contains('信息修改')>
+		<#assign tempClassName="icon-xmjd">
+		</#if>
+		<div class="am-u-sm-4 am-text-center">
+			<a href="${tzp.getContextPath()}/help/question/${type.typeId!''}">
+				<div class="icon">
+					<i class="icon-font am-text-primary ${tempClassName}"></i>
+				</div>
+			</a>
+			<p class="am-text-default">${type.typeName}</p>
+		</div>
+	</#list>
+	<div class="am-u-sm-8">
+	</div>
+</div>
+<!--底部菜单-->
+<#include "/includes/footer.html" />
+<#include "/includes/script.html" />
+<!--页面js-->
+<script src="${tzp.getContextPath()}/dist/js/pages/user/helpCenter.js?v=11bf21b"></script>
+</body>
+<#include "/includes/count.html" /> 
+</html>

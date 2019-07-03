@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>优车贷-亿钱贷</title>
+    <#include "/includes/style.html" />
+    <!--页面样式-->
+    <link href="${tzp.getContextPath()}/dist/css/pages/static/product.css?v=b5c5cb3" rel="stylesheet">
+    <link href="${tzp.getContextPath()}/public/css/about/product_icon.css?v=2251bef" rel="stylesheet">
+</head>
+<body>
+<!-- 头部开始 -->
+<#include "/includes/header.html" />
+<img src="/public/images/about/yc_banner.png?v=5252e88" class="banner" />
+<div class="wn-info">
+    <h3 class="am-text-center">优车贷简介</h3>
+    <p class="tips">优车贷主要针对企业或个人名下拥有合法车辆的车主。提供名下车辆作为抵押物，依据车辆资产价值，为其快速取得资金的信息撮合服务。</p>
+    <ul>
+        <li data-am-scrollspy="{animation: 'slide-left'}" class="am-cf"><i class="wn-icon wn-icon-1"></i><p>选择与有车贷业务的助贷机构合作，由助贷机构推荐借款客户到亿钱贷平台；</p></li>
+        <li data-am-scrollspy="{animation: 'slide-right'}" class="am-cf"><i class="wn-icon wn-icon-2"></i><p>由平台进行甄别、筛选，然后选择资质优秀的客户在平台发布信息；</p></li>
+        <li data-am-scrollspy="{animation: 'slide-left'}" class="am-cf"><i class="wn-icon wn-icon-3"></i><p>平台对出借人、借款人提供信息撮合服务；</p></li>
+    </ul>
+</div>
+<div class="yc-kh-layer">
+    <h3 class="am-text-center">借款客户</h3>
+    <p class="am-text-center tips">客户背景</p>
+    <ul class="title am-cf">
+        <li class="am-g">
+            <div class="am-u-sm-4 am-text-center">
+                <i class="wn-icon wn-icon-31"></i>
+            </div>
+            <div class="am-u-sm-8" data-am-scrollspy="{animation: 'slide-top'}">
+                <p>车辆在个人或公司名下且经过</p>
+                <p>第三方合理评估、报价</p>
+            </div>
+        </li>
+        <li class="am-g">
+            <div class="am-u-sm-4 am-text-center">
+                <i class="wn-icon wn-icon-32"></i>
+            </div>
+            <div class="am-u-sm-8" data-am-scrollspy="{animation: 'slide-bottom'}">
+                <p>有稳定收入来源的工薪、</p>
+                <p>自雇人士和企业</p>
+            </div>
+        </li>
+    </ul>
+</div>
+<div class="yc-use-layer">
+    <h3 class="am-text-center">助贷机构准入条件</h3>
+    <ul>
+        <li data-am-scrollspy="{animation: 'slide-right'}"><i class="wn-icon wn-icon-33"></i><p>合作机构持续运营多年，经营状况良好</p></li>
+        <li data-am-scrollspy="{animation: 'slide-left'}"><i class="wn-icon wn-icon-34"></i><p>有建立完善的风控体系和贷后管理工作流程</p></li>
+        <li data-am-scrollspy="{animation: 'slide-right'}"><i class="wn-icon wn-icon-35"></i><p>市场开拓能力强，资产质量较为优秀</p></li>
+        <li data-am-scrollspy="{animation: 'slide-left'}"><i class="wn-icon wn-icon-36"></i><p>车辆相关业务发展良好,未出现重大不良情况</p></li>
+    </ul>
+</div>
+<div class="mechanism-layer yc">
+    <h3 class="am-text-center">合作机构</h3>
+    <ul>
+        <li>
+            <p class="am-text-center"><i class="wn-icon wn-icon-49" data-am-scrollspy="{animation: 'slide-top'}"></i></p>
+            <p data-am-scrollspy="{animation: 'scale-up'}">
+                公司以汽车金融为主入口，致力于打造汽车全产业链的综合性服务平台。实际控制人系知名P2P车贷平台“钱吧”创始人，平台是目前山东地区业绩和风控最好的车贷平台之一，在全国车贷行业排名前四，集团综合实力与盈利能力较强。截至2018年10月，平台累计成交额超过38亿。
+            </p>
+        </li>
+    </ul>
+</div>
+<div class="yc-hr"><div class="split"></div></div>
+<div class="standard-layer yc">
+    <h3 class="am-text-center">项目标准</h3>
+    <ul class="am-cf">
+        <li data-am-scrollspy="{animation: 'slide-top'}">
+            <i class="wn-icon wn-icon-37"></i>
+            <h4>借款期限</h4>
+            <p>1个月-24个月</p>
+        </li>
+        <li data-am-scrollspy="{animation: 'slide-bottom'}">
+            <i class="wn-icon wn-icon-38"></i>
+            <h4>还款方式</h4>
+            <p>先息后本，等额本息</p>
+        </li>
+    </ul>
+</div>
+<!--客服热线-->
+<div class="am-g kefu am-text-center">
+    <p class="am-text-primary">
+        客服热线 <a class="am-text-primary" href="tel:${serviceTelephone!''}">${serviceTelephone!''}</a>
+    </p>
+    <p class="am-text-muted time">
+        服务时间 ${serviceTime!''}
+    </p>
+</div>
+<div class="bottom-hr"></div>
+<!--app下载-->
+<div class="bottom-download-app am-text-center">
+    <p class="title am-text-muted">了解更多精选产品</p>
+    <p>
+        <a href="http://a.app.qq.com/o/simple.jsp?pkgname=com.yiqiandai.p2p" class="am-btn am-btn-lg btn-download am-round">下载亿钱贷 APP</a>
+    </p>
+</div>
+
+<!--底部菜单-->
+<#include "/includes/sign.html" />
+<#include "/includes/script.html" />
+<!--页面js-->
+<script src="${tzp.getContextPath()}/dist/js/pages/static/product.js?v=06149dc"></script>
+</body>
+<#include "/includes/count.html" />
+</html>

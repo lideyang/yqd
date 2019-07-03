@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>好友邀请注册-亿钱贷</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,minimal-ui">
+    <script>
+        //设置rem
+        (function (doc, win) {
+            var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                recalc = function () {
+                    var clientWidth = docEl.clientWidth;
+                    if (!clientWidth) return;
+                    if (clientWidth >= 750) {
+                        docEl.style.fontSize = '100px';
+                    } else {
+                        docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+                    }
+                };
+
+            if (!doc.addEventListener) return;
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+        })(document, window);
+        var basePath='${tzp.getContextPath()!''}';
+    </script>
+    <link rel="stylesheet" href="${tzp.getContextPath()}/public/css/event/bonus.css?v=13a83ed"/>
+</head>
+<body>
+<div class="top clearfix">
+    <img class="logo am-fl" src="${tzp.getContextPath()}/public/images/logo.png?v=5ebb42b"/>
+    <div class="title am-fl">
+        <p>A股上市公司全资控股</p>
+        <p>证券代码002417</p>
+    </div>
+</div>
+<div class="content">
+    <div class="invite-content">
+        您的好友<span>XXX</span>邀请您一起来出借，并赠送您新手专属红包
+    </div>
+    <div class="banner">
+        <img src="${tzp.getContextPath()}/public/images/event/banner.png?v=a73100f" />
+    </div>
+    <form  action="${tzp.getContextPath()}/event/bonus/next" id="bonus">
+        <div class="mobile-form">
+            <div class="form-group">
+                <input id="userMobile" name ="userMobile" maxlength="11" placeholder="请输入您的手机号码" />
+            </div>
+            <div id="errorMsg" class="error-msg">
+                <i class="icon-font icon-gth"></i>
+                <span>请输入正确的手机号</span>
+            </div>
+        </div>
+        <button type="button" class="reg-btn" id="regBtn">领取新手红包</button>
+        <input type="hidden" value="${code!''}" id="code" name ="code">
+    </form>
+    <div class="main-content">
+        <img class="" src="${tzp.getContextPath()}/public/images/event/content.png?v=9f9756b" />
+    </div>
+    <div class="copy-right">
+        <p>市场有风险，出借需谨慎</p>
+        <p>深圳市亿钱贷电子商务有限公司版权所有</p>
+    </div>
+    <img class="bottom" src="${tzp.getContextPath()}/public/images/event/bottom.png?v=583b3a3" />
+</div>
+<div class="modal" id="modal">
+    <h3>
+        <i class="icon-font icon-gth"></i>
+        您已经是亿钱贷的用户了
+    </h3>
+    <p>新手红包只有新伙伴才能领哦~</p>
+    <p class="last">邀请好友加入，来赚取丰厚的现金奖励吧！</p>
+    <a href="${download!'#'}" class="reg-btn">下载APP去出借</a>
+    <a class="reset-btn" href="javascript:closeLayer();">换个手机号注册</a>
+</div>
+<script src="${tzp.getContextPath()}/public/js/risk/jquery.min.js?v=fab12e7"></script>
+<script src="${tzp.getContextPath()}/public/js/plugins/layer/layer.js?v=5c06706"></script>
+<script src="${tzp.getContextPath()}/public/js/bonus/index.js?v=677e8f8"></script>
+<script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script src="${tzp.getContextPath()}/public/js/wx.js?v=c703a88"></script>
+<script>
+ $(function () {
+ 	initWxData(_wxData)
+})
+	var _wxData = {
+  "imgUrl": "${shareData.img!''}",
+   "link": location.href.split('#')[0],
+   "desc": "${shareData.desc!''}",
+   "title":"${shareData.title!''}"
+ };
+ </script>
+</body>
+<#include "/includes/count.html" /> 
+</html>
