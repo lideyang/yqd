@@ -1,4 +1,4 @@
-# 亿钱贷微站前端
+# 微站前端
 
 > Vue2+vue-router+webpack4项目
 
